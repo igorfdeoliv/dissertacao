@@ -1,0 +1,24 @@
+#Carregando pacotes a setem utilizados----
+
+    library(dplyr)
+    library(stringr)
+
+#Limpando bases da memória----
+
+    rm(list=ls())
+
+#Diretório local de trabalho----
+
+    setwd("c:/Users/igorf/Documents/GitHub/dissertacao/dataset")
+
+#Organizando e manipulando a base de dados----
+
+    site <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/1%20consulta84077740.csv"
+    dados <- read.table(site, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
+
+    dados <- dados %>% 
+    mutate("Estado"=str_sub(Município, end = 2)) %>% 
+    mutate("Mun"=str_sub(Município, start = 4)) %>% 
+    mutate("chave"=str_c(Mun," ","(", Estado,")") ) %>% 
+    filter(Mun!="IGNORADO") %>% 
+    mutate("ano"=2003)
