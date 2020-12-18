@@ -9,7 +9,7 @@
 
 #Diretório local de trabalho----
 
-    setwd("c:/Users/igorf/Documents/GitHub/dissertacao/dataset")
+    setwd("C:\Users\igorf\Documents\GitHub\dissertacao\dataset\rais")
 
 #Organizando e manipulando a base de dados----
 
