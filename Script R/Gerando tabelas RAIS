@@ -42,7 +42,7 @@
     filter(Mun!="IGNORADO") %>% 
     mutate("ano"=2003)
 
-#Exportando----
+#Exportando
 
     write.table(w2003,file='rais.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
 
@@ -57,7 +57,7 @@
     filter(Mun!="IGNORADO") %>% 
     mutate("ano"=2004)
 
-#Exportando----
+#Exportando
 
     write.table(w2004,file='rais.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
 
@@ -72,7 +72,7 @@
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2005)
 
-#Exportando----
+#Exportando
 
     write.table(w2005,file='rais.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
 
@@ -87,7 +87,7 @@
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2006)
 
-#Exportando----
+#Exportando
 
     write.table(w2006,file='rais.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
 
@@ -102,7 +102,7 @@
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2007)
 
-#Exportando----
+#Exportando
 
     write.table(w2007,file='rais.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
 
@@ -117,7 +117,7 @@
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2008)
 
-#Exportando----
+#Exportando
 
     write.table(w2008,file='rais.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
 
@@ -132,6 +132,129 @@
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2009)
 
-#Exportando----
+#Exportando
 
     write.table(w2009,file='rais.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+
+#tabela 2010
+
+    w2010 <- read.table(ano8, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
+
+    w2010 <- w2010 %>%
+    mutate("Estado"=str_sub(Município, end = 2)) %>%
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate("chave"=str_c(Mun," ","(", Estado, ")")) %>%
+    filter(Mun!="IGNORADO") %>%
+    mutate("ano"=2010)
+
+#Exportando
+
+    write.table(w2010,file='rais.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+
+#tabela 2011
+
+    w2011 <- read.table(ano9, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
+
+    w2011 <- w2011 %>%
+    mutate("Estado"=str_sub(Município, end = 2)) %>%
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate("chave"=str_c(Mun," ","(", Estado, ")")) %>%
+    filter(Mun!="IGNORADO") %>%
+    mutate("ano"=2011)
+
+#Exportando
+
+    write.table(w2011,file='rais.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+
+#tabela 2012
+
+    w2012 <- read.table(ano10, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
+
+    w2012 <- w2012 %>%
+    mutate("Estado"=str_sub(Município, end = 2)) %>%
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate("chave"=str_c(Mun," ","(", Estado, ")")) %>%
+    filter(Mun!="IGNORADO") %>%
+    mutate("ano"=2012)
+
+#Exportando
+
+    write.table(w2012,file='rais.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+
+#tabela 2013
+
+    w2013 <- read.table(ano11, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
+
+    w2013 <- w2013 %>%
+    mutate("Estado"=str_sub(Município, end = 2)) %>%
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate("chave"=str_c(Mun," ","(", Estado, ")")) %>%
+    filter(Mun!="IGNORADO") %>%
+    mutate("ano"=2013)
+
+#Exportando
+
+    write.table(w2013,file='rais.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+
+#tabela 2014
+
+    w2014 <- read.table(ano12, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
+
+    w2014 <- w2014 %>%
+    mutate("Estado"=str_sub(Município, end = 2)) %>%
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate("chave"=str_c(Mun," ","(", Estado, ")")) %>%
+    filter(Mun!="IGNORADO") %>%
+    mutate("ano"=2014)
+
+#Exportando
+
+    write.table(w2014,file='rais.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+
+#tabela 2015
+
+    w2015 <- read.table(ano13, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
+
+    w2015 <- w2015 %>%
+    mutate("Estado"=str_sub(Município, end = 2)) %>%
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate("chave"=str_c(Mun," ","(", Estado, ")")) %>%
+    filter(Mun!="IGNORADO") %>%
+    mutate("ano"=2015)
+
+#Exportando
+
+    write.table(w2015,file='rais.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+
+#tabela 2016
+
+    w2016 <- read.table(ano14, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
+
+    w2016 <- w2016 %>%
+    mutate("Estado"=str_sub(Município, end = 2)) %>%
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate("chave"=str_c(Mun," ","(", Estado, ")")) %>%
+    filter(Mun!="IGNORADO") %>%
+    mutate("ano"=2016)
+
+#Exportando
+
+    write.table(w2016,file='rais.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+
+#tabela 2017
+
+    w2017 <- read.table(ano15, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
+
+    w2017 <- w2017 %>%
+    mutate("Estado"=str_sub(Município, end = 2)) %>%
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate("chave"=str_c(Mun," ","(", Estado, ")")) %>%
+    filter(Mun!="IGNORADO") %>%
+    mutate("ano"=2017)
+
+#Exportando
+
+    write.table(w2017,file='rais.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+
+
+
