@@ -14,4 +14,5 @@
   
   deflator <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ipea/ipeadata%5B04-12-2020-12-13%5D.csv"
   
-  ipca <- read.csv(deflator, header=T, sep=";", dec=",", nrows=492)
+  ipca <- read.csv(deflator, header=T, sep=";", dec=",", nrows=492, col.names=c("data","index","excluir"))
+
