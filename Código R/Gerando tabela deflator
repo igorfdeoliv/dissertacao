@@ -1,0 +1,17 @@
+#Limpando dados da memória
+
+  rm(list=ls())
+  
+#Carregando pacotes de trabalho
+  
+  library(dplyr)
+  
+#Diretório local de trabalho
+  
+  setwd("C:/Users/igorf/Documents/PPGEA UFV/3 - Projeto dissertação/Base de dados/PAM IBGE")
+  
+#Organizando tabela
+  
+  deflator <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ipea/ipeadata%5B04-12-2020-12-13%5D.csv"
+  
+  ipca <- read.csv(deflator, header=T, sep=";", dec=",", nrows=492)
