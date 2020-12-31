@@ -1,5 +1,5 @@
 #Limpando dados da memória
-
+#Pedro Comedor
   rm(list=ls())
   
 #Carregando pacotes de trabalho
