@@ -1,0 +1,17 @@
+#Carregando pacotes a serem utilizados----
+
+    library(dplyr)
+    library(stringr)
+
+#Limpando bases da memória----
+
+    rm(list=ls())
+
+#Diretório local de trabalho----
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/bacen")
+
+#Organizando tabelas----
+
+    ano1 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2003%20rel517.xlsx"
+    

@@ -31,7 +31,7 @@
     ano14 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2016%20consulta34072961.csv"
     ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2017%20consulta90972656.csv"
 
-#Tabela 2003
+#Tabela 2003:
 
     w2003 <- read.table(ano1, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
 
@@ -42,11 +42,15 @@
     filter(Mun!="IGNORADO") %>% 
     mutate("ano"=2003)
 
-#Exportando
+#Para observar os nomes e posições das colunas, basta executar o comando:
 
-    write.table(w2003,file='rais_2003.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+    colnames(w2003)
 
-#Tabela 2004
+#Reorganizando colunas:
+
+  w2003 <- w2003[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
+
+#Tabela 2004:
 
     w2004 <- read.table(ano2, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
 
@@ -57,9 +61,9 @@
     filter(Mun!="IGNORADO") %>% 
     mutate("ano"=2004)
 
-#Exportando
-
-    write.table(w2004,file='rais_2004.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+#Reorganizando colunas
+  
+  w2004 <- w2004[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2005
 
@@ -72,9 +76,9 @@
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2005)
 
-#Exportando
-
-    write.table(w2005,file='rais_2005.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+#Reorganizando colunas
+  
+  w2005 <- w2005[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2006
 
@@ -87,9 +91,9 @@
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2006)
 
-#Exportando
-
-    write.table(w2006,file='rais_2006.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+#Reorganizando colunas
+  
+  w2006 <- w2006[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2007
 
@@ -102,9 +106,9 @@
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2007)
 
-#Exportando
-
-    write.table(w2007,file='rais_2007.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+#Reorganizando colunas
+  
+  w2007 <- w2007[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2008
 
@@ -117,9 +121,9 @@
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2008)
 
-#Exportando
-
-    write.table(w2008,file='rais_2008.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+#Reorganizando colunas
+  
+  w2008 <- w2008[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2009
 
@@ -132,9 +136,9 @@
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2009)
 
-#Exportando
-
-    write.table(w2009,file='rais_2009.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+#Reorganizando colunas
+  
+  w2009 <- w2009[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2010
 
@@ -147,9 +151,9 @@
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2010)
 
-#Exportando
-
-    write.table(w2010,file='rais_2010.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+#Reorganizando colunas
+  
+  w2010 <- w2010[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2011
 
@@ -162,9 +166,9 @@
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2011)
 
-#Exportando
-
-    write.table(w2011,file='rais_2011.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+#Reorganizando colunas
+  
+  w2011 <- w2011[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2012
 
@@ -177,9 +181,9 @@
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2012)
 
-#Exportando
-
-    write.table(w2012,file='rais_2012.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+#Reorganizando colunas
+  
+  w2012 <- w2012[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2013
 
@@ -192,9 +196,9 @@
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2013)
 
-#Exportando
-
-    write.table(w2013,file='rais_2013.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+#Reorganizando colunas
+  
+  w2013 <- w2013[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2014
 
@@ -207,9 +211,9 @@
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2014)
 
-#Exportando
-
-    write.table(w2014,file='rais_2014.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+#Reorganizando colunas
+  
+  w2014 <- w2014[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2015
 
@@ -222,9 +226,9 @@
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2015)
 
-#Exportando
-
-    write.table(w2015,file='rais_2015.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+#Reorganizando colunas
+  
+  w2015 <- w2015[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2016
 
@@ -237,9 +241,9 @@
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2016)
 
-#Exportando
-
-    write.table(w2016,file='rais_2016.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+#Reorganizando colunas
+  
+  w2016 <- w2016[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2017
 
@@ -252,9 +256,16 @@
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2017)
 
+#Reorganizando colunas
+  
+  w2017 <- w2017[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
+
+#Juntando todas as tabelas
+
+      rais <- rbind(w2003,w2004,w2005,w2006,w2007,w2008,w2009,w2010,
+        w2011,w2012,w2013,w2014,w2015,w2016,w2017)
+
 #Exportando
 
-    write.table(w2017,file='rais_2017.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
-
-
+    write.table(rais,file='rais.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
 
