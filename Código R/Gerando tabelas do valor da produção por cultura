@@ -273,4 +273,4 @@
 
 #Exportando
 
-    write.table(valor_producao_mil_reais,file='valor_produção.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    write.table(valor_producao_mil_reais,file='valor_producao.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
