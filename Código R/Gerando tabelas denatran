@@ -211,6 +211,13 @@
                     16,17,18,19,20,21,22,23,24,3)]
 
 #Juntando todas as tabelas----
+  
+  demanda <- rbind(d2003,d2004,d2005,d2006,d2007,d2008,d2009,d2010,
+                   d2011,d2012,d2013,d2014,d2015,d2016,d2017)
 
-    
+#Exportando----
+
+    write.table(demanda,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+
+
 
