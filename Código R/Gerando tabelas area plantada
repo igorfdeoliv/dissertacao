@@ -31,7 +31,7 @@
     ano14 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2016%20tabela5457.csv"
     ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2017%20tabela5457.csv"
 
-#Tabela 2003
+#Tabela 2003----
 
     h2003<-read.csv(ano1, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -47,7 +47,7 @@
 
     h2003 <- h2003[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2004
+#Tabela 2004----
 
     h2004<-read.csv(ano2, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -63,7 +63,7 @@
 
     h2004 <- h2004[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2005
+#Tabela 2005----
 
     h2005<-read.csv(ano3, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -79,7 +79,7 @@
 
     h2005 <- h2005[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2006
+#Tabela 2006----
 
     h2006<-read.csv(ano4, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -95,7 +95,7 @@
 
     h2006 <- h2006[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2007
+#Tabela 2007----
 
     h2007<-read.csv(ano5, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -111,7 +111,7 @@
 
     h2007 <- h2007[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2008
+#Tabela 2008----
 
     h2008<-read.csv(ano6, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -127,7 +127,7 @@
 
     h2008 <- h2008[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2009
+#Tabela 2009----
 
     h2009<-read.csv(ano7, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -143,7 +143,7 @@
 
     h2009 <- h2009[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2010
+#Tabela 2010----
 
     h2010<-read.csv(ano8, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -159,7 +159,7 @@
 
     h2010 <- h2010[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2011
+#Tabela 2011----
 
     h2011<-read.csv(ano9, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -175,7 +175,7 @@
 
     h2011 <- h2011[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2012
+#Tabela 2012----
 
     h2012<-read.csv(ano10, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -191,7 +191,7 @@
 
     h2012 <- h2012[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2013
+#Tabela 2013----
 
     h2013<-read.csv(ano11, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -207,7 +207,7 @@
 
     h2013 <- h2013[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2014
+#Tabela 2014----
 
     h2014<-read.csv(ano12, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -223,7 +223,7 @@
 
     h2014 <- h2014[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2015
+#Tabela 2015----
 
     h2015<-read.csv(ano13, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -239,7 +239,7 @@
 
     h2015 <- h2015[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2016
+#Tabela 2016----
 
     h2016<-read.csv(ano14, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -255,7 +255,7 @@
 
     h2016 <- h2016[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2017
+#Tabela 2017----
 
     h2017<-read.csv(ano15, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -267,15 +267,15 @@
     mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
     mutate("ano"=2017)
 
-#Reorganizando as colunas:
+#Reorganizando as colunas
 
     h2017 <- h2017[,c(7,1,2,3,4,5,6)]
 
-#Juntando todas as tabelas:
+#Juntando todas as tabelas----
 
     area_plantada <- rbind(h2003,h2004,h2005,h2006,h2007,h2008,h2009,
         h2010,h2011,h2012,h2013,h2014,h2015,h2016,h2017)
 
-#Exportando
+#Exportando----
 
     write.table(area_plantada,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)

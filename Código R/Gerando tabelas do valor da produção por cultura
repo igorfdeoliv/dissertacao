@@ -26,7 +26,7 @@
     ano14 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/valor%20da%20producao/2016%20tabela5457.csv"
     ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/valor%20da%20producao/2017%20tabela5457.csv"
 
-#Tabela 2003
+#Tabela 2003----
 
     v2003<-read.csv(ano1, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -42,7 +42,7 @@
 
       v2003 <- v2003[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2004
+#Tabela 2004----
 
     v2004<-read.csv(ano2, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -58,7 +58,7 @@
 
       v2004 <- v2004[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2005
+#Tabela 2005----
 
     v2005<-read.csv(ano3, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -74,7 +74,7 @@
 
       v2005 <- v2005[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2006
+#Tabela 2006----
 
     v2006<-read.csv(ano4, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -90,7 +90,7 @@
 
       v2006 <- v2006[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2007
+#Tabela 2007----
 
     v2007<-read.csv(ano5, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -106,7 +106,7 @@
 
       v2007 <- v2007[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2008
+#Tabela 2008----
 
     v2008<-read.csv(ano6, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -122,7 +122,7 @@
 
       v2008 <- v2008[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2009
+#Tabela 2009----
 
     v2009<-read.csv(ano7, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -138,7 +138,7 @@
 
       v2009 <- v2009[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2010
+#Tabela 2010----
 
     v2010<-read.csv(ano8, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -154,7 +154,7 @@
 
       v2010 <- v2010[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2011
+#Tabela 2011----
 
     v2011<-read.csv(ano9, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -170,7 +170,7 @@
 
       v2011 <- v2011[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2012
+#Tabela 2012----
 
     v2012<-read.csv(ano10, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -186,7 +186,7 @@
 
       v2012 <- v2012[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2013
+#Tabela 2013----
 
     v2013<-read.csv(ano11, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -202,7 +202,7 @@
 
       v2013 <- v2013[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2014
+#Tabela 2014----
 
     v2014<-read.csv(ano12, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -218,7 +218,7 @@
 
       v2014 <- v2014[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2015
+#Tabela 2015----
 
     v2015<-read.csv(ano13, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -234,7 +234,7 @@
 
       v2015 <- v2015[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2016
+#Tabela 2016----
 
     v2016<-read.csv(ano14, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -250,7 +250,7 @@
 
       v2016 <- v2016[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2017
+#Tabela 2017----
 
     v2017<-read.csv(ano15, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -266,11 +266,11 @@
 
       v2016 <- v2016[,c(7,1,2,3,4,5,6)]
 
-#Juntando todas as tabelas
+#Juntando todas as tabelas----
 
     valor_producao_mil_reais <- rbind(v2003,v2004,v2005,v2006,v2007,v2008,v2009,
         v2010,v2011,v2012,v2013,v2014,v2015,v2016,v2017)
 
-#Exportando
+#Exportando----
 
     write.table(valor_producao_mil_reais,file='valor_producao.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)

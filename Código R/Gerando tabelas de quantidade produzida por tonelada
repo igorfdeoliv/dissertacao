@@ -26,7 +26,7 @@
     ano14 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/quantidade%20produzida/2016%20tabela5457.csv"
     ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/quantidade%20produzida/2017%20tabela5457.csv"
 
-#Tabela 2003
+#Tabela 2003----
 
     q2003<-read.csv(ano1, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -42,7 +42,7 @@
 
     q2003 <- q2003[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2004
+#Tabela 2004----
 
     q2004<-read.csv(ano2, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -58,7 +58,7 @@
 
     q2004 <- q2004[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2005
+#Tabela 2005----
 
     q2005<-read.csv(ano3, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -74,7 +74,7 @@
 
     q2005 <- q2005[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2006
+#Tabela 2006----
 
     q2006<-read.csv(ano4, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -90,7 +90,7 @@
 
     q2006 <- q2006[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2007
+#Tabela 2007----
 
     q2007<-read.csv(ano5, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -106,7 +106,7 @@
 
     q2007 <- q2007[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2008
+#Tabela 2008----
 
     q2008<-read.csv(ano6, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -122,7 +122,7 @@
 
     q2008 <- q2008[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2009
+#Tabela 2009----
 
     q2009<-read.csv(ano7, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -138,7 +138,7 @@
 
     q2009 <- q2009[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2010
+#Tabela 2010----
 
     q2010<-read.csv(ano8, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -154,7 +154,7 @@
 
     q2010 <- q2010[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2011
+#Tabela 2011----
 
     q2011<-read.csv(ano9, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -170,7 +170,7 @@
 
     q2011 <- q2011[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2012
+#Tabela 2012----
 
     q2012<-read.csv(ano10, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -186,7 +186,7 @@
 
     q2012 <- q2012[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2013
+#Tabela 2013----
 
     q2013<-read.csv(ano11, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -202,7 +202,7 @@
 
     q2013 <- q2013[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2014
+#Tabela 2014----
 
     q2014<-read.csv(ano12, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -218,7 +218,7 @@
 
     q2014 <- q2014[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2015
+#Tabela 2015----
 
     q2015<-read.csv(ano13, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -234,7 +234,7 @@
 
     q2015 <- q2015[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2016
+#Tabela 2016----
 
     q2016<-read.csv(ano14, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -250,7 +250,7 @@
 
     q2016 <- q2016[,c(7,1,2,3,4,5,6)]
 
-#Tabela 2017
+#Tabela 2017----
 
     q2017<-read.csv(ano15, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -266,11 +266,11 @@
 
     q2017 <- q2017[,c(7,1,2,3,4,5,6)]
 
-#Juntando todas as tabelas
+#Juntando todas as tabelas----
 
     quantidade_produzida_t <- rbind(q2003,q2004,q2005,q2006,q2007,q2008,q2009,
         q2010,q2011,q2012,q2013,q2014,q2015,q2016,q2017)
 
-#Exportando
+#Exportando----
 
      write.table(quantidade_produzida_t,file='quantidade_produzida.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
