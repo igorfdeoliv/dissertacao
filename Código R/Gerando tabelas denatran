@@ -36,188 +36,323 @@
 #Tabela 2003----
 
   d2003 <- read_excel("Frota_Mun_Dez_03t.xls")
-  
+
   d2003 <- d2003 %>% 
     mutate("chave"=str_c(MUNICÍPIO," ","(", UF,")")) %>% 
     mutate("ano"=2003)
-  
+
   d2003 <- d2003[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
-                    16,17,18,19,20,21,22,23,24,3)]
-  
+                  16,17,18,19,20,21,22,23,24,3)]
+
+  dput(names(d2003))
+
+  names(d2003) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
+                  "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                  "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                  "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                  "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                  "TOTAL")
+
 #Tabela 2004----
-  
+
   d2004 <- read_excel("Frota Munic 122004 Internet.xls",skip=2)
-  
+
   d2004 <- d2004 %>% 
     mutate("chave"=str_c(MUNICÍPIO," ","(", UF,")")) %>% 
     mutate("ano"=2004)
-  
+
   d2004 <- d2004[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
-                    16,17,18,19,20,21,22,23,24,3)]
-  
+                  16,17,18,19,20,21,22,23,24,3)]
+
+  dput(names(d2004))
+
+  names(d2004) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
+                  "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                  "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                  "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                  "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                  "TOTAL")
+
 #Tabela 2005----
-  
+
   d2005 <- read_excel("Frota Munic 122005 Internet.xls",skip=2)
-  
+
   d2005 <- d2005 %>% 
     mutate("chave"=str_c(MUNICÍPIO," ","(", UF,")")) %>% 
     mutate("ano"=2005)
-  
+
   d2005 <- d2005[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
-                    16,17,18,19,20,21,22,23,24,3)]
-  
+                  16,17,18,19,20,21,22,23,24,3)]
+
+  dput(names(d2005))
+
+  names(d2005) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
+                  "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                  "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                  "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                  "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                  "TOTAL")
+
 #Tabela 2006----
-  
+
   d2006 <- read_excel("Frota Munic DEZ2006 Internet.xls", 
-                      sheet = "DEZ_2006", skip = 2)
-  
+                    sheet = "DEZ_2006", skip = 2)
+
   d2006 <- d2006 %>% 
     mutate("chave"=str_c(MUNICÍPIO," ","(", UF,")")) %>% 
     mutate("ano"=2006)
-  
+
   d2006 <- d2006[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
-                    16,17,18,19,20,21,22,23,24,3)]
-  
+                  16,17,18,19,20,21,22,23,24,3)]
+
+  dput(names(d2006))
+
+  names(d2006) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
+                  "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                  "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                  "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                  "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                  "TOTAL")
+
 #Tabela 2007----
-  
+
   d2007 <- read_excel("Frota Munic Dez2007 Internet.xls", 
-                      sheet = "DEZ_2007", skip = 2)
-  
+                    sheet = "DEZ_2007", skip = 2)
+
   d2007 <- d2007 %>% 
     mutate("chave"=str_c(MUNICÍPIO," ","(", UF,")")) %>% 
     mutate("ano"=2007)
-  
+
   d2007 <- d2007[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
-                    16,17,18,19,20,21,22,23,24,3)]
+                  16,17,18,19,20,21,22,23,24,3)]
+
+  dput(names(d2007))
+
+  names(d2007) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
+                  "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                  "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                  "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                  "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                  "TOTAL")
 
 #Tabela 2008----
-  
+
   d2008 <- read_excel("Frota Munic Dez2008.xls", 
-                      sheet = "DEZ_2008", skip = 2)
-  
+                    sheet = "DEZ_2008", skip = 2)
+
   d2008 <- d2008 %>% 
     mutate("chave"=str_c(MUNICÍPIO," ","(", UF,")")) %>% 
     mutate("ano"=2008)
-  
+
   d2008 <- d2008[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
-                    16,17,18,19,20,21,22,23,24,3)]
+                  16,17,18,19,20,21,22,23,24,3)]
+
+  dput(names(d2008))
+
+  names(d2008) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
+                  "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                  "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                  "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                  "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                  "TOTAL")
 
 #Tabela 2009----
-  
+
   d2009 <- read_excel("Frota Munic Dez2009.xls", 
-                      sheet = "DEZ_2009", skip = 2)
-  
+                    sheet = "DEZ_2009", skip = 2)
+
   d2009 <- d2009 %>% 
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2009)
-  
-  d2009 <- d2009[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
-                    16,17,18,19,20,21,22,23,24,3)]
 
+  d2009 <- d2009[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
+                  16,17,18,19,20,21,22,23,24,3)]
+
+  dput(names(d2009))
+  
+  names(d2009) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
+                    "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                    "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                    "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                    "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                    "TOTAL")
+  
 #Tabela 2010----
-  
+
   d2010 <- read_excel("Frota Munic DEZ2010.xls", 
-                      sheet = "DEZ_2010", skip = 2)
-  
+                    sheet = "DEZ_2010", skip = 2)
+
   d2010 <- d2010 %>% 
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2010)
-  
-  d2010 <- d2010[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
-                    16,17,18,19,20,21,22,23,24,3)]
 
+  d2010 <- d2010[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
+                  16,17,18,19,20,21,22,23,24,3)]
+  
+  dput(names(d2010))
+  
+  names(d2010) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
+                    "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                    "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                    "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                    "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                    "TOTAL")
+  
 #Tabela 2011----
-  
+
   d2011 <- read_excel("Frota Munic. DEZ.2011.xls", 
-                      sheet = "DEZ_2011", skip = 2)
-  
+                    sheet = "DEZ_2011", skip = 2)
+
   d2011 <- d2011 %>% 
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2011)
-  
-  d2011 <- d2011[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
-                    16,17,18,19,20,21,22,23,24,3)]
 
+  d2011 <- d2011[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
+                  16,17,18,19,20,21,22,23,24,3)]
+
+  dput(names(d2011))
+  
+  names(d2011) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
+                    "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                    "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                    "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                    "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                    "TOTAL")
+  
 #Tabela 2012----
-  
+
   d2012 <- read_excel("Frota Munic.DEZ.2012.xls", 
-                      sheet = "DEZ_2012", skip = 2)
-  
+                    sheet = "DEZ_2012", skip = 2)
+
   d2012 <- d2012 %>% 
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2012)
-  
-  d2012 <- d2012[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
-                    16,17,18,19,20,21,22,23,24,3)]
 
+  d2012 <- d2012[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
+                  16,17,18,19,20,21,22,23,24,3)]
+
+  dput(names(d2012))
+  
+  names(d2012) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
+                    "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                    "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                    "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                    "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                    "TOTAL")
+  
 #Tabela 2013----
-  
+
   d2013 <- read_excel("Frota Munic.DEZ.2013.xls", 
-                      sheet = "DEZ_2013", skip = 3)
-  
+                    sheet = "DEZ_2013", skip = 3)
+
   d2013 <- d2013 %>% 
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2013)
-  
+
   d2013 <- d2013[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
-                    16,17,18,19,20,21,22,23,24,3)]
+                  16,17,18,19,20,21,22,23,24,3)]
+
+  dput(names(d2013))
+  
+  names(d2013) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
+                    "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                    "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                    "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                    "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                    "TOTAL")
   
 #Tabela 2014---
-  
+
   d2014 <- read_excel("frota_por_municipio_e_tipo_dez_2014.xlsx", 
-                      sheet = "DEZ_2014", skip = 3)
-  
+                    sheet = "DEZ_2014", skip = 3)
+
   d2014 <- d2014 %>% 
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2014)
-  
+
   d2014 <- d2014[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
-                    16,17,18,19,20,21,22,23,24,3)]
+                  16,17,18,19,20,21,22,23,24,3)]
+
+  dput(names(d2014))
+  
+  names(d2014) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
+                    "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                    "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                    "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                    "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                    "TOTAL")
   
 #Tabela 2015----
-  
+
   d2015 <- read_excel("Frota_por_Municipio_e_Tipo-DEZ_15.xls", 
-                      sheet = "JUL_2015", skip = 3)
-  
+                    sheet = "JUL_2015", skip = 3)
+
   d2015 <- d2015 %>% 
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2015)
-  
+
   d2015 <- d2015[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
-                    16,17,18,19,20,21,22,23,24,3)]
+                  16,17,18,19,20,21,22,23,24,3)]
+
+  dput(names(d2015))
+  
+  names(d2015) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
+                    "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                    "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                    "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                    "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                    "TOTAL")
   
 #Tabela 2016----
-  
+
   d2016 <- read_excel("frota_por_municipio_e_tipo-dez_16.xlsx", 
-                      sheet = "DEZ_2016", skip = 3)
-  
+                    sheet = "DEZ_2016", skip = 3)
+
   d2016 <- d2016 %>% 
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2016)
-  
+
   d2016 <- d2016[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
-                    16,17,18,19,20,21,22,23,24,3)]
+                  16,17,18,19,20,21,22,23,24,3)]
+
+  dput(names(d2016))
+  
+  names(d2016) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
+                    "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                    "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                    "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                    "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                    "TOTAL")
   
 #Tabela 2017----
-  
+
   d2017 <- read_excel("frota_munic_dezembro_2017.xls", 
-                      sheet = "DEZ_2017", skip = 2)
-  
+                    sheet = "DEZ_2017", skip = 2)
+
   d2017 <- d2017 %>% 
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2017)
-  
-  d2017 <- d2017[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
-                    16,17,18,19,20,21,22,23,24,3)]
 
-#Juntando todas as tabelas----
+  d2017 <- d2017[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
+                  16,17,18,19,20,21,22,23,24,3)]
+
+  dput(names(d2017))
   
+  names(d2017) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
+                    "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                    "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                    "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                    "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                    "TOTAL")
+  
+#Juntando todas as tabelas----
+
   demanda <- rbind(d2003,d2004,d2005,d2006,d2007,d2008,d2009,d2010,
-                   d2011,d2012,d2013,d2014,d2015,d2016,d2017)
+                 d2011,d2012,d2013,d2014,d2015,d2016,d2017)
 
 #Exportando----
 
-    write.table(demanda,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+  write.table(demanda,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE
 
 
 
