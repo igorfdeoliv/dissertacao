@@ -1,5 +1,6 @@
 #Carregando pacotes a serem utilizados----
 
+    library(readxl)
     library(dplyr)
     library(stringr)
 
@@ -13,5 +14,106 @@
 
 #Organizando tabelas----
 
-    ano1 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2003%20rel517.xlsx"
+    ano1 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2003%20rel517.xlsx?raw=true"
+    ano2 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2004%20rel517.xlsx?raw=true"
+    ano3 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2005%20rel517.xlsx?raw=true"
+    ano4 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2006%20rel517.xlsx?raw=true"
+    ano5 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2007%20rel517.xlsx?raw=true"
+    ano6 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2008%20rel517.xlsx?raw=true"
+    ano7 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2009%20rel517.xlsx?raw=true"
+    ano8 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2010%20rel517.xlsx?raw=true"
+    ano9 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2011%20rel517.xlsx?raw=true"
+    ano10 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2012%20rel517.xlsx?raw=true"
+    ano11 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2013%20rel517.xls?raw=true"
+    ano12 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2014%20rel517.xls?raw=true"
+    ano13 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2015%20rel517.xls?raw=true"
+    ano14 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2016%20rel517.xls?raw=true"
+    ano15 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2017%20rel517.xls?raw=true"
+
+#Tabela 2003----
+
+  c2003 <- read_excel("~/GitHub/dissertacao/Dataset/bacen/2003 rel517.xlsx", 
+                         sheet = "rel517", skip = 8) %>% 
+    filter(ATIVIDADE!="NA") %>% 
+    filter(ATIVIDADE!="Total") %>% 
+    mutate("chave"=str_c(UF," ",MUNICÍPIO))
+  
+  names(c2003) <- c("estado","municipio","atv","c.custeio","v.custeio",
+                       "c.investimento","v.investimento",
+                       "c.comercializacao","v.comercializacao","c.total",
+                       "v.total","chave")
+  
+  x <- c2003 %>%
+    group_by(chave) %>% 
+    summarise(total.contratos=sum(c.total,na.rm=TRUE))
+  
+  y <- c2003 %>%  group_by(chave) %>% 
+    summarise(valores.totais=sum(v.total,na.rm=TRUE))
+  
+  c2003 <- full_join(x,y) %>% 
+    mutate("ano"=2003)
+  
+    c2003 <- c2003 %>% 
+    mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
+    mutate("municipio"=str_sub(chave,start=3)) %>% 
+    mutate("chave"=str_c(municipio," (", estado,")"))
     
+  c2003 <- c2003[,c(4,1,5,6,2,3)]
+
+#Tabela 2004----
+
+  c2004 <- read_excel("~/GitHub/dissertacao/Dataset/bacen/2004 rel517.xlsx", 
+                      skip = 5) %>% 
+    filter(ATIVIDADE!="NA") %>% 
+    filter(ATIVIDADE!="Total") %>% 
+    mutate("chave"=str_c(UF," ",MUNICIPIO))
+  
+  dput(names(c2004))
+  
+  names(c2004) <- c("estado","municipio","atv","c.custeio","v.custeio",
+                       "c.investimento","v.investimento",
+                       "c.comercializacao","v.comercializacao","c.total",
+                       "v.total","chave")
+  
+  x <- c2004 %>%
+    group_by(chave) %>% 
+    summarise(total.contratos=sum(c.total,na.rm=TRUE))
+  
+  y <- c2004 %>%  group_by(chave) %>% 
+    summarise(valores.totais=sum(v.total,na.rm=TRUE))
+  
+  c2004 <- full_join(x,y) %>% 
+    mutate("ano"=2004)
+  
+    c2004 <- c2004 %>% 
+    mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
+    mutate("municipio"=str_sub(chave,start=3)) %>% 
+    mutate("chave"=str_c(municipio," (", estado,")"))
+    
+  c2004 <- c2004[,c(4,1,5,6,2,3)]
+
+Tabela 2005----
+
+  c2005 <- read_excel("~/GitHub/dissertacao/Dataset/bacen/2005 rel517.xlsx", 
+                      skip = 6) %>% 
+    filter(ATIVIDADE!="NA") %>% 
+    filter(ATIVIDADE!="Total")
+  
+  dput(names(c2005))
+  
+  names(c2005) <- c("estado","municipio","atv","c.custeio","v.custeio",
+                       "c.investimento","v.investimento",
+                       "c.comercializacao","v.comercializacao","c.total",
+                       "v.total")
+  
+  x <- c2005 %>%
+    group_by(municipio) %>% 
+    summarise(total.contratos=sum(c.total,na.rm=TRUE))
+  
+  y <- c2005 %>%  group_by(municipio) %>% 
+    summarise(valores.totais=sum(v.total,na.rm=TRUE))
+  
+  c2005 <- full_join(x,y) %>% 
+    mutate("ano"=2005)
+  
+  c2005 <- c2005[,c(4,1,2,3)]
