@@ -217,3 +217,68 @@ Tabela 2005----
         mutate("chave"=str_c(municipio," (", estado,")"))
   
     c2006 <- c2006[,c(4,1,5,6,2,3)]
+
+    #Tabela 2007----
+
+    c2007 <- read_excel("~/GitHub/dissertacao/Dataset/bacen/2007 rel517.xlsx", 
+                      sheet = "rel517", skip = 5) %>% 
+        filter(ATIVIDADE!="NA") %>% 
+        filter(ATIVIDADE!="Total")
+  
+    dput(names(c2007))
+  
+    names(c2007) <- c("estado","municipio","atv","c.custeio","v.custeio",
+                       "c.investimento","v.investimento",
+                       "c.comercializacao","v.comercializacao","c.total",
+                       "v.total")
+
+    c2007[c2007 == "ACRE"] <- "AC"
+    c2007[c2007 == "ALAGOAS"] <- "AL"
+    c2007[c2007 == "AMAPÁ"] <- "AP"
+    c2007[c2007 == "AMAZONAS"] <- "AM"
+    c2007[c2007 == "BAHIA"] <- "BA"
+    c2007[c2007 == "CEARÁ"] <- "CE"
+    c2007[c2007 == "DISTRITO FEDERAL"] <- "DF"
+    c2007[c2007 == "ESPÍRITO SANTO"] <- "ES"
+    c2007[c2007 == "GOIÁS"] <- "GO"
+    c2007[c2007 == "MARANHÃO"] <- "MA"
+    c2007[c2007 == "MATO GROSSO"] <- "MT"
+    c2007[c2007 == "MATO GROSSO DO SUL"] <- "MS"
+    c2007[c2007 == "MINAS GERAIS"] <- "MG"
+    c2007[c2007 == "PARÁ"] <- "PA"
+    c2007[c2007 == "PARAÍBA"] <- "PB"
+    c2007[c2007 == "PARANÁ"] <- "PR"
+    c2007[c2007 == "PERNAMBUCO"] <- "PE"
+    c2007[c2007 == "PIAUÍ"] <- "PI"
+    c2007[c2007 == "RIO DE JANEIRO"] <- "RJ"
+    c2007[c2007 == "RIO GRANDE DO NORTE"] <- "RN"
+    c2007[c2007 == "RIO GRANDE DO SUL"] <- "RS"
+    c2007[c2007 == "RONDÔNIA"] <- "RN"
+    c2007[c2007 == "RORAIMA"] <- "RR"
+    c2007[c2007 == "SANTA CATARINA"] <- "SC"
+    c2007[c2007 == "SÃO PAULO"] <- "SP"
+    c2007[c2007 == "SERGIPE"] <- "SE"
+    c2007[c2007 == "TOCANTINS"] <- "TO"
+  
+    c2007 <- c2007 %>%
+        mutate("chave"=str_c(estado," ",municipio))
+  
+    x <- c2007 %>%
+        group_by(chave) %>% 
+        summarise(total.contratos=sum(c.total,na.rm=TRUE))
+  
+    y <- c2007 %>%  group_by(chave) %>% 
+        summarise(valores.totais=sum(v.total,na.rm=TRUE))
+  
+    c2007 <- full_join(x,y) %>% 
+        mutate("ano"=2007)
+  
+    c2007 <- c2007 %>% 
+        mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
+        mutate("municipio"=str_sub(chave,start=3)) %>% 
+        mutate("chave"=str_c(municipio," (", estado,")"))
+  
+    c2007 <- c2007[,c(4,1,5,6,2,3)]
+
+#Tabela 2008----
+
