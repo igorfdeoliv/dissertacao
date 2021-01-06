@@ -10,7 +10,7 @@
 
 #Diretório local de trabalho----
 
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/bacen")
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/Dataset/bacen")
 
 #Organizando tabelas----
 
@@ -282,3 +282,141 @@ Tabela 2005----
 
 #Tabela 2008----
 
+#Tabela 2009----
+
+
+#Tabela 2010----
+
+    c2010 <- read_excel("2010 rel517.xlsx", 
+                      sheet = "rel517", skip = 5) %>% 
+        filter(ATIVIDADE!="NA") %>% 
+        filter(ATIVIDADE!="Total")
+
+    dput(names(c2010))
+
+    names(c2010) <- c("estado","municipio","atv","c.custeio","v.custeio",
+                  "c.investimento","v.investimento",
+                  "c.comercializacao","v.comercializacao","c.total",
+                  "v.total")
+
+    c2010[c2010 == "ACRE"] <- "AC"
+    c2010[c2010 == "ALAGOAS"] <- "AL"
+    c2010[c2010 == "AMAPÁ"] <- "AP"
+    c2010[c2010 == "AMAZONAS"] <- "AM"
+    c2010[c2010 == "BAHIA"] <- "BA"
+    c2010[c2010 == "CEARÁ"] <- "CE"
+    c2010[c2010 == "DISTRITO FEDERAL"] <- "DF"
+    c2010[c2010 == "ESPÍRITO SANTO"] <- "ES"
+    c2010[c2010 == "GOIÁS"] <- "GO"
+    c2010[c2010 == "MARANHÃO"] <- "MA"
+    c2010[c2010 == "MATO GROSSO"] <- "MT"
+    c2010[c2010 == "MATO GROSSO DO SUL"] <- "MS"
+    c2010[c2010 == "MINAS GERAIS"] <- "MG"
+    c2010[c2010 == "PARÁ"] <- "PA"
+    c2010[c2010 == "PARAÍBA"] <- "PB"
+    c2010[c2010 == "PARANÁ"] <- "PR"
+    c2010[c2010 == "PERNAMBUCO"] <- "PE"
+    c2010[c2010 == "PIAUÍ"] <- "PI"
+    c2010[c2010 == "RIO DE JANEIRO"] <- "RJ"
+    c2010[c2010 == "RIO GRANDE DO NORTE"] <- "RN"
+    c2010[c2010 == "RIO GRANDE DO SUL"] <- "RS"
+    c2010[c2010 == "RONDÔNIA"] <- "RN"
+    c2010[c2010 == "RORAIMA"] <- "RR"
+    c2010[c2010 == "SANTA CATARINA"] <- "SC"
+    c2010[c2010 == "SÃO PAULO"] <- "SP"
+    c2010[c2010 == "SERGIPE"] <- "SE"
+    c2010[c2010 == "TOCANTINS"] <- "TO"
+
+    c2010 <- c2010 %>%
+        mutate("chave"=str_c(estado," ",municipio))
+
+    x <- c2010 %>%
+        group_by(chave) %>% 
+        summarise(total.contratos=sum(c.total,na.rm=TRUE))
+
+    y <- c2010 %>%  group_by(chave) %>% 
+        summarise(valores.totais=sum(v.total,na.rm=TRUE))
+
+    c2010 <- full_join(x,y) %>% 
+        mutate("ano"=2010)
+
+  c2010 <- c2010 %>% 
+    mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
+    mutate("municipio"=str_sub(chave,start=3)) %>% 
+    mutate("chave"=str_c(municipio," (", estado,")"))
+
+  c2010 <- c2010[,c(4,1,5,6,2,3)]
+
+#Tabela 2011----
+
+    c2011 <- read_excel("2011 rel517.xlsx", 
+                      sheet = "rel517", skip = 6) %>% 
+        filter(ATIVIDADE!="NA") %>% 
+        filter(ATIVIDADE!="Total") %>% 
+    mutate("chave"=str_c(UF," ",MUNICÍPIO))
+
+    dput(names(c2011))
+
+    names(c2011) <- c("estado","municipio","atv","c.custeio","v.custeio",
+                  "c.investimento","v.investimento",
+                  "c.comercializacao","v.comercializacao","c.total",
+                  "v.total","chave")
+
+    x <- c2011 %>%
+        group_by(chave) %>% 
+        summarise(total.contratos=sum(c.total,na.rm=TRUE))
+
+    y <- c2011 %>%  group_by(chave) %>% 
+        summarise(valores.totais=sum(v.total,na.rm=TRUE))
+
+    c2011 <- full_join(x,y) %>% 
+        mutate("ano"=2011)
+
+    c2011 <- c2011 %>% 
+        mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
+        mutate("municipio"=str_sub(chave,start=3)) %>% 
+        mutate("chave"=str_c(municipio," (", estado,")"))
+
+    c2011 <- c2011[,c(4,1,5,6,2,3)]
+
+#Tabela 2012----
+
+    c2012 <- read_excel("2012 rel517.xlsx", 
+                      sheet = "rel5111", skip = 4) %>% 
+        filter(...2!="NA") %>% 
+        filter(...2!="Total") %>% 
+        mutate("chave"=str_c(...1," ",...2))
+
+    dput(names(c2012))
+
+    names(c2012) <- c("estado","municipio","atv","c.custeio","v.custeio",
+                  "c.investimento","v.investimento",
+                  "c.comercializacao","v.comercializacao","c.total",
+                  "v.total","chave")
+
+    x <- c2012 %>%
+        group_by(chave) %>% 
+        summarise(total.contratos=sum(c.total,na.rm=TRUE))
+
+    y <- c2012 %>%  group_by(chave) %>% 
+        summarise(valores.totais=sum(v.total,na.rm=TRUE))
+
+    c2012 <- full_join(x,y) %>% 
+        mutate("ano"=2012)
+
+    c2012 <- c2012 %>% 
+        mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
+        mutate("municipio"=str_sub(chave,start=3)) %>% 
+        mutate("chave"=str_c(municipio," (", estado,")"))
+
+    c2012 <- c2012[,c(4,1,5,6,2,3)]
+
+#Tabela 2013----
+
+#Tabela 2014----
+
+#Tabela 2015----
+
+#Tabela 2016----
+
+#Tabela 2017----
