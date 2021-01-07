@@ -10,7 +10,7 @@
 
 #Diretório local de trabalho----
 
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/Dataset/bacen")
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/bacen")
 
 #Organizando tabelas----
 
