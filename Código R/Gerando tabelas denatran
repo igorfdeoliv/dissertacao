@@ -10,7 +10,7 @@
 
 #Diretório local de trabalho----
 
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/Dataset/denatran")
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
 
 #Organizando e manipulando a base de dados----
 

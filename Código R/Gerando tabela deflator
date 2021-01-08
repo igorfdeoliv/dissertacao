@@ -8,7 +8,7 @@
   
 #Diretório local de trabalho
   
-  setwd("C:/Users/igorf/Documents/PPGEA UFV/3 - Projeto dissertação/Base de dados/PAM IBGE")
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge")
   
 #Organizando tabela
   
