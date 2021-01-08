@@ -14,11 +14,11 @@
 
 #Organizando tabelas----
 
-    ano11 <- ""
-    ano12 <- ""
-    ano13 <- ""
-    ano14 <- ""
-    ano15 <- ""
+    ano11 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/bacen/2013%20RelatorioQuantidade%20e%20Valor%20dos%20Contratos%20por%20Munic%C3%ADpio%2007-01-2021.csv"
+    ano12 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/bacen/2014%20RelatorioQuantidade%20e%20Valor%20dos%20Contratos%20por%20Munic%C3%ADpio%2007-01-2021.csv"
+    ano13 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/bacen/2015%20RelatorioQuantidade%20e%20Valor%20dos%20Contratos%20por%20Munic%C3%ADpio%2007-01-2021.csv"
+    ano14 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/bacen/2016%20RelatorioQuantidade%20e%20Valor%20dos%20Contratos%20por%20Munic%C3%ADpio%2007-01-2021.csv"
+    ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/bacen/2017%20RelatorioQuantidade%20e%20Valor%20dos%20Contratos%20por%20Munic%C3%ADpio%2007-01-2021.csv"
 
 #Tabela 2003----
 
