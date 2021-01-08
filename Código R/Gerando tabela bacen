@@ -14,21 +14,11 @@
 
 #Organizando tabelas----
 
-    ano1 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2003%20rel517.xlsx?raw=true"
-    ano2 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2004%20rel517.xlsx?raw=true"
-    ano3 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2005%20rel517.xlsx?raw=true"
-    ano4 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2006%20rel517.xlsx?raw=true"
-    ano5 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2007%20rel517.xlsx?raw=true"
-    ano6 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2008%20rel517.xlsx?raw=true"
-    ano7 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2009%20rel517.xlsx?raw=true"
-    ano8 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2010%20rel517.xlsx?raw=true"
-    ano9 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2011%20rel517.xlsx?raw=true"
-    ano10 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2012%20rel517.xlsx?raw=true"
-    ano11 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2013%20rel517.xls?raw=true"
-    ano12 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2014%20rel517.xls?raw=true"
-    ano13 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2015%20rel517.xls?raw=true"
-    ano14 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2016%20rel517.xls?raw=true"
-    ano15 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/bacen/2017%20rel517.xls?raw=true"
+    ano11 <- ""
+    ano12 <- ""
+    ano13 <- ""
+    ano14 <- ""
+    ano15 <- ""
 
 #Tabela 2003----
 
