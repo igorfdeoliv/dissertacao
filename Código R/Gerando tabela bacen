@@ -272,8 +272,97 @@ Tabela 2005----
 
 #Tabela 2008----
 
+    c2008 <- read_excel("2008 rel517.xlsx",
+                      sheet = "rel517", skip = 6)
+
+    names(c2008) <- c("atv","c.custeio","v.custeio","c.investimento",
+                    "v.investimento","c.comercializacao","v.comecializacao",
+                    "c.total","v.total")
+  
+    valores <-  c2008 %>% 
+        filter(c.custeio!="NA") %>% 
+        filter(atv!="Agrícola") %>% 
+        filter(atv!="Pecuária") %>% 
+        filter(atv!="Total Geral")
+  
+    mun <- c2008 %>% 
+        filter(atv!="Agrícola") %>% filter(atv!="Pecuária") %>%
+        filter(atv!="Total") %>% filter(atv!="Total Geral") %>%
+        filter(atv!="Fonte:BCB/DIORF/DEROP/DIORE") %>% 
+        filter(atv!="Registro Comum de Operações Rurais (Recor)") %>%
+        filter(atv!="ACRE") %>% filter(atv!="ALAGOAS") %>% filter(atv!="AMAPÁ") %>% 
+        filter(atv!="AMAZONAS") %>% filter(atv!="BAHIA") %>% filter(atv!="CEARÁ") %>% 
+        filter(atv!="DISTRITO FEDERAL") %>% filter(atv!="ESPÍRITO SANTO") %>% 
+        filter(atv!="GOIÁS") %>% filter(atv!="MARANHÃO") %>% filter(atv!="MATO GROSSO") %>% 
+        filter(atv!="MATO GROSSO DO SUL") %>% filter(atv!="MINAS GERAIS") %>% 
+        filter(atv!="PARÁ") %>% filter(atv!="PARAÍBA") %>% filter(atv!="PARANÁ") %>% 
+        filter(atv!="PERNAMBUCO") %>% filter(atv!="PIAUÍ") %>% 
+        filter(atv!="RIO DE JANEIRO") %>% filter(atv!="RIO GRANDE DO NORTE") %>% 
+        filter(atv!="RIO GRANDE DO SUL") %>% filter(atv!="RONDÔNIA") %>% 
+        filter(atv!="RORAIMA") %>% filter(atv!="SANTA CATARINA") %>% 
+        filter(atv!="SÃO PAULO") %>% filter(atv!="SERGIPE") %>% 
+        filter(atv!="TOCANTINS")
+
+    valores$atv <- mun$atv
+  
+    names(valores) <- c("municipio","c.custeio","v.custeio","c.investimento",
+                    "v.investimento","c.comercializacao","v.comecializacao",
+                    "c.total","v.total")
+  
+    c2008 <- valores %>% 
+        mutate(municipio=toupper(municipio)) %>% 
+        mutate("ano"=2008)
+  
+    c2008 <- select(c2008,c(municipio,c.total,v.total,ano))
+  
+    c2008 <- c2008[,c(4,1,2,3)]
+
 #Tabela 2009----
 
+    c2009 <- read_excel("2009 rel517.xlsx",
+                      sheet = "rel517", skip = 5)
+
+    names(c2009) <- c("atv","c.custeio","v.custeio","c.investimento",
+                    "v.investimento","c.comercializacao","v.comecializacao",
+                    "c.total","v.total")
+  
+    valores <-  c2009 %>% 
+        filter(c.custeio!="NA") %>% 
+        filter(atv!="Agrícola") %>% 
+        filter(atv!="Pecuária") %>% 
+        filter(atv!="Total Geral")
+  
+    mun <- c2009 %>% 
+        filter(atv!="Agrícola") %>% filter(atv!="Pecuária") %>%
+        filter(atv!="Total") %>% filter(atv!="Total Geral") %>%
+        filter(atv!="Fonte:BCB/DIORF/DEROP/DIORE") %>% 
+        filter(atv!="Registro Comum de Operações Rurais (Recor)") %>%
+        filter(atv!="ACRE") %>% filter(atv!="ALAGOAS") %>% filter(atv!="AMAPÁ") %>% 
+        filter(atv!="AMAZONAS") %>% filter(atv!="BAHIA") %>% filter(atv!="CEARÁ") %>% 
+        filter(atv!="DISTRITO FEDERAL") %>% filter(atv!="ESPÍRITO SANTO") %>% 
+        filter(atv!="GOIÁS") %>% filter(atv!="MARANHÃO") %>% filter(atv!="MATO GROSSO") %>% 
+        filter(atv!="MATO GROSSO DO SUL") %>% filter(atv!="MINAS GERAIS") %>% 
+        filter(atv!="PARÁ") %>% filter(atv!="PARAÍBA") %>% filter(atv!="PARANÁ") %>% 
+        filter(atv!="PERNAMBUCO") %>% filter(atv!="PIAUÍ") %>% 
+        filter(atv!="RIO DE JANEIRO") %>% filter(atv!="RIO GRANDE DO NORTE") %>% 
+        filter(atv!="RIO GRANDE DO SUL") %>% filter(atv!="RONDÔNIA") %>% 
+        filter(atv!="RORAIMA") %>% filter(atv!="SANTA CATARINA") %>% 
+        filter(atv!="SÃO PAULO") %>% filter(atv!="SERGIPE") %>% 
+        filter(atv!="TOCANTINS")
+  
+    valores$atv <- mun$atv
+  
+    names(valores) <- c("municipio","c.custeio","v.custeio","c.investimento",
+                    "v.investimento","c.comercializacao","v.comecializacao",
+                    "c.total","v.total")
+  
+    c2009 <- valores %>% 
+        mutate(municipio=toupper(municipio)) %>% 
+        mutate("ano"=2009)
+  
+    c2009 <- select(c2009,c(municipio,c.total,v.total,ano))
+  
+    c2009 <- c2009[,c(4,1,2,3)]
 
 #Tabela 2010----
 
