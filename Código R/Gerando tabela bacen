@@ -119,7 +119,7 @@ Tabela 2005----
     c2005[c2005 == "RIO DE JANEIRO"] <- "RJ"
     c2005[c2005 == "RIO GRANDE DO NORTE"] <- "RN"
     c2005[c2005 == "RIO GRANDE DO SUL"] <- "RS"
-    c2005[c2005 == "RONDÔNIA"] <- "RN"
+    c2005[c2005 == "RONDÔNIA"] <- "RO"
     c2005[c2005 == "RORAIMA"] <- "RR"
     c2005[c2005 == "SANTA CATARINA"] <- "SC"
     c2005[c2005 == "SÃO PAULO"] <- "SP"
@@ -181,7 +181,7 @@ Tabela 2005----
     c2006[c2006 == "RIO DE JANEIRO"] <- "RJ"
     c2006[c2006 == "RIO GRANDE DO NORTE"] <- "RN"
     c2006[c2006 == "RIO GRANDE DO SUL"] <- "RS"
-    c2006[c2006 == "RONDÔNIA"] <- "RN"
+    c2006[c2006 == "RONDÔNIA"] <- "RO"
     c2006[c2006 == "RORAIMA"] <- "RR"
     c2006[c2006 == "SANTA CATARINA"] <- "SC"
     c2006[c2006 == "SÃO PAULO"] <- "SP"
@@ -243,7 +243,7 @@ Tabela 2005----
     c2007[c2007 == "RIO DE JANEIRO"] <- "RJ"
     c2007[c2007 == "RIO GRANDE DO NORTE"] <- "RN"
     c2007[c2007 == "RIO GRANDE DO SUL"] <- "RS"
-    c2007[c2007 == "RONDÔNIA"] <- "RN"
+    c2007[c2007 == "RONDÔNIA"] <- "RO"
     c2007[c2007 == "RORAIMA"] <- "RR"
     c2007[c2007 == "SANTA CATARINA"] <- "SC"
     c2007[c2007 == "SÃO PAULO"] <- "SP"
@@ -274,95 +274,89 @@ Tabela 2005----
 
     c2008 <- read_excel("2008 rel517.xlsx",
                       sheet = "rel517", skip = 6)
-
-    names(c2008) <- c("atv","c.custeio","v.custeio","c.investimento",
+  
+    names(c2008) <- c("estado","municipio","c.custeio","v.custeio","c.investimento",
                     "v.investimento","c.comercializacao","v.comecializacao",
                     "c.total","v.total")
   
     valores <-  c2008 %>% 
         filter(c.custeio!="NA") %>% 
-        filter(atv!="Agrícola") %>% 
-        filter(atv!="Pecuária") %>% 
-        filter(atv!="Total Geral")
+        filter(municipio!="Agrícola") %>% 
+        filter(municipio!="Pecuária") %>% 
+        filter(municipio!="Total Geral")
   
     mun <- c2008 %>% 
-        filter(atv!="Agrícola") %>% filter(atv!="Pecuária") %>%
-        filter(atv!="Total") %>% filter(atv!="Total Geral") %>%
-        filter(atv!="Fonte:BCB/DIORF/DEROP/DIORE") %>% 
-        filter(atv!="Registro Comum de Operações Rurais (Recor)") %>%
-        filter(atv!="ACRE") %>% filter(atv!="ALAGOAS") %>% filter(atv!="AMAPÁ") %>% 
-        filter(atv!="AMAZONAS") %>% filter(atv!="BAHIA") %>% filter(atv!="CEARÁ") %>% 
-        filter(atv!="DISTRITO FEDERAL") %>% filter(atv!="ESPÍRITO SANTO") %>% 
-        filter(atv!="GOIÁS") %>% filter(atv!="MARANHÃO") %>% filter(atv!="MATO GROSSO") %>% 
-        filter(atv!="MATO GROSSO DO SUL") %>% filter(atv!="MINAS GERAIS") %>% 
-        filter(atv!="PARÁ") %>% filter(atv!="PARAÍBA") %>% filter(atv!="PARANÁ") %>% 
-        filter(atv!="PERNAMBUCO") %>% filter(atv!="PIAUÍ") %>% 
-        filter(atv!="RIO DE JANEIRO") %>% filter(atv!="RIO GRANDE DO NORTE") %>% 
-        filter(atv!="RIO GRANDE DO SUL") %>% filter(atv!="RONDÔNIA") %>% 
-        filter(atv!="RORAIMA") %>% filter(atv!="SANTA CATARINA") %>% 
-        filter(atv!="SÃO PAULO") %>% filter(atv!="SERGIPE") %>% 
-        filter(atv!="TOCANTINS")
+        filter(municipio!="Agrícola") %>% filter(municipio!="Pecuária") %>%
+        filter(municipio!="Total") %>% filter(municipio!="Total Geral") %>%
+        filter(municipio!="Fonte:BCB/DIORF/DEROP/DIORE") %>% 
+        filter(municipio!="Registro Comum de Operações Rurais (Recor)") %>%
+        filter(municipio!="ACRE") %>% filter(municipio!="ALAGOAS") %>% filter(municipio!="AMAPÁ") %>% 
+        filter(municipio!="AMAZONAS") %>% filter(municipio!="BAHIA") %>% filter(municipio!="CEARÁ") %>% 
+        filter(municipio!="DISTRITO FEDERAL") %>% filter(municipio!="ESPÍRITO SANTO") %>% 
+        filter(municipio!="GOIÁS") %>% filter(municipio!="MARANHÃO") %>% filter(municipio!="MATO GROSSO") %>% 
+        filter(municipio!="MATO GROSSO DO SUL") %>% filter(municipio!="MINAS GERAIS") %>% 
+        filter(municipio!="PARÁ") %>% filter(municipio!="PARAÍBA") %>% filter(municipio!="PARANÁ") %>% 
+        filter(municipio!="PERNAMBUCO") %>% filter(municipio!="PIAUÍ") %>% 
+        filter(municipio!="RIO DE JANEIRO") %>% filter(municipio!="RIO GRANDE DO NORTE") %>% 
+        filter(municipio!="RIO GRANDE DO SUL") %>% filter(municipio!="RONDÔNIA") %>% 
+        filter(municipio!="RORAIMA") %>% filter(municipio!="SANTA CATARINA") %>% 
+        filter(municipio!="SÃO PAULO") %>% filter(municipio!="SERGIPE") %>% 
+        filter(municipio!="TOCANTINS")
+  
+    valores$municipio <- mun$municipio
 
-    valores$atv <- mun$atv
-  
-    names(valores) <- c("municipio","c.custeio","v.custeio","c.investimento",
-                    "v.investimento","c.comercializacao","v.comecializacao",
-                    "c.total","v.total")
-  
     c2008 <- valores %>% 
         mutate(municipio=toupper(municipio)) %>% 
+        mutate("chave"=str_c(municipio," (", estado,")")) %>% 
         mutate("ano"=2008)
   
-    c2008 <- select(c2008,c(municipio,c.total,v.total,ano))
+    c2008 <- select(c2008,c(estado,municipio,c.total,v.total,chave,ano))
   
-    c2008 <- c2008[,c(4,1,2,3)]
+    c2008 <- c2008[,c(6,5,1,2,3,4)]
 
 #Tabela 2009----
 
     c2009 <- read_excel("2009 rel517.xlsx",
                       sheet = "rel517", skip = 5)
-
-    names(c2009) <- c("atv","c.custeio","v.custeio","c.investimento",
+  
+    names(c2009) <- c("estado","municipio","c.custeio","v.custeio","c.investimento",
                     "v.investimento","c.comercializacao","v.comecializacao",
                     "c.total","v.total")
   
     valores <-  c2009 %>% 
         filter(c.custeio!="NA") %>% 
-        filter(atv!="Agrícola") %>% 
-        filter(atv!="Pecuária") %>% 
-        filter(atv!="Total Geral")
+        filter(municipio!="Agrícola") %>% 
+        filter(municipio!="Pecuária") %>% 
+        filter(municipio!="Total Geral")
   
     mun <- c2009 %>% 
-        filter(atv!="Agrícola") %>% filter(atv!="Pecuária") %>%
-        filter(atv!="Total") %>% filter(atv!="Total Geral") %>%
-        filter(atv!="Fonte:BCB/DIORF/DEROP/DIORE") %>% 
-        filter(atv!="Registro Comum de Operações Rurais (Recor)") %>%
-        filter(atv!="ACRE") %>% filter(atv!="ALAGOAS") %>% filter(atv!="AMAPÁ") %>% 
-        filter(atv!="AMAZONAS") %>% filter(atv!="BAHIA") %>% filter(atv!="CEARÁ") %>% 
-        filter(atv!="DISTRITO FEDERAL") %>% filter(atv!="ESPÍRITO SANTO") %>% 
-        filter(atv!="GOIÁS") %>% filter(atv!="MARANHÃO") %>% filter(atv!="MATO GROSSO") %>% 
-        filter(atv!="MATO GROSSO DO SUL") %>% filter(atv!="MINAS GERAIS") %>% 
-        filter(atv!="PARÁ") %>% filter(atv!="PARAÍBA") %>% filter(atv!="PARANÁ") %>% 
-        filter(atv!="PERNAMBUCO") %>% filter(atv!="PIAUÍ") %>% 
-        filter(atv!="RIO DE JANEIRO") %>% filter(atv!="RIO GRANDE DO NORTE") %>% 
-        filter(atv!="RIO GRANDE DO SUL") %>% filter(atv!="RONDÔNIA") %>% 
-        filter(atv!="RORAIMA") %>% filter(atv!="SANTA CATARINA") %>% 
-        filter(atv!="SÃO PAULO") %>% filter(atv!="SERGIPE") %>% 
-        filter(atv!="TOCANTINS")
+        filter(municipio!="Agrícola") %>% filter(municipio!="Pecuária") %>%
+        filter(municipio!="Total") %>% filter(municipio!="Total Geral") %>%
+        filter(municipio!="Fonte:BCB/DIORF/DEROP/DIORE") %>% 
+        filter(municipio!="Registro Comum de Operações Rurais (Recor)") %>%
+        filter(municipio!="ACRE") %>% filter(municipio!="ALAGOAS") %>% filter(municipio!="AMAPÁ") %>% 
+        filter(municipio!="AMAZONAS") %>% filter(municipio!="BAHIA") %>% filter(municipio!="CEARÁ") %>% 
+        filter(municipio!="DISTRITO FEDERAL") %>% filter(municipio!="ESPÍRITO SANTO") %>% 
+        filter(municipio!="GOIÁS") %>% filter(municipio!="MARANHÃO") %>% filter(municipio!="MATO GROSSO") %>% 
+        filter(municipio!="MATO GROSSO DO SUL") %>% filter(municipio!="MINAS GERAIS") %>% 
+        filter(municipio!="PARÁ") %>% filter(municipio!="PARAÍBA") %>% filter(municipio!="PARANÁ") %>% 
+        filter(municipio!="PERNAMBUCO") %>% filter(municipio!="PIAUÍ") %>% 
+        filter(municipio!="RIO DE JANEIRO") %>% filter(municipio!="RIO GRANDE DO NORTE") %>% 
+        filter(municipio!="RIO GRANDE DO SUL") %>% filter(municipio!="RONDÔNIA") %>% 
+        filter(municipio!="RORAIMA") %>% filter(municipio!="SANTA CATARINA") %>% 
+        filter(municipio!="SÃO PAULO") %>% filter(municipio!="SERGIPE") %>% 
+        filter(municipio!="TOCANTINS")
   
-    valores$atv <- mun$atv
-  
-    names(valores) <- c("municipio","c.custeio","v.custeio","c.investimento",
-                    "v.investimento","c.comercializacao","v.comecializacao",
-                    "c.total","v.total")
-  
+    valores$municipio <- mun$municipio
+
     c2009 <- valores %>% 
         mutate(municipio=toupper(municipio)) %>% 
+        mutate("chave"=str_c(municipio," (", estado,")")) %>% 
         mutate("ano"=2009)
   
-    c2009 <- select(c2009,c(municipio,c.total,v.total,ano))
+    c2009 <- select(c2009,c(estado,municipio,c.total,v.total,chave,ano))
   
-    c2009 <- c2009[,c(4,1,2,3)]
+    c2009 <- c2009[,c(6,5,1,2,3,4)]
 
 #Tabela 2010----
 
