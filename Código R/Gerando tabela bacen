@@ -277,7 +277,7 @@ Tabela 2005----
   
     names(c2008) <- c("estado","municipio","c.custeio","v.custeio","c.investimento",
                     "v.investimento","c.comercializacao","v.comecializacao",
-                    "c.total","v.total")
+                    "total.contratos","valores.totais")
   
     valores <-  c2008 %>% 
         filter(c.custeio!="NA") %>% 
@@ -310,7 +310,7 @@ Tabela 2005----
         mutate("chave"=str_c(municipio," (", estado,")")) %>% 
         mutate("ano"=2008)
   
-    c2008 <- select(c2008,c(estado,municipio,c.total,v.total,chave,ano))
+    c2008 <- select(c2008,c(estado,municipio,total.contratos,valores.totais,chave,ano))
   
     c2008 <- c2008[,c(6,5,1,2,3,4)]
 
@@ -321,7 +321,7 @@ Tabela 2005----
   
     names(c2009) <- c("estado","municipio","c.custeio","v.custeio","c.investimento",
                     "v.investimento","c.comercializacao","v.comecializacao",
-                    "c.total","v.total")
+                    "total.contratos","valores.totais")
   
     valores <-  c2009 %>% 
         filter(c.custeio!="NA") %>% 
@@ -354,7 +354,7 @@ Tabela 2005----
         mutate("chave"=str_c(municipio," (", estado,")")) %>% 
         mutate("ano"=2009)
   
-    c2009 <- select(c2009,c(estado,municipio,c.total,v.total,chave,ano))
+    c2009 <- select(c2009,c(estado,municipio,total.contratos,valores.totais,chave,ano))
   
     c2009 <- c2009[,c(6,5,1,2,3,4)]
 
@@ -491,9 +491,9 @@ Tabela 2005----
     dput(names(c2013))
   
     names(c2013) <- c("estado","municipio","cod_mun","atv","drop1",
-            "c.custeio","v.custeio","drop2","c.investimento",
-            "v.investimento","c.comercializacao","v.comercializacao",
-            "drop3","drop4","drop5","c.total","v.total")
+                    "c.custeio","v.custeio","drop2","c.investimento",
+                    "v.investimento","c.comercializacao","v.comercializacao",
+                    "drop3","drop4","drop5","c.total","v.total")
   
     c2013 <- c2013 %>% 
         select("estado","municipio","cod_mun","atv","c.custeio","v.custeio",
@@ -502,16 +502,18 @@ Tabela 2005----
         filter(atv!="NA") %>% 
         filter(atv!="Total") %>% 
         filter(atv!="Total Geral") %>% 
-        mutate(municipio=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", municipio)) %>% 
+        mutate(municipio=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", municipio)) %>%
+        mutate(v.total=str_replace_all(v.total,"[.]","")) %>%
+        mutate(v.total=str_replace_all(v.total,"[,]",".")) %>%
         mutate("chave"=str_c(estado," ",municipio))
-  
+
     x <- c2013 %>% 
         group_by(chave) %>% 
         summarise(total.contratos=sum(c.total,na.rm=T))
   
     y <- c2013 %>% 
         group_by(chave) %>% 
-        summarise(valores.totais=sum(v.total,na.rm=T))
+        summarise(valores.totais=sum(as.numeric(v.total),na.rm=T))
   
     c2013 <- full_join(x,y) %>% 
         mutate("ano"=2013)
@@ -526,14 +528,14 @@ Tabela 2005----
 #Tabela 2014----
 
     c2014 <- read.csv(ano12,encoding="UTF-8")
-
+  
     dput(names(c2014))
-
+  
     names(c2014) <- c("estado","municipio","cod_mun","atv","drop1",
-                "c.custeio","v.custeio","drop2","c.investimento",
-                "v.investimento","c.comercializacao","v.comercializacao",
-                "drop3","drop4","drop5","c.total","v.total")
-
+                    "c.custeio","v.custeio","drop2","c.investimento",
+                    "v.investimento","c.comercializacao","v.comercializacao",
+                    "drop3","drop4","drop5","c.total","v.total")
+  
     c2014 <- c2014 %>% 
         select("estado","municipio","cod_mun","atv","c.custeio","v.custeio",
             "c.investimento","v.investimento","c.comercializacao",
@@ -541,38 +543,40 @@ Tabela 2005----
         filter(atv!="NA") %>% 
         filter(atv!="Total") %>% 
         filter(atv!="Total Geral") %>% 
-        mutate(municipio=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", municipio)) %>% 
+        mutate(municipio=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", municipio)) %>%
+        mutate(v.total=str_replace_all(v.total,"[.]","")) %>%
+        mutate(v.total=str_replace_all(v.total,"[,]",".")) %>%
         mutate("chave"=str_c(estado," ",municipio))
 
     x <- c2014 %>% 
         group_by(chave) %>% 
         summarise(total.contratos=sum(c.total,na.rm=T))
-
+  
     y <- c2014 %>% 
         group_by(chave) %>% 
-    summarise(valores.totais=sum(v.total,na.rm=T))
-
+        summarise(valores.totais=sum(as.numeric(v.total),na.rm=T))
+  
     c2014 <- full_join(x,y) %>% 
         mutate("ano"=2014)
-
+  
     c2014 <- c2014 %>% 
         mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
         mutate("municipio"=str_sub(chave,start=3)) %>% 
         mutate("chave"=str_c(municipio," (", estado,")"))
-
+  
     c2014 <- c2014[,c(4,1,5,6,2,3)]
 
 #Tabela 2015----
 
     c2015 <- read.csv(ano13,encoding="UTF-8")
-
+  
     dput(names(c2015))
-
+  
     names(c2015) <- c("estado","municipio","cod_mun","atv","drop1",
-                "c.custeio","v.custeio","drop2","c.investimento",
-                "v.investimento","c.comercializacao","v.comercializacao",
-                "drop3","drop4","drop5","c.total","v.total")
-
+                    "c.custeio","v.custeio","drop2","c.investimento",
+                    "v.investimento","c.comercializacao","v.comercializacao",
+                    "drop3","drop4","drop5","c.total","v.total")
+  
     c2015 <- c2015 %>% 
         select("estado","municipio","cod_mun","atv","c.custeio","v.custeio",
             "c.investimento","v.investimento","c.comercializacao",
@@ -580,103 +584,109 @@ Tabela 2005----
         filter(atv!="NA") %>% 
         filter(atv!="Total") %>% 
         filter(atv!="Total Geral") %>% 
-        mutate(municipio=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", municipio)) %>% 
+        mutate(municipio=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", municipio)) %>%
+        mutate(v.total=str_replace_all(v.total,"[.]","")) %>%
+        mutate(v.total=str_replace_all(v.total,"[,]",".")) %>%
         mutate("chave"=str_c(estado," ",municipio))
 
     x <- c2015 %>% 
         group_by(chave) %>% 
         summarise(total.contratos=sum(c.total,na.rm=T))
-
+  
     y <- c2015 %>% 
         group_by(chave) %>% 
-        summarise(valores.totais=sum(v.total,na.rm=T))
-
+        summarise(valores.totais=sum(as.numeric(v.total),na.rm=T))
+  
     c2015 <- full_join(x,y) %>% 
         mutate("ano"=2015)
-
+  
     c2015 <- c2015 %>% 
         mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
         mutate("municipio"=str_sub(chave,start=3)) %>% 
         mutate("chave"=str_c(municipio," (", estado,")"))
-
+  
     c2015 <- c2015[,c(4,1,5,6,2,3)]
 
 #Tabela 2016----
 
     c2016 <- read.csv(ano14,encoding="UTF-8")
-
+  
     dput(names(c2016))
-
+  
     names(c2016) <- c("estado","municipio","cod_mun","atv","drop1",
-                "c.custeio","v.custeio","drop2","c.investimento",
-                "v.investimento","c.comercializacao","v.comercializacao",
-                "drop3","drop4","drop5","c.total","v.total")
-
+                    "c.custeio","v.custeio","drop2","c.investimento",
+                    "v.investimento","c.comercializacao","v.comercializacao",
+                    "drop3","drop4","drop5","c.total","v.total")
+  
     c2016 <- c2016 %>% 
         select("estado","municipio","cod_mun","atv","c.custeio","v.custeio",
             "c.investimento","v.investimento","c.comercializacao",
             "v.comercializacao","c.total","v.total") %>% 
-    filter(atv!="NA") %>% 
-    filter(atv!="Total") %>% 
-    filter(atv!="Total Geral") %>% 
-    mutate(municipio=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", municipio)) %>% 
-    mutate("chave"=str_c(estado," ",municipio))
+        filter(atv!="NA") %>% 
+        filter(atv!="Total") %>% 
+        filter(atv!="Total Geral") %>% 
+        mutate(municipio=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", municipio)) %>%
+        mutate(v.total=str_replace_all(v.total,"[.]","")) %>%
+        mutate(v.total=str_replace_all(v.total,"[,]",".")) %>%
+        mutate("chave"=str_c(estado," ",municipio))
 
     x <- c2016 %>% 
         group_by(chave) %>% 
         summarise(total.contratos=sum(c.total,na.rm=T))
-
+  
     y <- c2016 %>% 
         group_by(chave) %>% 
-        summarise(valores.totais=sum(v.total,na.rm=T))
-
+        summarise(valores.totais=sum(as.numeric(v.total),na.rm=T))
+  
     c2016 <- full_join(x,y) %>% 
         mutate("ano"=2016)
-
+  
     c2016 <- c2016 %>% 
         mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
         mutate("municipio"=str_sub(chave,start=3)) %>% 
         mutate("chave"=str_c(municipio," (", estado,")"))
-
+  
     c2016 <- c2016[,c(4,1,5,6,2,3)]
 
 #Tabela 2017----
 
     c2017 <- read.csv(ano15,encoding="UTF-8")
-
+  
     dput(names(c2017))
-
+  
     names(c2017) <- c("estado","municipio","cod_mun","atv","drop1",
-                "c.custeio","v.custeio","drop2","c.investimento",
-                "v.investimento","c.comercializacao","v.comercializacao",
-                "drop3","drop4","drop5","c.total","v.total")
-
+                    "c.custeio","v.custeio","drop2","c.investimento",
+                    "v.investimento","c.comercializacao","v.comercializacao",
+                    "drop3","drop4","drop5","c.total","v.total")
+  
     c2017 <- c2017 %>% 
         select("estado","municipio","cod_mun","atv","c.custeio","v.custeio",
             "c.investimento","v.investimento","c.comercializacao",
             "v.comercializacao","c.total","v.total") %>% 
-    filter(atv!="NA") %>% 
-    filter(atv!="Total") %>% 
-    filter(atv!="Total Geral") %>% 
-    mutate(municipio=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", municipio)) %>% 
-    mutate("chave"=str_c(estado," ",municipio))
+        filter(atv!="NA") %>% 
+        filter(atv!="Total") %>% 
+        filter(atv!="Total Geral") %>% 
+        mutate(municipio=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", municipio)) %>%
+        mutate(v.total=str_replace_all(v.total,"[.]","")) %>%
+        mutate(v.total=str_replace_all(v.total,"[,]",".")) %>%
+        mutate("chave"=str_c(estado," ",municipio))
 
     x <- c2017 %>% 
         group_by(chave) %>% 
         summarise(total.contratos=sum(c.total,na.rm=T))
-
+  
     y <- c2017 %>% 
         group_by(chave) %>% 
-        summarise(valores.totais=sum(v.total,na.rm=T))
-
+        summarise(valores.totais=sum(as.numeric(v.total),na.rm=T))
+  
     c2017 <- full_join(x,y) %>% 
         mutate("ano"=2017)
-
+  
     c2017 <- c2017 %>% 
         mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
         mutate("municipio"=str_sub(chave,start=3)) %>% 
         mutate("chave"=str_c(municipio," (", estado,")"))
-
+  
     c2017 <- c2017[,c(4,1,5,6,2,3)]
 
 #Juntando todas as tableas----
