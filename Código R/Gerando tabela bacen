@@ -272,91 +272,147 @@ Tabela 2005----
 
 #Tabela 2008----
 
-    c2008 <- read_excel("2008 rel517.xlsx",
-                      sheet = "rel517", skip = 6)
-  
-    names(c2008) <- c("estado","municipio","c.custeio","v.custeio","c.investimento",
-                    "v.investimento","c.comercializacao","v.comecializacao",
-                    "total.contratos","valores.totais")
-  
-    valores <-  c2008 %>% 
-        filter(c.custeio!="NA") %>% 
-        filter(municipio!="Agrícola") %>% 
-        filter(municipio!="Pecuária") %>% 
-        filter(municipio!="Total Geral")
-  
-    mun <- c2008 %>% 
-        filter(municipio!="Agrícola") %>% filter(municipio!="Pecuária") %>%
-        filter(municipio!="Total") %>% filter(municipio!="Total Geral") %>%
-        filter(municipio!="Fonte:BCB/DIORF/DEROP/DIORE") %>% 
-        filter(municipio!="Registro Comum de Operações Rurais (Recor)") %>%
-        filter(municipio!="ACRE") %>% filter(municipio!="ALAGOAS") %>% filter(municipio!="AMAPÁ") %>% 
-        filter(municipio!="AMAZONAS") %>% filter(municipio!="BAHIA") %>% filter(municipio!="CEARÁ") %>% 
-        filter(municipio!="DISTRITO FEDERAL") %>% filter(municipio!="ESPÍRITO SANTO") %>% 
-        filter(municipio!="GOIÁS") %>% filter(municipio!="MARANHÃO") %>% filter(municipio!="MATO GROSSO") %>% 
-        filter(municipio!="MATO GROSSO DO SUL") %>% filter(municipio!="MINAS GERAIS") %>% 
-        filter(municipio!="PARÁ") %>% filter(municipio!="PARAÍBA") %>% filter(municipio!="PARANÁ") %>% 
-        filter(municipio!="PERNAMBUCO") %>% filter(municipio!="PIAUÍ") %>% 
-        filter(municipio!="RIO DE JANEIRO") %>% filter(municipio!="RIO GRANDE DO NORTE") %>% 
-        filter(municipio!="RIO GRANDE DO SUL") %>% filter(municipio!="RONDÔNIA") %>% 
-        filter(municipio!="RORAIMA") %>% filter(municipio!="SANTA CATARINA") %>% 
-        filter(municipio!="SÃO PAULO") %>% filter(municipio!="SERGIPE") %>% 
-        filter(municipio!="TOCANTINS")
-  
-    valores$municipio <- mun$municipio
+  df<- read_xlsx("2008 rel517.xlsx", skip = 7,n_max = 22071,
+                 col_names = c("mun","custeio_cont", "custeio_val", "inv_cont", "inv_val",
+                               "com_cont", "com_val","tot_cont", "tot_val"))
+                       
+  df<-df %>% 
+    mutate(i=seq(1,22071,1)) %>% 
+    mutate(custeio_cont=ifelse(mun[i+2]=="Pecuária",custeio_cont[i+3],NA)) %>% 
+    mutate(custeio_val=ifelse(mun[i+2]=="Pecuária",custeio_val[i+3],NA)) %>%    
+    mutate(inv_cont=ifelse(mun[i+2]=="Pecuária",inv_cont[i+3],NA)) %>% 
+    mutate(inv_val=ifelse(mun[i+2]=="Pecuária",inv_val[i+3],NA)) %>%
+    mutate(com_cont=ifelse(mun[i+2]=="Pecuária",com_cont[i+3],NA)) %>% 
+    mutate(com_val=ifelse(mun[i+2]=="Pecuária",com_val[i+3],NA)) %>%    
+    mutate(tot_cont=ifelse(mun[i+2]=="Pecuária",tot_cont[i+3],NA)) %>% 
+    mutate(tot_val=ifelse(mun[i+2]=="Pecuária",tot_val[i+3],NA)) %>% 
+    mutate(estado=ifelse(mun[i+2]=="Agrícola"& mun!="Total",1,0)) %>% 
+    filter(mun!="Agrícola" & mun!="Pecuária" & mun!="Total") %>% 
+    mutate(i=seq(1,5534,1)) %>% 
+    mutate(estado=ifelse(estado==1,i,0))
 
-    c2008 <- valores %>% 
-        mutate(municipio=toupper(municipio)) %>% 
-        mutate("chave"=str_c(municipio," (", estado,")")) %>% 
-        mutate("ano"=2008)
+  est<-df %>% 
+    select("mun","estado") %>% 
+    filter(estado>=1)
+
+  obs<-data.frame(mun=c("Total"),
+                  estado=c(5534))
+
+  est<-rbind(est,obs)
+
+  rm(obs)
+
+  est<-est %>% 
+    mutate(i=seq(1,28,1)) %>% 
+    mutate(num=estado[i+1]-estado[i]-1)
+
+  est<-est[1:27,]
+    attach(est)
+    
+  estado<-rep(mun[i],num[i])
+
+  df<-df %>%
+    filter(estado==0) %>% 
+    select(-"i",-"estado")
+
+  df<-cbind(estado,df)
+
+  rm(est,estado)
+
+  df_estado<-data.frame(sigla=c("AC","AL","AP","AM","BA","CE","DF","ES","GO",
+                                "MA","MT","MS","MG","PA","PB","PR","PE","PI",
+                                "RJ","RN","RS","RO","RR","SC","SP","SE","TO"),
+                        estado=c("ACRE","ALAGOAS","AMAPÁ","AMAZONAS","BAHIA","CEARÁ",
+                                 "DISTRITO FEDERAL", "ESPÍRITO SANTO", "GOIÁS", "MARANHÃO",
+                                 "MATO GROSSO", "MATO GROSSO DO SUL", "MINAS GERAIS", "PARÁ",
+                                 "PARAÍBA", "PARANÁ", "PERNAMBUCO", "PIAUÍ", "RIO DE JANEIRO",
+                                 "RIO GRANDE DO NORTE", "RIO GRANDE DO SUL", "RONDÔNIA", "RORAIMA",
+                                 "SANTA CATARINA", "SÃO PAULO", "SERGIPE", "TOCANTINS"))
+
+  df<-right_join(df_estado, df, c("estado"))
+
+  names(df) <- c("estado","uf","municipio","c.custeio","v.custeio",
+                 "c.investimento","v.investimento","c.comercializacao",
+                 "v.comercializacao","total.contratos","valores.totais")
+
+  c2008 <- df %>% 
+    select("estado","municipio","total.contratos","valores.totais") %>% 
+    mutate("chave"=str_c(municipio," (", estado,")")) %>% 
+    mutate("ano"=2008)
   
-    c2008 <- select(c2008,c(estado,municipio,total.contratos,valores.totais,chave,ano))
-  
-    c2008 <- c2008[,c(6,5,1,2,3,4)]
+  c2008 <- c2008[,c(6,5,1,2,3,4)]  
 
 #Tabela 2009----
 
-    c2009 <- read_excel("2009 rel517.xlsx",
-                      sheet = "rel517", skip = 5)
+    df<- read_xlsx("2009 rel517.xlsx", skip = 6,n_max = 22083,
+                 col_names = c("mun","custeio_cont", "custeio_val", "inv_cont", "inv_val",
+                               "com_cont", "com_val","tot_cont", "tot_val"))
   
-    names(c2009) <- c("estado","municipio","c.custeio","v.custeio","c.investimento",
-                    "v.investimento","c.comercializacao","v.comecializacao",
-                    "total.contratos","valores.totais")
+    df<-df %>% 
+        mutate(i=seq(1,22083,1)) %>% 
+        mutate(custeio_cont=ifelse(mun[i+2]=="Pecuária",custeio_cont[i+3],NA)) %>% 
+        mutate(custeio_val=ifelse(mun[i+2]=="Pecuária",custeio_val[i+3],NA)) %>%    
+        mutate(inv_cont=ifelse(mun[i+2]=="Pecuária",inv_cont[i+3],NA)) %>% 
+        mutate(inv_val=ifelse(mun[i+2]=="Pecuária",inv_val[i+3],NA)) %>%
+        mutate(com_cont=ifelse(mun[i+2]=="Pecuária",com_cont[i+3],NA)) %>% 
+        mutate(com_val=ifelse(mun[i+2]=="Pecuária",com_val[i+3],NA)) %>%    
+        mutate(tot_cont=ifelse(mun[i+2]=="Pecuária",tot_cont[i+3],NA)) %>% 
+        mutate(tot_val=ifelse(mun[i+2]=="Pecuária",tot_val[i+3],NA)) %>% 
+        mutate(estado=ifelse(mun[i+2]=="Agrícola"& mun!="Total",1,0)) %>% 
+        filter(mun!="Agrícola" & mun!="Pecuária" & mun!="Total") %>% 
+        mutate(i=seq(1,5561,1)) %>% 
+        mutate(estado=ifelse(estado==1,i,0))
   
-    valores <-  c2009 %>% 
-        filter(c.custeio!="NA") %>% 
-        filter(municipio!="Agrícola") %>% 
-        filter(municipio!="Pecuária") %>% 
-        filter(municipio!="Total Geral")
+    est<-df %>% 
+        select("mun","estado") %>% 
+        filter(estado>=1)
   
-    mun <- c2009 %>% 
-        filter(municipio!="Agrícola") %>% filter(municipio!="Pecuária") %>%
-        filter(municipio!="Total") %>% filter(municipio!="Total Geral") %>%
-        filter(municipio!="Fonte:BCB/DIORF/DEROP/DIORE") %>% 
-        filter(municipio!="Registro Comum de Operações Rurais (Recor)") %>%
-        filter(municipio!="ACRE") %>% filter(municipio!="ALAGOAS") %>% filter(municipio!="AMAPÁ") %>% 
-        filter(municipio!="AMAZONAS") %>% filter(municipio!="BAHIA") %>% filter(municipio!="CEARÁ") %>% 
-        filter(municipio!="DISTRITO FEDERAL") %>% filter(municipio!="ESPÍRITO SANTO") %>% 
-        filter(municipio!="GOIÁS") %>% filter(municipio!="MARANHÃO") %>% filter(municipio!="MATO GROSSO") %>% 
-        filter(municipio!="MATO GROSSO DO SUL") %>% filter(municipio!="MINAS GERAIS") %>% 
-        filter(municipio!="PARÁ") %>% filter(municipio!="PARAÍBA") %>% filter(municipio!="PARANÁ") %>% 
-        filter(municipio!="PERNAMBUCO") %>% filter(municipio!="PIAUÍ") %>% 
-        filter(municipio!="RIO DE JANEIRO") %>% filter(municipio!="RIO GRANDE DO NORTE") %>% 
-        filter(municipio!="RIO GRANDE DO SUL") %>% filter(municipio!="RONDÔNIA") %>% 
-        filter(municipio!="RORAIMA") %>% filter(municipio!="SANTA CATARINA") %>% 
-        filter(municipio!="SÃO PAULO") %>% filter(municipio!="SERGIPE") %>% 
-        filter(municipio!="TOCANTINS")
+    obs<-data.frame(mun=c("Total"),
+                  estado=c(5561))
   
-    valores$municipio <- mun$municipio
-
-    c2009 <- valores %>% 
-        mutate(municipio=toupper(municipio)) %>% 
+    est<-rbind(est,obs)
+  
+    rm(obs)
+  
+    est<-est %>% 
+        mutate(i=seq(1,28,1)) %>% 
+        mutate(num=estado[i+1]-estado[i]-1)
+  
+    est<-est[1:27,]
+        attach(est)
+  
+    estado<-rep(mun[i],num[i])
+  
+    df<-df %>%
+        filter(estado==0) %>% 
+        select(-"i",-"estado")
+  
+    df<-cbind(estado,df)
+  
+    rm(est,estado)
+  
+    df_estado<-data.frame(sigla=c("AC","AL","AP","AM","BA","CE","DF","ES","GO",
+                                "MA","MT","MS","MG","PA","PB","PR","PE","PI",
+                                "RJ","RN","RS","RO","RR","SC","SP","SE","TO"),
+                        estado=c("ACRE","ALAGOAS","AMAPÁ","AMAZONAS","BAHIA","CEARÁ",
+                                 "DISTRITO FEDERAL", "ESPÍRITO SANTO", "GOIÁS", "MARANHÃO",
+                                 "MATO GROSSO", "MATO GROSSO DO SUL", "MINAS GERAIS", "PARÁ",
+                                 "PARAÍBA", "PARANÁ", "PERNAMBUCO", "PIAUÍ", "RIO DE JANEIRO",
+                                 "RIO GRANDE DO NORTE", "RIO GRANDE DO SUL", "RONDÔNIA", "RORAIMA",
+                                 "SANTA CATARINA", "SÃO PAULO", "SERGIPE", "TOCANTINS"))
+  
+    df<-right_join(df_estado, df, c("estado"))
+  
+    names(df) <- c("estado","uf","municipio","c.custeio","v.custeio",
+                 "c.investimento","v.investimento","c.comercializacao",
+                 "v.comercializacao","total.contratos","valores.totais")
+  
+    c2008 <- df %>% 
+        select("estado","municipio","total.contratos","valores.totais") %>% 
         mutate("chave"=str_c(municipio," (", estado,")")) %>% 
         mutate("ano"=2009)
   
-    c2009 <- select(c2009,c(estado,municipio,total.contratos,valores.totais,chave,ano))
-  
-    c2009 <- c2009[,c(6,5,1,2,3,4)]
+    c2009 <- c2009[,c(6,5,1,2,3,4)]  
 
 #Tabela 2010----
 
