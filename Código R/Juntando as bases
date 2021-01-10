@@ -1,0 +1,64 @@
+#Pacotes a serem utilizados----
+
+    library(dplyr)
+    library(stringr)
+    
+#Limpando dados da memória----
+
+    rm(list=ls())
+
+#Importando tabelas geradas----
+
+    #Quantidade produzida por cultura
+
+    qprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/Dataset/ibge/quantidade%20produzida/quantidade_produzida.csv"
+
+    #Area plantada por cultura em hectares
+
+    hprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/Dataset/ibge/area%20plantada/area_plantada.csv"
+
+    #Valor da produção por cultura em mil reais
+
+    vprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/Dataset/ibge/valor%20da%20producao/valor_producao.csv"
+
+    #Salários recebidos pelos produtores ou atividades relacionadas as culturas
+
+    salarios <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/Dataset/rais/rais.csv"
+
+    #Proxy para demanda de biodiesel
+
+    dbio <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/Dataset/denatran/demanda.csv"
+
+    #Informações sobre os municipios
+
+    ibge <- ""
+
+    #Áreas mínimas comparáveis
+
+    amc <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/Dataset/ibge/amc/APST_AMC.csv"
+
+#Organizando a base de dados principal----
+
+    q_prod <- read.csv(qprod,sep=";",dec=".")
+
+    names(q_prod) <- c("ano","cod_mun","municipio","qdende","qgirassol",
+                    "qmamona","qsoja")
+
+    h_prod <- read.csv(hprod,sep=";",dec=".")
+
+    names(h_prod) <- c("ano","cod_mun","municipio","hdende","hgirassol",
+                     "hmamona","hsoja")
+
+    base <- right_join(q_prod,h_prod,c("cod_mun"))
+
+    base <- base[,c(8,2,3,4,5,6,7,9,10,11,12,13,1)]
+
+    #Gerando variável dependente produtividade
+
+    base <- base %>% 
+        mutate("prod_dende"=(base$qdende/base$hdende)) %>% 
+        mutate("prod_girassol"=(base$qgirassol/base$hgirassol)) %>%
+        mutate("prod_mamona"=(base$qmamona/base$hmamona)) %>% 
+        mutate("prod_soja"=(base$qsoja/base$hsoja)) %>% 
+        select("ano.y","cod_mun","municipio.x","prod_dende",
+                "prod_girassol","prod_mamona","prod_soja")

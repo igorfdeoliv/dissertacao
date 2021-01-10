@@ -1,3 +1,8 @@
+#Carregando pacotes a serem utilizados----
+
+    library(dplyr)
+    library(stringr)
+
 #Limpando bases da memória----
 
     rm(list=ls())
