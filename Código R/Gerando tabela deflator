@@ -4,15 +4,17 @@
   
 #Carregando pacotes de trabalho
   
+  library(readxl)
   library(dplyr)
+  library(stringr)
   
 #Diretório local de trabalho
   
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge")
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ipea")
   
 #Organizando tabela
   
   deflator <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ipea/ipeadata%5B04-12-2020-12-13%5D.csv"
   
-  ipca <- read.csv(deflator, header=T, sep=";", dec=",", nrows=492, col.names=c("data","index","excluir"))
+  ipca <- read.csv(deflator,sep=";",dec=",",col.names=c("data","ipca","excluir"))
 
