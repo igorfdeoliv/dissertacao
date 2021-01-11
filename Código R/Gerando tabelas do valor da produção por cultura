@@ -13,7 +13,7 @@
 
 #Organizando tabelas----
 
-    #Valor da produção por cultura em mil reais
+#Valor da produção por cultura em mil reais
 
     ano1 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/valor%20da%20producao/2003%20tabela5457.csv"
     ano2 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/valor%20da%20producao/2004%20tabela5457.csv"
@@ -39,13 +39,13 @@
     v2003<-v2003[-1,]
 
     v2003<-v2003 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2003)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2003)
 
 #Reorganizando as colunas
 
-      v2003 <- v2003[,c(7,1,2,3,4,5,6)]
+    v2003 <- v2003[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2004----
 
@@ -55,13 +55,13 @@
     v2004<-v2004[-1,]
 
     v2004<-v2004 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2004)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2004)
 
 #Reorganizando as colunas
 
-      v2004 <- v2004[,c(7,1,2,3,4,5,6)]
+    v2004 <- v2004[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2005----
 
@@ -71,13 +71,13 @@
     v2005<-v2005[-1,]
 
     v2005<-v2005 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2005)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2005)
 
 #Reorganizando as colunas
 
-      v2005 <- v2005[,c(7,1,2,3,4,5,6)]
+    v2005 <- v2005[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2006----
 
@@ -87,13 +87,13 @@
     v2006<-v2006[-1,]
 
     v2006<-v2006 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2006)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2006)
 
 #Reorganizando as colunas
 
-      v2006 <- v2006[,c(7,1,2,3,4,5,6)]
+    v2006 <- v2006[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2007----
 
@@ -103,13 +103,13 @@
     v2007<-v2007[-1,]
 
     v2007<-v2007 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2007)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2007)
 
 #Reorganizando as colunas
 
-      v2007 <- v2007[,c(7,1,2,3,4,5,6)]
+    v2007 <- v2007[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2008----
 
@@ -119,13 +119,13 @@
     v2008<-v2008[-1,]
 
     v2008<-v2008 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2008)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2008)
 
 #Reorganizando as colunas
 
-      v2008 <- v2008[,c(7,1,2,3,4,5,6)]
+    v2008 <- v2008[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2009----
 
@@ -135,13 +135,13 @@
     v2009<-v2009[-1,]
 
     v2009<-v2009 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2009)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2009)
 
 #Reorganizando as colunas
 
-      v2009 <- v2009[,c(7,1,2,3,4,5,6)]
+    v2009 <- v2009[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2010----
 
@@ -151,13 +151,13 @@
     v2010<-v2010[-1,]
 
     v2010<-v2010 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2010)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2010)
 
 #Reorganizando as colunas
 
-      v2010 <- v2010[,c(7,1,2,3,4,5,6)]
+    v2010 <- v2010[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2011----
 
@@ -167,13 +167,13 @@
     v2011<-v2011[-1,]
 
     v2011<-v2011 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2011)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2011)
 
 #Reorganizando as colunas
 
-      v2011 <- v2011[,c(7,1,2,3,4,5,6)]
+    v2011 <- v2011[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2012----
 
@@ -183,13 +183,13 @@
     v2012<-v2012[-1,]
 
     v2012<-v2012 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2012)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2012)
 
 #Reorganizando as colunas
 
-      v2012 <- v2012[,c(7,1,2,3,4,5,6)]
+    v2012 <- v2012[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2013----
 
@@ -199,13 +199,13 @@
     v2013<-v2013[-1,]
 
     v2013<-v2013 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2013)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2013)
 
 #Reorganizando as colunas
 
-      v2013 <- v2013[,c(7,1,2,3,4,5,6)]
+    v2013 <- v2013[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2014----
 
@@ -215,13 +215,13 @@
     v2014<-v2014[-1,]
 
     v2014<-v2014 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2014)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2014)
 
 #Reorganizando as colunas
 
-      v2014 <- v2014[,c(7,1,2,3,4,5,6)]
+    v2014 <- v2014[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2015----
 
@@ -231,13 +231,13 @@
     v2015<-v2015[-1,]
 
     v2015<-v2015 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2015)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2015)
 
 #Reorganizando as colunas
 
-      v2015 <- v2015[,c(7,1,2,3,4,5,6)]
+    v2015 <- v2015[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2016----
 
@@ -247,13 +247,13 @@
     v2016<-v2016[-1,]
 
     v2016<-v2016 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2016)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2016)
 
 #Reorganizando as colunas
 
-      v2016 <- v2016[,c(7,1,2,3,4,5,6)]
+    v2016 <- v2016[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2017----
 
@@ -263,18 +263,18 @@
     v2017<-v2017[-1,]
 
     v2017<-v2017 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2017)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2017)
 
 #Reorganizando as colunas
 
-      v2016 <- v2016[,c(7,1,2,3,4,5,6)]
+    v2017 <- v2017[,c(7,1,2,3,4,5,6)]
 
 #Juntando todas as tabelas----
 
     valor_producao_mil_reais <- rbind(v2003,v2004,v2005,v2006,v2007,v2008,v2009,
-        v2010,v2011,v2012,v2013,v2014,v2015,v2016,v2017)
+                                  v2010,v2011,v2012,v2013,v2014,v2015,v2016,v2017)
 
 #Exportando----
 

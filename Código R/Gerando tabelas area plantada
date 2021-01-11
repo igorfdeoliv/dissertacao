@@ -13,7 +13,7 @@
 
 #Organizando tabelas----
 
-    #Área plantada por cultura em hectares----
+#Área plantada por cultura em hectares----
 
     ano1 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2003%20tabela5457.csv"
     ano2 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2004%20tabela5457.csv"
@@ -39,9 +39,9 @@
     h2003<-h2003[-1,]
 
     h2003<-h2003 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2003)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2003)
 
 #Reorganizando as colunas:
 
@@ -55,9 +55,9 @@
     h2004<-h2004[-1,]
 
     h2004<-h2004 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2004)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2004)
 
 #Reorganizando as colunas:
 
@@ -71,9 +71,9 @@
     h2005<-h2005[-1,]
 
     h2005<-h2005 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2005)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2005)
 
 #Reorganizando as colunas:
 
@@ -87,25 +87,25 @@
     h2006<-h2006[-1,]
 
     h2006<-h2006 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2006)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2006)
 
 #Reorganizando as colunas:
 
     h2006 <- h2006[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2007----
-
+  
     h2007<-read.csv(ano5, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
 
     h2007<-h2007[-1,]
 
     h2007<-h2007 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2007)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2007)
 
 #Reorganizando as colunas:
 
@@ -119,9 +119,9 @@
     h2008<-h2008[-1,]
 
     h2008<-h2008 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2008)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2008)
 
 #Reorganizando as colunas:
 
@@ -135,9 +135,9 @@
     h2009<-h2009[-1,]
 
     h2009<-h2009 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2009)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2009)
 
 #Reorganizando as colunas:
 
@@ -151,9 +151,9 @@
     h2010<-h2010[-1,]
 
     h2010<-h2010 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2010)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2010)
 
 #Reorganizando as colunas:
 
@@ -167,9 +167,9 @@
     h2011<-h2011[-1,]
 
     h2011<-h2011 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2011)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2011)
 
 #Reorganizando as colunas:
 
@@ -183,9 +183,9 @@
     h2012<-h2012[-1,]
 
     h2012<-h2012 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2012)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2012)
 
 #Reorganizando as colunas:
 
@@ -199,9 +199,9 @@
     h2013<-h2013[-1,]
 
     h2013<-h2013 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2013)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2013)
 
 #Reorganizando as colunas:
 
@@ -215,9 +215,9 @@
     h2014<-h2014[-1,]
 
     h2014<-h2014 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2014)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2014)
 
 #Reorganizando as colunas:
 
@@ -231,9 +231,9 @@
     h2015<-h2015[-1,]
 
     h2015<-h2015 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2015)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2015)
 
 #Reorganizando as colunas:
 
@@ -247,9 +247,9 @@
     h2016<-h2016[-1,]
 
     h2016<-h2016 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2016)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2016)
 
 #Reorganizando as colunas:
 
@@ -263,9 +263,9 @@
     h2017<-h2017[-1,]
 
     h2017<-h2017 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2017)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2017)
 
 #Reorganizando as colunas
 
@@ -274,7 +274,7 @@
 #Juntando todas as tabelas----
 
     area_plantada <- rbind(h2003,h2004,h2005,h2006,h2007,h2008,h2009,
-        h2010,h2011,h2012,h2013,h2014,h2015,h2016,h2017)
+                       h2010,h2011,h2012,h2013,h2014,h2015,h2016,h2017)
 
 #Exportando----
 

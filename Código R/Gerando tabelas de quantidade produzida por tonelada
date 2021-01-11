@@ -13,7 +13,7 @@
 
 #Organizando tabelas----
 
-    #Quantidade produzida por cultura em toneladas
+#Quantidade produzida por cultura em toneladas
 
     ano1 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/quantidade%20produzida/2003%20tabela5457.csv"
     ano2 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/quantidade%20produzida/2004%20tabela5457.csv"
@@ -39,9 +39,9 @@
     q2003<-q2003[-1,]
 
     q2003<-q2003 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2003)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2003)
 
 #Reorganizando as colunas
 
@@ -55,9 +55,9 @@
     q2004<-q2004[-1,]
 
     q2004<-q2004 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2004)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2004)
 
 #Reorganizando as colunas
 
@@ -71,9 +71,9 @@
     q2005<-q2005[-1,]
 
     q2005<-q2005 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2005)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2005)
 
 #Reorganizando as colunas
 
@@ -87,9 +87,9 @@
     q2006<-q2006[-1,]
 
     q2006<-q2006 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2006)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2006)
 
 #Reorganizando as colunas
 
@@ -103,9 +103,9 @@
     q2007<-q2007[-1,]
 
     q2007<-q2007 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2007)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2007)
 
 #Reorganizando as colunas
 
@@ -119,9 +119,9 @@
     q2008<-q2008[-1,]
 
     q2008<-q2008 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2008)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2008)
 
 #Reorganizando as colunas
 
@@ -135,9 +135,9 @@
     q2009<-q2009[-1,]
 
     q2009<-q2009 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2009)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2009)
 
 #Reorganizando as colunas
 
@@ -151,9 +151,9 @@
     q2010<-q2010[-1,]
 
     q2010<-q2010 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2010)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2010)
 
 #Reorganizando as colunas
 
@@ -167,9 +167,9 @@
     q2011<-q2011[-1,]
 
     q2011<-q2011 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2011)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2011)
 
 #Reorganizando as colunas
 
@@ -183,9 +183,9 @@
     q2012<-q2012[-1,]
 
     q2012<-q2012 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2012)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2012)
 
 #Reorganizando as colunas
 
@@ -199,9 +199,9 @@
     q2013<-q2013[-1,]
 
     q2013<-q2013 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2013)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2013)
 
 #Reorganizando as colunas
 
@@ -215,9 +215,9 @@
     q2014<-q2014[-1,]
 
     q2014<-q2014 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2014)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2014)
 
 #Reorganizando as colunas
 
@@ -231,9 +231,9 @@
     q2015<-q2015[-1,]
 
     q2015<-q2015 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2015)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2015)
 
 #Reorganizando as colunas
 
@@ -247,9 +247,9 @@
     q2016<-q2016[-1,]
 
     q2016<-q2016 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2016)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2016)
 
 #Reorganizando as colunas
 
@@ -263,9 +263,9 @@
     q2017<-q2017[-1,]
 
     q2017<-q2017 %>% 
-    mutate(Município=toupper(Município)) %>% 
-    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'", "AEIOUAOAEOC ", Município)) %>%
-    mutate("ano"=2017)
+        mutate(Município=toupper(Município)) %>% 
+        mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+        mutate("ano"=2017)
 
 #Reorganizando as colunas
 
@@ -274,8 +274,8 @@
 #Juntando todas as tabelas----
 
     quantidade_produzida_t <- rbind(q2003,q2004,q2005,q2006,q2007,q2008,q2009,
-        q2010,q2011,q2012,q2013,q2014,q2015,q2016,q2017)
+                                q2010,q2011,q2012,q2013,q2014,q2015,q2016,q2017)
 
 #Exportando----
 
-     write.table(quantidade_produzida_t,file='quantidade_produzida.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    write.table(quantidade_produzida_t,file='quantidade_produzida.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
