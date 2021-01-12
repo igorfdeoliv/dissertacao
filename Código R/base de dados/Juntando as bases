@@ -11,31 +11,31 @@
 
     #Quantidade produzida por cultura
 
-    qprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/Dataset/ibge/quantidade%20produzida/quantidade_produzida.csv"
+    qprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/quantidade_produzida.csv"
 
     #Area plantada por cultura em hectares
 
-    hprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/Dataset/ibge/area%20plantada/area_plantada.csv"
+    hprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/area_plantada.csv"
 
     #Valor da produção por cultura em mil reais
 
-    vprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/Dataset/ibge/valor%20da%20producao/valor_producao.csv"
+    vprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/valor_producao.csv"
 
     #Salários recebidos pelos produtores ou atividades relacionadas as culturas
 
-    salarios <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/Dataset/rais/rais.csv"
+    salarios <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/rais.csv"
 
     #Proxy para demanda de biodiesel
 
-    dbio <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/Dataset/denatran/demanda.csv"
+    dbio <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/demanda.csv"
 
     #Informações sobre os municipios
 
-    ibge <- ""
+    ibge <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/pibmun.csv"
 
     #Áreas mínimas comparáveis
 
-    amc <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/Dataset/ibge/amc/APST_AMC.csv"
+    amc <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/amc/APST_AMC.csv"
 
 #Organizando a base de dados principal----
 
