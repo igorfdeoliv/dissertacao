@@ -45,6 +45,8 @@
 
 #Reorganizando as colunas
 
+    rm(ano1)
+
     q2003 <- q2003[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2004----
@@ -60,6 +62,8 @@
         mutate("ano"=2004)
 
 #Reorganizando as colunas
+
+    rm(ano2)
 
     q2004 <- q2004[,c(7,1,2,3,4,5,6)]
 
@@ -77,6 +81,8 @@
 
 #Reorganizando as colunas
 
+    rm(ano3)
+
     q2005 <- q2005[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2006----
@@ -92,6 +98,8 @@
         mutate("ano"=2006)
 
 #Reorganizando as colunas
+
+    rm(ano4)
 
     q2006 <- q2006[,c(7,1,2,3,4,5,6)]
 
@@ -109,6 +117,8 @@
 
 #Reorganizando as colunas
 
+    rm(ano5)
+
     q2007 <- q2007[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2008----
@@ -124,6 +134,8 @@
         mutate("ano"=2008)
 
 #Reorganizando as colunas
+
+    rm(ano6)
 
     q2008 <- q2008[,c(7,1,2,3,4,5,6)]
 
@@ -141,6 +153,8 @@
 
 #Reorganizando as colunas
 
+    rm(ano7)
+
     q2009 <- q2009[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2010----
@@ -156,6 +170,8 @@
         mutate("ano"=2010)
 
 #Reorganizando as colunas
+
+    rm(ano8)
 
     q2010 <- q2010[,c(7,1,2,3,4,5,6)]
 
@@ -173,6 +189,8 @@
 
 #Reorganizando as colunas
 
+    rm(ano9)
+
     q2011 <- q2011[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2012----
@@ -188,6 +206,8 @@
         mutate("ano"=2012)
 
 #Reorganizando as colunas
+
+    rm(ano10)
 
     q2012 <- q2012[,c(7,1,2,3,4,5,6)]
 
@@ -205,6 +225,8 @@
 
 #Reorganizando as colunas
 
+    rm(ano11)
+
     q2013 <- q2013[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2014----
@@ -220,6 +242,8 @@
         mutate("ano"=2014)
 
 #Reorganizando as colunas
+
+    rm(ano12)
 
     q2014 <- q2014[,c(7,1,2,3,4,5,6)]
 
@@ -237,6 +261,8 @@
 
 #Reorganizando as colunas
 
+    rm(ano13)
+
     q2015 <- q2015[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2016----
@@ -252,6 +278,8 @@
         mutate("ano"=2016)
 
 #Reorganizando as colunas
+
+    rm(ano14)
 
     q2016 <- q2016[,c(7,1,2,3,4,5,6)]
 
@@ -269,12 +297,21 @@
 
 #Reorganizando as colunas
 
+    rm(ano15)
+
     q2017 <- q2017[,c(7,1,2,3,4,5,6)]
 
 #Juntando todas as tabelas----
 
     quantidade_produzida_t <- rbind(q2003,q2004,q2005,q2006,q2007,q2008,q2009,
                                 q2010,q2011,q2012,q2013,q2014,q2015,q2016,q2017)
+
+    rm(q2003,q2004,q2005,q2006,q2007,q2008,q2009,
+        q2010,q2011,q2012,q2013,q2014,q2015,q2016,q2017)
+
+#Destino tabela----
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base")
 
 #Exportando----
 
