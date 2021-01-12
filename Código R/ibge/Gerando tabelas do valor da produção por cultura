@@ -45,6 +45,8 @@
 
 #Reorganizando as colunas
 
+    rm(ano1)
+
     v2003 <- v2003[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2004----
@@ -60,6 +62,8 @@
         mutate("ano"=2004)
 
 #Reorganizando as colunas
+
+    rm(ano2)
 
     v2004 <- v2004[,c(7,1,2,3,4,5,6)]
 
@@ -77,6 +81,8 @@
 
 #Reorganizando as colunas
 
+    rm(ano3)
+
     v2005 <- v2005[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2006----
@@ -92,6 +98,8 @@
         mutate("ano"=2006)
 
 #Reorganizando as colunas
+
+    rm(ano4)
 
     v2006 <- v2006[,c(7,1,2,3,4,5,6)]
 
@@ -109,6 +117,8 @@
 
 #Reorganizando as colunas
 
+    rm(ano5)
+
     v2007 <- v2007[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2008----
@@ -124,6 +134,8 @@
         mutate("ano"=2008)
 
 #Reorganizando as colunas
+
+    rm(ano6)
 
     v2008 <- v2008[,c(7,1,2,3,4,5,6)]
 
@@ -141,6 +153,8 @@
 
 #Reorganizando as colunas
 
+    rm(ano7)
+
     v2009 <- v2009[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2010----
@@ -156,6 +170,8 @@
         mutate("ano"=2010)
 
 #Reorganizando as colunas
+
+    rm(ano8)
 
     v2010 <- v2010[,c(7,1,2,3,4,5,6)]
 
@@ -173,6 +189,8 @@
 
 #Reorganizando as colunas
 
+    rm(ano9)
+
     v2011 <- v2011[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2012----
@@ -188,6 +206,8 @@
         mutate("ano"=2012)
 
 #Reorganizando as colunas
+
+    rm(ano10)
 
     v2012 <- v2012[,c(7,1,2,3,4,5,6)]
 
@@ -205,6 +225,8 @@
 
 #Reorganizando as colunas
 
+    rm(ano11)
+
     v2013 <- v2013[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2014----
@@ -220,6 +242,8 @@
         mutate("ano"=2014)
 
 #Reorganizando as colunas
+
+    rm(ano12)
 
     v2014 <- v2014[,c(7,1,2,3,4,5,6)]
 
@@ -237,6 +261,8 @@
 
 #Reorganizando as colunas
 
+    rm(ano13)
+
     v2015 <- v2015[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2016----
@@ -252,6 +278,8 @@
         mutate("ano"=2016)
 
 #Reorganizando as colunas
+
+    rm(ano14)
 
     v2016 <- v2016[,c(7,1,2,3,4,5,6)]
 
@@ -269,12 +297,21 @@
 
 #Reorganizando as colunas
 
+    rm(ano15)
+
     v2017 <- v2017[,c(7,1,2,3,4,5,6)]
 
 #Juntando todas as tabelas----
 
     valor_producao_mil_reais <- rbind(v2003,v2004,v2005,v2006,v2007,v2008,v2009,
                                   v2010,v2011,v2012,v2013,v2014,v2015,v2016,v2017)
+
+    rm(v2003,v2004,v2005,v2006,v2007,v2008,v2009,
+        v2010,v2011,v2012,v2013,v2014,v2015,v2016,v2017)
+
+#Destino tabela----
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base")
 
 #Exportando----
 
