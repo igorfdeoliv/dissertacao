@@ -1,181 +1,181 @@
 #Carregando pacotes a setem utilizados----
 
-    library(dplyr)
-    library(readxl)
-    library(stringr)
+  library(dplyr)
+  library(readxl)
+  library(stringr)
 
 #Limpando bases da memória----
 
-    rm(list=ls())
+  rm(list=ls())
 
 #Diretório local de trabalho----
 
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
-
-#Organizando e manipulando a base de dados----
-
-    #Informações de frota de veículos por múnicípio (Não está dando certo para puxar a informação
-    #direto do link :/)
-
-    ano1 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/denatran/Frota_Mun_Dez_03t.xls?raw=true"
-    ano2 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/denatran/Frota%20Munic%20122004%20Internet.xls?raw=true"
-    ano3 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/denatran/Frota%20Munic%20122005%20Internet.xls?raw=true"
-    ano4 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/denatran/Frota%20Munic%20DEZ2006%20Internet.xls?raw=true"
-    ano5 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/denatran/Frota%20Munic%20Dez2007%20Internet.xls?raw=true"
-    ano6 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/denatran/Frota%20Munic%20Dez2008.xls?raw=true"
-    ano7 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/denatran/Frota%20Munic%20Dez2009.xls?raw=true"
-    ano8 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/denatran/Frota%20Munic%20DEZ2010.xls?raw=true"
-    ano9 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/denatran/Frota%20Munic.%20DEZ.2011.xls?raw=true"
-    ano10 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/denatran/Frota%20Munic.DEZ.2012.xls?raw=true"
-    ano11 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/denatran/Frota%20Munic.DEZ.2013.xls?raw=true"
-    ano12 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/denatran/frota_por_municipio_e_tipo_dez_2014.xlsx?raw=true"
-    ano13 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/denatran/Frota_por_Municipio_e_Tipo-DEZ_15.xls?raw=true"
-    ano14 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/denatran/frota_por_municipio_e_tipo-dez_16.xlsx?raw=true"
-    ano15 <- "https://github.com/igorfdeoliv/dissertacao/blob/main/dataset/denatran/frota_munic_dezembro_2017.xls?raw=true"
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
 
 #Tabela 2003----
 
   d2003 <- read_excel("Frota_Mun_Dez_03t.xls")
 
-  d2003 <- d2003 %>% 
+  d2003 <- d2003 %>%
+    mutate(MUNICÍPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICÍPIO)) %>%
     mutate("chave"=str_c(MUNICÍPIO," ","(", UF,")")) %>% 
     mutate("ano"=2003)
 
   d2003 <- d2003[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
                   16,17,18,19,20,21,22,23,24,3)]
 
-  dput(names(d2003))
-
   names(d2003) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
                   "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
-                  "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                  "CICLOMOTOR","MICRO_ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
                   "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
                   "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
                   "TOTAL")
+
+  d2003 <- d2003 %>% 
+    select("ano","chave","UF","MUNICIPIO","CAMINHAO","MICRO_ONIBUS","ONIBUS") %>% 
+    mutate("total"=(d2003$CAMINHAO+d2003$MICRO_ONIBUS+d2003$ONIBUS))
 
 #Tabela 2004----
 
   d2004 <- read_excel("Frota Munic 122004 Internet.xls",skip=2)
 
   d2004 <- d2004 %>% 
+    mutate(MUNICÍPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICÍPIO)) %>%
     mutate("chave"=str_c(MUNICÍPIO," ","(", UF,")")) %>% 
     mutate("ano"=2004)
 
   d2004 <- d2004[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
                   16,17,18,19,20,21,22,23,24,3)]
 
-  dput(names(d2004))
-
   names(d2004) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
                   "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
-                  "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                  "CICLOMOTOR","MICRO_ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
                   "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
                   "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
                   "TOTAL")
 
+  d2004 <- d2004 %>% 
+    select("ano","chave","UF","MUNICIPIO","CAMINHAO","MICRO_ONIBUS","ONIBUS") %>% 
+    mutate("total"=(d2004$CAMINHAO+d2004$MICRO_ONIBUS+d2004$ONIBUS))
+  
 #Tabela 2005----
 
   d2005 <- read_excel("Frota Munic 122005 Internet.xls",skip=2)
 
   d2005 <- d2005 %>% 
+    mutate(MUNICÍPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICÍPIO)) %>%
     mutate("chave"=str_c(MUNICÍPIO," ","(", UF,")")) %>% 
     mutate("ano"=2005)
 
   d2005 <- d2005[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
                   16,17,18,19,20,21,22,23,24,3)]
 
-  dput(names(d2005))
-
   names(d2005) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
                   "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
-                  "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                  "CICLOMOTOR","MICRO_ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
                   "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
                   "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
                   "TOTAL")
 
+  d2005 <- d2005 %>% 
+    select("ano","chave","UF","MUNICIPIO","CAMINHAO","MICRO_ONIBUS","ONIBUS") %>% 
+    mutate("total"=(d2005$CAMINHAO+d2005$MICRO_ONIBUS+d2005$ONIBUS))
+  
 #Tabela 2006----
 
   d2006 <- read_excel("Frota Munic DEZ2006 Internet.xls", 
                     sheet = "DEZ_2006", skip = 2)
 
   d2006 <- d2006 %>% 
+    mutate(MUNICÍPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICÍPIO)) %>%
     mutate("chave"=str_c(MUNICÍPIO," ","(", UF,")")) %>% 
     mutate("ano"=2006)
 
   d2006 <- d2006[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
                   16,17,18,19,20,21,22,23,24,3)]
 
-  dput(names(d2006))
-
   names(d2006) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
                   "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
-                  "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                  "CICLOMOTOR","MICRO_ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
                   "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
                   "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
                   "TOTAL")
 
+  d2006 <- d2006 %>% 
+    select("ano","chave","UF","MUNICIPIO","CAMINHAO","MICRO_ONIBUS","ONIBUS") %>% 
+    mutate("total"=(d2006$CAMINHAO+d2006$MICRO_ONIBUS+d2006$ONIBUS))
+  
 #Tabela 2007----
 
   d2007 <- read_excel("Frota Munic Dez2007 Internet.xls", 
                     sheet = "DEZ_2007", skip = 2)
 
   d2007 <- d2007 %>% 
+    mutate(MUNICÍPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICÍPIO)) %>%
     mutate("chave"=str_c(MUNICÍPIO," ","(", UF,")")) %>% 
     mutate("ano"=2007)
 
   d2007 <- d2007[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
                   16,17,18,19,20,21,22,23,24,3)]
 
-  dput(names(d2007))
-
   names(d2007) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
                   "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
-                  "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                  "CICLOMOTOR","MICRO_ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
                   "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
                   "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
                   "TOTAL")
 
+  d2007 <- d2007 %>% 
+    select("ano","chave","UF","MUNICIPIO","CAMINHAO","MICRO_ONIBUS","ONIBUS") %>% 
+    mutate("total"=(d2007$CAMINHAO+d2007$MICRO_ONIBUS+d2007$ONIBUS))
+  
 #Tabela 2008----
 
   d2008 <- read_excel("Frota Munic Dez2008.xls", 
                     sheet = "DEZ_2008", skip = 2)
 
-  d2008 <- d2008 %>% 
+  d2008 <- d2008 %>%
+    mutate(MUNICÍPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICÍPIO)) %>%
     mutate("chave"=str_c(MUNICÍPIO," ","(", UF,")")) %>% 
     mutate("ano"=2008)
 
   d2008 <- d2008[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
                   16,17,18,19,20,21,22,23,24,3)]
-
-  dput(names(d2008))
-
+  
   names(d2008) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
                   "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
-                  "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                  "CICLOMOTOR","MICRO_ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
                   "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
                   "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
                   "TOTAL")
 
+  d2008 <- d2008 %>% 
+    select("ano","chave","UF","MUNICIPIO","CAMINHAO","MICRO_ONIBUS","ONIBUS") %>% 
+    mutate("total"=(d2008$CAMINHAO+d2008$MICRO_ONIBUS+d2008$ONIBUS))
+  
 #Tabela 2009----
 
   d2009 <- read_excel("Frota Munic Dez2009.xls", 
                     sheet = "DEZ_2009", skip = 2)
 
   d2009 <- d2009 %>% 
+    mutate(MUNICIPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2009)
 
   d2009 <- d2009[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
                   16,17,18,19,20,21,22,23,24,3)]
 
-  dput(names(d2009))
-  
   names(d2009) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
-                    "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
-                    "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
-                    "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
-                    "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
-                    "TOTAL")
+                  "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                  "CICLOMOTOR","MICRO_ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                  "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                  "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                  "TOTAL")
+
+  d2009 <- d2009 %>% 
+    select("ano","chave","UF","MUNICIPIO","CAMINHAO","MICRO_ONIBUS","ONIBUS") %>% 
+    mutate("total"=(d2009$CAMINHAO+d2009$MICRO_ONIBUS+d2009$ONIBUS))
   
 #Tabela 2010----
 
@@ -183,62 +183,71 @@
                     sheet = "DEZ_2010", skip = 2)
 
   d2010 <- d2010 %>% 
+    mutate(MUNICIPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2010)
 
   d2010 <- d2010[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
                   16,17,18,19,20,21,22,23,24,3)]
-  
-  dput(names(d2010))
-  
+
   names(d2010) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
-                    "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
-                    "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
-                    "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
-                    "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
-                    "TOTAL")
+                  "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                  "CICLOMOTOR","MICRO_ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                  "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                  "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                  "TOTAL")
+
+  d2010 <- d2010 %>% 
+    select("ano","chave","UF","MUNICIPIO","CAMINHAO","MICRO_ONIBUS","ONIBUS") %>% 
+    mutate("total"=(d2010$CAMINHAO+d2010$MICRO_ONIBUS+d2010$ONIBUS))
   
 #Tabela 2011----
 
   d2011 <- read_excel("Frota Munic. DEZ.2011.xls", 
-                    sheet = "DEZ_2011", skip = 2)
+                    sheet = "DEZ_2011", skip = 3)
 
   d2011 <- d2011 %>% 
+    mutate(MUNICIPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2011)
 
   d2011 <- d2011[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
                   16,17,18,19,20,21,22,23,24,3)]
 
-  dput(names(d2011))
-  
   names(d2011) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
-                    "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
-                    "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
-                    "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
-                    "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
-                    "TOTAL")
+                  "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                  "CICLOMOTOR","MICRO_ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                  "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                  "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                  "TOTAL")
+
+  d2011 <- d2011 %>% 
+    select("ano","chave","UF","MUNICIPIO","CAMINHAO","MICRO_ONIBUS","ONIBUS") %>%
+    mutate("total"=(d2011$CAMINHAO+d2011$MICRO_ONIBUS+d2011$ONIBUS))
   
 #Tabela 2012----
 
   d2012 <- read_excel("Frota Munic.DEZ.2012.xls", 
-                    sheet = "DEZ_2012", skip = 2)
+                    sheet = "DEZ_2012", skip = 3)
 
   d2012 <- d2012 %>% 
+    mutate(MUNICIPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2012)
 
   d2012 <- d2012[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
                   16,17,18,19,20,21,22,23,24,3)]
 
-  dput(names(d2012))
-  
   names(d2012) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
-                    "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
-                    "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
-                    "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
-                    "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
-                    "TOTAL")
+                  "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                  "CICLOMOTOR","MICRO_ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                  "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                  "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                  "TOTAL")
+
+  d2012 <- d2012 %>% 
+    select("ano","chave","UF","MUNICIPIO","CAMINHAO","MICRO_ONIBUS","ONIBUS") %>% 
+    mutate("total"=(d2012$CAMINHAO+d2012$MICRO_ONIBUS+d2012$ONIBUS))
   
 #Tabela 2013----
 
@@ -246,20 +255,23 @@
                     sheet = "DEZ_2013", skip = 3)
 
   d2013 <- d2013 %>% 
+    mutate(MUNICIPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2013)
 
   d2013 <- d2013[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
                   16,17,18,19,20,21,22,23,24,3)]
 
-  dput(names(d2013))
-  
   names(d2013) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
-                    "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
-                    "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
-                    "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
-                    "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
-                    "TOTAL")
+                  "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                  "CICLOMOTOR","MICRO_ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                  "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                  "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                  "TOTAL")
+
+  d2013 <- d2013 %>% 
+    select("ano","chave","UF","MUNICIPIO","CAMINHAO","MICRO_ONIBUS","ONIBUS") %>% 
+    mutate("total"=(d2013$CAMINHAO+d2013$MICRO_ONIBUS+d2013$ONIBUS))
   
 #Tabela 2014---
 
@@ -267,20 +279,23 @@
                     sheet = "DEZ_2014", skip = 3)
 
   d2014 <- d2014 %>% 
+    mutate(MUNICIPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2014)
 
   d2014 <- d2014[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
                   16,17,18,19,20,21,22,23,24,3)]
-
-  dput(names(d2014))
   
   names(d2014) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
-                    "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
-                    "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
-                    "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
-                    "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
-                    "TOTAL")
+                  "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                  "CICLOMOTOR","MICRO_ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                  "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                  "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                  "TOTAL")
+
+  d2014 <- d2014 %>% 
+    select("ano","chave","UF","MUNICIPIO","CAMINHAO","MICRO_ONIBUS","ONIBUS") %>% 
+    mutate("total"=(d2014$CAMINHAO+d2014$MICRO_ONIBUS+d2014$ONIBUS))
   
 #Tabela 2015----
 
@@ -288,20 +303,23 @@
                     sheet = "JUL_2015", skip = 3)
 
   d2015 <- d2015 %>% 
+    mutate(MUNICIPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2015)
 
   d2015 <- d2015[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
                   16,17,18,19,20,21,22,23,24,3)]
 
-  dput(names(d2015))
-  
   names(d2015) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
-                    "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
-                    "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
-                    "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
-                    "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
-                    "TOTAL")
+                  "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                  "CICLOMOTOR","MICRO_ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                  "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                  "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                  "TOTAL")
+
+  d2015 <- d2015 %>% 
+    select("ano","chave","UF","MUNICIPIO","CAMINHAO","MICRO_ONIBUS","ONIBUS") %>% 
+    mutate("total"=(d2015$CAMINHAO+d2015$MICRO_ONIBUS+d2015$ONIBUS))
   
 #Tabela 2016----
 
@@ -309,20 +327,23 @@
                     sheet = "DEZ_2016", skip = 3)
 
   d2016 <- d2016 %>% 
+    mutate(MUNICIPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2016)
 
   d2016 <- d2016[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
                   16,17,18,19,20,21,22,23,24,3)]
 
-  dput(names(d2016))
-  
   names(d2016) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
-                    "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
-                    "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
-                    "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
-                    "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
-                    "TOTAL")
+                  "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                  "CICLOMOTOR","MICRO_ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                  "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                  "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                  "TOTAL")
+
+  d2016 <- d2016 %>% 
+    select("ano","chave","UF","MUNICIPIO","CAMINHAO","MICRO_ONIBUS","ONIBUS") %>% 
+    mutate("total"=(d2016$CAMINHAO+d2016$MICRO_ONIBUS+d2016$ONIBUS))
   
 #Tabela 2017----
 
@@ -330,26 +351,36 @@
                     sheet = "DEZ_2017", skip = 2)
 
   d2017 <- d2017 %>% 
+    mutate(MUNICIPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2017)
 
   d2017 <- d2017[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
                   16,17,18,19,20,21,22,23,24,3)]
 
-  dput(names(d2017))
-  
   names(d2017) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
-                    "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
-                    "CICLOMOTOR","MICRO-ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
-                    "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
-                    "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
-                    "TOTAL")
+                  "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                  "CICLOMOTOR","MICRO_ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                  "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                  "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                  "TOTAL")
+
+  d2017 <- d2017 %>% 
+    select("ano","chave","UF","MUNICIPIO","CAMINHAO","MICRO_ONIBUS","ONIBUS") %>% 
+    mutate("total"=(d2017$CAMINHAO+d2017$MICRO_ONIBUS+d2017$ONIBUS))
   
 #Juntando todas as tabelas----
 
   demanda <- rbind(d2003,d2004,d2005,d2006,d2007,d2008,d2009,d2010,
                  d2011,d2012,d2013,d2014,d2015,d2016,d2017)
 
+  rm(d2003,d2004,d2005,d2006,d2007,d2008,d2009,d2010,
+     d2011,d2012,d2013,d2014,d2015,d2016,d2017)
+  
+#Destino tabela----
+  
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base")
+  
 #Exportando----
 
   write.table(demanda,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
