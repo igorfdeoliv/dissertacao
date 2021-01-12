@@ -1,35 +1,35 @@
 #Carregando pacotes a setem utilizados----
 
-  library(dplyr)
-  library(stringr)
+library(dplyr)
+library(stringr)
 
 #Limpando bases da memória----
 
-  rm(list=ls())
+rm(list=ls())
 
 #Diretório local de trabalho----
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/rais")
+setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/rais")
 
 #Organizando e manipulando a base de dados----
 
 #Informações sobre os salários médios recebidos por culturas
 
-  ano1 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2003%20consulta84077740.csv"
-  ano2 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2004%20consulta93907528.csv"
-  ano3 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2005%20consulta599322.csv"
-  ano4 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2006%20consulta88878957.csv"
-  ano5 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2007%20consulta20674703.csv"
-  ano6 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2008%20consulta93264368.csv"
-  ano7 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2009%20consulta21922120.csv"
-  ano8 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2010%20consulta59993853.csv"
-  ano9 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2011%20consulta18517870.csv"
-  ano10 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2012%20consulta50313615.csv"
-  ano11 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2013%20consulta91523342.csv"
-  ano12 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2014%20consulta95908753.csv"
-  ano13 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/Dataset/rais/2015%20consulta58737713.csv"
-  ano14 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2016%20consulta34072961.csv"
-  ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2017%20consulta90972656.csv"
+ano1 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2003%20consulta84077740.csv"
+ano2 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2004%20consulta93907528.csv"
+ano3 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2005%20consulta599322.csv"
+ano4 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2006%20consulta88878957.csv"
+ano5 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2007%20consulta20674703.csv"
+ano6 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2008%20consulta93264368.csv"
+ano7 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2009%20consulta21922120.csv"
+ano8 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2010%20consulta59993853.csv"
+ano9 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2011%20consulta18517870.csv"
+ano10 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2012%20consulta50313615.csv"
+ano11 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2013%20consulta91523342.csv"
+ano12 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2014%20consulta95908753.csv"
+ano13 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2015%20consulta58737713.csv"
+ano14 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2016%20consulta34072961.csv"
+ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2017%20consulta90972656.csv"
 
 #Tabela 2003----
 
@@ -49,6 +49,8 @@
 
 #Reorganizando colunas:
 
+  rm(ano1)
+  
   w2003 <- w2003[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #Tabela 2004----
@@ -65,6 +67,8 @@
 
 #Reorganizando colunas
 
+  rm(ano2)
+  
   w2004 <- w2004[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2005----
@@ -81,6 +85,8 @@
 
 #Reorganizando colunas
 
+  rm(ano3)
+  
   w2005 <- w2005[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2006----
@@ -97,6 +103,8 @@
 
 #Reorganizando colunas
 
+  rm(ano4)
+  
   w2006 <- w2006[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2007----
@@ -113,6 +121,8 @@
 
 #Reorganizando colunas
 
+  rm(ano5)
+  
   w2007 <- w2007[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2008----
@@ -129,6 +139,8 @@
 
 #Reorganizando colunas
 
+  rm(ano6)
+  
   w2008 <- w2008[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2009----
@@ -145,6 +157,8 @@
 
 #Reorganizando colunas
 
+  rm(ano7)
+  
   w2009 <- w2009[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2010----
@@ -161,6 +175,8 @@
 
 #Reorganizando colunas
 
+  rm(ano8)
+  
   w2010 <- w2010[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2011----
@@ -177,6 +193,8 @@
 
 #Reorganizando colunas
 
+  rm(ano9)
+  
   w2011 <- w2011[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2012----
@@ -193,6 +211,8 @@
 
 #Reorganizando colunas
 
+  rm(ano10)
+  
   w2012 <- w2012[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2013----
@@ -209,6 +229,8 @@
 
 #Reorganizando colunas
 
+  rm(ano11)
+  
   w2013 <- w2013[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2014----
@@ -225,6 +247,8 @@
 
 #Reorganizando colunas
 
+  rm(ano12)
+  
   w2014 <- w2014[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2015----
@@ -241,6 +265,8 @@
 
 #Reorganizando colunas
 
+  rm(ano13)
+  
   w2015 <- w2015[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2016----
@@ -257,6 +283,8 @@
 
 #Reorganizando colunas
 
+  rm(ano14)
+  
   w2016 <- w2016[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #tabela 2017----
@@ -273,12 +301,21 @@
 
 #Reorganizando colunas
 
+  rm(ano15)
+  
   w2017 <- w2017[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #Juntando todas as tabelas----
 
-  rais <- rbind(w2003,w2004,w2005,w2006,w2007,w2008,w2009,w2010,
+rais <- rbind(w2003,w2004,w2005,w2006,w2007,w2008,w2009,w2010,
               w2011,w2012,w2013,w2014,w2015,w2016,w2017)
+
+rm(w2003,w2004,w2005,w2006,w2007,w2008,w2009,w2010,
+   w2011,w2012,w2013,w2014,w2015,w2016,w2017)
+
+#Destino tabela----
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base")  
 
 #Exportando----
 
