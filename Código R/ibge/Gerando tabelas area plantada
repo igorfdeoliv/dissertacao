@@ -45,6 +45,8 @@
 
 #Reorganizando as colunas:
 
+    rm(ano1)
+
     h2003 <- h2003[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2004----
@@ -60,6 +62,8 @@
         mutate("ano"=2004)
 
 #Reorganizando as colunas:
+
+    rm(ano2)
 
     h2004 <- h2004[,c(7,1,2,3,4,5,6)]
 
@@ -77,6 +81,8 @@
 
 #Reorganizando as colunas:
 
+    rm(ano3)
+
     h2005 <- h2005[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2006----
@@ -93,10 +99,12 @@
 
 #Reorganizando as colunas:
 
+    rm(ano4)
+
     h2006 <- h2006[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2007----
-  
+
     h2007<-read.csv(ano5, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
 
@@ -108,6 +116,8 @@
         mutate("ano"=2007)
 
 #Reorganizando as colunas:
+
+    rm(ano5)
 
     h2007 <- h2007[,c(7,1,2,3,4,5,6)]
 
@@ -125,6 +135,8 @@
 
 #Reorganizando as colunas:
 
+    rm(ano6)
+
     h2008 <- h2008[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2009----
@@ -140,6 +152,8 @@
         mutate("ano"=2009)
 
 #Reorganizando as colunas:
+
+    rm(ano7)
 
     h2009 <- h2009[,c(7,1,2,3,4,5,6)]
 
@@ -157,6 +171,8 @@
 
 #Reorganizando as colunas:
 
+    rm(ano8)
+
     h2010 <- h2010[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2011----
@@ -172,6 +188,8 @@
         mutate("ano"=2011)
 
 #Reorganizando as colunas:
+
+    rm(ano9)
 
     h2011 <- h2011[,c(7,1,2,3,4,5,6)]
 
@@ -189,6 +207,8 @@
 
 #Reorganizando as colunas:
 
+    rm(ano10)
+
     h2012 <- h2012[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2013----
@@ -204,6 +224,8 @@
         mutate("ano"=2013)
 
 #Reorganizando as colunas:
+
+    rm(ano11)
 
     h2013 <- h2013[,c(7,1,2,3,4,5,6)]
 
@@ -221,6 +243,8 @@
 
 #Reorganizando as colunas:
 
+    rm(ano12)
+
     h2014 <- h2014[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2015----
@@ -236,6 +260,8 @@
         mutate("ano"=2015)
 
 #Reorganizando as colunas:
+
+    rm(ano13)
 
     h2015 <- h2015[,c(7,1,2,3,4,5,6)]
 
@@ -253,6 +279,8 @@
 
 #Reorganizando as colunas:
 
+    rm(ano14)
+
     h2016 <- h2016[,c(7,1,2,3,4,5,6)]
 
 #Tabela 2017----
@@ -269,6 +297,8 @@
 
 #Reorganizando as colunas
 
+    rm(ano15)
+
     h2017 <- h2017[,c(7,1,2,3,4,5,6)]
 
 #Juntando todas as tabelas----
@@ -276,6 +306,13 @@
     area_plantada <- rbind(h2003,h2004,h2005,h2006,h2007,h2008,h2009,
                        h2010,h2011,h2012,h2013,h2014,h2015,h2016,h2017)
 
+    rm(h2003,h2004,h2005,h2006,h2007,h2008,h2009,
+        h2010,h2011,h2012,h2013,h2014,h2015,h2016,h2017)
+
+#Destino tabela
+  
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base")
+  
 #Exportando----
 
     write.table(area_plantada,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
