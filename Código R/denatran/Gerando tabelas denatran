@@ -352,7 +352,7 @@
 
 #Exportando----
 
-  write.table(demanda,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE
+  write.table(demanda,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
 
 

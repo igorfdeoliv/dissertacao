@@ -344,10 +344,10 @@ Tabela 2005----
 
 #Tabela 2009----
 
-    df<- read_xlsx("2009 rel517.xlsx", skip = 6,n_max = 22083,
-                 col_names = c("mun","custeio_cont", "custeio_val", "inv_cont", "inv_val",
-                               "com_cont", "com_val","tot_cont", "tot_val"))
-  
+    df<- read_xlsx("2009 rel517.xlsx", skip = 6,n_max = 22083,  
+               col_names = c("mun","custeio_cont", "custeio_val", "inv_cont", "inv_val",
+                             "com_cont", "com_val","tot_cont", "tot_val"))
+
     df<-df %>% 
         mutate(i=seq(1,22083,1)) %>% 
         mutate(custeio_cont=ifelse(mun[i+2]=="Pecuária",custeio_cont[i+3],NA)) %>% 
@@ -359,60 +359,61 @@ Tabela 2005----
         mutate(tot_cont=ifelse(mun[i+2]=="Pecuária",tot_cont[i+3],NA)) %>% 
         mutate(tot_val=ifelse(mun[i+2]=="Pecuária",tot_val[i+3],NA)) %>% 
         mutate(estado=ifelse(mun[i+2]=="Agrícola"& mun!="Total",1,0)) %>% 
-        filter(mun!="Agrícola" & mun!="Pecuária" & mun!="Total") %>% 
-        mutate(i=seq(1,5561,1)) %>% 
+        mutate(regra=ifelse(estado[i+1]==1,1,0)) %>% 
+        filter(mun!="Agrícola" & mun!="Pecuária" & mun!="Total" & regra==0) %>% 
+        select(-"regra") %>% 
+        mutate(i=seq(1,5534,1)) %>% 
         mutate(estado=ifelse(estado==1,i,0))
-  
+
     est<-df %>% 
         select("mun","estado") %>% 
         filter(estado>=1)
-  
+
     obs<-data.frame(mun=c("Total"),
-                  estado=c(5561))
-  
+                estado=c(5535))
+
     est<-rbind(est,obs)
-  
+
     rm(obs)
-  
+
     est<-est %>% 
         mutate(i=seq(1,28,1)) %>% 
         mutate(num=estado[i+1]-estado[i]-1)
-  
+
     est<-est[1:27,]
-        attach(est)
-  
+    attach(est)
     estado<-rep(mun[i],num[i])
-  
-    df<-df %>%
+
+    df<-df %>% 
         filter(estado==0) %>% 
         select(-"i",-"estado")
-  
+
     df<-cbind(estado,df)
-  
+
     rm(est,estado)
-  
+
     df_estado<-data.frame(sigla=c("AC","AL","AP","AM","BA","CE","DF","ES","GO",
-                                "MA","MT","MS","MG","PA","PB","PR","PE","PI",
-                                "RJ","RN","RS","RO","RR","SC","SP","SE","TO"),
-                        estado=c("ACRE","ALAGOAS","AMAPÁ","AMAZONAS","BAHIA","CEARÁ",
-                                 "DISTRITO FEDERAL", "ESPÍRITO SANTO", "GOIÁS", "MARANHÃO",
-                                 "MATO GROSSO", "MATO GROSSO DO SUL", "MINAS GERAIS", "PARÁ",
-                                 "PARAÍBA", "PARANÁ", "PERNAMBUCO", "PIAUÍ", "RIO DE JANEIRO",
-                                 "RIO GRANDE DO NORTE", "RIO GRANDE DO SUL", "RONDÔNIA", "RORAIMA",
-                                 "SANTA CATARINA", "SÃO PAULO", "SERGIPE", "TOCANTINS"))
+                              "MA","MT","MS","MG","PA","PB","PR","PE","PI",
+                              "RJ","RN","RS","RO","RR","SC","SP","SE","TO"),
+                      estado=c("ACRE","ALAGOAS","AMAPÁ","AMAZONAS","BAHIA","CEARÁ",
+                               "DISTRITO FEDERAL", "ESPÍRITO SANTO", "GOIÁS", "MARANHÃO",
+                               "MATO GROSSO", "MATO GROSSO DO SUL", "MINAS GERAIS", "PARÁ",
+                               "PARAÍBA", "PARANÁ", "PERNAMBUCO", "PIAUÍ", "RIO DE JANEIRO",
+                               "RIO GRANDE DO NORTE", "RIO GRANDE DO SUL", "RONDÔNIA", "RORAIMA",
+                               "SANTA CATARINA", "SÃO PAULO", "SERGIPE", "TOCANTINS"))
+
+    c2009 <- right_join(df_estado, df, c("estado"))
   
-    df<-right_join(df_estado, df, c("estado"))
-  
-    names(df) <- c("estado","uf","municipio","c.custeio","v.custeio",
+    names(c2009) <- c("estado","uf","municipio","c.custeio","v.custeio",
                  "c.investimento","v.investimento","c.comercializacao",
                  "v.comercializacao","total.contratos","valores.totais")
   
-    c2008 <- df %>% 
+    c2009 <- c2009 %>% 
         select("estado","municipio","total.contratos","valores.totais") %>% 
         mutate("chave"=str_c(municipio," (", estado,")")) %>% 
         mutate("ano"=2009)
   
-    c2009 <- c2009[,c(6,5,1,2,3,4)]  
+    c2009 <- c2009[,c(6,5,1,2,3,4)]
 
 #Tabela 2010----
 
@@ -747,9 +748,9 @@ Tabela 2005----
 
 #Juntando todas as tableas----
 
-    pronaf <- rbind(c2003,c2004,c2005,c2006,c2007,c2008c,c2009,c2010,
+    bacen <- rbind(c2003,c2004,c2005,c2006,c2007,c2008,c2009,c2010,
         c2011,c2012,c2013,c2014,c2015,c2016,c2017)
 
     #Exportando----
 
-    write.table(pronaf,file='pronaf.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+    write.table(pronaf,file='bacen.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
