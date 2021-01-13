@@ -1,64 +1,650 @@
-#Pacotes a serem utilizados----
+#Carregando pacotes a serem utilizados----
 
-    library(dplyr)
-    library(stringr)
-    
-#Limpando dados da memória----
+  library(dplyr)
+  library(stringr)
 
-    rm(list=ls())
+#Limpando bases da memória----
 
-#Importando tabelas geradas----
+  rm(list=ls())
 
-    #Quantidade produzida por cultura
+#Diretório local de trabalho----
 
-    qprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/quantidade_produzida.csv"
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/quantidade produzida")
 
-    #Area plantada por cultura em hectares
+#Organizando tabelas----
 
-    hprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/area_plantada.csv"
+#Quantidade produzida por cultura em toneladas
 
-    #Valor da produção por cultura em mil reais
+  ano1 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/quantidade%20produzida/2003%20tabela5457.csv"
+  ano2 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/quantidade%20produzida/2004%20tabela5457.csv"
+  ano3 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/quantidade%20produzida/2005%20tabela5457.csv"
+  ano4 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/quantidade%20produzida/2006%20tabela5457.csv"
+  ano5 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/quantidade%20produzida/2007%20tabela5457.csv"
+  ano6 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/quantidade%20produzida/2008%20tabela5457.csv"
+  ano7 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/quantidade%20produzida/2009%20tabela5457.csv"
+  ano8 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/quantidade%20produzida/2010%20tabela5457.csv"
+  ano9 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/quantidade%20produzida/2011%20tabela5457.csv"
+  ano10 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/quantidade%20produzida/2012%20tabela5457.csv"
+  ano11 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/quantidade%20produzida/2013%20tabela5457.csv"
+  ano12 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/quantidade%20produzida/2014%20tabela5457.csv"
+  ano13 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/quantidade%20produzida/2015%20tabela5457.csv"
+  ano14 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/quantidade%20produzida/2016%20tabela5457.csv"
+  ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/quantidade%20produzida/2017%20tabela5457.csv"
 
-    vprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/valor_producao.csv"
+#Tabela 2003----
 
-    #Salários recebidos pelos produtores ou atividades relacionadas as culturas
+  q2003<-read.csv(ano1, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
 
-    salarios <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/rais.csv"
+  q2003<-q2003[-1,]
 
-    #Proxy para demanda de biodiesel
+  q2003<-q2003 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2003)
 
-    dbio <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/demanda.csv"
+#Reorganizando as colunas
 
-    #Informações sobre os municipios
+  rm(ano1)
 
-    ibge <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/pibmun.csv"
+  q2003 <- q2003[,c(7,1,2,3,4,5,6)]
 
-    #Áreas mínimas comparáveis
+#Tabela 2004----
 
-    amc <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/amc/APST_AMC.csv"
+  q2004<-read.csv(ano2, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
 
-#Organizando a base de dados principal----
+  q2004<-q2004[-1,]
 
-    q_prod <- read.csv(qprod,sep=";",dec=".")
+  q2004<-q2004 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2004)
 
-    names(q_prod) <- c("ano","cod_mun","municipio","qdende","qgirassol",
-                    "qmamona","qsoja")
+#Reorganizando as colunas
 
-    h_prod <- read.csv(hprod,sep=";",dec=".")
+  rm(ano2)
 
-    names(h_prod) <- c("ano","cod_mun","municipio","hdende","hgirassol",
-                     "hmamona","hsoja")
+  q2004 <- q2004[,c(7,1,2,3,4,5,6)]
 
-    base <- right_join(q_prod,h_prod,c("cod_mun"))
+#Tabela 2005----
 
-    base <- base[,c(8,2,3,4,5,6,7,9,10,11,12,13,1)]
+  q2005<-read.csv(ano3, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
 
-    #Gerando variável dependente produtividade
+  q2005<-q2005[-1,]
 
-    base <- base %>% 
-        mutate("prod_dende"=(base$qdende/base$hdende)) %>% 
-        mutate("prod_girassol"=(base$qgirassol/base$hgirassol)) %>%
-        mutate("prod_mamona"=(base$qmamona/base$hmamona)) %>% 
-        mutate("prod_soja"=(base$qsoja/base$hsoja)) %>% 
-        select("ano.y","cod_mun","municipio.x","prod_dende",
-                "prod_girassol","prod_mamona","prod_soja")
+  q2005<-q2005 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2005)
+
+#Reorganizando as colunas
+
+  rm(ano3)
+
+  q2005 <- q2005[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2006----
+  
+  q2006<-read.csv(ano4, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  q2006<-q2006[-1,]
+
+  q2006<-q2006 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2006)
+
+#Reorganizando as colunas
+
+  rm(ano4)
+
+  q2006 <- q2006[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2007----
+
+  q2007<-read.csv(ano5, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  q2007<-q2007[-1,]
+
+  q2007<-q2007 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2007)
+
+#Reorganizando as colunas
+
+  rm(ano5)
+  
+  q2007 <- q2007[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2008----
+
+  q2008<-read.csv(ano6, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  q2008<-q2008[-1,]
+
+  q2008<-q2008 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2008)
+
+#Reorganizando as colunas
+
+  rm(ano6)
+
+  q2008 <- q2008[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2009----
+
+  q2009<-read.csv(ano7, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  q2009<-q2009[-1,]
+
+  q2009<-q2009 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2009)
+
+#Reorganizando as colunas
+
+  rm(ano7)
+
+  q2009 <- q2009[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2010----
+
+  q2010<-read.csv(ano8, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  q2010<-q2010[-1,]
+
+  q2010<-q2010 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2010)
+
+#Reorganizando as colunas
+
+  rm(ano8)
+
+  q2010 <- q2010[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2011----
+
+  q2011<-read.csv(ano9, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  q2011<-q2011[-1,]
+
+  q2011<-q2011 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2011)
+
+#Reorganizando as colunas
+
+  rm(ano9)
+
+  q2011 <- q2011[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2012----
+
+  q2012<-read.csv(ano10, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  q2012<-q2012[-1,]
+
+  q2012<-q2012 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2012)
+
+#Reorganizando as colunas
+
+  rm(ano10)
+
+  q2012 <- q2012[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2013----
+
+  q2013<-read.csv(ano11, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  q2013<-q2013[-1,]
+
+  q2013<-q2013 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2013)
+
+#Reorganizando as colunas
+
+  rm(ano11)
+
+  q2013 <- q2013[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2014----
+
+  q2014<-read.csv(ano12, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  q2014<-q2014[-1,]
+
+  q2014<-q2014 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2014)
+
+#Reorganizando as colunas
+
+  rm(ano12)
+
+  q2014 <- q2014[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2015----
+
+  q2015<-read.csv(ano13, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  q2015<-q2015[-1,]
+
+  q2015<-q2015 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2015)
+
+#Reorganizando as colunas
+
+  rm(ano13)
+
+  q2015 <- q2015[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2016----
+
+  q2016<-read.csv(ano14, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  q2016<-q2016[-1,]
+
+  q2016<-q2016 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2016)
+
+#Reorganizando as colunas
+
+  rm(ano14)
+
+  q2016 <- q2016[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2017----
+
+  q2017<-read.csv(ano15, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  q2017<-q2017[-1,]
+
+  q2017<-q2017 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2017)
+
+#Reorganizando as colunas
+
+  rm(ano15)
+
+  q2017 <- q2017[,c(7,1,2,3,4,5,6)]
+
+#Diretório local de trabalho----
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/area plantada")
+
+#Organizando tabelas----
+
+#Área plantada por cultura em hectares----
+
+  ano1 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2003%20tabela5457.csv"
+  ano2 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2004%20tabela5457.csv"
+  ano3 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2005%20tabela5457.csv"
+  ano4 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2006%20tabela5457.csv"
+  ano5 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2007%20tabela5457.csv"
+  ano6 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2008%20tabela5457.csv"
+  ano7 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2009%20tabela5457.csv"
+  ano8 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2010%20tabela5457.csv"
+  ano9 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2011%20tabela5457.csv"
+  ano10 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2012%20tabela5457.csv"
+  ano11 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2013%20tabela5457.csv"
+  ano12 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2014%20tabela5457.csv"
+  ano13 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2015%20tabela5457.csv"
+  ano14 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2016%20tabela5457.csv"
+  ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2017%20tabela5457.csv"
+
+#Tabela 2003----
+
+  h2003<-read.csv(ano1, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  h2003<-h2003[-1,]
+
+  h2003<-h2003 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2003)
+
+#Reorganizando as colunas:
+
+  rm(ano1)
+
+  h2003 <- h2003[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2004----
+
+  h2004<-read.csv(ano2, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  h2004<-h2004[-1,]
+
+  h2004<-h2004 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2004)
+
+#Reorganizando as colunas:
+
+  rm(ano2)
+
+  h2004 <- h2004[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2005----
+
+  h2005<-read.csv(ano3, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  h2005<-h2005[-1,]
+
+  h2005<-h2005 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2005)
+
+#Reorganizando as colunas:
+
+  rm(ano3)
+
+  h2005 <- h2005[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2006----
+
+  h2006<-read.csv(ano4, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  h2006<-h2006[-1,]
+
+  h2006<-h2006 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2006)
+
+#Reorganizando as colunas:
+
+  rm(ano4)
+
+  h2006 <- h2006[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2007----
+
+  h2007<-read.csv(ano5, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  h2007<-h2007[-1,]
+
+  h2007<-h2007 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2007)
+
+#Reorganizando as colunas:
+
+  rm(ano5)
+
+  h2007 <- h2007[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2008----
+
+  h2008<-read.csv(ano6, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  h2008<-h2008[-1,]
+
+  h2008<-h2008 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2008)
+
+#Reorganizando as colunas:
+
+  rm(ano6)
+
+  h2008 <- h2008[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2009----
+
+  h2009<-read.csv(ano7, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  h2009<-h2009[-1,]
+
+  h2009<-h2009 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2009)
+
+#Reorganizando as colunas:
+
+  rm(ano7)
+
+  h2009 <- h2009[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2010----
+
+  h2010<-read.csv(ano8, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  h2010<-h2010[-1,]
+
+  h2010<-h2010 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2010)
+
+#Reorganizando as colunas:
+
+  rm(ano8)
+
+  h2010 <- h2010[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2011----
+
+  h2011<-read.csv(ano9, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  h2011<-h2011[-1,]
+
+  h2011<-h2011 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2011)
+
+#Reorganizando as colunas:
+
+  rm(ano9)
+
+  h2011 <- h2011[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2012----
+
+  h2012<-read.csv(ano10, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  h2012<-h2012[-1,]
+
+  h2012<-h2012 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2012)
+
+#Reorganizando as colunas:
+
+  rm(ano10)
+
+  h2012 <- h2012[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2013----
+
+  h2013<-read.csv(ano11, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  h2013<-h2013[-1,]
+
+  h2013<-h2013 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2013)
+
+#Reorganizando as colunas:
+
+  rm(ano11)
+
+  h2013 <- h2013[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2014----
+
+  h2014<-read.csv(ano12, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  h2014<-h2014[-1,]
+
+  h2014<-h2014 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2014)
+
+#Reorganizando as colunas:
+
+  rm(ano12)
+
+  h2014 <- h2014[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2015----
+
+  h2015<-read.csv(ano13, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  h2015<-h2015[-1,]
+
+  h2015<-h2015 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2015)
+
+#Reorganizando as colunas:
+
+  rm(ano13)
+
+  h2015 <- h2015[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2016----
+
+  h2016<-read.csv(ano14, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  h2016<-h2016[-1,]
+  
+  h2016<-h2016 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2016)
+
+#Reorganizando as colunas:
+
+  rm(ano14)
+
+  h2016 <- h2016[,c(7,1,2,3,4,5,6)]
+
+#Tabela 2017----
+
+  h2017<-read.csv(ano15, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  h2017<-h2017[-1,]
+
+  h2017<-h2017 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2017)
+
+#Reorganizando as colunas
+
+  rm(ano15)
+
+  h2017 <- h2017[,c(7,1,2,3,4,5,6)]
+
+#Combinando bases----
+  
+  base1 <- right_join(q2003,h2003,by="Cód.")
+  base2 <- right_join(q2004,h2004,by="Cód.")
+  base3 <- right_join(q2005,h2005,by="Cód.")
+  base4 <- right_join(q2006,h2006,by="Cód.")
+  base5 <- right_join(q2007,h2007,by="Cód.")
+  base6 <- right_join(q2008,h2008,by="Cód.")
+  base7 <- right_join(q2009,h2009,by="Cód.")
+  base8 <- right_join(q2010,h2010,by="Cód.")
+  base9 <- right_join(q2011,h2011,by="Cód.")
+  base10 <- right_join(q2012,h2012,by="Cód.")
+  base11 <- right_join(q2013,h2013,by="Cód.")
+  base12 <- right_join(q2014,h2014,by="Cód.")
+  base13 <- right_join(q2015,h2015,by="Cód.")
+  base14 <- right_join(q2016,h2016,by="Cód.")
+  base15 <- right_join(q2017,h2017,by="Cód.")
+
+#Juntando tabelas----
+  
+  base <- rbind(base1,base2,base3,base4,base5,base6,base7,base8,
+              base9,base10,base11,base12,base13,base14,base15)
+
+#Organizando e renomeando variáveis----
+  
+  base <- base %>% 
+    select(-"ano.y",-"Município.y")
+  
+  names(base) <- c("ano","cod_mun","municipio","q_dende","q_girassol",
+                   "q_mamona","q_soja","h_dende","h_girassol","h_mamona",
+                   "h_soja")
+
+#Criando a variável produtividade por cultura----
+  
+  base <- base %>% 
+    mutate("prod_dende"=(base$q_dende/base$h_dende)) %>% 
+    mutate("prod_girassol"=(base$q_girassol/base$h_girassol)) %>% 
+    mutate("prod_mamona"=(base$q_mamona/base$h_mamona)) %>% 
+    mutate("prod_soja"=(base$q_soja/base$h_soja)) %>% 
+    select(-"q_dende",-"q_girassol",-"q_mamona",-"q_soja",-"h_dende",
+           -"h_girassol",-"h_mamona",-"h_soja")
+  
+  rm(q2003,q2004,q2005,q2006,q2007,q2008,q2009,q2010,q2011,q2012,q2013,
+     q2014,q2015,q2016,q2017,h2003,h2004,h2005,h2006,h2007,h2008,h2009,
+     h2010,h2011,h2012,h2013,h2014,h2015,h2016,h2017,base1,base2,base3,
+     base4,base5,base6,base7,base8,base9,base10,base11,base12,base13,
+     base14,base15)
+  
+#Salvando base----
+  
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base")
+  
+  write.table(base,file='base.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
