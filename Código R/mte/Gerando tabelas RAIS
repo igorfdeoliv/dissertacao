@@ -7,10 +7,6 @@ library(stringr)
 
 rm(list=ls())
 
-#Diretório local de trabalho----
-
-setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/rais")
-
 #Organizando e manipulando a base de dados----
 
 #Informações sobre os salários médios recebidos por culturas
@@ -33,6 +29,12 @@ ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset
 
 #Tabela 2003----
 
+#Diretório local de trabalho----
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/rais")
+
+#Importando tabela
+
   w2003 <- read.table(ano1, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
 
   w2003 <- w2003 %>% 
@@ -49,11 +51,21 @@ ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset
 
 #Reorganizando colunas:
 
-  rm(ano1)
-  
   w2003 <- w2003[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
+#Exportando tabela
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2003")
+  write.table(w2003,file='rais.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+  rm(ano1,w2003)
+
 #Tabela 2004----
+
+#Diretório local de trabalho----
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/rais")
+
+#Importando tabela
 
   w2004 <- read.table(ano2, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
 
@@ -67,11 +79,21 @@ ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset
 
 #Reorganizando colunas
 
-  rm(ano2)
-  
   w2004 <- w2004[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
+#Exportando tabela
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2004")
+  write.table(w2004,file='rais.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+  rm(ano2,w2004)
+
 #tabela 2005----
+
+#Diretório local de trabalho----
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/rais")
+
+#Importando tabela
 
   w2005 <- read.table(ano3, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
 
@@ -85,11 +107,21 @@ ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset
 
 #Reorganizando colunas
 
-  rm(ano3)
-  
   w2005 <- w2005[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
+#Exportando tabela
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2005")
+  write.table(w2005,file='rais.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+  rm(ano3,w2005)
+
 #tabela 2006----
+
+#Diretório local de trabalho----
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/rais")
+
+#Importando tabela
 
   w2006 <- read.table(ano4, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
 
@@ -103,11 +135,21 @@ ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset
 
 #Reorganizando colunas
 
-  rm(ano4)
-  
   w2006 <- w2006[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
+#Exportando tabela
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2006")
+  write.table(w2006,file='rais.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+  rm(ano4,w2006)
+
 #tabela 2007----
+
+#Diretório local de trabalho----
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/rais")
+
+#Importando tabela
 
   w2007 <- read.table(ano5, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
 
@@ -121,11 +163,21 @@ ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset
 
 #Reorganizando colunas
 
-  rm(ano5)
-  
   w2007 <- w2007[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
+#Exportando tabela
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2007")
+  write.table(w2007,file='rais.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+  rm(ano5,w2007)
+
 #tabela 2008----
+
+#Diretório local de trabalho----
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/rais")
+
+#Importando tabela
 
   w2008 <- read.table(ano6, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
 
@@ -139,11 +191,21 @@ ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset
 
 #Reorganizando colunas
 
-  rm(ano6)
-  
   w2008 <- w2008[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
+#Exportando tabela
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2008")
+  write.table(w2008,file='rais.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+  rm(ano6,w2008)
+
 #tabela 2009----
+
+#Diretório local de trabalho----
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/rais")
+
+#Importando tabela
 
   w2009 <- read.table(ano7, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
 
@@ -157,11 +219,21 @@ ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset
 
 #Reorganizando colunas
 
-  rm(ano7)
-  
   w2009 <- w2009[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
+#Exportando tabela
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2009")
+  write.table(w2009,file='rais.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+  rm(ano7,w2009)
+
 #tabela 2010----
+
+#Diretório local de trabalho----
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/rais")
+
+#Importando tabela
 
   w2010 <- read.table(ano8, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
 
@@ -175,11 +247,21 @@ ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset
 
 #Reorganizando colunas
 
-  rm(ano8)
-  
   w2010 <- w2010[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
+#Exportando tabela
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2010")
+  write.table(w2010,file='rais.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+  rm(ano8,w2010)
+
 #tabela 2011----
+
+#Diretório local de trabalho----
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/rais")
+
+#Importando tabela
 
   w2011 <- read.table(ano9, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
 
@@ -193,11 +275,21 @@ ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset
 
 #Reorganizando colunas
 
-  rm(ano9)
-  
   w2011 <- w2011[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
+#Exportando tabela
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2011")
+  write.table(w2011,file='rais.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+  rm(ano9,w2011)
+
 #tabela 2012----
+
+#Diretório local de trabalho----
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/rais")
+
+#Importando tabela
 
   w2012 <- read.table(ano10, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
 
@@ -211,11 +303,21 @@ ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset
 
 #Reorganizando colunas
 
-  rm(ano10)
-  
   w2012 <- w2012[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
+#Exportando tabela
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2012")
+  write.table(w2012,file='rais.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+  rm(ano10,w2012)
+
 #tabela 2013----
+
+#Diretório local de trabalho----
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/rais")
+
+#Importando tabela
 
   w2013 <- read.table(ano11, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
 
@@ -229,11 +331,21 @@ ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset
 
 #Reorganizando colunas
 
-  rm(ano11)
-  
   w2013 <- w2013[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
+#Exportando tabela
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2013")
+  write.table(w2013,file='rais.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+  rm(ano11,w2013)
+
 #tabela 2014----
+
+#Diretório local de trabalho----
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/rais")
+
+#Importando tabela
 
   w2014 <- read.table(ano12, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
 
@@ -247,11 +359,21 @@ ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset
 
 #Reorganizando colunas
 
-  rm(ano12)
-  
   w2014 <- w2014[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
+#Exportando tabela
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2014")
+  write.table(w2014,file='rais.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+  rm(ano12,w2014)
+
 #tabela 2015----
+
+#Diretório local de trabalho----
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/rais")
+
+#Importando tabela
 
   w2015 <- read.table(ano13, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
 
@@ -265,11 +387,21 @@ ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset
 
 #Reorganizando colunas
 
-  rm(ano13)
-  
   w2015 <- w2015[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
+#Exportando tabela
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2015")
+  write.table(w2015,file='rais.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+  rm(ano13,w2015)
+
 #tabela 2016----
+
+#Diretório local de trabalho----
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/rais")
+
+#Importando tabela
 
   w2016 <- read.table(ano14, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
 
@@ -283,11 +415,21 @@ ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset
 
 #Reorganizando colunas
 
-  rm(ano14)
-  
   w2016 <- w2016[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
+#Exportando tabela
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2016")
+  write.table(w2016,file='rais.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+  rm(ano14,w2016)
+
 #tabela 2017----
+
+#Diretório local de trabalho----
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/rais")
+
+#Importando tabela
 
   w2017 <- read.table(ano15, header=T, sep=";", dec = ",", nrows = 5658, skip = 1)
 
@@ -301,23 +443,10 @@ ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset
 
 #Reorganizando colunas
 
-  rm(ano15)
-  
   w2017 <- w2017[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
-#Juntando todas as tabelas----
+  #Exportando tabela
 
-rais <- rbind(w2003,w2004,w2005,w2006,w2007,w2008,w2009,w2010,
-              w2011,w2012,w2013,w2014,w2015,w2016,w2017)
-
-rm(w2003,w2004,w2005,w2006,w2007,w2008,w2009,w2010,
-   w2011,w2012,w2013,w2014,w2015,w2016,w2017)
-
-#Destino tabela----
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base")  
-
-#Exportando----
-
-  write.table(rais,file='rais.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
-
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2017")
+  write.table(w2017,file='rais.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+  rm(ano15,w2017)

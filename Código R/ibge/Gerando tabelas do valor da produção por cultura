@@ -7,10 +7,6 @@
 
     rm(list=ls())
 
-#Diretório local de trabalho----
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/valor da producao")
-
 #Organizando tabelas----
 
 #Valor da produção por cultura em mil reais
@@ -33,6 +29,12 @@
 
 #Tabela 2003----
 
+#Diretório local de trabalho----
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/valor da producao")
+
+#Importando tabela
+
     v2003<-read.csv(ano1, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
 
@@ -45,11 +47,21 @@
 
 #Reorganizando as colunas
 
-    rm(ano1)
-
     v2003 <- v2003[,c(7,1,2,3,4,5,6)]
 
+#Exportando tabela
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2003")
+    write.table(v2003,file='valor_producao.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    rm(ano1,v2003)
+
 #Tabela 2004----
+
+#Diretório local de trabalho----
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/valor da producao")
+
+#Importando tabela
 
     v2004<-read.csv(ano2, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -63,11 +75,21 @@
 
 #Reorganizando as colunas
 
-    rm(ano2)
-
     v2004 <- v2004[,c(7,1,2,3,4,5,6)]
 
+#Exportando tabela
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2004")
+    write.table(v2004,file='valor_producao.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    rm(ano2,v2004)
+
 #Tabela 2005----
+
+#Diretório local de trabalho----
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/valor da producao")
+
+#Importando tabela
 
     v2005<-read.csv(ano3, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -81,11 +103,21 @@
 
 #Reorganizando as colunas
 
-    rm(ano3)
-
     v2005 <- v2005[,c(7,1,2,3,4,5,6)]
 
+#Exportando tabela
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2005")
+    write.table(v2005,file='valor_producao.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    rm(ano3,v2005)
+
 #Tabela 2006----
+
+#Diretório local de trabalho----
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/valor da producao")
+
+#Importando tabela
 
     v2006<-read.csv(ano4, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -99,11 +131,21 @@
 
 #Reorganizando as colunas
 
-    rm(ano4)
-
     v2006 <- v2006[,c(7,1,2,3,4,5,6)]
 
+#Exportando tabela
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2006")
+    write.table(v2006,file='valor_producao.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    rm(ano4,v2006)
+
 #Tabela 2007----
+
+#Diretório local de trabalho----
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/valor da producao")
+
+#Importando tabela
 
     v2007<-read.csv(ano5, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -117,11 +159,21 @@
 
 #Reorganizando as colunas
 
-    rm(ano5)
-
     v2007 <- v2007[,c(7,1,2,3,4,5,6)]
 
+#Exportando tabela
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2007")
+    write.table(v2007,file='valor_producao.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    rm(ano5,v2007)
+
 #Tabela 2008----
+
+#Diretório local de trabalho----
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/valor da producao")
+
+#Importando tabela
 
     v2008<-read.csv(ano6, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -135,11 +187,21 @@
 
 #Reorganizando as colunas
 
-    rm(ano6)
-
     v2008 <- v2008[,c(7,1,2,3,4,5,6)]
 
+#Exportando tabela
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2008")
+    write.table(v2008,file='valor_producao.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    rm(ano6,v2008)
+
 #Tabela 2009----
+
+#Diretório local de trabalho----
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/valor da producao")
+
+#Importando tabela
 
     v2009<-read.csv(ano7, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -153,11 +215,21 @@
 
 #Reorganizando as colunas
 
-    rm(ano7)
-
     v2009 <- v2009[,c(7,1,2,3,4,5,6)]
 
+#Exportando tabela
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2009")
+    write.table(v2009,file='valor_producao.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    rm(ano7,v2009)
+
 #Tabela 2010----
+
+#Diretório local de trabalho----
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/valor da producao")
+
+#Importando tabela
 
     v2010<-read.csv(ano8, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -171,11 +243,21 @@
 
 #Reorganizando as colunas
 
-    rm(ano8)
-
     v2010 <- v2010[,c(7,1,2,3,4,5,6)]
 
+#Exportando tabela
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2010")
+    write.table(v2010,file='valor_producao.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    rm(ano8,v2010)
+
 #Tabela 2011----
+
+#Diretório local de trabalho----
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/valor da producao")
+
+#Importando tabela
 
     v2011<-read.csv(ano9, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -189,11 +271,21 @@
 
 #Reorganizando as colunas
 
-    rm(ano9)
-
     v2011 <- v2011[,c(7,1,2,3,4,5,6)]
 
+#Exportando tabela
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2011")
+    write.table(v2011,file='valor_producao.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    rm(ano9,v2011)
+
 #Tabela 2012----
+
+#Diretório local de trabalho----
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/valor da producao")
+
+#Importando tabela
 
     v2012<-read.csv(ano10, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -207,11 +299,21 @@
 
 #Reorganizando as colunas
 
-    rm(ano10)
-
     v2012 <- v2012[,c(7,1,2,3,4,5,6)]
 
+#Exportando tabela
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2012")
+    write.table(v2012,file='valor_producao.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    rm(ano10,v2012)
+
 #Tabela 2013----
+
+#Diretório local de trabalho----
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/valor da producao")
+
+#Importando tabela
 
     v2013<-read.csv(ano11, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -225,11 +327,21 @@
 
 #Reorganizando as colunas
 
-    rm(ano11)
-
     v2013 <- v2013[,c(7,1,2,3,4,5,6)]
 
+#Exportando tabela
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2013")
+    write.table(v2013,file='valor_producao.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    rm(ano11,v2013)
+
 #Tabela 2014----
+
+#Diretório local de trabalho----
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/valor da producao")
+
+#Importando tabela
 
     v2014<-read.csv(ano12, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -243,11 +355,21 @@
 
 #Reorganizando as colunas
 
-    rm(ano12)
-
     v2014 <- v2014[,c(7,1,2,3,4,5,6)]
 
+#Exportando tabela
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2014")
+    write.table(v2014,file='valor_producao.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    rm(ano12,v2014)
+
 #Tabela 2015----
+
+#Diretório local de trabalho----
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/valor da producao")
+
+#Importando tabela
 
     v2015<-read.csv(ano13, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -261,11 +383,21 @@
 
 #Reorganizando as colunas
 
-    rm(ano13)
-
     v2015 <- v2015[,c(7,1,2,3,4,5,6)]
 
+#Exportando tabela
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2015")
+    write.table(v2015,file='valor_producao.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    rm(ano13,v2015)
+
 #Tabela 2016----
+
+#Diretório local de trabalho----
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/valor da producao")
+
+#Importando tabela
 
     v2016<-read.csv(ano14, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -279,11 +411,21 @@
 
 #Reorganizando as colunas
 
-    rm(ano14)
-
     v2016 <- v2016[,c(7,1,2,3,4,5,6)]
 
+#Exportando tabela
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2016")
+    write.table(v2016,file='valor_producao.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    rm(ano14,v2016)
+
 #Tabela 2017----
+
+#Diretório local de trabalho----
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/valor da producao")
+
+#Importando tabela
 
     v2017<-read.csv(ano15, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
@@ -297,22 +439,10 @@
 
 #Reorganizando as colunas
 
-    rm(ano15)
-
     v2017 <- v2017[,c(7,1,2,3,4,5,6)]
 
-#Juntando todas as tabelas----
+#Exportando tabela
 
-    valor_producao_mil_reais <- rbind(v2003,v2004,v2005,v2006,v2007,v2008,v2009,
-                                  v2010,v2011,v2012,v2013,v2014,v2015,v2016,v2017)
-
-    rm(v2003,v2004,v2005,v2006,v2007,v2008,v2009,
-        v2010,v2011,v2012,v2013,v2014,v2015,v2016,v2017)
-
-#Destino tabela----
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base")
-
-#Exportando----
-
-    write.table(valor_producao_mil_reais,file='valor_producao.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2017")
+    write.table(v2017,file='valor_producao.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    rm(ano15,v2017)
