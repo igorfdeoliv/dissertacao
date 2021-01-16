@@ -92,3 +92,36 @@
     pronaf <- read.csv(contratos,sep=";",dec=".")
   
     rm(demanda)
+
+    pronaf <- read.csv(contratos,sep=";",dec=".")
+  
+    df <- pronaf %>% 
+        filter(estado=="DF")
+  
+    x <- df %>% 
+        group_by(estado) %>% 
+        summarise(t.contratos=sum(as.numeric(total.contratos),na.rm=TRUE))
+  
+    y <- df %>% 
+        group_by(estado) %>% 
+        summarise(v.totais=sum(as.numeric(valores.totais),na.rm=TRUE))
+  
+    df <- right_join(x,y,by="estado")
+  
+    df<- df %>% 
+        mutate("ano"=2003) %>% 
+        mutate("chave"='BRASILIA (DF)') %>% 
+        mutate("municipio"='BRASILIA')
+  
+    df<- df[,c(4,5,1,6,2,3)]
+  
+    names(df) <- c("ano","chave","estado","municipio","total.contratos",
+                 "valores.totais")
+  
+    rm(x,y)
+  
+    pronaf <- pronaf %>% 
+        filter(estado!="DF") %>% 
+  
+    pronaf <- rbind(pronaf,df)
+
