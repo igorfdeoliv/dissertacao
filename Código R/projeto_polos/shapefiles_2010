@@ -9,7 +9,7 @@
 
 #Diretório local de trabalho----
 
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/Shapefile")
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/shapefile")
 
 #Gerando tabela de atributos Projeto Polos de Biodiesel----
 
