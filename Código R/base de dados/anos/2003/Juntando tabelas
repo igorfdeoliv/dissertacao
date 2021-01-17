@@ -135,10 +135,10 @@
   
     df5 <- right_join(df4,pronaf,by="chave")
   
-    names(df5) <- c("ano","cod_mun","chave","q_dende","q_girassol","q_mamona",
-                  "q_soja","h_dende","h_girassol","h_mamona","h_soja",
-                  "v_dende","v_girassol","v_mamona","v_soja","s_dende",
-                  "s_girassol","s_mamona","s_soja","demanda_bio","ano.y",
+    names(df5) <- c("ano","cod_mun","chave","q.dende","q.girassol","q.mamona",
+                  "q.soja","h.dende","h.girassol","h.mamona","h.soja",
+                  "v.dende","v.girassol","v.mamona","v.soja","s.dende",
+                  "s.girassol","s.mamona","s.soja","d.bio","ano.y",
                   "estado","municipio","total.contratos","valores.totais")
   
     b2003 <- df5 %>% 
