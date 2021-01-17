@@ -9,12 +9,12 @@
 
 #Diretório local de trabalho----
 
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/shapefile")
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/Shapefile")
 
 #Gerando tabela de atributos Projeto Polos de Biodiesel----
 
     polos <- read_excel("~/GitHub/dissertacao/dataset/Shapefile/tabela_de_atributos_projeto_polos.xlsx")
-  
+
     polos <- polos %>% 
         mutate(NomMunic=toupper(NomMunic)) %>% 
         mutate(NomMunic=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'´-", "AEIOUAOAEOC    ",NomMunic)) %>% 
@@ -47,8 +47,30 @@
     polos[polos == "SÃO PAULO"] <- "SP"
     polos[polos == "SERGIPE"] <- "SE"
     polos[polos == "TOCANTINS"] <- "TO"
-  
+
     polos <- polos %>% 
         mutate("chave"=str_c(NomMunic," (", NomUF,")"))
+
+    polos <- polos[,c(3,8,2,4,6,1,5,7)]
+
+#Importando tabela de areas minimas comparaveis para criar id----
   
-    polos <- polos[,c(8,5,2,3,4,7,1,6)]
+    amc <- read_excel("~/GitHub/dissertacao/dataset/ibge/amc/AMC_1980_2010.xlsx")
+  
+    names(amc) <- c("municpio","CodMunic","amc")
+  
+    df <- right_join(polos,amc,by="CodMunic")
+  
+    df <- df %>% 
+        filter(NomUF!="NA") %>% 
+        select(-"NomMunic",-"gid",-"ufmunic",-"Região")
+  
+    polos <- df[,c(1,6,2,3,5,4)]
+  
+    names(polos) <- c("cod_mun","amc","chave","estado","municipio","polo")
+
+#Exportando tabela----  
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/shapefile")
+    write.table(polos,file='polos.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    rm(amc,df)
