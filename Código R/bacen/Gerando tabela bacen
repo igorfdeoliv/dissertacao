@@ -49,7 +49,7 @@
 
   c2003 <- c2003 %>% 
     mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
-    mutate("municipio"=str_sub(chave,start=3)) %>% 
+    mutate("municipio"=str_sub(chave,start=4)) %>% 
     mutate("chave"=str_c(municipio," (", estado,")"))
   
   c2003 <- c2003[,c(4,1,5,6,2,3)]
@@ -93,7 +93,7 @@
 
   c2004 <- c2004 %>% 
     mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
-    mutate("municipio"=str_sub(chave,start=3)) %>% 
+    mutate("municipio"=str_sub(chave,start=4)) %>% 
     mutate("chave"=str_c(municipio," (", estado,")"))
 
   c2004 <- c2004[,c(4,1,5,6,2,3)]
@@ -169,7 +169,7 @@
 
   c2005 <- c2005 %>% 
     mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
-    mutate("municipio"=str_sub(chave,start=3)) %>% 
+    mutate("municipio"=str_sub(chave,start=4)) %>% 
     mutate("chave"=str_c(municipio," (", estado,")"))
 
   c2005 <- c2005[,c(4,1,5,6,2,3)]
@@ -243,7 +243,7 @@
 
   c2006 <- c2006 %>% 
     mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
-    mutate("municipio"=str_sub(chave,start=3)) %>% 
+    mutate("municipio"=str_sub(chave,start=4)) %>% 
     mutate("chave"=str_c(municipio," (", estado,")"))
 
   c2006 <- c2006[,c(4,1,5,6,2,3)]
@@ -317,7 +317,7 @@
 
   c2007 <- c2007 %>% 
     mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
-    mutate("municipio"=str_sub(chave,start=3)) %>% 
+    mutate("municipio"=str_sub(chave,start=4)) %>% 
     mutate("chave"=str_c(municipio," (", estado,")"))
   
   c2007 <- c2007[,c(4,1,5,6,2,3)]
@@ -568,7 +568,7 @@
 
   c2010 <- c2010 %>% 
     mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
-    mutate("municipio"=str_sub(chave,start=3)) %>% 
+    mutate("municipio"=str_sub(chave,start=4)) %>% 
     mutate("chave"=str_c(municipio," (", estado,")"))
 
   c2010 <- c2010[,c(4,1,5,6,2,3)]
@@ -612,7 +612,7 @@
 
   c2011 <- c2011 %>% 
     mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
-    mutate("municipio"=str_sub(chave,start=3)) %>% 
+    mutate("municipio"=str_sub(chave,start=4)) %>% 
     mutate("chave"=str_c(municipio," (", estado,")"))
 
   c2011 <- c2011[,c(4,1,5,6,2,3)]
@@ -656,7 +656,7 @@
 
   c2012 <- c2012 %>% 
     mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
-    mutate("municipio"=str_sub(chave,start=3)) %>% 
+    mutate("municipio"=str_sub(chave,start=4)) %>% 
     mutate("chave"=str_c(municipio," (", estado,")"))
 
   c2012 <- c2012[,c(4,1,5,6,2,3)]
@@ -707,7 +707,7 @@
 
   c2013 <- c2013 %>% 
     mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
-    mutate("municipio"=str_sub(chave,start=3)) %>% 
+    mutate("municipio"=str_sub(chave,start=4)) %>% 
     mutate("chave"=str_c(municipio," (", estado,")"))
 
   c2013 <- c2013[,c(4,1,5,6,2,3)]
@@ -758,7 +758,7 @@
 
   c2014 <- c2014 %>% 
     mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
-    mutate("municipio"=str_sub(chave,start=3)) %>% 
+    mutate("municipio"=str_sub(chave,start=4)) %>% 
     mutate("chave"=str_c(municipio," (", estado,")"))
 
   c2014 <- c2014[,c(4,1,5,6,2,3)]
@@ -809,7 +809,7 @@
 
   c2015 <- c2015 %>% 
     mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
-    mutate("municipio"=str_sub(chave,start=3)) %>% 
+    mutate("municipio"=str_sub(chave,start=4)) %>% 
     mutate("chave"=str_c(municipio," (", estado,")"))
 
   c2015 <- c2015[,c(4,1,5,6,2,3)]
@@ -860,7 +860,7 @@
 
   c2016 <- c2016 %>% 
     mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
-    mutate("municipio"=str_sub(chave,start=3)) %>% 
+    mutate("municipio"=str_sub(chave,start=4)) %>% 
     mutate("chave"=str_c(municipio," (", estado,")"))
 
   c2016 <- c2016[,c(4,1,5,6,2,3)]
@@ -911,7 +911,7 @@
 
   c2017 <- c2017 %>% 
     mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
-    mutate("municipio"=str_sub(chave,start=3)) %>% 
+    mutate("municipio"=str_sub(chave,start=4)) %>% 
     mutate("chave"=str_c(municipio," (", estado,")"))
 
   c2017 <- c2017[,c(4,1,5,6,2,3)]
