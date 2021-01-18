@@ -9,11 +9,11 @@
 
 #Diretório local de trabalho----
 
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/Shapefile")
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/projeto_polos")
 
 #Gerando tabela de atributos Projeto Polos de Biodiesel----
 
-    polos <- read_excel("~/GitHub/dissertacao/dataset/Shapefile/tabela_de_atributos_projeto_polos.xlsx")
+    polos <- read_excel("~/GitHub/dissertacao/dataset/projeto_polos/tabela_de_atributos_projeto_polos.xlsx")
 
     polos <- polos %>% 
         mutate(NomMunic=toupper(NomMunic)) %>% 
@@ -71,6 +71,6 @@
 
 #Exportando tabela----  
 
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/shapefile")
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/projeto_polos")
     write.table(polos,file='polos.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
     rm(amc,df)
