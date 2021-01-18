@@ -1,0 +1,76 @@
+#carregando pacotes----
+
+  library(dplyr)
+  library(stringr)
+
+#Limpando diretório----
+
+  rm(list=ls())
+
+#Diretório local de trabalho----
+
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2003")
+
+  b2003 <- read.csv('b2003.csv',sep=";",dec=",")
+  
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2004")
+  
+  b2004 <- read.csv('b2004.csv',sep=";",dec=",")
+  
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2005")
+  
+  b2005 <- read.csv('b2005.csv',sep=";",dec=",")
+  
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2006")
+  
+  b2006 <- read.csv('b2006.csv',sep=";",dec=",")
+  
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2007")
+  
+  b2007 <- read.csv('b2007.csv',sep=";",dec=",")
+  
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2008")
+  
+  b2008 <- read.csv('b2008.csv',sep=";",dec=",")
+  
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2009")
+  
+  b2009 <- read.csv('b2009.csv',sep=";",dec=",")
+  
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2010")
+  
+  b2010 <- read.csv('b2010.csv',sep=";",dec=",")
+  
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2011")
+  
+  b2011 <- read.csv('b2011.csv',sep=";",dec=",")
+  
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2012")
+  
+  b2012 <- read.csv('b2012.csv',sep=";",dec=",")
+  
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2013")
+  
+  b2013 <- read.csv('b2013.csv',sep=";",dec=",")
+  
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2014")
+  
+  b2014 <- read.csv('b2014.csv',sep=";",dec=",")
+  
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2015")
+  
+  b2015 <- read.csv('b2015.csv',sep=";",dec=",")
+  
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2016")
+  
+  b2016 <- read.csv('b2016.csv',sep=";",dec=",")
+  
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2017")
+  
+  b2017 <- read.csv('b2017.csv',sep=";",dec=",")
+  
+  base <- rbind(b2003,b2004,b2005,b2006,b2007,b2008,b2009,b2010,b2011,
+                b2012,b2013,b2014,b2015,b2016,b2017)
+  
+  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base")
+  write.table(base,file='base.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
