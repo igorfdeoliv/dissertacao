@@ -2,6 +2,7 @@
 
     library(dplyr)
     library(stringr)
+    library(readxl)
 
 #Limpando memória----
 
@@ -143,8 +144,91 @@
         filter(cod_mun!="NA") %>% 
         select(-"ano.y",-"estado",-"municipio")
 
+    rm(df,df1,df2,df3,df4,df5,contratos,pronaf)
+
+#Incluindo informações municipais----
+
+    setwd ("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base")
+
+    pibmun <- read.csv('pibmun.csv',sep=";",dec=",")
+
+    pibmun <- pibmun %>% 
+        filter(ano==2010)
+
+    b2010 <- right_join(b2010,pibmun,by="cod_mun")
+
+    b2010 <- b2010 %>% 
+        filter(chave.x!="NA") %>% 
+        select(-"ano.y",-"chave.y",-"estado",-"municipio")
+
+    names(b2010) <- c("ano","cod_mun","chave","q.dende","q.girassol",
+                  "q.mamona","q.soja","h.dende","h.girassol","h.mamona",
+                  "h.soja","v.dende","v.girassol","v.mamona","v.soja",
+                  "s.dende","s.girassol","s.mamona","s.soja","d.bio",
+                  "total.contratos","valores.totais","cod_uf","uf",
+                  "semiarido","vaba","vabi","vabs","vabadm","vabt",
+                  "t","pib","pib.per.capta")
+
+    b2010 <- b2010[,c(1,2,23,24,25,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,
+                  19,20,21,22,26,27,28,29,30,31,32,33)]
+
+    rm(pibmun)
+
+#Inlcuindo amc----
+
+    amc <- read_excel("~/GitHub/dissertacao/dataset/ibge/amc/AMC_1980_2010.xlsx",
+                  col_name =c("municipio","cod_mun","amc"))
+
+    b2010 <- b2010 %>% 
+        mutate(cod_mun=as.character(cod_mun))
+
+    b2010 <- right_join(b2010,amc,by="cod_mun")
+
+    b2010 <- b2010 %>% 
+        filter(ano!="NA") %>% 
+        select(-"municipio")
+
+    rm(amc)
+
+#Deflacionando valores----  
+
+    deflator <- read_excel("~/GitHub/dissertacao/dataset/ipea/ipeadata[18-01-2021-09-33].xls")
+
+    x <- filter(deflator,ano==2010)
+
+    b2010 <- b2010 %>% 
+        mutate(v.dende=(v.dende*(x$deflator))) %>% 
+        mutate(v.girassol=(v.girassol*(x$deflator))) %>% 
+        mutate(v.mamona=(v.mamona*(x$deflator))) %>% 
+        mutate(v.soja=(v.soja*(x$deflator))) %>%
+        mutate(s.dende=(s.dende*(x$deflator))) %>%
+        mutate(s.girassol=(s.girassol*(x$deflator))) %>% 
+        mutate(s.mamona=(s.mamona*(x$deflator))) %>%
+        mutate(s.soja=(s.soja*(x$deflator))) %>% 
+        mutate(valores.totais=(valores.totais*(x$deflator))) %>% 
+        mutate(vaba=(as.numeric(vaba)*(x$deflator))) %>% 
+        mutate(vabi=(as.numeric(vabi)*(x$deflator))) %>% 
+        mutate(vabs=(as.numeric(vabs)*(x$deflator))) %>% 
+        mutate(vabadm=(as.numeric(vabadm)*(x$deflator))) %>% 
+        mutate(vabt=(as.numeric(vabt)*(x$deflator))) %>% 
+        mutate(t=(as.numeric(t)*(x$deflator))) %>% 
+        mutate(pib=(as.numeric(pib)*(x$deflator))) %>% 
+        mutate(pib.per.capta=(as.numeric(pib.per.capta)*(x$deflator)))
+
+    rm(x,deflator)
+
+#Categorizando a variavel semiarido
+
+    b2010$semiarido <- str_replace(b2010$semiarido,"Não","0")
+    b2010$semiarido <- str_replace(b2010$semiarido,"Sim","1")
+
+    b2010 <- b2010[,c(1,2,34,3,4,5,6,7,8,9,10,11,12,13,14,15,
+                  16,17,18,19,20,21,22,23,24,25,26,27,28,
+                  29,30,31,32,33)] 
+
 #Exportando tabela----
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2010")
+    
     write.table(b2010,file='b2010.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
-    rm(df,df1,df2,df3,df4,df5,contratos,pronaf)
+    
