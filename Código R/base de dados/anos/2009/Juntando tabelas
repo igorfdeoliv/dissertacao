@@ -9,16 +9,16 @@
 
 #Diretório local de trabalho----
 
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2008")
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2009")
 
 #Importando tabelas----
 
-    qprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2008/quantidade_produzida.csv"
-    hprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2008/area_plantada.csv"
-    vprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2008/valor_producao.csv"
-    demanda <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2008/demanda.csv"
-    contratos <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2008/bacen.csv"  
-    salarios <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2008/rais.csv"
+    qprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2009/quantidade_produzida.csv"
+    hprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2009/area_plantada.csv"
+    vprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2009/valor_producao.csv"
+    demanda <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2009/demanda.csv"
+    contratos <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2009/bacen.csv"   
+    salarios <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2009/rais.csv" 
     
 #Gerando e juntando tabelas de quantidade e area
 
@@ -115,7 +115,7 @@
     df <- right_join(x,y,by="estado")
 
     df<- df %>% 
-        mutate("ano"=2008) %>% 
+        mutate("ano"=2009) %>% 
         mutate("chave"='BRASILIA (DF)') %>% 
         mutate("municipio"='BRASILIA')
 
@@ -139,12 +139,12 @@
                 "s.girassol","s.mamona","s.soja","d.bio","ano.y",
                 "estado","municipio","total.contratos","valores.totais")
 
-    b2008 <- df5 %>% 
+    b2009 <- df5 %>% 
         filter(cod_mun!="NA") %>% 
         select(-"ano.y",-"estado",-"municipio")
 
 #Exportando tabela----
 
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2008")
-    write.table(b2008,file='b2008.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2009")
+    write.table(b2009,file='b2009.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
     rm(df,df1,df2,df3,df4,df5,contratos,pronaf)
