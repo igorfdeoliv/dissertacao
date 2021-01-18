@@ -201,6 +201,10 @@
         mutate(v.girassol=(v.girassol*(x$deflator))) %>% 
         mutate(v.mamona=(v.mamona*(x$deflator))) %>% 
         mutate(v.soja=(v.soja*(x$deflator))) %>% 
+        mutate(s.dende=(s.dende*(x$deflator))) %>%
+        mutate(s.girassol=(s.girassol*(x$deflator))) %>%
+        mutate(s.mamona=(s.mamona*(x$deflator))) %>%
+        mutate(s.soja=(s.soja*(x$deflator))) %>%
         mutate(valores.totais=(valores.totais*(x$deflator))) %>% 
         mutate(vaba=(as.numeric(vaba)*(x$deflator))) %>% 
         mutate(vabi=(as.numeric(vabi)*(x$deflator))) %>% 
