@@ -3,6 +3,7 @@
     library(dplyr)
     library(stringr)
     library(readxl)
+    library(tidyverse)
 
 #Limpando memória----
 
@@ -220,5 +221,33 @@
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2017")
     
+    write.table(b2017,file='b2017.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+
+#Criando dummy polos----
+  
+    b2017 <- read_csv2('C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2017/b2017.csv')
+    polos <- read_csv2('C:/Users/igorf/Documents/GitHub/dissertacao/dataset/projeto_polos/polos.csv')
+
+    b2017 <- full_join(b2017, polos, by = 'cod_mun')
+  
+    b2017 <- b2017 %>% 
+        mutate(dummy1 = ifelse(is.na(polo), 0, 1)) %>% 
+        filter(ano!="NA") %>% 
+        select(-"amc.y",-"chave.y",-"estado",-"municipio",-"polo")
+
+    names(b2017) <- c("ano","cod_mun","amc","cod_uf","uf","semiarido","chave",
+                  "q.dende","q.girassol","q.mamona","q.soja","h.dende",
+                  "h.girassol","h.mamona","h.soja","v.dende","v.girassol",
+                  "v.mamona","v.soja","s.dende","s.girassol","s.mamona",
+                  "s.soja","d.bio","total.contratos","valores.totais",
+                  "vaba","vabi","vabs","vabadm","vabt","t","pib",
+                  "pib.per.capta","est_pop","polos")
+
+    b2017 <- b2017[,c(1,2,3,6,36,4,5,7,8,9,10,11,12,13,14,15,16,
+                  17,18,19,20,21,22,23,24,25,26,27,28,29,30,
+                  31,32,33,34,35)]
+
+#Exportando base----
+  
     write.table(b2017,file='b2017.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
     
