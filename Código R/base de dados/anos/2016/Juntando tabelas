@@ -196,6 +196,26 @@
                   16,17,18,19,20,21,22,23,24,25,26,27,28,
                   29,30,31,32,33)]
 
+#Incluindo estimativa populacional----
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/est_pop")
+
+    est_pop <- read_excel('POP2016_TCU.xls',sheet="Municípios", 
+                      skip = 2,col_name=c("uf","cod_uf","cod_mun","municipio","est_pop"))
+
+    est_pop <- est_pop %>% 
+        mutate(municipio=toupper(municipio)) %>% 
+        mutate(municipio=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",municipio)) %>% 
+        mutate("chave"=str_c(municipio," ","(",uf,")") ) %>% 
+        select("chave","est_pop")
+
+    b2016 <- right_join(b2016,est_pop,by="chave")
+
+    b2016 <- b2016 %>% 
+        filter(ano!="NA")
+
+    rm(est_pop)
+
 #Exportando tabela----
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2016")

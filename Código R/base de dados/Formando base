@@ -71,6 +71,9 @@
   
   base <- rbind(b2003,b2004,b2005,b2006,b2007,b2008,b2009,b2010,b2011,
                 b2012,b2013,b2014,b2015,b2016,b2017)
+
+  rm(b2003,b2004,b2005,b2006,b2007,b2008,b2009,b2010,b2011,b2012,
+     b2013,b2014,b2015,b2016,b2017)
   
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base")
   write.table(base,file='base.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
