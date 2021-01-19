@@ -9,71 +9,61 @@
 
 #Diretório local de trabalho----
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2003")
+  setwd('C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base')
 
-  b2003 <- read.csv('b2003.csv',sep=";",dec=",")
+#Importando tabelas----
+
+  ano1 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2003/b2003.csv"
+  ano2 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2004/b2004.csv"
+  ano3 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2005/b2005.csv"
+  ano4 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2006/b2006.csv"
+  ano5 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2007/b2007.csv"
+  ano6 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2008/b2008.csv"
+  ano7 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2009/b2009.csv"
+  ano8 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2010/b2010.csv"
+  ano9 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2011/b2011.csv"
+  ano10 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2012/b2012.csv"
+  ano11 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2013/b2013.csv"
+  ano12 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2014/b2014.csv"
+  ano13 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2015/b2015.csv"
+  ano14 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2016/b2016.csv"
+  ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2017/b2017.csv"
+
+  b2003 <- read.csv(ano1,sep=";",dec=",")
+
+  b2004 <- read.csv(ano2,sep=";",dec=",")
   
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2004")
-  
-  b2004 <- read.csv('b2004.csv',sep=";",dec=",")
-  
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2005")
-  
-  b2005 <- read.csv('b2005.csv',sep=";",dec=",")
-  
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2006")
-  
-  b2006 <- read.csv('b2006.csv',sep=";",dec=",")
-  
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2007")
-  
-  b2007 <- read.csv('b2007.csv',sep=";",dec=",")
-  
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2008")
-  
-  b2008 <- read.csv('b2008.csv',sep=";",dec=",")
-  
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2009")
-  
-  b2009 <- read.csv('b2009.csv',sep=";",dec=",")
-  
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2010")
-  
-  b2010 <- read.csv('b2010.csv',sep=";",dec=",")
-  
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2011")
-  
-  b2011 <- read.csv('b2011.csv',sep=";",dec=",")
-  
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2012")
-  
-  b2012 <- read.csv('b2012.csv',sep=";",dec=",")
-  
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2013")
-  
-  b2013 <- read.csv('b2013.csv',sep=";",dec=",")
-  
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2014")
-  
-  b2014 <- read.csv('b2014.csv',sep=";",dec=",")
-  
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2015")
-  
-  b2015 <- read.csv('b2015.csv',sep=";",dec=",")
-  
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2016")
-  
-  b2016 <- read.csv('b2016.csv',sep=";",dec=",")
-  
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2017")
-  
-  b2017 <- read.csv('b2017.csv',sep=";",dec=",")
-  
+  b2005 <- read.csv(ano3,sep=";",dec=",")
+
+  b2006 <- read.csv(ano4,sep=";",dec=",")
+
+  b2007 <- read.csv(ano5,sep=";",dec=",")
+
+  b2008 <- read.csv(ano6,sep=";",dec=",")
+
+  b2009 <- read.csv(ano7,sep=";",dec=",")
+
+  b2010 <- read.csv(ano8,sep=";",dec=",")
+
+  b2011 <- read.csv(ano9,sep=";",dec=",")
+
+  b2012 <- read.csv(ano10,sep=";",dec=",")
+
+  b2013 <- read.csv(ano11,sep=";",dec=",")
+
+  b2014 <- read.csv(ano12,sep=";",dec=",")
+
+  b2015 <- read.csv(ano13,sep=";",dec=",")
+
+  b2016 <- read.csv(ano14,sep=";",dec=",")
+
+  b2017 <- read.csv(ano15,sep=";",dec=",")
+
   base <- rbind(b2003,b2004,b2005,b2006,b2007,b2008,b2009,b2010,b2011,
-                b2012,b2013,b2014,b2015,b2016,b2017)
+              b2012,b2013,b2014,b2015,b2016,b2017)
 
-  rm(b2003,b2004,b2005,b2006,b2007,b2008,b2009,b2010,b2011,b2012,
-     b2013,b2014,b2015,b2016,b2017)
-  
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base")
+  rm(ano1,ano2,ano3,ano4,ano5,ano6,ano7,ano8,ano9,ano10,ano11,
+     ano12,ano13,ano14,ano15,b2003,b2004,b2005,b2006,b2007,b2008,
+     b2009,b2010,b2011,b2012,b2013,b2014,b2015,b2016,b2017)
+
   write.table(base,file='base.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
