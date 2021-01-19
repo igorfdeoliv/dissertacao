@@ -226,6 +226,21 @@
                   16,17,18,19,20,21,22,23,24,25,26,27,28,
                   29,30,31,32,33)]
 
+#Incluindo estimativa populacional----
+  
+    est_pop <- read_excel("~/GitHub/dissertacao/dataset/ibge/est_pop/POP2007_tabela793.xlsx", 
+                        skip = 4,col_name=c("cod_mun","municipio","est_pop"))
+
+    est_pop <- est_pop %>% 
+        select("cod_mun","est_pop")
+  
+    b2007 <- right_join(b2007,est_pop,by="cod_mun")
+  
+    b2007 <- b2007 %>% 
+        filter(ano!="NA")
+    
+    rm(est_pop)
+
 #Exportando tabela----
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2007")
