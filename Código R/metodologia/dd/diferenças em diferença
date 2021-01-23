@@ -55,6 +55,19 @@
 
 #Exportando tabelas de regressões-----
 
+    stargazer(reg1,reg2,type="text",title="opcional",
+        dep.var.label=c("reg1","reg2"),omit.stat=c("LL","ser","f"))
+
+    #substituindo o ep pelo intervalo de confiança
+
+    stargazer(reg1,reg2,type="text",title="opcional",ci=TRUE,
+        dep.var.label=c("reg1","reg2"),omit.stat=c("LL","ser","f"))
+
+    #Caso queira mudar o nível de significância
+
+    stargazer(reg1,reg2,type="text",title="opcional",ci=TRUE,ci.level=0.90,
+        dep.var.label=c("reg1","reg2"),omit.stat=c("LL","ser","f"),out="modelo.txt")
+
 #Salvando base de dados em painel----
 
     write.table(painel,file='pnpb_polos.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
