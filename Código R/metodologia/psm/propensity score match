@@ -1,0 +1,34 @@
+#Diretório local de trabalho----
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base")
+
+#Importando pacotes para trabalho----
+
+    if(!require(dplyr))
+        install.packages("dplyr")
+
+    if(!require(MatchIt))
+        install.packages("MatchIt")
+
+#Limpando memória----
+
+    rm(list=ls())
+
+#Importando base de dados----
+
+    base <- read.csv("base.csv",sep=";",dec=".")
+
+#Iniciando matching----
+
+    matching <- matchit(polos ~ valores.totais + vaba + est_pop,
+    data=base,method="nereast",ratio=1)
+
+    summary(matching)
+
+#Declarando base após matching----
+
+    psm <- match.data(matching)
+
+#Exportando base pareada----
+
+    write.table(psm,file='psm.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)

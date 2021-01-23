@@ -1,0 +1,60 @@
+#Diretório local de trabalho----
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base")
+
+#Importando pacotes para trabalho----
+
+    if(!require(dplyr))
+        install.packages("dplyr")
+
+    if(!require(stargazer))
+        install.packages("stargazer")
+
+    if(!require(plm))
+        install.packages("plm")
+
+#Limpando memória----
+
+    rm(list=ls())
+
+#Importando base de dados----
+
+    psm <- read.csv("psm.csv",sep=";",dec=".")
+
+#Criando uma dummy para identificação do período de tratamento----
+
+    psm <- psm %>%
+        mutate(data_treat=if_else(ano>2004,1,0))
+
+    table(psm$data_treat)
+
+#Criando a variável de diff in diff, interagindo polos e data_treat----
+
+    psm <- psm %>%
+        mutate(estimador_dd=polos*data_treat)
+
+    table(psm$estimador_dd)
+
+#Declarando que a base de dados é um painel----
+
+    painel <- pdata.frame(psm,index=c("chave","ano"))
+
+#Estimando os modelos----
+
+#Teste de LM - efeitos aleatórios vs modelo pooled----
+
+    plmtest()
+
+#Teste F - efeitos fixos vs modelo pooled----
+
+    pFtest(,)
+
+#Teste de Hausman - efeitos aleatórios vs efeitos fixos----
+
+    phtest(,)
+
+#Exportando tabelas de regressões-----
+
+#Salvando base de dados em painel----
+
+    write.table(painel,file='pnpb_polos.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
