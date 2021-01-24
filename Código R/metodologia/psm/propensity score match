@@ -20,8 +20,8 @@
 
 #Iniciando matching----
 
-    matching <- matchit(polos ~ valores.totais + vaba + est_pop,
-    data=base,method="nereast",ratio=1)
+    matching <- matchit(polos ~ valores.totais + pib + est_pop,
+                    data=base,method="nearest",ratio=1)
 
     summary(matching)
 

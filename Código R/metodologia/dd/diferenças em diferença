@@ -39,34 +39,45 @@
 
     painel <- pdata.frame(psm,index=c("chave","ano"))
 
+    rm(psm)
+  
 #Estimando os modelos----
 
+    prod_soja <- plm(prod_soja ~ semiarido + d.bio + total.contratos + 
+                     estimador_dd,data=painel,effect=("time"),model="pooling")
+  
+    ef_prod_soja <- plm(prod_soja ~ semiarido + d.bio + total.contratos + 
+                        estimador_dd,data=painel,effect="time",model="within")
+  
+    ea_prod_soja <- plm(prod_soja ~ semiarido + d.bio + total.contratos + 
+                        estimador_dd,data=painel,effect="time",model="random")
+  
 #Teste de LM - efeitos aleatórios vs modelo pooled----
 
-    plmtest()
+    plmtest(prod_soja)
 
 #Teste F - efeitos fixos vs modelo pooled----
 
-    pFtest(,)
+    pFtest(ef_prod_soja,prod_soja)
 
 #Teste de Hausman - efeitos aleatórios vs efeitos fixos----
 
-    phtest(,)
+    phtest(ea_prod_soja,ef_prod_soja)
 
 #Exportando tabelas de regressões-----
 
-    stargazer(reg1,reg2,type="text",title="opcional",
-        dep.var.label=c("reg1","reg2"),omit.stat=c("LL","ser","f"))
+    stargazer(prod_soja,ea_prod_soja,ef_prod_soja,type="text",
+            omit.stat=c("LL","ser","f"))
 
-    #substituindo o ep pelo intervalo de confiança
+#substituindo o ep pelo intervalo de confiança
 
-    stargazer(reg1,reg2,type="text",title="opcional",ci=TRUE,
-        dep.var.label=c("reg1","reg2"),omit.stat=c("LL","ser","f"))
+    stargazer(prod_soja,ea_prod_soja,ef_prod_soja,type="text",ci=TRUE
+            ,omit.stat=c("LL","ser","f"))
 
-    #Caso queira mudar o nível de significância
+#Caso queira mudar o nível de significância
 
-    stargazer(reg1,reg2,type="text",title="opcional",ci=TRUE,ci.level=0.90,
-        dep.var.label=c("reg1","reg2"),omit.stat=c("LL","ser","f"),out="modelo.txt")
+    stargazer(prod_soja,ea_prod_soja,ef_prod_soja,type="text",ci=TRUE,
+            ci.level=0.90,omit.stat=c("LL","ser","f"),out="modelo.txt")
 
 #Salvando base de dados em painel----
 
