@@ -228,7 +228,7 @@
 
     polos <- read_csv2('C:/Users/igorf/Documents/GitHub/dissertacao/dataset/projeto_polos/polos.csv')
 
-    polos$cod_mun <- as.character(polose$cod_mun)
+    polos$cod_mun <- as.character(polos$cod_mun)
 
     b2016 <- full_join(b2016, polos, by = 'cod_mun')
 
