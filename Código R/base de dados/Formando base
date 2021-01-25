@@ -1,7 +1,10 @@
 #carregando pacotes----
 
-  library(dplyr)
-  library(stringr)
+  if(!require(dplyr))
+    install.packages("dplyr")
+
+  if(!require(stringr))
+    install.packages("stringr")
 
 #Limpando diretório----
 
@@ -29,35 +32,35 @@
   ano14 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2016/b2016.csv"
   ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2017/b2017.csv"
 
-  b2003 <- read.csv(ano1,sep=";",dec=",")
+  b2003 <- read.csv(ano1,sep=";",dec=".")
 
-  b2004 <- read.csv(ano2,sep=";",dec=",")
+  b2004 <- read.csv(ano2,sep=";",dec=".")
+
+  b2005 <- read.csv(ano3,sep=";",dec=".")
+
+  b2006 <- read.csv(ano4,sep=";",dec=".")
+
+  b2007 <- read.csv(ano5,sep=";",dec=".")
+
+  b2008 <- read.csv(ano6,sep=";",dec=".")
+
+  b2009 <- read.csv(ano7,sep=";",dec=".")
+
+  b2010 <- read.csv(ano8,sep=";",dec=".")
   
-  b2005 <- read.csv(ano3,sep=";",dec=",")
+  b2011 <- read.csv(ano9,sep=";",dec=".")
 
-  b2006 <- read.csv(ano4,sep=";",dec=",")
+  b2012 <- read.csv(ano10,sep=";",dec=".")
 
-  b2007 <- read.csv(ano5,sep=";",dec=",")
+  b2013 <- read.csv(ano11,sep=";",dec=".")
 
-  b2008 <- read.csv(ano6,sep=";",dec=",")
+  b2014 <- read.csv(ano12,sep=";",dec=".")
 
-  b2009 <- read.csv(ano7,sep=";",dec=",")
+  b2015 <- read.csv(ano13,sep=";",dec=".")
 
-  b2010 <- read.csv(ano8,sep=";",dec=",")
+  b2016 <- read.csv(ano14,sep=";",dec=".")
 
-  b2011 <- read.csv(ano9,sep=";",dec=",")
-
-  b2012 <- read.csv(ano10,sep=";",dec=",")
-
-  b2013 <- read.csv(ano11,sep=";",dec=",")
-
-  b2014 <- read.csv(ano12,sep=";",dec=",")
-
-  b2015 <- read.csv(ano13,sep=";",dec=",")
-
-  b2016 <- read.csv(ano14,sep=";",dec=",")
-
-  b2017 <- read.csv(ano15,sep=";",dec=",")
+  b2017 <- read.csv(ano15,sep=";",dec=".")
 
   base <- rbind(b2003,b2004,b2005,b2006,b2007,b2008,b2009,b2010,b2011,
               b2012,b2013,b2014,b2015,b2016,b2017)
@@ -65,5 +68,8 @@
   rm(ano1,ano2,ano3,ano4,ano5,ano6,ano7,ano8,ano9,ano10,ano11,
      ano12,ano13,ano14,ano15,b2003,b2004,b2005,b2006,b2007,b2008,
      b2009,b2010,b2011,b2012,b2013,b2014,b2015,b2016,b2017)
+  
+  base <- base %>% 
+    select(-"amc",-"cod_uf",-"vabi",-"vabs",-"vabadm",-"vabt",-"t")
 
   write.table(base,file='base.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
