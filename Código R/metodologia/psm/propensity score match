@@ -20,14 +20,17 @@
 
 #Iniciando matching----
 
-    matching <- matchit(polos ~ valores.totais + pib + est_pop,
-                    data=base,method="nearest",ratio=1)
+    matching <- matchit(polos ~ total.contratos + valores.totais + d.bio +
+                        pib.per.capta,data=base,method="nearest",
+                      link="probit",ratio=1)
 
     summary(matching)
 
 #Declarando base após matching----
 
     psm <- match.data(matching)
+
+    rm(base,matching)
 
 #Exportando base pareada----
 

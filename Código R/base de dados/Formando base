@@ -2,7 +2,7 @@
 
   if(!require(dplyr))
     install.packages("dplyr")
-
+  
   if(!require(stringr))
     install.packages("stringr")
 
@@ -62,14 +62,32 @@
 
   b2017 <- read.csv(ano15,sep=";",dec=".")
 
+#Juntando todas as tabelas----
+  
   base <- rbind(b2003,b2004,b2005,b2006,b2007,b2008,b2009,b2010,b2011,
               b2012,b2013,b2014,b2015,b2016,b2017)
 
   rm(ano1,ano2,ano3,ano4,ano5,ano6,ano7,ano8,ano9,ano10,ano11,
-     ano12,ano13,ano14,ano15,b2003,b2004,b2005,b2006,b2007,b2008,
-     b2009,b2010,b2011,b2012,b2013,b2014,b2015,b2016,b2017)
+   ano12,ano13,ano14,ano15,b2003,b2004,b2005,b2006,b2007,b2008,
+   b2009,b2010,b2011,b2012,b2013,b2014,b2015,b2016,b2017)
+
+#Criando variáveis dependentes----
   
   base <- base %>% 
-    select(-"amc",-"cod_uf",-"vabi",-"vabs",-"vabadm",-"vabt",-"t")
-
+    mutate("prod_dende"=(base$q.dende/base$h.dende)) %>% 
+    mutate("prod_girassol"=(base$q.girassol/base$h.girassol)) %>% 
+    mutate("prod_mamona"=(base$q.mamona/base$h.mamona)) %>% 
+    mutate("prod_soja"=(base$q.soja/base$h.soja)) %>% 
+    mutate("rm_dende"=(base$v.dende/base$q.dende)) %>% 
+    mutate("rm_girassol"=(base$v.girassol/base$q.girassol)) %>% 
+    mutate("rm_mamona"=(base$v.mamona/base$q.mamona)) %>% 
+    mutate("rm_soja"=(base$v.soja/base$q.soja))
+  
+#Limpando variáveis----
+  
+  base <- base %>% 
+    select(-"cod_uf",-"vabi",-"vabs",-"vabadm",-"vabt",-"t")
+  
+#Exportando tabela----
+  
   write.table(base,file='base.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
