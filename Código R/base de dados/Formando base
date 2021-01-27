@@ -82,6 +82,33 @@
     mutate("rm_girassol"=(base$v.girassol/base$q.girassol)) %>% 
     mutate("rm_mamona"=(base$v.mamona/base$q.mamona)) %>% 
     mutate("rm_soja"=(base$v.soja/base$q.soja))
+    
+  base <- base %>% 
+    mutate('prod_dende'=str_replace_all(prod_dende,'NaN','0')) %>%
+    mutate('prod_dende'=str_replace_all(prod_dende,'Inf','0')) %>% 
+    mutate('prod_girassol'=str_replace_all(prod_girassol,'NaN','0')) %>% 
+    mutate('prod_girassol'=str_replace_all(prod_girassol,'Inf','0')) %>%
+    mutate('prod_mamona'=str_replace_all(prod_mamona,'NaN','0')) %>% 
+    mutate('prod_mamona'=str_replace_all(prod_mamona,'Inf','0')) %>% 
+    mutate('prod_soja'=str_replace_all(prod_soja,'NaN','0')) %>% 
+    mutate('prod_soja'=str_replace_all(prod_soja,'Inf','0')) %>% 
+    mutate('rm_dende'=str_replace_all(rm_dende,'NaN','0')) %>%
+    mutate('rm_dende'=str_replace_all(rm_dende,'Inf','0')) %>% 
+    mutate('rm_girassol'=str_replace_all(rm_girassol,'NaN','0')) %>% 
+    mutate('rm_girassol'=str_replace_all(rm_girassol,'Inf','0')) %>%
+    mutate('rm_mamona'=str_replace_all(rm_mamona,'NaN','0')) %>% 
+    mutate('rm_mamona'=str_replace_all(rm_mamona,'Inf','0')) %>% 
+    mutate('rm_soja'=str_replace_all(rm_soja,'NaN','0')) %>% 
+    mutate('rm_soja'=str_replace_all(rm_soja,'Inf','0')) 
+
+  base$prod_dende <- as.numeric(base$prod_dende)
+  base$prod_girassol <- as.numeric(base$prod_girassol)
+  base$prod_mamona <- as.numeric(base$prod_mamona)
+  base$prod_soja <- as.numeric(base$prod_soja)
+  base$rm_dende <- as.numeric(base$rm_dende)
+  base$rm_girassol <- as.numeric(base$rm_girassol)
+  base$rm_mamona <- as.numeric(base$rm_mamona)
+  base$rm_soja <- as.numeric(base$rm_soja)
   
 #Limpando variáveis----
   
