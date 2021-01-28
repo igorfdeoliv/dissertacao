@@ -1,4 +1,4 @@
-#carregando pacotes----
+#Carregando pacotes----
 
     if(!require(dplyr))
         install.packages("dplyr")
@@ -6,67 +6,226 @@
     if(!require(stringr))
         install.packages("stringr")
 
-#Limpando diretório----
+    if(!require(readxl))
+        install.packages("readxl")
+
+    if(!require(tidyverse))
+        install.packages("tidyverse")
+
+#Limpando memória----
 
     rm(list=ls())
 
 #Diretório local de trabalho----
 
-    setwd('C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base')
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2016")
 
 #Importando tabelas----
 
-    ano1 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2003/b2003.csv"
-    ano2 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2004/b2004.csv"
-    ano3 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2005/b2005.csv"
-    ano4 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2006/b2006.csv"
-    ano5 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2007/b2007.csv"
-    ano6 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2008/b2008.csv"
-    ano7 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2009/b2009.csv"
-    ano8 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2010/b2010.csv"
-    ano9 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2011/b2011.csv"
-    ano10 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2012/b2012.csv"
-    ano11 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2013/b2013.csv"
-    ano12 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2014/b2014.csv"
-    ano13 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2015/b2015.csv"
-    ano14 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2016/b2016.csv"
-    ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2017/b2017.csv"
+    qprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2016/quantidade_produzida.csv"
+    hprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2016/area_plantada.csv"
+    vprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2016/valor_producao.csv"
+    demanda <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2016/demanda.csv"
+    contratos <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2016/bacen.csv"
+    salarios <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2016/rais.csv"
 
-    b2003 <- read.csv(ano1,sep=";",dec=".")
+#Gerando e juntando tabelas de quantidade e area
 
-    b2004 <- read.csv(ano2,sep=";",dec=".")
+    qprod <- read.csv(qprod,sep=";",dec=".")
+    hprod <- read.csv(hprod,sep=";",dec=".")
 
-    b2005 <- read.csv(ano3,sep=";",dec=".")
+    df1 <- right_join(qprod,hprod,by='Cód.')
 
-    b2006 <- read.csv(ano4,sep=";",dec=".")
+    names(df1) <- c("ano","cod_mun","Município","q_dende","q_girassol",
+                "q_mamona","q_soja","drop1","drop2","h_dende",
+                "h_girassol","h_mamona","h_soja")
 
-    b2007 <- read.csv(ano5,sep=";",dec=".")
+    df1 <- df1 %>% 
+        select(-"drop1",-"drop2")
 
-    b2008 <- read.csv(ano6,sep=";",dec=".")
+    rm(qprod,hprod)
 
-    b2009 <- read.csv(ano7,sep=";",dec=".")
+    vprod <- read.csv(vprod,sep=";",dec=".")
 
-    b2010 <- read.csv(ano8,sep=";",dec=".")
+    df2 <- right_join(df1,vprod,by="Município")
 
-    b2011 <- read.csv(ano9,sep=";",dec=".")
+    names(df2) <- c("ano","cod_mun","chave","q_dende","q_girassol",
+                "q_mamonoa","q_soja","h_dende","h_girassol",
+                "h_mamona","h_soja","drop1","drop2","v_dende",
+                "v_girassol","v_mamona","v_soja")
 
-    b2012 <- read.csv(ano10,sep=";",dec=".")
+    df2 <- df2 %>% 
+        select(-"drop1",-"drop2")
 
-    b2013 <- read.csv(ano11,sep=";",dec=".")
+    rm(vprod)
 
-    b2014 <- read.csv(ano12,sep=";",dec=".")
+#Gerando e juntando a tabela de salarios ao df anterior
 
-    b2015 <- read.csv(ano13,sep=";",dec=".")
+    salarios <- read.csv(salarios,sep=";",dec=".")
 
-    b2016 <- read.csv(ano14,sep=";",dec=".")
+    df3 <- right_join(df2,salarios,by="chave")
 
-    b2017 <- read.csv(ano15,sep=";",dec=".")
+    df3 <- df3 %>% 
+        filter(cod_mun!="NA")
 
-    base <- rbind(b2003,b2004,b2005,b2006,b2007,b2008,b2009,b2010,b2011,
-              b2012,b2013,b2014,b2015,b2016,b2017)
+    names(df3) <- c("ano","cod_mun","chave","q_dende","q_girassol",
+                "q_mamona","q_soja","h_dende","h_girassol",
+                "h_mamona","h_soja","v_dende","v_girassol",
+                "v_mamona","v_soja","drop1","drop2","drop3",
+                "drop4","dende1","dende2","girassol1","girassol2",
+                "mamona1","mamona2","soja1","soja2","drop5")
 
-    rm(ano1,ano2,ano3,ano4,ano5,ano6,ano7,ano8,ano9,ano10,ano11,
-        ano12,ano13,ano14,ano15,b2003,b2004,b2005,b2006,b2007,b2008,
-        b2009,b2010,b2011,b2012,b2013,b2014,b2015,b2016,b2017)
+    df3 <- df3 %>% 
+        mutate("s_dende"=(df3$dende1+df3$dende2)) %>% 
+        mutate("s_girassol"=(df3$girassol1+df3$girassol2)) %>% 
+        mutate("s_mamona"=(df3$mamona1+df3$mamona2)) %>% 
+        mutate("s_soja"=(df3$soja1+df3$soja2)) %>%
+        select(-"drop1",-"drop2",-"drop3",-"drop4",-"drop5",
+            -"dende1",-"dende2",-"girassol1",-"girassol2",
+            -"mamona1",-"mamona2",-"soja1",-"soja2")
 
-    write.table(base,file='base.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    rm(salarios)
+
+#Gerando e juntando tabela de demanda ao df anterior
+
+    demanda <- read.csv(demanda,sep=";",dec=".")
+
+    df4 <- right_join(df3,demanda,by="chave")
+
+    df4 <- df4 %>% 
+        filter(cod_mun!="NA")
+
+    names(df4) <- c("ano","cod_mun","chave","q_dende","q_girassol",
+                "q_mamona","q_soja","h_dende","h_girassol","h_mamona",
+                "h_soja","v_dende","v_girassol","v_mamona","v_soja",
+                "s_dende","s_girassol","s_mamona","s_soja","drop1",
+                "drop2","drop3","drop4","drop5","drop6","demanda_bio")
+
+    df4 <- df4 %>% 
+        select(-"drop1",-"drop2",-"drop3",-"drop4",-"drop5",-"drop6")
+
+    rm(demanda)
+
+#Gerando e juntando tabela de contratos ao df anterior
+
+    pronaf <- read.csv(contratos,sep=";",dec=".")
+
+    df5 <- right_join(df4,pronaf,by="chave")
+
+    names(df5) <- c("ano","cod_mun","chave","q.dende","q.girassol","q.mamona",
+                "q.soja","h.dende","h.girassol","h.mamona","h.soja",
+                "v.dende","v.girassol","v.mamona","v.soja","s.dende",
+                "s.girassol","s.mamona","s.soja","d.bio","ano.y",
+                "estado","municipio","total.contratos","valores.totais")
+
+    b2016 <- df5 %>% 
+        filter(cod_mun!="NA") %>% 
+        select(-"ano.y",-"estado",-"municipio")
+
+    rm(df1,df2,df3,df4,df5,contratos,pronaf)
+
+#Incluindo informações municipais----
+
+    setwd ("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base")
+
+    pibmun <- read.csv('pibmun.csv',sep=";",dec=",")
+
+    pibmun <- pibmun %>% 
+        filter(ano==2016)
+
+    b2016 <- right_join(b2016,pibmun,by="cod_mun")
+
+    b2016 <- b2016 %>% 
+        filter(chave.x!="NA") %>% 
+        select(-"ano.y",-"chave.y",-"estado",-"municipio")
+
+    names(b2016) <- c("ano","cod_mun","chave","q.dende","q.girassol",
+                  "q.mamona","q.soja","h.dende","h.girassol","h.mamona",
+                  "h.soja","v.dende","v.girassol","v.mamona","v.soja",
+                  "s.dende","s.girassol","s.mamona","s.soja","d.bio",
+                  "total.contratos","valores.totais","cod_uf","uf",
+                  "semiarido","vaba","vabi","vabs","vabadm","vabt",
+                  "t","pib","pib.per.capta")
+
+    b2016 <- b2016[,c(1,2,23,24,25,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,
+                  19,20,21,22,26,27,28,29,30,31,32,33)]
+
+    rm(pibmun)
+
+#Inlcuindo amc----
+
+    amc <- read_excel("~/GitHub/dissertacao/dataset/ibge/amc/AMC_1980_2010.xlsx",
+                  col_name =c("municipio","cod_mun","amc"))
+
+    b2016 <- b2016 %>% 
+        mutate(cod_mun=as.character(cod_mun))
+
+    b2016 <- right_join(b2016,amc,by="cod_mun")
+
+    b2016 <- b2016 %>% 
+        filter(ano!="NA") %>% 
+        select(-"municipio")
+
+    rm(amc)
+
+#Categorizando a variavel semiarido
+
+    b2016 <- b2016 %>% 
+        mutate(semiarido=if_else(semiarido=="Sim",1,0))
+
+    b2016 <- b2016[,c(1,2,34,3,4,5,6,7,8,9,10,11,12,13,14,15,
+                  16,17,18,19,20,21,22,23,24,25,26,27,28,
+                  29,30,31,32,33)]
+
+#Incluindo estimativa populacional----
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/est_pop")
+
+    est_pop <- read_excel('POP2016_TCU.xls',sheet="Municípios", 
+                      skip = 2,col_name=c("uf","cod_uf","cod_mun","municipio","est_pop"))
+
+    est_pop <- est_pop %>% 
+        mutate(municipio=toupper(municipio)) %>% 
+        mutate(municipio=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",municipio)) %>% 
+        mutate("chave"=str_c(municipio," ","(",uf,")") ) %>% 
+        select("chave","est_pop")
+
+    b2016 <- right_join(b2016,est_pop,by="chave")
+
+    b2016 <- b2016 %>% 
+        filter(ano!="NA")
+
+    rm(est_pop)
+
+#Criando dummy polos----
+
+    polos <- read_csv2('C:/Users/igorf/Documents/GitHub/dissertacao/dataset/projeto_polos/polos.csv')
+
+    polos$cod_mun <- as.character(polos$cod_mun)
+
+    b2016 <- full_join(b2016, polos, by = 'cod_mun')
+
+    b2016 <- b2016 %>% 
+        mutate(polos=if_else(is.na(polo),0,1)) %>% 
+        filter(ano!="NA") %>% 
+        select(-"amc.y",-"chave.y",-"estado",-"municipio",-"polo")
+
+    names(b2016) <- c("ano","cod_mun","amc","cod_uf","uf","semiarido","chave",
+                  "q.dende","q.girassol","q.mamona","q.soja","h.dende",
+                  "h.girassol","h.mamona","h.soja","v.dende","v.girassol",
+                  "v.mamona","v.soja","s.dende","s.girassol","s.mamona",
+                  "s.soja","d.bio","total.contratos","valores.totais",
+                  "vaba","vabi","vabs","vabadm","vabt","t","pib",
+                  "pib.per.capta","est_pop","polos")
+
+    b2016 <- b2016[,c(1,2,3,6,36,4,5,7,8,9,10,11,12,13,14,15,16,
+                  17,18,19,20,21,22,23,24,25,26,27,28,29,30,
+                  31,32,33,34,35)]
+
+    rm(polos)
+
+#Exportando base----
+
+    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2016")
+
+    write.table(b2016,file='b2016.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
