@@ -1,7 +1,10 @@
 #Carregando pacotes a serem utilizados----
 
-    library(dplyr)
-    library(stringr)
+    if(!require(dplyr))
+        install.packages("dplyr")
+
+    if(!require(stringr))
+        install.packages("stringr")
 
 #Limpando bases da memória----
 
@@ -29,10 +32,6 @@
 
 #Tabela 2003----
 
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/area plantada")
-
 #Importando tabela
 
     h2003<-read.csv(ano1, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
@@ -52,14 +51,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2003")
+    
     write.table(h2003,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano1,h2003)
 
 #Tabela 2004----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/area plantada")
 
 #Importando tabela
 
@@ -80,14 +77,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2004")
+    
     write.table(h2004,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano2,h2004)
 
 #Tabela 2005----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/area plantada")
 
 #Importando tabela
 
@@ -108,14 +103,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2005")
+    
     write.table(h2005,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano3,h2005)
 
 #Tabela 2006----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/area plantada")
 
 #Importando tabela
 
@@ -136,14 +129,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2006")
+    
     write.table(h2006,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano4,h2006)
 
 #Tabela 2007----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/area plantada")
 
 #Importando tabela
 
@@ -164,14 +155,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2007")
+    
     write.table(h2007,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano5,h2007)
 
 #Tabela 2008----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/area plantada")
 
 #Importando tabela
 
@@ -192,14 +181,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2008")
+    
     write.table(h2008,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano6,h2008)
 
 #Tabela 2009----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/area plantada")
 
 #Importando tabela
 
@@ -220,14 +207,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2009")
+    
     write.table(h2009,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano7,h2009)
 
 #Tabela 2010----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/area plantada")
 
 #Importando tabela
 
@@ -248,14 +233,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2010")
+    
     write.table(h2010,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano8,h2010)
 
 #Tabela 2011----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/area plantada")
 
 #Importando tabela
 
@@ -276,14 +259,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2011")
+    
     write.table(h2011,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano9,h2011)
 
 #Tabela 2012----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/area plantada")
 
 #Importando tabela
 
@@ -304,14 +285,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2012")
+    
     write.table(h2012,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano10,h2012)
 
 #Tabela 2013----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/area plantada")
 
 #Importando tabela
 
@@ -332,14 +311,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2013")
+    
     write.table(h2013,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano11,h2013)
 
 #Tabela 2014----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/area plantada")
 
 #Importando tabela
 
@@ -360,14 +337,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2014")
+    
     write.table(h2014,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano12,h2014)
 
 #Tabela 2015----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/area plantada")
 
 #Importando tabela
 
@@ -388,14 +363,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2015")
+    
     write.table(h2015,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano13,h2015)
 
 #Tabela 2016----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/area plantada")
 
 #Importando tabela
 
@@ -416,14 +389,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2016")
+    
     write.table(h2016,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano14,h2016)
 
 #Tabela 2017----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/area plantada")
 
 #Importando tabela
 
@@ -444,5 +415,7 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2017")
+    
     write.table(h2017,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano15,h2017)

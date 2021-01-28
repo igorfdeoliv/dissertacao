@@ -1,7 +1,10 @@
 #Carregando pacotes a serem utilizados----
 
-    library(dplyr)
-    library(stringr)
+    if(!require(dplyr))
+        install.packages("dplyr")
+
+    if(!require(stringr))
+        install.packages("stringr")
 
 #Limpando bases da memória----
 
@@ -29,10 +32,6 @@
 
 #Tabela 2003----
 
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/quantidade produzida")
-
 #Importando tabela
 
     q2003<-read.csv(ano1, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
@@ -52,14 +51,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2003")
+    
     write.table(q2003,file='quantidade_produzida.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano1,q2003)
 
 #Tabela 2004----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/quantidade produzida")
 
 #Importando tabela
 
@@ -80,14 +77,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2004")
+    
     write.table(q2004,file='quantidade_produzida.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano2,q2004)
 
 #Tabela 2005----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/quantidade produzida")
 
 #Importando tabela
 
@@ -108,14 +103,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2005")
+    
     write.table(q2005,file='quantidade_produzida.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano3,q2005)
 
 #Tabela 2006----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/quantidade produzida")
 
 #Importando tabela
 
@@ -136,14 +129,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2006")
+    
     write.table(q2006,file='quantidade_produzida.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano4,q2006)
 
 #Tabela 2007----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/quantidade produzida")
 
 #Importando tabela
 
@@ -164,14 +155,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2007")
+    
     write.table(q2007,file='quantidade_produzida.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano5,q2007)
 
 #Tabela 2008----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/quantidade produzida")
 
 #Importando tabela
 
@@ -192,14 +181,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2008")
+    
     write.table(q2008,file='quantidade_produzida.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano6,q2008)
 
 #Tabela 2009----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/quantidade produzida")
 
 #Importando tabela
 
@@ -220,14 +207,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2009")
+    
     write.table(q2009,file='quantidade_produzida.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano7,q2009)
 
 #Tabela 2010----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/quantidade produzida")
 
 #Importando tabela
 
@@ -248,14 +233,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2010")
+    
     write.table(q2010,file='quantidade_produzida.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano8,q2010)
 
 #Tabela 2011----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/quantidade produzida")
 
 #Importando tabela
 
@@ -276,14 +259,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2011")
+    
     write.table(q2011,file='quantidade_produzida.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano9,q2011)
 
 #Tabela 2012----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/quantidade produzida")
 
 #Importando tabela
 
@@ -304,14 +285,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2012")
+    
     write.table(q2012,file='quantidade_produzida.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano10,q2012)
 
 #Tabela 2013----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/quantidade produzida")
 
 #Importando tabela
 
@@ -332,14 +311,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2013")
+    
     write.table(q2013,file='quantidade_produzida.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano11,q2013)
 
 #Tabela 2014----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/quantidade produzida")
 
 #Importando tabela
 
@@ -360,14 +337,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2014")
+    
     write.table(q2014,file='quantidade_produzida.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano12,q2014)
 
 #Tabela 2015----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/quantidade produzida")
 
 #Importando tabela
 
@@ -388,14 +363,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2015")
+    
     write.table(q2015,file='quantidade_produzida.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano13,q2015)
 
 #Tabela 2016----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/quantidade produzida")
 
 #Importanto tabela
 
@@ -416,14 +389,12 @@
 #Exportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2016")
+    
     write.table(q2016,file='quantidade_produzida.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano14,q2016)
 
 #Tabela 2017----
-
-#Diretório local de trabalho
-
-    setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/quantidade produzida")
 
 #Importando tabela
 
@@ -444,5 +415,7 @@
 #Esportando tabela
 
     setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2017")
+    
     write.table(q2017,file='quantidade_produzida.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+    
     rm(ano15,q2017)
