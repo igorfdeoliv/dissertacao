@@ -109,7 +109,11 @@
   base$rm_girassol <- as.numeric(base$rm_girassol)
   base$rm_mamona <- as.numeric(base$rm_mamona)
   base$rm_soja <- as.numeric(base$rm_soja)
-  
+  base$est_pop <- as.numeric(base$est_pop)
+
+  base <- base %>% 
+    filter(est_pop!="NA")
+
 #Limpando variáveis----
   
   base <- base %>% 
