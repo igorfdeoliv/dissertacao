@@ -1,0 +1,193 @@
+#Importando pacotes para trabalho----
+
+  if(!require(dplyr))
+    install.packages("dplyr")
+
+  if(!require(MatchIt))
+    install.packages("MatchIt")
+
+  if(!require(psych))
+    install.packages("psych")
+
+  if(!require(ggcorrplot))
+    install.packages("ggcorrplot")
+
+#Limpando memória----
+
+  rm(list=ls())
+
+#Importando base de dados----
+
+  base <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/base.csv"
+
+  pnpb <- read.csv(base,sep=";",dec=".")
+
+  rm(base)
+  
+#Iniciando matching----
+
+  matching <- matchit(polos ~ total.contratos + valores.totais + d.bio +
+                      pib.per.capta,data=pnpb,method="nearest",
+                    link="probit",ratio=1)
+  
+  summary(matching)
+  
+#Análise de correlação dos dados----
+  
+  correl <- psm %>% 
+    select("total.contratos","valores.totais","d.bio","pib.per.capta")
+  
+  x<-cor(correl)
+    
+  ggcorrplot(x,type="lower",
+            hc.order=TRUE,
+            method="circle",
+            lab=TRUE,
+            lab_size=3,
+            colors=c("firebrick","white","dodgerblue4"),
+            ggtheme=theme_bw)
+  
+  rm(x,correl)
+    
+#Declarando base após matching----
+
+  psm <- match.data(matching)
+
+  rm(matching)
+  
+#Dummy para identificação do período de tratamento----
+  
+  pnpb <- pnpb %>%
+    mutate(data_treat=if_else(ano>2006,1,0))
+    
+  psm <- psm %>%
+    mutate(data_treat=if_else(ano>2006,1,0))
+  
+#Analise descritiva
+  
+  describeBy(pnpb$prod_soja,group=pnpb$ano)
+  
+  describeBy(pnpb$rm_soja,group=pnpb$ano)
+  
+  describeBy(pnpb$s.soja,group=pnpb$ano)
+  
+  summary(pnpb)
+  
+  summary(psm)  
+
+#Estimado os modelo e analisando os resultados----
+  
+  #Produtividade antes do pareamento
+  
+  reg1 <- lm(prod_soja ~ polos + total.contratos +
+               valores.totais + d.bio + pib.per.capta,data=pnpb)
+
+  #Produtividade após o pareamento
+  
+  reg2 <- lm(prod_soja ~ polos + total.contratos +
+               valores.totais + d.bio + pib.per.capta,data=psm)
+  
+  #Rendimento médio antes do pareamento
+  
+  reg3 <- lm(rm_soja ~ polos + total.contratos +
+               valores.totais + d.bio + pib.per.capta,data=pnpb)
+  
+  #Rendimento médio após o pareamento
+  
+  reg4 <- lm(rm_soja ~ polos + total.contratos +
+               valores.totais + d.bio + pib.per.capta,data=psm)
+  
+  #Salários relacionados às atividades antes do pareamento
+  
+  reg5 <- lm(s.soja ~ polos + total.contratos +
+               valores.totais + d.bio + pib.per.capta,data=pnpb)
+
+  #Salários relacionados às atividades após o pareamento
+  
+  reg6 <- lm(s.soja ~ polos + total.contratos +
+               valores.totais + d.bio + pib.per.capta,data=psm)
+  
+  #Tabela de resultados
+  
+  stargazer(reg1,reg2,reg3,reg4,reg5,reg6,
+            type="text",omit.stat=c("LL","ser","f"))
+  
+  rm(reg1,reg2,reg3,reg4,reg5,reg6)
+
+#Estimado os modelo e analisando os resultados----
+  
+#Produtividade antes do pareamento
+  
+  reg1 <- lm(prod_soja ~ polos + data_treat + total.contratos +
+               valores.totais + d.bio + pib.per.capta,data=pnpb)
+  
+#Produtividade após o pareamento
+  
+  reg2 <- lm(prod_soja ~ polos + + data_treat + total.contratos +
+               valores.totais + d.bio + pib.per.capta,data=psm)
+  
+#Rendimento médio antes do pareamento
+  
+  reg3 <- lm(rm_soja ~ polos + data_treat + total.contratos +
+               valores.totais + d.bio + pib.per.capta,data=pnpb)
+  
+#Rendimento médio após o pareamento
+  
+  reg4 <- lm(rm_soja ~ polos + data_treat + total.contratos +
+               valores.totais + d.bio + pib.per.capta,data=psm)
+  
+#Salários relacionados às atividades antes do pareamento
+  
+  reg5 <- lm(s.soja ~ polos + data_treat + total.contratos +
+               valores.totais + d.bio + pib.per.capta,data=pnpb)
+  
+#Salários relacionados às atividades após o pareamento
+  
+  reg6 <- lm(s.soja ~ polos + data_treat + total.contratos +
+               valores.totais + d.bio + pib.per.capta,data=psm)
+  
+#Tabela de resultados
+  
+  stargazer(reg1,reg2,reg3,reg4,reg5,reg6,
+            type="text",omit.stat=c("LL","ser","f"))
+  
+  rm(reg1,reg2,reg3,reg4,reg5,reg6)
+
+#Estimado os modelo e analisando os resultados----
+  
+#Produtividade antes do pareamento
+  
+  reg1 <- lm(prod_soja ~ polos + semiarido + data_treat + total.contratos +
+               valores.totais + d.bio + pib.per.capta,data=pnpb)
+  
+#Produtividade após o pareamento
+  
+  reg2 <- lm(prod_soja ~ polos + semiarido + data_treat + total.contratos +
+               valores.totais + d.bio + pib.per.capta,data=psm)
+  
+#Rendimento médio antes do pareamento
+  
+  reg3 <- lm(rm_soja ~ polos + semiarido + data_treat + total.contratos +
+               valores.totais + d.bio + pib.per.capta,data=pnpb)
+  
+#Rendimento médio após o pareamento
+  
+  reg4 <- lm(rm_soja ~ polos + semiarido + data_treat + total.contratos +
+               valores.totais + d.bio + pib.per.capta,data=psm)
+  
+#Salários relacionados às atividades antes do pareamento
+  
+  reg5 <- lm(s.soja ~ polos + semiarido + data_treat + total.contratos +
+               valores.totais + d.bio + pib.per.capta,data=pnpb)
+  
+#Salários relacionados às atividades após o pareamento
+  
+  reg6 <- lm(s.soja ~ polos + semiarido + data_treat + total.contratos +
+               valores.totais + d.bio + pib.per.capta,data=psm)
+  
+#Tabela de resultados
+  
+  stargazer(reg1,reg2,reg3,reg4,reg5,reg6,
+            type="text",omit.stat=c("LL","ser","f"))
+  
+  rm(reg1,reg2,reg3,reg4,reg5,reg6)
