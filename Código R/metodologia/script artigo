@@ -73,173 +73,56 @@
 
   describeBy(pnpb$prod_soja,group=pnpb$ano)
   describeBy(psm$prod_soja,group=psm$ano)
-  
+
   describeBy(pnpb$rm_soja,group=pnpb$ano)
   describeBy(psm$rm_soja,group=psm$ano)
-  
+
   describeBy(pnpb$s.soja,group=pnpb$ano)
   describeBy(psm$s.soja,group=psm$ano)
-  
+
   summary(pnpb)
 
   summary(psm)  
 
-#Estimado os modelo e analisando os resultados----
-
-  #Produtividade antes do pareamento
-
-  reg1 <- lm(prod_soja ~ polos + total.contratos +
-             valores.totais + d.bio + pib.per.capta,data=pnpb)
-
-  #Produtividade após o pareamento
-
-  reg2 <- lm(prod_soja ~ polos + total.contratos +
-             valores.totais + d.bio + pib.per.capta,data=psm)
-
-  #Rendimento médio antes do pareamento
-
-  reg3 <- lm(rm_soja ~ polos + total.contratos +
-             valores.totais + d.bio + pib.per.capta,data=pnpb)
-
-  #Rendimento médio após o pareamento
-
-  reg4 <- lm(rm_soja ~ polos + total.contratos +
-             valores.totais + d.bio + pib.per.capta,data=psm)
-
-  #Salários relacionados às atividades antes do pareamento
-
-  reg5 <- lm(s.soja ~ polos + total.contratos +
-             valores.totais + d.bio + pib.per.capta,data=pnpb)
-
-  #Salários relacionados às atividades após o pareamento
-
-  reg6 <- lm(s.soja ~ polos + total.contratos +
-             valores.totais + d.bio + pib.per.capta,data=psm)
-
-  #Tabela de resultados
-
-  stargazer(reg1,reg2,reg3,reg4,reg5,reg6,
-          type="text",omit.stat=c("LL","ser","f"))
-
-  rm(reg1,reg2,reg3,reg4,reg5,reg6)
-
-#Estimado os modelo e analisando os resultados----
-
-  #Produtividade antes do pareamento
-
-  reg1 <- lm(prod_soja ~ polos + data_treat + total.contratos +
-             valores.totais + d.bio + pib.per.capta,data=pnpb)
-
-  #Produtividade após o pareamento
-
-  reg2 <- lm(prod_soja ~ polos + + data_treat + total.contratos +
-             valores.totais + d.bio + pib.per.capta,data=psm)
-
-  #Rendimento médio antes do pareamento
-
-  reg3 <- lm(rm_soja ~ polos + data_treat + total.contratos +
-             valores.totais + d.bio + pib.per.capta,data=pnpb)
-
-  #Rendimento médio após o pareamento
-
-  reg4 <- lm(rm_soja ~ polos + data_treat + total.contratos +
-             valores.totais + d.bio + pib.per.capta,data=psm)
-
-  #Salários relacionados às atividades antes do pareamento
-
-  reg5 <- lm(s.soja ~ polos + data_treat + total.contratos +
-             valores.totais + d.bio + pib.per.capta,data=pnpb)
-
-  #Salários relacionados às atividades após o pareamento
-
-  reg6 <- lm(s.soja ~ polos + data_treat + total.contratos +
-             valores.totais + d.bio + pib.per.capta,data=psm)
-
-  #Tabela de resultados
-
-  stargazer(reg1,reg2,reg3,reg4,reg5,reg6,
-          type="text",omit.stat=c("LL","ser","f"))
-
-  rm(reg1,reg2,reg3,reg4,reg5,reg6)
-
-#Estimado os modelo e analisando os resultados----
-
-  #Produtividade antes do pareamento
-
-  reg1 <- lm(prod_soja ~ polos + semiarido + data_treat + total.contratos +
-             valores.totais + d.bio + pib.per.capta,data=pnpb)
-
-  #Produtividade após o pareamento
-
-  reg2 <- lm(prod_soja ~ polos + semiarido + data_treat + total.contratos +
-             valores.totais + d.bio + pib.per.capta,data=psm)
-
-  #Rendimento médio antes do pareamento
-
-  reg3 <- lm(rm_soja ~ polos + semiarido + data_treat + total.contratos +
-             valores.totais + d.bio + pib.per.capta,data=pnpb)
-
-  #Rendimento médio após o pareamento
-
-  reg4 <- lm(rm_soja ~ polos + semiarido + data_treat + total.contratos +
-             valores.totais + d.bio + pib.per.capta,data=psm)
-
-  #Salários relacionados às atividades antes do pareamento
-
-  reg5 <- lm(s.soja ~ polos + semiarido + data_treat + total.contratos +
-             valores.totais + d.bio + pib.per.capta,data=pnpb)
-
-  #Salários relacionados às atividades após o pareamento
-
-  reg6 <- lm(s.soja ~ polos + semiarido + data_treat + total.contratos +
-             valores.totais + d.bio + pib.per.capta,data=psm)
-
-  #Tabela de resultados
-
-  stargazer(reg1,reg2,reg3,reg4,reg5,reg6,
-          type="text",omit.stat=c("LL","ser","f"))
-
-  rm(reg1,reg2,reg3,reg4,reg5,reg6)
-  
 #Criando a variável de diff in diff, interagindo polos e data_treat----
-  
+
   psm <- psm %>% 
     mutate(estimador_dd=polos*data_treat)
-  
+
   table(psm$estimador_dd)
-  
+
 #Declarando que a base de dados é um painel----
-  
+
   painel <- pdata.frame(psm,index=c("chave","ano"))
 
- #Estimado os modelo e analisando os resultados----
-  
-  #Produtividade após o pareamento
-  
+#Estimado os modelo e analisando os resultados----
+
+#Produtividade após o pareamento
+
   reg1 <- plm(prod_soja ~ total.contratos + valores.totais + 
-                d.bio + t + pib.per.capta + estimador_dd,data=painel,model="pooling")
-  
+              d.bio + t + estimador_dd,data=painel,model="pooling")
+
   reg2 <- plm(prod_soja ~ total.contratos + valores.totais + 
-                d.bio + t + pib.per.capta + estimador_dd,data=painel,model="within")
-  
-  #Rendimento médio após o pareamento
-  
+              d.bio + t + estimador_dd,data=painel,model="within")
+
+#Rendimento médio após o pareamento
+
   reg3 <- plm(rm_soja ~ total.contratos + valores.totais +
-               d.bio + t + pib.per.capta + estimador_dd,data=painel,model="pooling")
-  
+              d.bio + t + estimador_dd,data=painel,model="pooling")
+
   reg4 <- plm(rm_soja ~ total.contratos + valores.totais + 
-                d.bio + t + pib.per.capta + estimador_dd,data=painel,model="within")
-  
-  #Salários relacionados às atividades após o pareamento
-  
+              d.bio + t + estimador_dd,data=painel,model="within")
+
+#Salários relacionados às atividades após o pareamento
+
   reg5 <- plm(s.soja ~ total.contratos + valores.totais +
-                d.bio + t + pib.per.capta + estimador_dd,data=painel,model="pooling")
-  
+              d.bio + t + estimador_dd,data=painel,model="pooling")
+
   reg6 <- plm(s.soja ~ total.contratos + valores.totais + 
-                d.bio + t + pib.per.capta + estimador_dd,data=painel,model="within")
-  
-  #Tabela de resultados
-  
+              d.bio + t + estimador_dd,data=painel,model="within")
+
+#Tabela de resultados
+
   stargazer(reg1,reg2,reg3,reg4,reg5,reg6,type="text",omit.stat=c("LL","ser","f"))
-  
+
   rm(reg1,reg2,reg3,reg4,reg5,reg6)
