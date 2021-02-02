@@ -17,7 +17,7 @@
 #3. Escolher e executar o algoritmo de matching. Neste caso, vamos usar um tipo
 #específico de algorítmo chamado: nearest neighbor propensity score matching
 
-#4. Examinar o balanceamento da covariaveis depois do matching
+#4. Examinar o balanceamento das covariaveis depois do matching
 
 #Importando pacotes para trabalho----
 
