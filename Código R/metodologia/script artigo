@@ -238,16 +238,6 @@
   
 #Dummy para identificação do período de tratamento----
 
-  ggplot(psm, mapping=aes(x=ano)) +
-    geom_histogram(binwidth = 1, color="white") +
-    facet_wrap(vars(polos))
-
-  ggplot(psm,mapping=aes(x=polos,y=ano)) +
-    stat_summary(geom="pointrange",fun.data="mean_se",
-                 fun.args=list(mult=1.96)) +
-    facet_wrap(vars(data_treat))
-  
-  
   psm <- psm %>%
     mutate(data_treat=if_else(ano>2006,1,0))
 
