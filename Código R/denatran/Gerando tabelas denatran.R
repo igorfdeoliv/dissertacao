@@ -1,16 +1,21 @@
 #Carregando pacotes a setem utilizados----
 
-  library(dplyr)
-  library(readxl)
-  library(stringr)
+  if(!require(dplyr))
+    install.packages('dplyr')
 
-#Limpando bases da memÃ³ria----
+  if(!require(readxl))
+    install.packages('readxl')
+
+  if(!require(stringr))
+    install.packages('stringr')
+
+#Limpando bases da memória----
 
   rm(list=ls())
 
 #Tabela 2003----
 
-#DiretÃ³rio local de trabalho
+#Diretório local de trabalho
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
 
@@ -19,8 +24,8 @@
   d2003 <- read_excel("Frota_Mun_Dez_03t.xls")
 
   d2003 <- d2003 %>%
-    mutate(MUNICÃPIO=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ",MUNICÃPIO)) %>%
-    mutate("chave"=str_c(MUNICÃPIO," ","(", UF,")")) %>% 
+    mutate(MUNICÍPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICÍPIO)) %>%
+    mutate("chave"=str_c(MUNICÍPIO," ","(", UF,")")) %>% 
     mutate("ano"=2003)
 
   d2003 <- d2003[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
@@ -40,12 +45,14 @@
 #Exportando tabela
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2003")
+
   write.table(d2003,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+
   rm(d2003)
 
 #Tabela 2004----
 
-#DiretÃ³rio local de trabalho
+#Diretório local de trabalho
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
 
@@ -54,8 +61,8 @@
   d2004 <- read_excel("Frota Munic 122004 Internet.xls",skip=2)
 
   d2004 <- d2004 %>% 
-    mutate(MUNICÃPIO=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ",MUNICÃPIO)) %>%
-    mutate("chave"=str_c(MUNICÃPIO," ","(", UF,")")) %>% 
+    mutate(MUNICÍPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICÍPIO)) %>%
+    mutate("chave"=str_c(MUNICÍPIO," ","(", UF,")")) %>% 
     mutate("ano"=2004)
 
   d2004 <- d2004[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
@@ -75,12 +82,14 @@
 #Exportando tabela
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2004")
+
   write.table(d2004,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+
   rm(d2004)
 
 #Tabela 2005----
 
-#DiretÃ³rio local de trabalho
+#Diretório local de trabalho
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
 
@@ -89,8 +98,8 @@
   d2005 <- read_excel("Frota Munic 122005 Internet.xls",skip=2)
 
   d2005 <- d2005 %>% 
-    mutate(MUNICÃPIO=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ",MUNICÃPIO)) %>%
-    mutate("chave"=str_c(MUNICÃPIO," ","(", UF,")")) %>% 
+    mutate(MUNICÍPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICÍPIO)) %>%
+    mutate("chave"=str_c(MUNICÍPIO," ","(", UF,")")) %>% 
     mutate("ano"=2005)
 
   d2005 <- d2005[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
@@ -108,14 +117,16 @@
     mutate("total"=(d2005$CAMINHAO+d2005$MICRO_ONIBUS+d2005$ONIBUS))
 
 #Exportando tabela
-
+  
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2005")
+
   write.table(d2005,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+
   rm(d2005)
 
 #Tabela 2006----
 
-#DiretÃ³rio local de trabalho
+#Diretório local de trabalho
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
 
@@ -125,8 +136,8 @@
                     sheet = "DEZ_2006", skip = 2)
 
   d2006 <- d2006 %>% 
-    mutate(MUNICÃPIO=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ",MUNICÃPIO)) %>%
-    mutate("chave"=str_c(MUNICÃPIO," ","(", UF,")")) %>% 
+    mutate(MUNICÍPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICÍPIO)) %>%
+    mutate("chave"=str_c(MUNICÍPIO," ","(", UF,")")) %>% 
     mutate("ano"=2006)
 
   d2006 <- d2006[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
@@ -146,12 +157,14 @@
 #Exportando tabela
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2006")
+
   write.table(d2006,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+
   rm(d2006)
 
 #Tabela 2007----
 
-#DiretÃ³rio local de trabalho
+#Diretório local de trabalho
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
 
@@ -161,8 +174,8 @@
                     sheet = "DEZ_2007", skip = 2)
 
   d2007 <- d2007 %>% 
-    mutate(MUNICÃPIO=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ",MUNICÃPIO)) %>%
-    mutate("chave"=str_c(MUNICÃPIO," ","(", UF,")")) %>% 
+    mutate(MUNICÍPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICÍPIO)) %>%
+    mutate("chave"=str_c(MUNICÍPIO," ","(", UF,")")) %>% 
     mutate("ano"=2007)
 
   d2007 <- d2007[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
@@ -182,12 +195,14 @@
 #Exportando tabela
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2007")
+
   write.table(d2007,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+
   rm(d2007)
 
 #Tabela 2008----
 
-#DiretÃ³rio local de trabalho
+#Diretório local de trabalho
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
 
@@ -197,13 +212,13 @@
                     sheet = "DEZ_2008", skip = 2)
 
   d2008 <- d2008 %>%
-    mutate(MUNICÃPIO=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ",MUNICÃPIO)) %>%
-    mutate("chave"=str_c(MUNICÃPIO," ","(", UF,")")) %>% 
+    mutate(MUNICÍPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICÍPIO)) %>%
+    mutate("chave"=str_c(MUNICÍPIO," ","(", UF,")")) %>% 
     mutate("ano"=2008)
 
   d2008 <- d2008[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
                   16,17,18,19,20,21,22,23,24,3)]
-  
+
   names(d2008) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
                   "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
                   "CICLOMOTOR","MICRO_ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
@@ -218,12 +233,14 @@
 #Exportando tabela
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2008")
+
   write.table(d2008,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+
   rm(d2008)
 
 #Tabela 2009----
 
-#DiretÃ³rio local de trabalho
+#Diretório local de trabalho
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
 
@@ -233,7 +250,7 @@
                     sheet = "DEZ_2009", skip = 2)
 
   d2009 <- d2009 %>% 
-    mutate(MUNICIPIO=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
+    mutate(MUNICIPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2009)
 
@@ -254,12 +271,14 @@
 #Exportando tabela
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2009")
+
   write.table(d2009,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+
   rm(d2009)
 
 #Tabela 2010----
 
-#DiretÃ³rio local de trabalho
+#Diretório local de trabalho
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
 
@@ -269,7 +288,7 @@
                     sheet = "DEZ_2010", skip = 2)
 
   d2010 <- d2010 %>% 
-    mutate(MUNICIPIO=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
+    mutate(MUNICIPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2010)
 
@@ -290,12 +309,14 @@
 #Exportando tabela
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2010")
+
   write.table(d2010,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+
   rm(d2010)
 
 #Tabela 2011----
 
-#DiretÃ³rio local de trabalho
+#Diretório local de trabalho
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
 
@@ -305,7 +326,7 @@
                     sheet = "DEZ_2011", skip = 3)
 
   d2011 <- d2011 %>% 
-    mutate(MUNICIPIO=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
+    mutate(MUNICIPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2011)
 
@@ -326,12 +347,14 @@
 #Exportando tabela
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2011")
+
   write.table(d2011,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+
   rm(d2011)
 
 #Tabela 2012----
 
-#DiretÃ³rio local de trabalho
+#Diretório local de trabalho
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
 
@@ -341,7 +364,7 @@
                     sheet = "DEZ_2012", skip = 3)
 
   d2012 <- d2012 %>% 
-    mutate(MUNICIPIO=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
+    mutate(MUNICIPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2012)
 
@@ -362,12 +385,14 @@
 #Exportando tabela
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2012")
+
   write.table(d2012,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+
   rm(d2012)
 
 #Tabela 2013----
 
-#DiretÃ³rio local de trabalho
+#Diretório local de trabalho
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
 
@@ -375,9 +400,9 @@
 
   d2013 <- read_excel("Frota Munic.DEZ.2013.xls", 
                     sheet = "DEZ_2013", skip = 3)
-
+  
   d2013 <- d2013 %>% 
-    mutate(MUNICIPIO=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
+    mutate(MUNICIPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2013)
 
@@ -398,12 +423,14 @@
 #Exportando tabela
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2013")
+
   write.table(d2013,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+
   rm(d2013)
 
 #Tabela 2014---
 
-#DiretÃ³rio local de trabalho
+#Diretório local de trabalho
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
 
@@ -413,13 +440,13 @@
                     sheet = "DEZ_2014", skip = 3)
 
   d2014 <- d2014 %>% 
-    mutate(MUNICIPIO=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
+    mutate(MUNICIPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2014)
 
   d2014 <- d2014[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
                   16,17,18,19,20,21,22,23,24,3)]
-  
+
   names(d2014) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
                   "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
                   "CICLOMOTOR","MICRO_ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
@@ -434,12 +461,14 @@
 #Exportando tabela
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2014")
+
   write.table(d2014,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+
   rm(d2014)
 
 #Tabela 2015----
 
-#DiretÃ³rio local de trabalho
+#Diretório local de trabalho
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
 
@@ -449,7 +478,7 @@
                     sheet = "JUL_2015", skip = 3)
 
   d2015 <- d2015 %>% 
-    mutate(MUNICIPIO=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
+    mutate(MUNICIPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2015)
 
@@ -470,12 +499,14 @@
 #Exportando tabela
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2015")
+
   write.table(d2015,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+
   rm(d2015)
 
 #Tabela 2016----
 
-#DiretÃ³rio local de trabalho
+#Diretório local de trabalho
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
 
@@ -485,7 +516,7 @@
                     sheet = "DEZ_2016", skip = 3)
 
   d2016 <- d2016 %>% 
-    mutate(MUNICIPIO=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
+    mutate(MUNICIPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2016)
 
@@ -506,12 +537,14 @@
 #Exportando tabela
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2016")
+
   write.table(d2016,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+
   rm(d2016)
 
 #Tabela 2017----
 
-#DiretÃ³rio local de trabalho
+#Diretório local de trabalho
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
 
@@ -521,7 +554,7 @@
                     sheet = "DEZ_2017", skip = 2)
 
   d2017 <- d2017 %>% 
-    mutate(MUNICIPIO=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
+    mutate(MUNICIPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
     mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
     mutate("ano"=2017)
 
@@ -542,5 +575,7 @@
 #Exportando tabela
 
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2017")
+
   write.table(d2017,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+
   rm(d2017)
