@@ -51,29 +51,11 @@
   if(!require(plm))
     install.packages("plm")
 
-  if(!require(psych))
-    install.packages("psych")
-
   if(!require(stargazer))
     install.packages("stargazer")
 
   if(!require(ggplot2))
     install.packages("ggplot2")
-
-  if(!require(cowplot))
-    install.packages("cowplot")
-
-  if(!require(tidyverse))
-    install.packages("tidyverse")
-
-  if(!require(broom))
-    install.packages("broom")
-
-  if(!require(modelsummary))
-    install.packages("modelsummary")
-
-  if(!require(scales))
-    install.packages("scales")
 
 #Limpando memória----
 
@@ -258,32 +240,32 @@
 
 #Produtividade após o pareamento
 
-  reg1 <- plm(prod_soja ~ total.contratos + valores.totais + 
-              d.bio + vaba + t + estimador_dd,data=painel,model="pooling")
+  reg1 <- plm(prod_soja ~ polos + data_treat + estimador_dd + total.contratos +
+                h.soja + d.bio + vaba + est_pop,data=painel,model="pooling")
 
-  reg2 <- plm(prod_soja ~ total.contratos + valores.totais + 
-              d.bio + vaba + t + estimador_dd,data=painel,model="within")
+  reg2 <- plm(prod_soja ~ polos + data_treat + estimador_dd + total.contratos +
+              h.soja + d.bio + vaba + est_pop,data=painel,model="within")
 
 #Rendimento médio após o pareamento
 
-  reg3 <- plm(rm_soja ~ total.contratos + valores.totais +
-              d.bio + vaba + t + estimador_dd,data=painel,model="pooling")
+  reg3 <- plm(rm_soja ~ polos + data_treat + estimador_dd + total.contratos +
+                h.soja + d.bio + vaba + est_pop,data=painel,model="pooling")
 
-  reg4 <- plm(rm_soja ~ total.contratos + valores.totais + 
-              d.bio + vaba + t + estimador_dd,data=painel,model="within")
+  reg4 <- plm(rm_soja ~ polos + data_treat + estimador_dd + total.contratos +
+                h.soja + d.bio + vaba + est_pop,data=painel,model="within")
 
 #Salários relacionados às atividades após o pareamento
 
-  reg5 <- plm(s.soja ~ total.contratos + valores.totais +
-              d.bio + vaba + t + estimador_dd,data=painel,model="pooling")
+  reg5 <- plm(s.soja ~ polos + data_treat + estimador_dd + total.contratos +
+                h.soja + d.bio + vaba + est_pop,data=painel,model="pooling")
 
-  reg6 <- plm(s.soja ~ total.contratos + valores.totais + 
-              d.bio + vaba + t + estimador_dd,data=painel,model="within")
+  reg6 <- plm(s.soja ~ polos + data_treat + estimador_dd + total.contratos +
+                h.soja + d.bio + vaba + est_pop,data=painel,model="within")
 
 #Tabela de resultados
 
   stargazer(reg1,reg2,reg3,reg4,reg5,reg6,type="text",omit.stat=c("LL","ser","f"),
-            dep.var.labels=c("Produtividade","Rendimento Médio","Salários"),
+            dep.var.labels=c("Produtividade","Renda Média","Salários"),
             out="Modelo1.html")
 
   rm(reg1,reg2,reg3,reg4,reg5,reg6)
@@ -292,36 +274,38 @@
   
 #Produtividade após o pareamento
   
-  reg1 <- plm(prod_soja ~ semiarido + total.contratos + valores.totais + 
-                d.bio + vaba + t + estimador_dd,data=painel,model="pooling")
+  reg1 <- plm(prod_soja ~ polos + semiarido + data_treat + estimador_dd +
+                total.contratos + d.bio + vaba + est_pop,data=painel,
+              model="pooling")
   
-  reg2 <- plm(prod_soja ~ semiarido + total.contratos + valores.totais + 
-                d.bio + vaba + t + estimador_dd,data=painel,model="within")
+  reg2 <- plm(prod_soja ~ polos + semiarido + data_treat + estimador_dd + 
+                total.contratos + d.bio + vaba + est_pop,data=painel,
+              model="within")
   
 #Rendimento médio após o pareamento
   
-  reg3 <- plm(rm_soja ~ semiarido + total.contratos + valores.totais +
-                d.bio + vaba + t + estimador_dd,data=painel,model="pooling")
+  reg3 <- plm(rm_soja ~ polos + semiarido + data_treat + estimador_dd + 
+                total.contratos + d.bio + vaba + est_pop,data=painel,
+              model="pooling")
   
-  reg4 <- plm(rm_soja ~ semiarido + total.contratos + valores.totais + 
-                d.bio + vaba + t + estimador_dd,data=painel,model="within")
+  reg4 <- plm(rm_soja ~ polos + semiarido + data_treat + estimador_dd +
+                total.contratos + d.bio + vaba + est_pop,data=painel,
+              model="within")
   
 #Salários relacionados às atividades após o pareamento
   
-  reg5 <- plm(s.soja ~ semiarido + total.contratos + valores.totais +
-                d.bio + vaba + t + estimador_dd,data=painel,model="pooling")
+  reg5 <- plm(s.soja ~ polos + semiarido + data_treat + estimador_dd + 
+                total.contratos + d.bio + vaba + est_pop,data=painel,
+              model="pooling")
   
-  reg6 <- plm(s.soja ~ semiarido + total.contratos + valores.totais + 
-                d.bio + vaba + t + estimador_dd,data=painel,model="within")
+  reg6 <- plm(s.soja ~ polos + semiarido + data_treat + estimador_dd + 
+                total.contratos + d.bio + vaba + est_pop,data=painel,
+              model="within")
   
 #Tabela de resultados
   
   stargazer(reg1,reg2,reg3,reg4,reg5,reg6,type="text",omit.stat=c("LL","ser","f"),
-            dep.var.labels=c("Produtividade","Rendimento Médio","Salários"),
+            dep.var.labels=c("Produtividade","Renda Média","Salários"),
             out="Modelo2.html")
   
   rm(reg1,reg2,reg3,reg4,reg5,reg6)
-  
-  reg <- plm(prod_soja ~ polos + data_treat + estimador_dd,data=painel,
-           model="within")
-  summary(reg)
