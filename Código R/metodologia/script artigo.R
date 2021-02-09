@@ -224,7 +224,7 @@
 
   psm <- psm %>%
     mutate(data_treat=if_else(ano>2006,1,0))
-
+  
 #Criando a variável de diff in diff, interagindo polos e data_treat----
 
   psm <- psm %>% 
@@ -266,7 +266,7 @@
 
   stargazer(reg1,reg2,reg3,reg4,reg5,reg6,type="text",omit.stat=c("LL","ser","f"),
             dep.var.labels=c("Produtividade","Renda Média","Salários"),
-            out="Modelo1.html")
+            out="Modelo1.txt")
 
   rm(reg1,reg2,reg3,reg4,reg5,reg6)
   
@@ -306,6 +306,6 @@
   
   stargazer(reg1,reg2,reg3,reg4,reg5,reg6,type="text",omit.stat=c("LL","ser","f"),
             dep.var.labels=c("Produtividade","Renda Média","Salários"),
-            out="Modelo2.html")
+            out="Modelo2.txt")
   
   rm(reg1,reg2,reg3,reg4,reg5,reg6)
