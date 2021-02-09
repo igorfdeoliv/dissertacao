@@ -150,13 +150,14 @@
 
 ################################################################################
   
-  labs <- paste("Município participa ou não do projeto:",c("Sim","Não"))
+  labs <- paste('Participa do Projeto Polos de Biodiesel:',c("Sim","Não"))
 
   prs_df %>% 
     mutate(polos=ifelse(polos==1, labs[1],labs[2]
   )) %>% 
     ggplot(aes(x=pr_score)) + geom_histogram(color="white") + 
-    facet_wrap(~polos) + xlab("Probabilidade de participar do projeto polos") +
+    facet_wrap(~polos) + xlab('Probabilidade de participar do projeto polos') +
+    ylab('Nº Municípios') +
     theme_bw()
 
 ################################################################################
