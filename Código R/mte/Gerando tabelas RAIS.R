@@ -6,13 +6,13 @@
   if(!require(stringr))
     install.packages("stringr")
 
-#Limpando bases da memÃ³ria----
+#Limpando bases da memória----
 
   rm(list=ls())
 
 #Organizando e manipulando a base de dados----
 
-#InformaÃ§Ãµes sobre os salÃ¡rios mÃ©dios recebidos por culturas
+#Informações sobre os salários médios recebidos por culturas
 
   ano1 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2003%20consulta84077740.csv"
   ano2 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2004%20consulta93907528.csv"
@@ -37,9 +37,9 @@
   w2003 <- read.table(ano1, header=T, sep=";", dec = ".", nrows = 5658, skip = 1)
 
   w2003 <- w2003 %>% 
-    mutate("Estado"=str_sub(MunicÃ­pio, end = 2)) %>% 
-    mutate("Mun"=str_sub(MunicÃ­pio, start = 4)) %>%
-    mutate(Mun=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ", Mun)) %>% 
+    mutate("Estado"=str_sub(Município, end = 2)) %>% 
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate(Mun=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Mun)) %>% 
     mutate("chave"=str_c(Mun," ","(", Estado,")") ) %>% 
     filter(Mun!="IGNORADO") %>% 
     mutate("ano"=2003)
@@ -73,9 +73,9 @@
   w2004 <- read.table(ano2, header=T, sep=";", dec = ".", nrows = 5658, skip = 1)
 
   w2004 <- w2004 %>% 
-    mutate("Estado"=str_sub(MunicÃ­pio, end = 2)) %>% 
-    mutate("Mun"=str_sub(MunicÃ­pio, start = 4)) %>%
-    mutate(Mun=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ", Mun)) %>%
+    mutate("Estado"=str_sub(Município, end = 2)) %>% 
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate(Mun=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Mun)) %>%
     mutate("chave"=str_c(Mun," ","(", Estado,")") ) %>% 
     filter(Mun!="IGNORADO") %>% 
     mutate("ano"=2004)
@@ -109,9 +109,9 @@
   w2005 <- read.table(ano3, header=T, sep=";", dec = ".", nrows = 5658, skip = 1)
 
   w2005 <- w2005 %>%
-    mutate("Estado"=str_sub(MunicÃ­pio, end = 2)) %>%
-    mutate("Mun"=str_sub(MunicÃ­pio, start = 4)) %>%
-    mutate(Mun=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ", Mun)) %>%
+    mutate("Estado"=str_sub(Município, end = 2)) %>%
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate(Mun=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Mun)) %>%
     mutate("chave"=str_c(Mun," ","(", Estado, ")")) %>%
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2005)
@@ -145,9 +145,9 @@
   w2006 <- read.table(ano4, header=T, sep=";", dec = ".", nrows = 5658, skip = 1)
 
   w2006 <- w2006 %>%
-    mutate("Estado"=str_sub(MunicÃ­pio, end = 2)) %>%
-    mutate("Mun"=str_sub(MunicÃ­pio, start = 4)) %>%
-    mutate(Mun=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ", Mun)) %>%
+    mutate("Estado"=str_sub(Município, end = 2)) %>%
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate(Mun=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Mun)) %>%
     mutate("chave"=str_c(Mun," ","(", Estado, ")")) %>%
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2006)
@@ -182,9 +182,9 @@
   w2007 <- read.table(ano5, header=T, sep=";", dec = ".", nrows = 5658, skip = 1)
 
   w2007 <- w2007 %>%
-    mutate("Estado"=str_sub(MunicÃ­pio, end = 2)) %>%
-    mutate("Mun"=str_sub(MunicÃ­pio, start = 4)) %>%
-    mutate(Mun=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ", Mun)) %>%
+    mutate("Estado"=str_sub(Município, end = 2)) %>%
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate(Mun=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Mun)) %>%
     mutate("chave"=str_c(Mun," ","(", Estado, ")")) %>%
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2007)
@@ -200,7 +200,7 @@
   w2007$PRODUTOR.DA.CULTURA.DE.SOJA <- as.numeric(w2007$PRODUTOR.DA.CULTURA.DE.SOJA)
   w2007$TRABALHADOR.NA.CULTURA.DE.SOJA <- as.numeric(w2007$TRABALHADOR.NA.CULTURA.DE.SOJA)
   w2007$Total <- as.numeric(w2007$Total)
-  
+
   w2007 <- w2007[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #Exportando tabela
@@ -218,15 +218,15 @@
   w2008 <- read.table(ano6, header=T, sep=";", dec = ".", nrows = 5658, skip = 1)
 
   w2008 <- w2008 %>%
-    mutate("Estado"=str_sub(MunicÃ­pio, end = 2)) %>%
-    mutate("Mun"=str_sub(MunicÃ­pio, start = 4)) %>%
-    mutate(Mun=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ", Mun)) %>%
+    mutate("Estado"=str_sub(Município, end = 2)) %>%
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate(Mun=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Mun)) %>%
     mutate("chave"=str_c(Mun," ","(", Estado, ")")) %>%
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2008)
 
 #Reorganizando colunas
-  
+
   w2008$PRODUTOR.DA.CULTURA.DE.DENDE <- as.numeric(w2008$PRODUTOR.DA.CULTURA.DE.DENDE)
   w2008$TRABALHADOR.NA.CULTURA.DE.DENDE <- as.numeric(w2008$TRABALHADOR.NA.CULTURA.DE.DENDE)
   w2008$PRODUTOR.DA.CULTURA.DE.GIRASSOL <- as.numeric(w2008$PRODUTOR.DA.CULTURA.DE.GIRASSOL)
@@ -236,7 +236,7 @@
   w2008$PRODUTOR.DA.CULTURA.DE.SOJA <- as.numeric(w2008$PRODUTOR.DA.CULTURA.DE.SOJA)
   w2008$TRABALHADOR.NA.CULTURA.DE.SOJA <- as.numeric(w2008$TRABALHADOR.NA.CULTURA.DE.SOJA)
   w2008$Total <- as.numeric(w2008$Total)
-  
+
   w2008 <- w2008[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #Exportando tabela
@@ -255,9 +255,9 @@
   w2009 <- read.table(ano7, header=T, sep=";", dec = ".", nrows = 5658, skip = 1)
 
   w2009 <- w2009 %>%
-    mutate("Estado"=str_sub(MunicÃ­pio, end = 2)) %>%
-    mutate("Mun"=str_sub(MunicÃ­pio, start = 4)) %>%
-    mutate(Mun=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ", Mun)) %>%
+    mutate("Estado"=str_sub(Município, end = 2)) %>%
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate(Mun=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Mun)) %>%
     mutate("chave"=str_c(Mun," ","(", Estado, ")")) %>%
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2009)
@@ -273,7 +273,7 @@
   w2009$PRODUTOR.DA.CULTURA.DE.SOJA <- as.numeric(w2009$PRODUTOR.DA.CULTURA.DE.SOJA)
   w2009$TRABALHADOR.NA.CULTURA.DE.SOJA <- as.numeric(w2009$TRABALHADOR.NA.CULTURA.DE.SOJA)
   w2009$Total <- as.numeric(w2009$Total)
-  
+
   w2009 <- w2009[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #Exportando tabela
@@ -291,9 +291,9 @@
   w2010 <- read.table(ano8, header=T, sep=";", dec = ".", nrows = 5658, skip = 1)
 
   w2010 <- w2010 %>%
-    mutate("Estado"=str_sub(MunicÃ­pio, end = 2)) %>%
-    mutate("Mun"=str_sub(MunicÃ­pio, start = 4)) %>%
-    mutate(Mun=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ", Mun)) %>%
+    mutate("Estado"=str_sub(Município, end = 2)) %>%
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate(Mun=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Mun)) %>%
     mutate("chave"=str_c(Mun," ","(", Estado, ")")) %>%
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2010)
@@ -309,7 +309,7 @@
   w2010$PRODUTOR.DA.CULTURA.DE.SOJA <- as.numeric(w2010$PRODUTOR.DA.CULTURA.DE.SOJA)
   w2010$TRABALHADOR.NA.CULTURA.DE.SOJA <- as.numeric(w2010$TRABALHADOR.NA.CULTURA.DE.SOJA)
   w2010$Total <- as.numeric(w2010$Total)
-  
+
   w2010 <- w2010[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #Exportando tabela
@@ -327,9 +327,9 @@
   w2011 <- read.table(ano9, header=T, sep=";", dec = ".", nrows = 5658, skip = 1)
 
   w2011 <- w2011 %>%
-    mutate("Estado"=str_sub(MunicÃ­pio, end = 2)) %>%
-    mutate("Mun"=str_sub(MunicÃ­pio, start = 4)) %>%
-    mutate(Mun=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ", Mun)) %>%
+    mutate("Estado"=str_sub(Município, end = 2)) %>%
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate(Mun=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Mun)) %>%
     mutate("chave"=str_c(Mun," ","(", Estado, ")")) %>%
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2011)
@@ -345,7 +345,7 @@
   w2011$PRODUTOR.DA.CULTURA.DE.SOJA <- as.numeric(w2011$PRODUTOR.DA.CULTURA.DE.SOJA)
   w2011$TRABALHADOR.NA.CULTURA.DE.SOJA <- as.numeric(w2011$TRABALHADOR.NA.CULTURA.DE.SOJA)
   w2011$Total <- as.numeric(w2011$Total)
-  
+
   w2011 <- w2011[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #Exportando tabela
@@ -363,9 +363,9 @@
   w2012 <- read.table(ano10, header=T, sep=";", dec = ".", nrows = 5658, skip = 1)
 
   w2012 <- w2012 %>%
-    mutate("Estado"=str_sub(MunicÃ­pio, end = 2)) %>%
-    mutate("Mun"=str_sub(MunicÃ­pio, start = 4)) %>%
-    mutate(Mun=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ", Mun)) %>%
+    mutate("Estado"=str_sub(Município, end = 2)) %>%
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate(Mun=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Mun)) %>%
     mutate("chave"=str_c(Mun," ","(", Estado, ")")) %>%
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2012)
@@ -381,7 +381,7 @@
   w2012$PRODUTOR.DA.CULTURA.DE.SOJA <- as.numeric(w2012$PRODUTOR.DA.CULTURA.DE.SOJA)
   w2012$TRABALHADOR.NA.CULTURA.DE.SOJA <- as.numeric(w2012$TRABALHADOR.NA.CULTURA.DE.SOJA)
   w2012$Total <- as.numeric(w2012$Total)
-  
+
   w2012 <- w2012[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #Exportando tabela
@@ -399,9 +399,9 @@
   w2013 <- read.table(ano11, header=T, sep=";", dec = ".", nrows = 5658, skip = 1)
 
   w2013 <- w2013 %>%
-    mutate("Estado"=str_sub(MunicÃ­pio, end = 2)) %>%
-    mutate("Mun"=str_sub(MunicÃ­pio, start = 4)) %>%
-    mutate(Mun=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ", Mun)) %>%
+    mutate("Estado"=str_sub(Município, end = 2)) %>%
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate(Mun=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Mun)) %>%
     mutate("chave"=str_c(Mun," ","(", Estado, ")")) %>%
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2013)
@@ -417,7 +417,7 @@
   w2013$PRODUTOR.DA.CULTURA.DE.SOJA <- as.numeric(w2013$PRODUTOR.DA.CULTURA.DE.SOJA)
   w2013$TRABALHADOR.NA.CULTURA.DE.SOJA <- as.numeric(w2013$TRABALHADOR.NA.CULTURA.DE.SOJA)
   w2013$Total <- as.numeric(w2013$Total)
-  
+
   w2013 <- w2013[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #Exportando tabela
@@ -435,9 +435,9 @@
   w2014 <- read.table(ano12, header=T, sep=";", dec = ".", nrows = 5658, skip = 1)
 
   w2014 <- w2014 %>%
-    mutate("Estado"=str_sub(MunicÃ­pio, end = 2)) %>%
-    mutate("Mun"=str_sub(MunicÃ­pio, start = 4)) %>%
-    mutate(Mun=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ", Mun)) %>%
+    mutate("Estado"=str_sub(Município, end = 2)) %>%
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate(Mun=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Mun)) %>%
     mutate("chave"=str_c(Mun," ","(", Estado, ")")) %>%
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2014)
@@ -453,7 +453,7 @@
   w2014$PRODUTOR.DA.CULTURA.DE.SOJA <- as.numeric(w2014$PRODUTOR.DA.CULTURA.DE.SOJA)
   w2014$TRABALHADOR.NA.CULTURA.DE.SOJA <- as.numeric(w2014$TRABALHADOR.NA.CULTURA.DE.SOJA)
   w2014$Total <- as.numeric(w2014$Total)
-  
+
   w2014 <- w2014[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #Exportando tabela
@@ -471,9 +471,9 @@
   w2015 <- read.table(ano13, header=T, sep=";", dec = ".", nrows = 5658, skip = 1)
 
   w2015 <- w2015 %>%
-    mutate("Estado"=str_sub(MunicÃ­pio, end = 2)) %>%
-    mutate("Mun"=str_sub(MunicÃ­pio, start = 4)) %>%
-    mutate(Mun=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ", Mun)) %>%
+    mutate("Estado"=str_sub(Município, end = 2)) %>%
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate(Mun=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Mun)) %>%
     mutate("chave"=str_c(Mun," ","(", Estado, ")")) %>%
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2015)
@@ -489,11 +489,11 @@
   w2015$PRODUTOR.DA.CULTURA.DE.SOJA <- as.numeric(w2015$PRODUTOR.DA.CULTURA.DE.SOJA)
   w2015$TRABALHADOR.NA.CULTURA.DE.SOJA <- as.numeric(w2015$TRABALHADOR.NA.CULTURA.DE.SOJA)
   w2015$Total <- as.numeric(w2015$Total)
-  
+
   w2015 <- w2015[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #Exportando tabela
-
+  
   setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2015")
 
   write.table(w2015,file='rais.csv',sep=";",dec=".",na="0",quote=TRUE, row.names=FALSE)
@@ -507,9 +507,9 @@
   w2016 <- read.table(ano14, header=T, sep=";", dec = ".", nrows = 5658, skip = 1)
 
   w2016 <- w2016 %>%
-    mutate("Estado"=str_sub(MunicÃ­pio, end = 2)) %>%
-    mutate("Mun"=str_sub(MunicÃ­pio, start = 4)) %>%
-    mutate(Mun=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ", Mun)) %>%
+    mutate("Estado"=str_sub(Município, end = 2)) %>%
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate(Mun=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Mun)) %>%
     mutate("chave"=str_c(Mun," ","(", Estado, ")")) %>%
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2016)
@@ -525,7 +525,7 @@
   w2016$PRODUTOR.DA.CULTURA.DE.SOJA <- as.numeric(w2016$PRODUTOR.DA.CULTURA.DE.SOJA)
   w2016$TRABALHADOR.NA.CULTURA.DE.SOJA <- as.numeric(w2016$TRABALHADOR.NA.CULTURA.DE.SOJA)
   w2016$Total <- as.numeric(w2016$Total)
-  
+
   w2016 <- w2016[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #Exportando tabela
@@ -543,9 +543,9 @@
   w2017 <- read.table(ano15, header=T, sep=";", dec = ".", nrows = 5658, skip = 1)
 
   w2017 <- w2017 %>%
-    mutate("Estado"=str_sub(MunicÃ­pio, end = 2)) %>%
-    mutate("Mun"=str_sub(MunicÃ­pio, start = 4)) %>%
-    mutate(Mun=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ", Mun)) %>%
+    mutate("Estado"=str_sub(Município, end = 2)) %>%
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate(Mun=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Mun)) %>%
     mutate("chave"=str_c(Mun," ","(", Estado, ")")) %>%
     filter(Mun!="IGNORADO") %>%
     mutate("ano"=2017)
@@ -561,7 +561,7 @@
   w2017$PRODUTOR.DA.CULTURA.DE.SOJA <- as.numeric(w2017$PRODUTOR.DA.CULTURA.DE.SOJA)
   w2017$TRABALHADOR.NA.CULTURA.DE.SOJA <- as.numeric(w2017$TRABALHADOR.NA.CULTURA.DE.SOJA)
   w2017$Total <- as.numeric(w2017$Total)
-  
+
   w2017 <- w2017[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
 
 #Exportando tabela
