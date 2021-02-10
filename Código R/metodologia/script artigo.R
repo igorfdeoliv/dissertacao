@@ -140,7 +140,7 @@
               vaba + t,family=binomial(),data=pnpb)
   summary(m_ps)
   
-  stargazer(m_ps,type='text',dep.var.labels=c('Tratamento'), out='Modelo0.txt')
+  stargazer(m_ps,type='text',dep.var.labels=c('Tratamento'), out='Modelo0.html')
 
 #Calculando as probabilidades de participar do programa:
 
@@ -276,31 +276,31 @@
 #Produtividade após o pareamento
   
   reg1 <- plm(prod_soja ~ polos + semiarido + data_treat + estimador_dd +
-                total.contratos + d.bio + vaba + est_pop,data=painel,
+                total.contratos + h.soja + d.bio + vaba + est_pop,data=painel,
               model="pooling")
   
   reg2 <- plm(prod_soja ~ polos + semiarido + data_treat + estimador_dd + 
-                total.contratos + d.bio + vaba + est_pop,data=painel,
+                total.contratos + h.soja + d.bio + vaba + est_pop,data=painel,
               model="within")
   
 #Rendimento médio após o pareamento
   
   reg3 <- plm(rm_soja ~ polos + semiarido + data_treat + estimador_dd + 
-                total.contratos + d.bio + vaba + est_pop,data=painel,
+                total.contratos + h.soja + d.bio + vaba + est_pop,data=painel,
               model="pooling")
   
   reg4 <- plm(rm_soja ~ polos + semiarido + data_treat + estimador_dd +
-                total.contratos + d.bio + vaba + est_pop,data=painel,
+                total.contratos + h.soja + d.bio + vaba + est_pop,data=painel,
               model="within")
   
 #Salários relacionados às atividades após o pareamento
   
   reg5 <- plm(s.soja ~ polos + semiarido + data_treat + estimador_dd + 
-                total.contratos + d.bio + vaba + est_pop,data=painel,
+                total.contratos + h.soja + d.bio + vaba + est_pop,data=painel,
               model="pooling")
   
   reg6 <- plm(s.soja ~ polos + semiarido + data_treat + estimador_dd + 
-                total.contratos + d.bio + vaba + est_pop,data=painel,
+                total.contratos + h.soja + d.bio + vaba + est_pop,data=painel,
               model="within")
   
 #Tabela de resultados
