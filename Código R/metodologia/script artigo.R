@@ -42,8 +42,14 @@
 
 #Importando pacotes para trabalho----
 
+  if(!require(cobalt))
+    install.packages('cobalt')
+
   if(!require(dplyr))
     install.packages("dplyr")
+
+  if(!require(ggplot2))
+    install.packages("ggplot2")
 
   if(!require(MatchIt))
     install.packages("MatchIt")
@@ -53,9 +59,6 @@
 
   if(!require(stargazer))
     install.packages("stargazer")
-
-  if(!require(ggplot2))
-    install.packages("ggplot2")
 
 #Limpando memória----
 
@@ -179,10 +182,18 @@
                       vaba + t,data=pnpb,link="probit",method="nearest",
                     ratio=1)
 
+#Resumo estatístico após o pareamento----
+  
   summary(matching)
 
+#Gráfico de ajustamento das covariadas antes e depois do pareamento----
+  
   plot(matching)
-
+  
+#Sobreposição dos grupos tratamento e controle após o pareamento----  
+  
+  bal.plot(matching,var.name='distance')
+  
 #Declarando base após matching----
 
   psm <- match.data(matching)
