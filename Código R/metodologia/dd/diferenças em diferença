@@ -89,5 +89,14 @@
 #Teste de Hausman - efeitos aleatórios vs efeitos fixos----
   
     phtest(ea_prod_soja,ef_prod_soja)
+
+
+#Teste de Breusch-pagan----
+
+    bptest()
+
+#Corrigindo para heterocedasticidade----
+
+    reg_het <- coeftest(reg, vcov.= vcovHC, type = 'HC1)
   
   

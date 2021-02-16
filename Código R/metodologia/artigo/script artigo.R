@@ -51,11 +51,17 @@
   if(!require(ggplot2))
     install.packages("ggplot2")
 
+  if(!require(lmtest))
+    install.packages('lmtest')
+
   if(!require(MatchIt))
     install.packages("MatchIt")
 
   if(!require(plm))
     install.packages("plm")
+
+  if(!require(sandwich))
+    install.packages('sandwich')
 
   if(!require(stargazer))
     install.packages("stargazer")
@@ -313,7 +319,7 @@
   reg6 <- plm(s.soja ~ polos + semiarido + data_treat + estimador_dd + 
                 total.contratos + h.soja + d.bio + vaba + est_pop,data=painel,
               model="within")
-  
+
 #Tabela de resultados
   
   stargazer(reg1,reg2,reg3,reg4,reg5,reg6,type="text",omit.stat=c("LL","ser","f"),
