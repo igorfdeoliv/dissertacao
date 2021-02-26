@@ -197,6 +197,9 @@
                 vaba + t,family=binomial(),data=pnpb)
   summary(m_ps)
   
+  stargazer(m_ps,type='text',omit.stat=c('LL','ser','f'),
+            dep.var.labels=c('Tratamento'),out='modbin.html')
+  
 # Calculando as probabilidades preditas de participar do projeto polos----
   
   prs_df <- data.frame(pr_score=predict(m_ps, type='response'),
@@ -214,4 +217,44 @@
     facet_wrap(~polos) + xlab('Probabilidade de participar do Projeto Polos') +
     ylab('Nº Municípios') + 
     theme_bw()
+
+# Iniciando matching----
+  
+  matching <- matchit(polos ~ total.contratos + valores.totais + d.bio +
+                        vaba + t,data=pnpb,link='probit',method='nearest',
+                      ratio=1)
+  
+  summary(matching)
+  
+# Gráfico de ajustamento das covariadas antes e depois do pareamento----
+  
+  plot(matching)
+  
+# Sobreposição dos grupos de controle e tratamento após o pareamento----
+  
+  bal.plot(matching,var.name='distance')
+  
+# Declarando nova base após o pareamento----
+  
+  psm <- match.data(matching)
+  head(psm)
+  dim(psm)
+  
+# Verificando as médias das covariadas após o pareamento----
+  
+  psm %>% 
+    group_by(polos) %>% 
+    select(one_of(pnpb_cov)) %>% 
+    summarise_all(funs(mean))
+  
+  lapply(pnpb_cov,function(v) {
+    t.test(psm[,v] ~ psm$polos)
+  })
+
+  rm(m_ps,matching,pnpb,prs_df,labs,pnpb_cov)
     
+# Salvando nova base----
+  
+  setwd('C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base')
+  
+  write.table(psm,file='psm.csv',sep=';',dec='.',na='',quote=TRUE, row.names=FALSE)
