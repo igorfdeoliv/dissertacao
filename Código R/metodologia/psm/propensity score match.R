@@ -24,9 +24,6 @@
   if(!require(MatchIt))
     install.packages("MatchIt")
 
-  if(!require(sandwich))
-    install.packages('sandwich')
-
   if(!require(stargazer))
     install.packages("stargazer")
 
