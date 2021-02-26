@@ -1,42 +1,42 @@
 #Qual o efeito de estar alocado no projeto polos de biodiesel e produzir
-#oleaginosas sobre a produtividade, rendimento médio e salários médios pagos nas
+#oleaginosas sobre a produtividade, rendimento mï¿½dio e salï¿½rios mï¿½dios pagos nas
 #culturas relacionadas?
 
-#Podemos considerar estes municípios, na média, iguais?
+#Podemos considerar estes municï¿½pios, na mï¿½dia, iguais?
 
-#Não. Então temos de usar propensity score matching para obter estimativas
+#Nï¿½o. Entï¿½o temos de usar propensity score matching para obter estimativas
 #causais mais criveis do efeito observado do projeto polos de biodiesel.
 
 #Passo a passo
 
-#1. Estimar os propensity scores (a probabilidade de ser tratado dado uma série
-#de covariáveis do efeito observado do projeto polos de biodiesel)
+#1. Estimar os propensity scores (a probabilidade de ser tratado dado uma sï¿½rie
+#de covariï¿½veis do efeito observado do projeto polos de biodiesel)
 
-#2. Examinar qual a região de suporte comum.
+#2. Examinar qual a regiï¿½o de suporte comum.
 
 #3. Escolher e executar o algoritmo de matching. Neste caso, vamos usar um tipo
-#específico de algorítmo chamado: nearest neighbor propensity score matching
+#especï¿½fico de algorï¿½tmo chamado: nearest neighbor propensity score matching
 
 #4. Examinar o balanceamento das covariaveis depois do matching
 
 #Qual o efeito de estar alocado no projeto polos de biodiesel e produzir
-#oleaginosas sobre a produtividade, rendimento médio e salários médios pagos nas
+#oleaginosas sobre a produtividade, rendimento mï¿½dio e salï¿½rios mï¿½dios pagos nas
 #culturas relacionadas?
 
-#Podemos considerar estes municípios, na média, iguais?
+#Podemos considerar estes municï¿½pios, na mï¿½dia, iguais?
 
-#Não. Então temos de usar propensity score matching para obter estimativas
+#Nï¿½o. Entï¿½o temos de usar propensity score matching para obter estimativas
 #causais mais criveis do efeito observado do projeto polos de biodiesel.
 
 #Passo a passo
 
-#1. Estimar os propensity scores (a probabilidade de ser tratado dado uma série
-#de covariáveis do efeito observado do projeto polos de biodiesel)
+#1. Estimar os propensity scores (a probabilidade de ser tratado dado uma sï¿½rie
+#de covariï¿½veis do efeito observado do projeto polos de biodiesel)
 
-#2. Examinar qual a região de suporte comum.
+#2. Examinar qual a regiï¿½o de suporte comum.
 
 #3. Escolher e executar o algoritmo de matching. Neste caso, vamos usar um tipo
-#específico de algorítmo chamado: nearest neighbor propensity score matching
+#especï¿½fico de algorï¿½tmo chamado: nearest neighbor propensity score matching
 
 #4. Examinar o balanceamento das covariaveis depois do matching
 
@@ -52,7 +52,7 @@
     install.packages("ggplot2")
 
   if(!require(lmtest))
-    install.packages('lmtest')
+    install.packages('lmtest') 
 
   if(!require(MatchIt))
     install.packages("MatchIt")
@@ -66,7 +66,7 @@
   if(!require(stargazer))
     install.packages("stargazer")
 
-#Limpando memória----
+#Limpando memï¿½ria----
 
   rm(list=ls())
 
@@ -78,9 +78,9 @@
 
   rm(base)
 
-#Análise descritiva das variáveis de interesse antes do pareamento----
+#Anï¿½lise descritiva das variï¿½veis de interesse antes do pareamento----
 
-#Produtividade da soja (quantidade(t)/área plantada(hec))
+#Produtividade da soja (quantidade(t)/ï¿½rea plantada(hec))
 
   pnpb %>% 
     group_by(polos) %>% 
@@ -88,7 +88,7 @@
             mean_match = mean(prod_soja),
             std_error = sd(prod_soja) / sqrt(n_municipios))
 
-#Rendimento médio da soja (R$/quantidade(t))
+#Rendimento mï¿½dio da soja (R$/quantidade(t))
 
   pnpb %>% 
     group_by(polos) %>% 
@@ -96,7 +96,7 @@
             mean_match = mean(rm_soja),
             std_error = sd(rm_soja) / sqrt(n_municipios))
 
-#Salários médios pagos a produtores e trabalhadores da cultura de soja
+#Salï¿½rios mï¿½dios pagos a produtores e trabalhadores da cultura de soja
 
   pnpb %>% 
     group_by(polos) %>% 
@@ -106,30 +106,30 @@
 
 ################################################################################  
 
-#A diferença de média é estatisticamente significativa a 95% de 
+#A diferenï¿½a de mï¿½dia ï¿½ estatisticamente significativa a 95% de 
 #confidencialidade:
 
-#Produtividade da soja (quantidade(t)/área plantada(hec))
+#Produtividade da soja (quantidade(t)/ï¿½rea plantada(hec))
 
   with(pnpb, t.test(prod_soja ~ polos))
 
-#Rendimento médio da soja (R$/quantidade(t))
+#Rendimento mï¿½dio da soja (R$/quantidade(t))
 
   with(pnpb, t.test(rm_soja ~ polos))
 
-#Salários médios pagos a produtores e trabalhadores da cultura de soja  
+#Salï¿½rios mï¿½dios pagos a produtores e trabalhadores da cultura de soja  
 
   with(pnpb, t.test(s.soja ~ polos))
 
-#p-valor < 0.05, rejeita H0, existem evidências de que as médias são diferentes.
+#p-valor < 0.05, rejeita H0, existem evidï¿½ncias de que as mï¿½dias sï¿½o diferentes.
 
 ################################################################################
 
-#Diferença de médias: variáveis de pré-tratamento----
+#Diferenï¿½a de mï¿½dias: variï¿½veis de prï¿½-tratamento----
 
-#total.contratos: número de contratos via PRONAF
-#valores.totais: valores totais recebidos por município via PRONAF, deflacionado pelo IPCA (base=2017)
-#d.bio: proxy de demanda de biodiesel, número de ônibus e caminhões por município
+#total.contratos: nï¿½mero de contratos via PRONAF
+#valores.totais: valores totais recebidos por municï¿½pio via PRONAF, deflacionado pelo IPCA (base=2017)
+#d.bio: proxy de demanda de biodiesel, nï¿½mero de ï¿½nibus e caminhï¿½es por municï¿½pio
 #pib.per.capta: valor do pib per capta municipal, deflacionado pelo IPCA (base=2017)
 
   pnpb_cov <- c('total.contratos','valores.totais','d.bio','vaba','t')
@@ -159,25 +159,25 @@
 
 ################################################################################
 
-  labs <- paste('Participa do Projeto Polos de Biodiesel:',c("Sim","Não"))
+  labs <- paste('Participa do Projeto Polos de Biodiesel:',c("Sim","Nï¿½o"))
 
   prs_df %>% 
     mutate(polos=ifelse(polos==1, labs[1],labs[2]
   )) %>% 
     ggplot(aes(x=pr_score)) + geom_histogram(color="white") + 
     facet_wrap(~polos) + xlab('Probabilidade de participar do projeto polos') +
-    ylab('Nº Municípios') +
+    ylab('Nï¿½ Municï¿½pios') +
     theme_bw()
 
 ################################################################################
 
-#Esse comando é necessário quando existem variáveis missing na amostra.
+#Esse comando ï¿½ necessï¿½rio quando existem variï¿½veis missing na amostra.
 
 #  pnpb_nomiss <- pnpb %>% 
 #    select(prod_soja,polos,one_of(pnpb_cov)) %>% 
 #    na.omit()
 
-#Verifica a dimensão do data frame após a exclusão das missings
+#Verifica a dimensï¿½o do data frame apï¿½s a exclusï¿½o das missings
 
 #  dim(pnpb)
 #  dim(pnpb_nomiss)
@@ -188,25 +188,25 @@
                       vaba + t,data=pnpb,link="probit",method="nearest",
                     ratio=1)
 
-#Resumo estatístico após o pareamento----
+#Resumo estatï¿½stico apï¿½s o pareamento----
 
   summary(matching)
 
-#Gráfico de ajustamento das covariadas antes e depois do pareamento----
+#Grï¿½fico de ajustamento das covariadas antes e depois do pareamento----
 
   plot(matching)
 
-#Sobreposição dos grupos tratamento e controle após o pareamento----  
+#Sobreposiï¿½ï¿½o dos grupos tratamento e controle apï¿½s o pareamento----  
 
   bal.plot(matching,var.name='distance')
 
-#Declarando base após matching----
+#Declarando base apï¿½s matching----
 
   psm <- match.data(matching)
   head(psm)
   dim(psm)
 
-#Verificando as médias das covariadas após o pareamento----
+#Verificando as mï¿½dias das covariadas apï¿½s o pareamento----
 
   psm %>% 
     group_by(polos) %>% 
@@ -219,44 +219,44 @@
 
   rm(pnpb_nomiss,prs_df,m_ps,matching,labs,pnpb_cov)
 
-#Análise descritiva variáveis dependentes----
+#Anï¿½lise descritiva variï¿½veis dependentes----
 
   adprod <- psm %>% group_by(ano,polos) %>% 
-    summarise(média=mean(prod_soja),
+    summarise(mï¿½dia=mean(prod_soja),
             DP=sd(prod_soja),
             mediana=median(prod_soja))
 
   adrm <- psm %>% group_by(ano,polos) %>% 
-    summarise(média=mean(rm_soja),
+    summarise(mï¿½dia=mean(rm_soja),
             DP=sd(rm_soja),
             mediana=median(rm_soja))
 
   adw <- psm %>% group_by(ano,polos) %>% 
-    summarise(média=mean(s.soja),
+    summarise(mï¿½dia=mean(s.soja),
             DP=sd(s.soja),
             mediana=median(s.soja))
 
   rm(adprod,adrm,adw)
 
-#Dummy para identificação do período de tratamento----
+#Dummy para identificaï¿½ï¿½o do perï¿½odo de tratamento----
 
   psm <- psm %>%
     mutate(data_treat=if_else(ano>2006,1,0))
 
-#Criando a variável de diff in diff, interagindo polos e data_treat----
+#Criando a variï¿½vel de diff in diff, interagindo polos e data_treat----
 
   psm <- psm %>% 
     mutate(estimador_dd=polos*data_treat)
 
   table(psm$estimador_dd)
 
-#Declarando que a base de dados é um painel----
+#Declarando que a base de dados ï¿½ um painel----
 
   painel <- pdata.frame(psm,index=c("chave","ano"))
 
 #Estimado os modelo e analisando os resultados----
 
-#Produtividade após o pareamento
+#Produtividade apï¿½s o pareamento
 
   reg1 <- plm(prod_soja ~ polos + data_treat + estimador_dd + total.contratos +
               h.soja + d.bio + vaba + est_pop,data=painel,model="pooling")
@@ -264,7 +264,7 @@
   reg2 <- plm(prod_soja ~ polos + data_treat + estimador_dd + total.contratos +
               h.soja + d.bio + vaba + est_pop,data=painel,model="within")
 
-#Rendimento médio após o pareamento
+#Rendimento mï¿½dio apï¿½s o pareamento
 
   reg3 <- plm(rm_soja ~ polos + data_treat + estimador_dd + total.contratos +
               h.soja + d.bio + vaba + est_pop,data=painel,model="pooling")
@@ -272,7 +272,7 @@
   reg4 <- plm(rm_soja ~ polos + data_treat + estimador_dd + total.contratos +
               h.soja + d.bio + vaba + est_pop,data=painel,model="within")
 
-#Salários relacionados às atividades após o pareamento
+#Salï¿½rios relacionados ï¿½s atividades apï¿½s o pareamento
 
   reg5 <- plm(s.soja ~ polos + data_treat + estimador_dd + total.contratos +
               h.soja + d.bio + vaba + est_pop,data=painel,model="pooling")
@@ -283,14 +283,14 @@
 #Tabela de resultados
 
   stargazer(reg1,reg2,reg3,reg4,reg5,reg6,type="text",omit.stat=c("LL","ser","f"),
-          dep.var.labels=c("Produtividade","Renda Média","Salários"),
+          dep.var.labels=c("Produtividade","Renda Mï¿½dia","Salï¿½rios"),
           out="Modelo1.txt")
 
   rm(reg1,reg2,reg3,reg4,reg5,reg6)
 
 #Estimado os modelo e analisando os resultados + semiarido----
 
-#Produtividade após o pareamento
+#Produtividade apï¿½s o pareamento
 
   reg1 <- plm(prod_soja ~ polos + semiarido + data_treat + estimador_dd +
               total.contratos + h.soja + d.bio + vaba + est_pop,data=painel,
@@ -300,7 +300,7 @@
               total.contratos + h.soja + d.bio + vaba + est_pop,data=painel,
             model="within")
 
-#Rendimento médio após o pareamento
+#Rendimento mï¿½dio apï¿½s o pareamento
 
   reg3 <- plm(rm_soja ~ polos + semiarido + data_treat + estimador_dd + 
               total.contratos + h.soja + d.bio + vaba + est_pop,data=painel,
@@ -310,7 +310,7 @@
               total.contratos + h.soja + d.bio + vaba + est_pop,data=painel,
             model="within")
 
-#Salários relacionados às atividades após o pareamento
+#Salï¿½rios relacionados ï¿½s atividades apï¿½s o pareamento
 
   reg5 <- plm(s.soja ~ polos + semiarido + data_treat + estimador_dd + 
               total.contratos + h.soja + d.bio + vaba + est_pop,data=painel,
@@ -323,7 +323,7 @@
 #Tabela de resultados
 
   stargazer(reg1,reg2,reg3,reg4,reg5,reg6,type="text",omit.stat=c("LL","ser","f"),
-          dep.var.labels=c("Produtividade","Renda Média","Salários"),
+          dep.var.labels=c("Produtividade","Renda Mï¿½dia","Salï¿½rios"),
           out="Modelo2.txt")
 
   rm(reg1,reg2,reg3,reg4,reg5,reg6)
