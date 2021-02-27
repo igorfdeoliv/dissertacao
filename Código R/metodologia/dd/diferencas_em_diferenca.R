@@ -262,3 +262,135 @@
             dep.var.labels='Salários')
   
   rm(reg1,reg2,reg3,reg4,reg5,reg6,reg7,reg8,reg9)
+  
+  # Produtividade Girassol
+  
+  reg1 <- plm(prod_girassol ~ polos + data_treat + estimador_dd + total.contratos + 
+                 h.girassol + d.bio + vaba + est_pop,data=painel,model='pooling')
+  
+  reg2 <- plm(prod_girassol ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.girassol + d.bio + vaba + est_pop,data=painel,model='random')
+  
+  reg3 <- plm(prod_girassol ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.girassol + d.bio + vaba + est_pop,data=painel,model='within')
+  
+  stargazer(reg1,reg2,reg3,type='text',omit.stat=c('LL','ser','f'),
+            dep.var.labels='Produtividade')
+  
+  # Renda média Girassol
+  
+  reg4 <- plm(rm_girassol ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.girassol + d.bio + vaba + est_pop,data=painel,model='pooling')
+  
+  reg5 <- plm(rm_girassol ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.girassol + d.bio + vaba + est_pop,data=painel,model='random')
+  
+  reg6 <- plm(rm_girassol ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.girassol + d.bio + vaba + est_pop,data=painel,model='within')
+  
+  stargazer(reg4,reg5,reg6,type='text',omit.stat=c('LL','ser','f'),
+            dep.var.labels='Renda Média')
+  
+  # Salários médios Girassol
+  
+  reg7 <- plm(s.girassol ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.girassol + d.bio + vaba + est_pop,data=painel,model='pooling')
+  
+  reg8 <- plm(s.girassol ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.girassol + d.bio + vaba + est_pop,data=painel,model='random')
+  
+  reg9 <- plm(s.girassol ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.girassol + d.bio + vaba + est_pop,data=painel,model='within')
+  
+  stargazer(reg7,reg8,reg9,type='text',omit.stat=c('LL','ser','f'),
+            dep.var.labels='Salários')
+  
+  rm(reg1,reg2,reg3,reg4,reg5,reg6,reg7,reg8,reg9)
+  
+  # Produtividade Mamona
+  
+  reg1 <- plm(prod_mamona ~ polos + data_treat + estimador_dd + total.contratos + 
+                 h.mamona + d.bio + vaba + est_pop,data=painel,model='pooling')
+  
+  reg2 <- plm(prod_mamona ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.mamona + d.bio + vaba + est_pop,data=painel,model='random')
+  
+  reg3 <- plm(prod_mamona ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.mamona + d.bio + vaba + est_pop,data=painel,model='within')
+  
+  stargazer(reg1,reg2,reg3,type='text',omit.stat=c('LL','ser','f'),
+            dep.var.labels='Produtividade')
+  
+  # Renda média Mamona
+  
+  reg4 <- plm(rm_mamona ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.mamona + d.bio + vaba + est_pop,data=painel,model='pooling')
+  
+  reg5 <- plm(rm_mamona ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.mamona + d.bio + vaba + est_pop,data=painel,model='random')
+  
+  reg6 <- plm(rm_mamona ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.mamona + d.bio + vaba + est_pop,data=painel,model='within')
+  
+  stargazer(reg4,reg5,reg6,type='text',omit.stat=c('LL','ser','f'),
+            dep.var.labels='Renda Média')
+  
+  # Salários médios Mamona
+  
+  reg7 <- plm(s.mamona ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.mamona + d.bio + vaba + est_pop,data=painel,model='pooling')
+  
+  reg8 <- plm(s.mamona ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.mamona + d.bio + vaba + est_pop,data=painel,model='random')
+  
+  reg9 <- plm(s.mamona ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.mamona + d.bio + vaba + est_pop,data=painel,model='within')
+  
+  stargazer(reg7,reg8,reg9,type='text',omit.stat=c('LL','ser','f'),
+            dep.var.labels='Salários')
+  
+  rm(reg1,reg2,reg3,reg4,reg5,reg6,reg7,reg8,reg9)
+  
+  # Produtividade Soja
+  
+  reg1 <- plm(prod_soja ~ polos + data_treat + estimador_dd + total.contratos + 
+                 h.soja + d.bio + vaba + est_pop,data=painel,model='pooling')
+  
+  reg2 <- plm(prod_soja ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.soja + d.bio + vaba + est_pop,data=painel,model='random')
+  
+  reg3 <- plm(prod_soja ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.soja + d.bio + vaba + est_pop,data=painel,model='within')
+  
+  stargazer(reg1,reg2,reg3,type='text',omit.stat=c('LL','ser','f'),
+            dep.var.labels='Produtividade')
+  
+  # Renda média Soja
+  
+  reg4 <- plm(rm_soja ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.soja + d.bio + vaba + est_pop,data=painel,model='pooling')
+  
+  reg5 <- plm(rm_soja ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.soja + d.bio + vaba + est_pop,data=painel,model='random')
+  
+  reg6 <- plm(rm_soja ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.soja + d.bio + vaba + est_pop,data=painel,model='within')
+  
+  stargazer(reg4,reg5,reg6,type='text',omit.stat=c('LL','ser','f'),
+            dep.var.labels='Renda Média')
+  
+  # Salários médios Soja
+  
+  reg7 <- plm(s.soja ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.soja + d.bio + vaba + est_pop,data=painel,model='pooling')
+  
+  reg8 <- plm(s.soja ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.soja + d.bio + vaba + est_pop,data=painel,model='random')
+  
+  reg9 <- plm(s.soja ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.soja + d.bio + vaba + est_pop,data=painel,model='within')
+  
+  stargazer(reg7,reg8,reg9,type='text',omit.stat=c('LL','ser','f'),
+            dep.var.labels='Salários')
+  
+  rm(reg1,reg2,reg3,reg4,reg5,reg6,reg7,reg8,reg9)
