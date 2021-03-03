@@ -24,6 +24,9 @@
   if(!require(MatchIt))
     install.packages("MatchIt")
 
+  if(!require(rstatix))
+    install.packages('rstatix')
+
   if(!require(stargazer))
     install.packages("stargazer")
 
@@ -38,7 +41,7 @@
   pnpb <- read.csv(base,sep=';',dec='.')
   
   rm(base)
-  
+
 # Análise descritiva das variáveis de interesse antes do pareamento----
   
 # Produtividade (quantidade (ton) / área plantada (hec))
@@ -144,8 +147,9 @@
               mean_match = mean(prod_soja),
               std_error = sd(prod_soja) / sqrt(n_municipios))
   
-# A diferença entre as médias dos grupos de controle e tratamento são diferentes
-# estatísticamente ao nível de 5% de significância ?----
+# Teste t para verificar se as médias entre os grupos são iguais----
+  
+  # H0: p-valor > 0.05 médias são estatíticamente iguais
   
   #Produtividade
   
@@ -176,6 +180,56 @@
   with(pnpb,t.test(s.mamona ~ polos)) # significativo a 10%
   
   with(pnpb,t.test(s.soja ~ polos)) # significativo 
+  
+# Teste de MANN-WHITNEY----
+  
+  # H0: p-valor > 0.05 médias são estatisticamente iguais
+  
+  # Dendê
+  
+  wilcox.test(prod_dende ~ polos, data=pnpb)
+  
+  wilcox.test(rm_dende ~ polos, data=pnpb)
+  
+  wilcox.test(s.dende ~ polos, data=pnpb)
+  
+  # Girassol
+
+  wilcox.test(prod_girassol ~ polos, data=pnpb)
+  
+  wilcox.test(rm_girassol ~ polos, data=pnpb)
+  
+  wilcox.test(s.girassol ~ polos, data=pnpb)
+    
+  # Mamona
+  
+  wilcox.test(prod_mamona ~ polos, data=pnpb)
+  
+  wilcox.test(rm_mamona ~ polos, data=pnpb)
+  
+  wilcox.test(s.mamona ~ polos, data=pnpb)
+  
+  # Soja
+    
+  wilcox.test(prod_soja ~ polos, data=pnpb)
+  
+  wilcox.test(rm_soja ~ polos, data=pnpb)
+  
+  wilcox.test(s.soja ~ polos, data=pnpb)
+  
+# Resumo estatístico das variáveis de interesse----
+  
+  pnpb %>% group_by(polos) %>% 
+    get_summary_stats(prod_dende,prod_girassol,prod_mamona,prod_soja,
+                      type='mean_sd')
+  
+  pnpb %>% group_by(polos) %>% 
+    get_summary_stats(rm_dende,rm_girassol,rm_mamona,rm_soja,
+                      type='mean_sd')
+  
+  pnpb %>% group_by(polos) %>% 
+    get_summary_stats(s.dende,s.girassol,s.mamona,s.soja,
+                      type='mean_sd')
   
 # Diferença entre médias: variáveis de pré-tratamento----
   
