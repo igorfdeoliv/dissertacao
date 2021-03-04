@@ -592,3 +592,126 @@
   rm(dp_p,dp_r,dp_s,dea_p,dea_r,dea_s,def_p,def_r,def_s,gp_p,gp_r,gp_s,
      gea_p,gea_r,gea_s,gef_p,gef_r,gef_s,mp_p,mp_r,mp_s,mea_p,mea_r,mea_s,
      mef_p,mef_r,mef_s,sp_p,sp_r,sp_s,sea_p,sea_r,sea_s,sef_p,sef_r,sef_s)
+  
+# Verificando o efeito no semiarido----
+  
+# Produtividade Dendê
+  
+  dp_p <- plm(prod_dende ~ polos + data_treat + estimador_dd + semiarido + 
+                total.contratos + h.dende + d.bio + vaba + est_pop,data=painel,model='pooling')
+  
+  def_p <- plm(prod_dende ~ polos + data_treat + estimador_dd + semiarido + 
+                 total.contratos + h.dende + d.bio + vaba + est_pop,data=painel,model='within')
+  
+# Renda média Dendê
+  
+  dp_r <- plm(rm_dende ~ polos + data_treat + estimador_dd + semiarido +
+                total.contratos + h.dende + d.bio + vaba + est_pop,data=painel,model='pooling')
+  
+  def_r <- plm(rm_dende ~ polos + data_treat + estimador_dd + semiarido +
+                 total.contratos + h.dende + d.bio + vaba + est_pop,data=painel,model='within')
+  
+# Salários médios Dendê
+  
+  dp_s <- plm(s.dende ~ polos + data_treat + estimador_dd + semiarido +
+                total.contratos + h.dende + d.bio + vaba + est_pop,data=painel,model='pooling')
+  
+  def_s <- plm(s.dende ~ polos + data_treat + estimador_dd + semiarido +
+                 total.contratos + h.dende + d.bio + vaba + est_pop,data=painel,model='within')
+  
+# Produtividade Girassol
+  
+  gp_p <- plm(prod_girassol ~ polos + data_treat + estimador_dd + semiarido + 
+                total.contratos + h.girassol + d.bio + vaba + est_pop,data=painel,model='pooling')
+  
+  gef_p <- plm(prod_girassol ~ polos + data_treat + estimador_dd + semiarido + 
+                 total.contratos + h.girassol + d.bio + vaba + est_pop,data=painel,model='within')
+  
+# Renda média Girassol
+  
+  gp_r <- plm(rm_girassol ~ polos + data_treat + estimador_dd + semiarido +
+                total.contratos + h.girassol + d.bio + vaba + est_pop,data=painel,model='pooling')
+  
+  gef_r <- plm(rm_girassol ~ polos + data_treat + estimador_dd + semiarido +
++                 total.contratos + h.girassol + d.bio + vaba + est_pop,data=painel,model='within')
+  
+# Salários médios Girassol
+  
+  gp_s <- plm(s.girassol ~ polos + data_treat + estimador_dd + semiarido + 
+                total.contratos + h.girassol + d.bio + vaba + est_pop,data=painel,model='pooling')
+  
+  gef_s <- plm(s.girassol ~ polos + data_treat + estimador_dd + semiarido +
+                 total.contratos + h.girassol + d.bio + vaba + est_pop,data=painel,model='within')
+  
+# Produtividade Mamona
+  
+  mp_p <- plm(prod_mamona ~ polos + data_treat + estimador_dd + semiarido +
+                total.contratos + h.mamona + d.bio + vaba + est_pop,data=painel,model='pooling')
+  
+  mef_p <- plm(prod_mamona ~ polos + data_treat + estimador_dd + total.contratos +
+                 h.mamona + d.bio + vaba + est_pop,data=painel,model='within')
+  
+# Renda média Mamona
+  
+  mp_r <- plm(rm_mamona ~ polos + data_treat + estimador_dd + semiarido +
+                total.contratos + h.mamona + d.bio + vaba + est_pop,data=painel,model='pooling')
+  
+  mef_r <- plm(rm_mamona ~ polos + data_treat + estimador_dd + semiarido +
+                 total.contratos + h.mamona + d.bio + vaba + est_pop,data=painel,model='within')
+  
+# Salários médios Mamona
+  
+  mp_s <- plm(s.mamona ~ polos + data_treat + estimador_dd + semiarido +
+                total.contratos + h.mamona + d.bio + vaba + est_pop,data=painel,model='pooling')
+  
+  mef_s <- plm(s.mamona ~ polos + data_treat + estimador_dd + semiarido +
+                 total.contratos + h.mamona + d.bio + vaba + est_pop,data=painel,model='within')
+  
+# Produtividade Soja
+  
+  sp_p <- plm(prod_soja ~ polos + data_treat + estimador_dd + semiarido + 
+                total.contratos + h.soja + d.bio + vaba + est_pop,data=painel,model='pooling')
+  
+  sef_p <- plm(prod_soja ~ polos + data_treat + estimador_dd + semiarido + 
+                 total.contratos + h.soja + d.bio + vaba + est_pop,data=painel,model='within')
+  
+# Renda média Soja
+  
+  sp_r <- plm(rm_soja ~ polos + data_treat + estimador_dd + semiarido +
+                total.contratos + h.soja + d.bio + vaba + est_pop,data=painel,model='pooling')
+  
+  sef_r <- plm(rm_soja ~ polos + data_treat + estimador_dd + semiarido +
+                 total.contratos + h.soja + d.bio + vaba + est_pop,data=painel,model='within')
+  
+# Salários médios Soja
+  
+  sp_s <- plm(s.soja ~ polos + data_treat + estimador_dd + semiarido +
+                total.contratos + h.soja + d.bio + vaba + est_pop,data=painel,model='pooling')
+  
+  sef_s <- plm(s.soja ~ polos + data_treat + estimador_dd + semiarido +
+                 total.contratos + h.soja + d.bio + vaba + est_pop,data=painel,model='within')
+  
+# Equações Dendê----
+  
+  stargazer(dp_p,def_p,dp_r,def_r,dp_s,def_s,type='text',omit.stat=c('LL','ser','f'),
+            dep.var.labels=c('Produtividade','Renda Média','Salários'),out='dende.html')
+  
+# Equações Girassol----
+  
+  stargazer(gp_p,gef_p,gp_r,gef_r,gp_s,gef_s,type='text',omit.stat=c('LL','ser','f'),
+            dep.var.labels=c('Produtividade','Renda Média','Salários'),out='girassol.html')  
+  
+# Equações Mamona----
+  
+  stargazer(mp_p,mef_p,mp_r,mef_r,mp_s,mef_s,type='text',omit.stat=c('LL','ser','f'),
+            dep.var.labels=c('Produtividade','Renda Média','Salários'),out='mamona.html')  
+  
+# Equações Soja----
+  
+  stargazer(sp_p,sef_p,sp_r,sef_r,sp_s,sef_s,type='text',omit.stat=c('LL','ser','f'),
+            dep.var.labels=c('Produtividade','Renda Média','Salários'),out='soja.html')
+  
+  rm(dp_p,dp_r,dp_s,dea_p,dea_r,dea_s,def_p,def_r,def_s,gp_p,gp_r,gp_s,
+     gea_p,gea_r,gea_s,gef_p,gef_r,gef_s,mp_p,mp_r,mp_s,mea_p,mea_r,mea_s,
+     mef_p,mef_r,mef_s,sp_p,sp_r,sp_s,sea_p,sea_r,sea_s,sef_p,sef_r,sef_s)
+  
