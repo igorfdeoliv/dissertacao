@@ -46,7 +46,6 @@
   
 # Produtividade (quantidade (ton) / área plantada (hec))
   
-
   # Dendê (Cacho de coco)
   
   pnpb %>% 
