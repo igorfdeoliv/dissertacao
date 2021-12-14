@@ -15,15 +15,15 @@
 
 #Diretório local de trabalho----
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/pib municipal")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/ibge/pib municipal")
 
 #Carregando e organizando tabelas----
 
-  df1 <- read_excel("~/GitHub/dissertacao/dataset/ibge/pib municipal/pib 2002 2009.xls")
-  df2 <- read_excel("~/GitHub/dissertacao/dataset/ibge/pib municipal/pib 2010 2017.xls")
+  df1 <- read_excel("E:/igorf/Documents/GitHub/dissertacao/dataset/ibge/pib municipal/pib 2002 2009.xls")
+  df2 <- read_excel("E:/igorf/Documents/GitHub/dissertacao/dataset/ibge/pib municipal/pib 2010 2017.xls")
 
   df1 <- df1 %>% 
-    select("Ano","Código da Unidade da Federação","Sigla da Unidade da Federação",
+    select("Ano","Nome da Grande Região","Código da Unidade da Federação","Sigla da Unidade da Federação",
          "Nome da Unidade da Federação","Código do Município","Nome do Município",
          "Semiárido","Valor adicionado bruto da Agropecuária, \na preços correntes\n(R$ 1.000)",
          "Valor adicionado bruto da Indústria,\na preços correntes\n(R$ 1.000)",
@@ -33,7 +33,7 @@
          "Produto Interno Bruto, \na preços correntes\n(R$ 1.000)","Produto Interno Bruto per capita, \na preços correntes\n(R$ 1,00)")
 
   df2 <- df2 %>% 
-    select("Ano","Código da Unidade da Federação","Sigla da Unidade da Federação", 
+    select("Ano","Nome da Grande Região","Código da Unidade da Federação","Sigla da Unidade da Federação", 
          "Nome da Unidade da Federação","Código do Município","Nome do Município", 
          "Semiárido","Valor adicionado bruto da Agropecuária, \na preços correntes\n(R$ 1.000)", 
          "Valor adicionado bruto da Indústria,\na preços correntes\n(R$ 1.000)", 
@@ -46,7 +46,7 @@
 
   rm(df1,df2)
 
-  names(pibmun) <- c("ano","cod_uf","uf","estado","cod_mun","municipio",
+  names(pibmun) <- c("ano","regiao","cod_uf","uf","estado","cod_mun","municipio",
                    "semiarido","vaba","vabi","vabs","vabadm","vabt",
                    "t","pib","pib_percapta")
 
@@ -57,11 +57,11 @@
     mutate("chave"=str_c(municipio," ","(", uf, ")")) %>% 
     filter(ano!=2002)
 
-  pibmun <- pibmun[,c(1,16,2,3,4,5,6,7,8,9,10,11,12,13,14,15)]
+  pibmun <- pibmun[,c(1,17,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16)]
 
 #Destino tabela----
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base")
 
 #Exportando tabela----
 

@@ -41,11 +41,13 @@
    mutate(estimador_dd=polos*data_treat)
  
 # Verificando as tendências dos grupos de controle e tratamento das variáveis
- # dependentes:
+# dependentes:
  
  df <- psm %>% 
    mutate(data_treat = ano >= 2006,
-          tratamento = polos >= 1)
+          tratamento = polos >= 1) %>% 
+   mutate('tratamento'=str_replace_all(tratamento,'FALSE','controle')) %>% 
+   mutate('tratamento'=str_replace_all(tratamento,'TRUE','tratamento'))
  
 # Quantidade produzida----
 
@@ -221,13 +223,13 @@
  
 # Produtividade Dendê
  
-  dp_p <- plm(prod_dende ~ polos + data_treat + estimador_dd + total.contratos + 
+  dp_p <- plm(prod_dende ~ data_treat + estimador_dd + total.contratos + 
                 h.dende + d.bio + vaba + est_pop,data=painel,model='pooling')
 
-  dea_p <- plm(prod_dende ~ polos + data_treat + estimador_dd + total.contratos +
+  dea_p <- plm(prod_dende ~ data_treat + estimador_dd + total.contratos +
                h.dende + d.bio + vaba + est_pop,data=painel,model='random')
   
-  def_p <- plm(prod_dende ~ polos + data_treat + estimador_dd + total.contratos +
+  def_p <- plm(prod_dende ~ data_treat + estimador_dd + total.contratos +
                 h.dende + d.bio + vaba + est_pop,data=painel,model='within')
   
 # Teste LM para EA x MQO
@@ -250,13 +252,13 @@
   
 # Renda média Dendê
   
-  dp_r <- plm(rm_dende ~ polos + data_treat + estimador_dd + total.contratos +
+  dp_r <- plm(rm_dende ~ data_treat + estimador_dd + total.contratos +
                 h.dende + d.bio + vaba + est_pop,data=painel,model='pooling')
   
-  dea_r <- plm(rm_dende ~ polos + data_treat + estimador_dd + total.contratos +
+  dea_r <- plm(rm_dende ~ data_treat + estimador_dd + total.contratos +
                 h.dende + d.bio + vaba + est_pop,data=painel,model='random')
   
-  def_r <- plm(rm_dende ~ polos + data_treat + estimador_dd + total.contratos +
+  def_r <- plm(rm_dende ~ data_treat + estimador_dd + total.contratos +
                 h.dende + d.bio + vaba + est_pop,data=painel,model='within')
 
 # Teste LM para EA x MQO
@@ -277,44 +279,15 @@
   
   phtest(dea_r,def_r)
   
-# Salários médios Dendê
-  
-  dp_s <- plm(s.dende ~ polos + data_treat + estimador_dd + total.contratos +
-                h.dende + d.bio + vaba + est_pop,data=painel,model='pooling')
-  
-  dea_s <- plm(s.dende ~ polos + data_treat + estimador_dd + total.contratos +
-                h.dende + d.bio + vaba + est_pop,data=painel,model='random')
-  
-  def_s <- plm(s.dende ~ polos + data_treat + estimador_dd + total.contratos +
-                h.dende + d.bio + vaba + est_pop,data=painel,model='within')
-  
-# Teste LM para EA x MQO
-  
-  # H0: modelo pooled ; H1: modelo EA
-  
-  plmtest(dp_s)
-  
-# Teste F para EF x MQO
-  
-  # H0: modelo pooled ; H1: EF
-  
-  pFtest(def_s,dp_s)
-  
-# Teste de Hausman para EA x EF
-  
-  # H0: EA ; H1: EF
-  
-  phtest(dea_s,def_s)
-  
 # Produtividade Girassol
   
-  gp_p <- plm(prod_girassol ~ polos + data_treat + estimador_dd + total.contratos + 
+  gp_p <- plm(prod_girassol ~ data_treat + estimador_dd + total.contratos + 
                  h.girassol + d.bio + vaba + est_pop,data=painel,model='pooling')
   
-  gea_p <- plm(prod_girassol ~ polos + data_treat + estimador_dd + total.contratos +
+  gea_p <- plm(prod_girassol ~ data_treat + estimador_dd + total.contratos +
                  h.girassol + d.bio + vaba + est_pop,data=painel,model='random')
   
-  gef_p <- plm(prod_girassol ~ polos + data_treat + estimador_dd + total.contratos +
+  gef_p <- plm(prod_girassol ~ data_treat + estimador_dd + total.contratos +
                  h.girassol + d.bio + vaba + est_pop,data=painel,model='within')
   
 # Teste LM para EA x MQO
@@ -337,13 +310,13 @@
   
 # Renda média Girassol
   
-  gp_r <- plm(rm_girassol ~ polos + data_treat + estimador_dd + total.contratos +
+  gp_r <- plm(rm_girassol ~ data_treat + estimador_dd + total.contratos +
                  h.girassol + d.bio + vaba + est_pop,data=painel,model='pooling')
   
-  gea_r <- plm(rm_girassol ~ polos + data_treat + estimador_dd + total.contratos +
+  gea_r <- plm(rm_girassol ~ data_treat + estimador_dd + total.contratos +
                  h.girassol + d.bio + vaba + est_pop,data=painel,model='random')
   
-  gef_r <- plm(rm_girassol ~ polos + data_treat + estimador_dd + total.contratos +
+  gef_r <- plm(rm_girassol ~ data_treat + estimador_dd + total.contratos +
                  h.girassol + d.bio + vaba + est_pop,data=painel,model='within')
 
 # Teste LM para EA x MQO
@@ -364,44 +337,15 @@
   
   phtest(gea_r,gef_r)
   
-# Salários médios Girassol
-  
-  gp_s <- plm(s.girassol ~ polos + data_treat + estimador_dd + total.contratos +
-                 h.girassol + d.bio + vaba + est_pop,data=painel,model='pooling')
-  
-  gea_s <- plm(s.girassol ~ polos + data_treat + estimador_dd + total.contratos +
-                 h.girassol + d.bio + vaba + est_pop,data=painel,model='random')
-  
-  gef_s <- plm(s.girassol ~ polos + data_treat + estimador_dd + total.contratos +
-                 h.girassol + d.bio + vaba + est_pop,data=painel,model='within')
-  
-# Teste LM para EA x MQO
-  
-  # H0: modelo pooled ; H1: modelo EA
-  
-  plmtest(gp_s)
-  
-# Teste F para EF x MQO
-  
-  # H0: modelo pooled ; H1: EF
-  
-  pFtest(gef_s,gp_s)
-  
-# Teste de Hausman para EA x EF
-  
-  # H0: EA ; H1: EF
-  
-  phtest(gea_s,gef_s)
-
 # Produtividade Mamona
   
-  mp_p <- plm(prod_mamona ~ polos + data_treat + estimador_dd + total.contratos + 
+  mp_p <- plm(prod_mamona ~ data_treat + estimador_dd + total.contratos + 
                  h.mamona + d.bio + vaba + est_pop,data=painel,model='pooling')
   
-  mea_p <- plm(prod_mamona ~ polos + data_treat + estimador_dd + total.contratos +
+  mea_p <- plm(prod_mamona ~ data_treat + estimador_dd + total.contratos +
                  h.mamona + d.bio + vaba + est_pop,data=painel,model='random')
   
-  mef_p <- plm(prod_mamona ~ polos + data_treat + estimador_dd + total.contratos +
+  mef_p <- plm(prod_mamona ~ data_treat + estimador_dd + total.contratos +
                  h.mamona + d.bio + vaba + est_pop,data=painel,model='within')
 
 # Teste LM para EA x MQO
@@ -424,13 +368,13 @@
   
 # Renda média Mamona
   
-  mp_r <- plm(rm_mamona ~ polos + data_treat + estimador_dd + total.contratos +
+  mp_r <- plm(rm_mamona ~ data_treat + estimador_dd + total.contratos +
                  h.mamona + d.bio + vaba + est_pop,data=painel,model='pooling')
   
-  mea_r <- plm(rm_mamona ~ polos + data_treat + estimador_dd + total.contratos +
+  mea_r <- plm(rm_mamona ~ data_treat + estimador_dd + total.contratos +
                  h.mamona + d.bio + vaba + est_pop,data=painel,model='random')
   
-  mef_r <- plm(rm_mamona ~ polos + data_treat + estimador_dd + total.contratos +
+  mef_r <- plm(rm_mamona ~ data_treat + estimador_dd + total.contratos +
                  h.mamona + d.bio + vaba + est_pop,data=painel,model='within')
 
 # Teste LM para EA x MQO
@@ -451,44 +395,15 @@
   
   phtest(mea_r,mef_r)
   
-# Salários médios Mamona
-  
-  mp_s <- plm(s.mamona ~ polos + data_treat + estimador_dd + total.contratos +
-                 h.mamona + d.bio + vaba + est_pop,data=painel,model='pooling')
-  
-  mea_s <- plm(s.mamona ~ polos + data_treat + estimador_dd + total.contratos +
-                 h.mamona + d.bio + vaba + est_pop,data=painel,model='random')
-  
-  mef_s <- plm(s.mamona ~ polos + data_treat + estimador_dd + total.contratos +
-                 h.mamona + d.bio + vaba + est_pop,data=painel,model='within')
-
-# Teste LM para EA x MQO
-  
-  # H0: modelo pooled ; H1: modelo EA
-  
-  plmtest(mp_s)
-  
-# Teste F para EF x MQO
-  
-  # H0: modelo pooled ; H1: EF
-  
-  pFtest(mef_s,mp_s)
-  
-# Teste de Hausman para EA x EF
-  
-  # H0: EA ; H1: EF
-  
-  phtest(mea_s,mef_s)
-  
 # Produtividade Soja
   
-  sp_p <- plm(prod_soja ~ polos + data_treat + estimador_dd + total.contratos + 
+  sp_p <- plm(prod_soja ~ data_treat + estimador_dd + total.contratos + 
                  h.soja + d.bio + vaba + est_pop,data=painel,model='pooling')
   
-  sea_p <- plm(prod_soja ~ polos + data_treat + estimador_dd + total.contratos +
+  sea_p <- plm(prod_soja ~ data_treat + estimador_dd + total.contratos +
                  h.soja + d.bio + vaba + est_pop,data=painel,model='random')
   
-  sef_p <- plm(prod_soja ~ polos + data_treat + estimador_dd + total.contratos +
+  sef_p <- plm(prod_soja ~ data_treat + estimador_dd + total.contratos +
                  h.soja + d.bio + vaba + est_pop,data=painel,model='within')
 
 # Teste LM para EA x MQO
@@ -538,54 +453,25 @@
   
   phtest(sea_r,sef_r)
   
-# Salários médios Soja
-  
-  sp_s <- plm(s.soja ~ polos + data_treat + estimador_dd + total.contratos +
-                 h.soja + d.bio + vaba + est_pop,data=painel,model='pooling')
-  
-  sea_s <- plm(s.soja ~ polos + data_treat + estimador_dd + total.contratos +
-                 h.soja + d.bio + vaba + est_pop,data=painel,model='random')
-  
-  sef_s <- plm(s.soja ~ polos + data_treat + estimador_dd + total.contratos +
-                 h.soja + d.bio + vaba + est_pop,data=painel,model='within')
-  
-# Teste LM para EA x MQO
-  
-  # H0: modelo pooled ; H1: modelo EA
-  
-  plmtest(sp_s)
-  
-# Teste F para EF x MQO
-  
-  # H0: modelo pooled ; H1: EF
-  
-  pFtest(sef_s,sp_s)
-  
-# Teste de Hausman para EA x EF
-  
-  # H0: EA ; H1: EF
-  
-  phtest(sea_s,sef_s)
-  
 # Equações Dendê----
   
-  stargazer(dp_p,def_p,dp_r,def_r,dp_s,def_s,type='text',omit.stat=c('LL','ser','f'),
-            dep.var.labels=c('Produtividade','Renda Média','Salários'),out='dende.html')
+  stargazer(dp_p,def_p,dp_r,def_r,type='text',omit.stat=c('LL','ser','f'),
+            dep.var.labels=c('Produtividade','Renda Média'),out='dende.html')
   
 # Equações Girassol----
 
-  stargazer(gp_p,gef_p,gp_r,gef_r,gp_s,gef_s,type='text',omit.stat=c('LL','ser','f'),
-            dep.var.labels=c('Produtividade','Renda Média','Salários'),out='girassol.html')  
+  stargazer(gp_p,gef_p,gp_r,gef_r,type='text',omit.stat=c('LL','ser','f'),
+            dep.var.labels=c('Produtividade','Renda Média'),out='girassol.html')  
   
 # Equações Mamona----
 
-  stargazer(mp_p,mef_p,mp_r,mef_r,mp_s,mef_s,type='text',omit.stat=c('LL','ser','f'),
-            dep.var.labels=c('Produtividade','Renda Média','Salários'),out='mamona.html')  
+  stargazer(mp_p,mef_p,mp_r,mef_r,type='text',omit.stat=c('LL','ser','f'),
+            dep.var.labels=c('Produtividade','Renda Média'),out='mamona.html')  
   
 # Equações Soja----
   
-  stargazer(sp_p,sef_p,sp_r,sef_r,sp_s,sef_s,type='text',omit.stat=c('LL','ser','f'),
-            dep.var.labels=c('Produtividade','Renda Média','Salários'),out='soja.html')
+  stargazer(sp_p,sef_p,sp_r,sef_r,type='text',omit.stat=c('LL','ser','f'),
+            dep.var.labels=c('Produtividade','Renda Média'),out='soja.html')
 
 # Limpando equações da memória
   

@@ -41,6 +41,9 @@
   pnpb <- read.csv(base,sep=';',dec='.')
   
   rm(base)
+  
+# Criando dummy para regiao----
+  
 
 # Análise descritiva das variáveis de interesse antes do pareamento----
   
@@ -78,7 +81,7 @@
               mean_match = mean(prod_soja),
               std_error = sd(prod_soja) / sqrt(n_municipios))
   
-# Renda média (Valor da produção (R$) / quantidade produzida (ton))
+# Renda média (Valor da produção (R$) / area plantada (ha))
   
   # Dendê (Cacho de coco)
   
@@ -145,6 +148,18 @@
     summarise(n_municipios=n(),
               mean_match = mean(prod_soja),
               std_error = sd(prod_soja) / sqrt(n_municipios))
+  
+# Análise descritiva dados----
+  
+  tb_prod_soja <- pnpb %>% group_by(polos, norte) %>% 
+    summarise(média = mean(v.mamona),
+              desvio_padrao = sd(v.mamona),
+              mediana = median(v.mamona))
+  
+  table(pnpb$uf)
+  table(pnpb$norte)
+  
+  describeBy(pnpb$prod_soja, group=pnpb$d.ne:pnpb$polos)
   
 # Teste t para verificar se as médias entre os grupos são iguais----
   
@@ -258,14 +273,14 @@
   
 # Representação gráfica das probabilidades preditas de participar do projeto polos----
   
-  labs <- paste('Participa do Projeto Polos de Biodiesel:',c('Sim','Não'))
+  labs <- paste(c('Municípios Polos','Municípios Não Polos'))
   
   prs_df %>% 
     mutate(polos=ifelse(polos==1,labs[1],labs[2]
                         )) %>% 
     ggplot(aes(x=pr_score)) + geom_histogram(color='white') +
-    facet_wrap(~polos) + xlab('Probabilidade de participar do Projeto Polos') +
-    ylab('Nº Municípios') + 
+    facet_wrap(~polos) + xlab('Probabilidade escore') +
+    ylab('Número de Municípios') + 
     theme_bw()
 
 # Iniciando matching----
@@ -276,13 +291,20 @@
   
   summary(matching)
   
-# Gráfico de ajustamento das covariadas antes e depois do pareamento----
+# Sobreposição da densidade da amostra antes e após o pareamento----
   
-  plot(matching)
+  bal.plot(matching,var.name='distance',which='both',position='bottom',
+           sample.names=c('(a) antes','(b) depois'),
+           colors =c('white','black')) +
+    labs(title=NULL,x='Distância', 
+         y='Densidade',fill=NULL)
   
-# Sobreposição dos grupos de controle e tratamento após o pareamento----
+# Balanceamento da amostra antes e após o pareamento----
   
-  bal.plot(matching,var.name='distance')
+  bal.plot(matching,type='histogram', mirror=TRUE,which = 'both',
+           sample.names=c('(a) antes','(b) depois'),position='bottom',
+           colors =c('white','black')) +
+    labs(title=NULL,x='Distância', y='Proporção',fill=NULL)
   
 # Declarando nova base após o pareamento----
   
@@ -305,6 +327,6 @@
     
 # Salvando nova base----
   
-  setwd('C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base')
+  setwd('E:/igorf/Documents/GitHub/dissertacao/dataset/base')
   
   write.table(psm,file='psm.csv',sep=';',dec='.',na='',quote=TRUE, row.names=FALSE)

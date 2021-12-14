@@ -18,7 +18,7 @@
 
 #Diretório local de trabalho----
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2003")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2003")
 
 #Importando tabelas----
 
@@ -156,7 +156,7 @@
 
 #Incluindo informações municipais
 
-  setwd ("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base")
+  setwd ("E:/igorf/Documents/GitHub/dissertacao/dataset/base")
 
   pibmun <- read.csv('pibmun.csv',sep=";",dec=",")
 
@@ -173,18 +173,18 @@
                   "q.mamona","q.soja","h.dende","h.girassol","h.mamona",
                   "h.soja","v.dende","v.girassol","v.mamona","v.soja",
                   "s.dende","s.girassol","s.mamona","s.soja","d.bio",
-                  "total.contratos","valores.totais","cod_uf","uf",
+                  "total.contratos","valores.totais","regiao","cod_uf","uf",
                   "semiarido","vaba","vabi","vabs","vabadm","vabt",
                   "t","pib","pib.per.capta")
 
-  b2003 <- b2003[,c(1,2,23,24,25,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,
-                  19,20,21,22,26,27,28,29,30,31,32,33)]
-
+  b2003 <- b2003[,c(1,2,23,24,25,26,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,
+                  19,20,21,22,27,28,29,30,31,32,33,34)]
+  
   rm(pibmun)
 
 #Inlcuindo amc----
 
-  amc <- read_excel("~/GitHub/dissertacao/dataset/ibge/amc/AMC_1980_2010.xlsx",
+  amc <- read_excel("E:/igorf/Documents/GitHub/dissertacao/dataset/ibge/amc/AMC_1980_2010.xlsx",
                   col_name =c("municipio","cod_mun","amc"))
 
   b2003 <- b2003 %>% 
@@ -200,7 +200,7 @@
 
 #Deflacionando valores----  
 
-  deflator <- read_excel("~/GitHub/dissertacao/dataset/ipea/ipeadata[18-01-2021-09-33].xls")
+  deflator <- read_excel("E:/igorf/Documents/GitHub/dissertacao/dataset/ipea/ipeadata[18-01-2021-09-33].xls")
 
   x <- filter(deflator,ano==2003)
 
@@ -230,31 +230,31 @@
   b2003 <- b2003 %>% 
     mutate(semiarido=if_else(semiarido=="Sim",1,0))
 
-  b2003 <- b2003[,c(1,2,34,3,4,5,6,7,8,9,10,11,12,13,14,15,
+  b2003 <- b2003[,c(1,2,35,4,5,3,6,7,8,9,10,11,12,13,14,15,
                   16,17,18,19,20,21,22,23,24,25,26,27,28,
-                  29,30,31,32,33)]
+                  29,30,31,32,33,34)]
 
 #Incluindo estimativa populacional----
 
-  est_pop <- read_excel("~/GitHub/dissertacao/dataset/ibge/est_pop/POP2003_TCU.xls", 
-                      skip = 5,col_name=c("uf","cod_uf","cod_mun","municipio","est_pop"))
-
+  est_pop <- read_excel("E:/igorf/Documents/GitHub/dissertacao/dataset/ibge/est_pop/POP2003_TCU.xls", 
+                        skip = 5,col_name=c("uf","cod_uf","cod_mun","municipio","est_pop"))
+  
   est_pop <- est_pop %>% 
     mutate(municipio=toupper(municipio)) %>% 
     mutate(municipio=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",municipio)) %>% 
     mutate("chave"=str_c(municipio," ","(",uf,")") ) %>% 
     select("chave","est_pop")
-
+  
   b2003 <- right_join(b2003,est_pop,by="chave")
-
+  
   b2003 <- b2003 %>% 
     filter(ano!="NA")
-
+  
   rm(est_pop)
-
+  
 #Criando dummy polos----
 
-  polos <- read_csv2('C:/Users/igorf/Documents/GitHub/dissertacao/dataset/projeto_polos/polos.csv')
+  polos <- read_csv2('E:/igorf/Documents/GitHub/dissertacao/dataset/projeto_polos/polos.csv')
 
   polos$cod_mun <- as.character(polos$cod_mun)
 
@@ -265,7 +265,7 @@
     filter(ano!="NA") %>% 
     select(-"amc.y",-"chave.y",-"estado",-"municipio",-"polo")
 
-  names(b2003) <- c("ano","cod_mun","amc","cod_uf","uf","semiarido","chave",
+  names(b2003) <- c("ano","cod_mun","amc","cod_uf","uf","regiao","semiarido","chave",
                   "q.dende","q.girassol","q.mamona","q.soja","h.dende",
                   "h.girassol","h.mamona","h.soja","v.dende","v.girassol",
                   "v.mamona","v.soja","s.dende","s.girassol","s.mamona",
@@ -273,14 +273,14 @@
                   "vaba","vabi","vabs","vabadm","vabt","t","pib",
                   "pib.per.capta","est_pop","polos")
 
-  b2003 <- b2003[,c(1,2,3,6,36,4,5,7,8,9,10,11,12,13,14,15,16,
+  b2003 <- b2003[,c(1,2,3,6,37,4,5,7,8,9,10,11,12,13,14,15,16,
                   17,18,19,20,21,22,23,24,25,26,27,28,29,30,
-                  31,32,33,34,35)]
+                  31,32,33,34,35,36)]
 
   rm(polos)
 
 #Exportando base----
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2003")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2003")
 
   write.table(b2003,file='b2003.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)

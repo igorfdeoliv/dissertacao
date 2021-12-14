@@ -18,7 +18,7 @@ rm(list=ls())
 
 #Diretório local de trabalho----
 
-setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2016")
+setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2016")
 
 #Importando tabelas----
 
@@ -110,6 +110,36 @@ rm(demanda)
 
 pronaf <- read.csv(contratos,sep=";",dec=".")
 
+df <- pronaf %>% 
+  filter(estado=="DF")
+
+x <- df %>% 
+  group_by(estado) %>% 
+  summarise(t.contratos=sum(as.numeric(total.contratos),na.rm=TRUE))
+
+y <- df %>% 
+  group_by(estado) %>% 
+  summarise(v.totais=sum(as.numeric(valores.totais),na.rm=TRUE))
+
+df <- right_join(x,y,by="estado")
+
+df<- df %>% 
+  mutate("ano"=2016) %>% 
+  mutate("chave"='BRASILIA (DF)') %>% 
+  mutate("municipio"='BRASILIA')
+
+df<- df[,c(4,5,1,6,2,3)]
+
+names(df) <- c("ano","chave","estado","municipio","total.contratos",
+               "valores.totais")
+
+rm(x,y)
+
+pronaf <- pronaf %>% 
+  filter(estado!="DF")
+
+pronaf <- rbind(pronaf,df)
+
 df5 <- right_join(df4,pronaf,by="chave")
 
 names(df5) <- c("ano","cod_mun","chave","q.dende","q.girassol","q.mamona",
@@ -122,11 +152,11 @@ b2016 <- df5 %>%
   filter(cod_mun!="NA") %>% 
   select(-"ano.y",-"estado",-"municipio")
 
-rm(df1,df2,df3,df4,df5,contratos,pronaf)
+rm(df,df1,df2,df3,df4,df5,contratos,pronaf)
 
-#Incluindo informações municipais----
+#Incluindo informações municipais
 
-setwd ("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base")
+setwd ("E:/igorf/Documents/GitHub/dissertacao/dataset/base")
 
 pibmun <- read.csv('pibmun.csv',sep=";",dec=",")
 
@@ -143,18 +173,18 @@ names(b2016) <- c("ano","cod_mun","chave","q.dende","q.girassol",
                   "q.mamona","q.soja","h.dende","h.girassol","h.mamona",
                   "h.soja","v.dende","v.girassol","v.mamona","v.soja",
                   "s.dende","s.girassol","s.mamona","s.soja","d.bio",
-                  "total.contratos","valores.totais","cod_uf","uf",
+                  "total.contratos","valores.totais","regiao","cod_uf","uf",
                   "semiarido","vaba","vabi","vabs","vabadm","vabt",
                   "t","pib","pib.per.capta")
 
-b2016 <- b2016[,c(1,2,23,24,25,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,
-                  19,20,21,22,26,27,28,29,30,31,32,33)]
+b2016 <- b2016[,c(1,2,23,24,25,26,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,
+                  19,20,21,22,27,28,29,30,31,32,33,34)]
 
 rm(pibmun)
 
 #Inlcuindo amc----
 
-amc <- read_excel("~/GitHub/dissertacao/dataset/ibge/amc/AMC_1980_2010.xlsx",
+amc <- read_excel("E:/igorf/Documents/GitHub/dissertacao/dataset/ibge/amc/AMC_1980_2010.xlsx",
                   col_name =c("municipio","cod_mun","amc"))
 
 b2016 <- b2016 %>% 
@@ -168,20 +198,47 @@ b2016 <- b2016 %>%
 
 rm(amc)
 
+#Deflacionando valores----  
+
+deflator <- read_excel("E:/igorf/Documents/GitHub/dissertacao/dataset/ipea/ipeadata[18-01-2021-09-33].xls")
+
+x <- filter(deflator,ano==2016)
+
+b2016 <- b2016 %>% 
+  mutate(v.dende=(v.dende*(x$deflator))) %>% 
+  mutate(v.girassol=(v.girassol*(x$deflator))) %>% 
+  mutate(v.mamona=(v.mamona*(x$deflator))) %>% 
+  mutate(v.soja=(v.soja*(x$deflator))) %>% 
+  mutate(s.dende=(s.dende*(x$deflator))) %>%
+  mutate(s.girassol=(s.girassol*(x$deflator))) %>%
+  mutate(s.mamona=(s.mamona*(x$deflator))) %>%
+  mutate(s.soja=(s.soja*(x$deflator))) %>%
+  mutate(valores.totais=(valores.totais*(x$deflator))) %>% 
+  mutate(vaba=(as.numeric(vaba)*(x$deflator))) %>% 
+  mutate(vabi=(as.numeric(vabi)*(x$deflator))) %>% 
+  mutate(vabs=(as.numeric(vabs)*(x$deflator))) %>% 
+  mutate(vabadm=(as.numeric(vabadm)*(x$deflator))) %>% 
+  mutate(vabt=(as.numeric(vabt)*(x$deflator))) %>% 
+  mutate(t=(as.numeric(t)*(x$deflator))) %>% 
+  mutate(pib=(as.numeric(pib)*(x$deflator))) %>% 
+  mutate(pib.per.capta=(as.numeric(pib.per.capta)*(x$deflator)))
+
+rm(x,deflator)
+
 #Categorizando a variavel semiarido
 
 b2016 <- b2016 %>% 
   mutate(semiarido=if_else(semiarido=="Sim",1,0))
 
-b2016 <- b2016[,c(1,2,34,3,4,5,6,7,8,9,10,11,12,13,14,15,
+b2016 <- b2016[,c(1,2,35,4,5,3,6,7,8,9,10,11,12,13,14,15,
                   16,17,18,19,20,21,22,23,24,25,26,27,28,
-                  29,30,31,32,33)]
+                  29,30,31,32,33,34)]
 
 #Incluindo estimativa populacional----
 
-setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/ibge/est_pop")
+setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/ibge/est_pop")
 
-est_pop <- read_excel('POP2016_TCU.xls',sheet="Municípios", 
+est_pop <- read_excel('POP2016_TCU.xls',sheet="Municípios",
                       skip = 2,col_name=c("uf","cod_uf","cod_mun","municipio","est_pop"))
 
 est_pop <- est_pop %>% 
@@ -199,18 +256,18 @@ rm(est_pop)
 
 #Criando dummy polos----
 
-polos <- read_csv2('C:/Users/igorf/Documents/GitHub/dissertacao/dataset/projeto_polos/polos.csv')
+polos <- read_csv2('E:/igorf/Documents/GitHub/dissertacao/dataset/projeto_polos/polos.csv')
 
 polos$cod_mun <- as.character(polos$cod_mun)
 
 b2016 <- full_join(b2016, polos, by = 'cod_mun')
 
 b2016 <- b2016 %>% 
-  mutate(polos=if_else(is.na(polo),0,1)) %>% 
+  mutate(dummy1 = ifelse(is.na(polo), 0, 1)) %>% 
   filter(ano!="NA") %>% 
   select(-"amc.y",-"chave.y",-"estado",-"municipio",-"polo")
 
-names(b2016) <- c("ano","cod_mun","amc","cod_uf","uf","semiarido","chave",
+names(b2016) <- c("ano","cod_mun","amc","cod_uf","uf","regiao","semiarido","chave",
                   "q.dende","q.girassol","q.mamona","q.soja","h.dende",
                   "h.girassol","h.mamona","h.soja","v.dende","v.girassol",
                   "v.mamona","v.soja","s.dende","s.girassol","s.mamona",
@@ -218,14 +275,14 @@ names(b2016) <- c("ano","cod_mun","amc","cod_uf","uf","semiarido","chave",
                   "vaba","vabi","vabs","vabadm","vabt","t","pib",
                   "pib.per.capta","est_pop","polos")
 
-b2016 <- b2016[,c(1,2,3,6,36,4,5,7,8,9,10,11,12,13,14,15,16,
+b2016 <- b2016[,c(1,2,3,6,37,4,5,7,8,9,10,11,12,13,14,15,16,
                   17,18,19,20,21,22,23,24,25,26,27,28,29,30,
-                  31,32,33,34,35)]
+                  31,32,33,34,35,36)]
 
 rm(polos)
 
 #Exportando base----
 
-setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2016")
+setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2016")
 
 write.table(b2016,file='b2016.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
