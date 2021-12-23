@@ -44,8 +44,22 @@
   
 # Criando dummy para regiao----
   
+  pnpb <- pnpb %>% 
+    mutate(norte=if_else(regiao=='Norte',1,0))
+  
+  pnpb <- pnpb %>% 
+    mutate(nordeste=if_else(regiao=='Nordeste',1,0))
 
-# Análise descritiva das variáveis de interesse antes do pareamento----
+  pnpb <- pnpb %>% 
+    mutate(sul=if_else(regiao=='Sul',1,0))
+  
+  pnpb <- pnpb %>% 
+    mutate(sudeste=if_else(regiao=='Sudeste',1,0))
+  
+  pnpb <- pnpb %>% 
+    mutate(coeste=if_else(regiao=='Centro-oeste',1,0))
+  
+# Comparação entre as médias dos polos antes do pareamento----
   
 # Produtividade (quantidade (ton) / área plantada (hec))
   
@@ -115,52 +129,120 @@
               mean_match = mean(rm_soja),
               std_error = sd(rm_soja) / sqrt(n_municipios))
   
-# Salários médios recebidos relacionados às culturas (R$)
-  
-  # Dendê (Cacho de coco)
-  
-  pnpb %>% 
-    group_by(polos) %>% 
-    summarise(n_municipios=n(),
-              mean_match = mean(s.dende),
-              std_error = sd(s.dende) / sqrt(n_municipios))
-  
-  # Girassol(em grão)
-  
-  pnpb %>% 
-    group_by(polos) %>% 
-    summarise(n_municipios=n(),
-              mean_match = mean(s.girassol),
-              std_error = sd(s.girassol) / sqrt(n_municipios))
-  
-  # Mamona (baga)
-  
-  pnpb %>% 
-    group_by(polos) %>% 
-    summarise(n_municipios=n(),
-              mean_match = mean(s.mamona),
-              std_error = sd(s.mamona) / sqrt(n_municipios))
-  
-  # Soja (em grão)
-  
-  pnpb %>% 
-    group_by(polos) %>% 
-    summarise(n_municipios=n(),
-              mean_match = mean(prod_soja),
-              std_error = sd(prod_soja) / sqrt(n_municipios))
-  
 # Análise descritiva dados----
   
-  tb_prod_soja <- pnpb %>% group_by(polos, norte) %>% 
+  # Média da Área plantada por cultura
+  
+  area.dende <- pnpb %>% group_by(polos) %>% 
+    summarise(média = mean(h.dende),
+              desvio_padrao = sd(h.dende),
+              mediana = median(h.dende))
+
+  area.girassol <- pnpb %>% group_by(polos) %>% 
+    summarise(média = mean(h.girassol),
+              desvio_padrao = sd(h.girassol),
+              mediana = median(h.girassol))
+  
+  area.mamona <- pnpb %>% group_by(polos) %>% 
+    summarise(média = mean(h.mamona),
+              desvio_padrao = sd(h.mamona),
+              mediana = median(h.mamona))
+  
+  area.soja <- pnpb %>% group_by(polos) %>% 
+    summarise(média = mean(h.soja),
+              desvio_padrao = sd(h.soja),
+              mediana = median(h.soja))
+    
+  # Média da Quantidade produzida por cultura
+  
+  quant.dende <- pnpb %>% group_by(polos) %>% 
+    summarise(média = mean(q.dende),
+              desvio_padrao = sd(q.dende),
+              mediana = median(q.dende))
+  
+  quant.girassol <- pnpb %>% group_by(polos) %>% 
+    summarise(média = mean(q.girassol),
+              desvio_padrao = sd(q.girassol),
+              mediana = median(q.girassol))
+  
+  quant.mamona <- pnpb %>% group_by(polos) %>% 
+    summarise(média = mean(q.mamona),
+              desvio_padrao = sd(q.mamona),
+              mediana = median(q.mamona))
+  
+  quant.soja <- pnpb %>% group_by(polos) %>% 
+    summarise(média = mean(q.soja),
+              desvio_padrao = sd(q.soja),
+              mediana = median(q.soja))
+  
+  # Valor Médio da Produção por cultura
+  
+  valor.dende <- pnpb %>% group_by(polos) %>% 
+    summarise(média = mean(v.dende),
+              desvio_padrao = sd(v.dende),
+              mediana = median(v.dende))
+  
+  valor.girassol <- pnpb %>% group_by(polos) %>% 
+    summarise(média = mean(v.girassol),
+              desvio_padrao = sd(v.girassol),
+              mediana = median(v.girassol))
+  
+  valor.mamona <- pnpb %>% group_by(polos) %>% 
     summarise(média = mean(v.mamona),
               desvio_padrao = sd(v.mamona),
               mediana = median(v.mamona))
   
-  table(pnpb$uf)
-  table(pnpb$norte)
+  valor.soja <- pnpb %>% group_by(polos) %>% 
+    summarise(média = mean(v.soja),
+              desvio_padrao = sd(v.soja),
+              mediana = median(v.soja))
   
-  describeBy(pnpb$prod_soja, group=pnpb$d.ne:pnpb$polos)
+  rm(area.dende,area.girassol,area.mamona,area.soja,
+     quant.dende,quant.girassol,quant.mamona,quant.soja,
+     valor.dende,valor.girassol,valor.mamona,valor.soja)
   
+# Análise descritiva variáveis dependentes----
+
+  frota <- pnpb %>% group_by(polos) %>% 
+    summarise(média = mean(d.bio),
+              desvio_padrao = sd(d.bio),
+              mediana = median(d.bio))
+  
+  contratos <- pnpb %>% group_by(polos) %>% 
+    summarise(média = mean(total.contratos),
+              desvio_padrao = sd(total.contratos),
+              mediana = median(total.contratos))
+  
+  valor.contratos <- pnpb %>% group_by(polos) %>% 
+    summarise(média = mean(valores.totais),
+              desvio_padrao = sd(valores.totais),
+              mediana = median(valores.totais))
+  
+  pibpcapta <- pnpb %>% group_by(polos) %>% 
+    summarise(média = mean(pib.per.capta),
+              desvio_padrao = sd(pib.per.capta),
+              mediana = median(pib.per.capta))
+
+  valoradc <- pnpb %>% group_by(polos) %>% 
+    summarise(média = mean(vaba),
+              desvio_padrao = sd(vaba),
+              mediana = median(vaba))
+  
+  populacao <- pnpb %>% group_by(polos) %>% 
+    summarise(média = mean(est_pop),
+              desvio_padrao = sd(est_pop),
+              mediana = median(est_pop))
+    
+  rm(pibpcapta,contratos,frota,populacao,valor.contratos,
+     valoradc)
+  
+# Distribuição da produção total por região em toneladas----
+  
+    distr <- pnpb %>% group_by(regiao) %>% 
+      summarise(total = sum(q.soja,q.dende,q.girassol,q.mamona))
+
+  rm(distr)
+
 # Teste t para verificar se as médias entre os grupos são iguais----
   
   # H0: p-valor > 0.05 médias são estatíticamente iguais
@@ -185,16 +267,6 @@
   
   with(pnpb,t.test(rm_soja ~ polos)) # significativo
   
-  #Salários
-  
-  with(pnpb,t.test(s.dende ~ polos)) # significativo
-  
-  with(pnpb,t.test(s.girassol ~ polos)) # não significativo
-  
-  with(pnpb,t.test(s.mamona ~ polos)) # significativo a 10%
-  
-  with(pnpb,t.test(s.soja ~ polos)) # significativo 
-  
 # Teste de MANN-WHITNEY----
   
   # H0: p-valor > 0.05 médias são estatisticamente iguais
@@ -205,31 +277,23 @@
   
   wilcox.test(rm_dende ~ polos, data=pnpb)
   
-  wilcox.test(s.dende ~ polos, data=pnpb)
-  
   # Girassol
 
   wilcox.test(prod_girassol ~ polos, data=pnpb)
   
   wilcox.test(rm_girassol ~ polos, data=pnpb)
   
-  wilcox.test(s.girassol ~ polos, data=pnpb)
-    
   # Mamona
   
   wilcox.test(prod_mamona ~ polos, data=pnpb)
   
   wilcox.test(rm_mamona ~ polos, data=pnpb)
   
-  wilcox.test(s.mamona ~ polos, data=pnpb)
-  
   # Soja
     
   wilcox.test(prod_soja ~ polos, data=pnpb)
   
   wilcox.test(rm_soja ~ polos, data=pnpb)
-  
-  wilcox.test(s.soja ~ polos, data=pnpb)
   
 # Resumo estatístico das variáveis de interesse----
   
@@ -241,13 +305,9 @@
     get_summary_stats(rm_dende,rm_girassol,rm_mamona,rm_soja,
                       type='mean_sd')
   
-  pnpb %>% group_by(polos) %>% 
-    get_summary_stats(s.dende,s.girassol,s.mamona,s.soja,
-                      type='mean_sd')
-  
 # Diferença entre médias: variáveis de pré-tratamento----
   
-  pnpb_cov <- c('total.contratos','valores.totais','d.bio','vaba','t')
+  pnpb_cov <- c('total.contratos','valores.totais','d.bio','vaba','pib.per.capta')
   
   pnpb %>% 
     group_by(polos) %>% 
@@ -259,7 +319,7 @@
   })
   
   m_ps <- glm(polos ~ total.contratos + valores.totais + d.bio +
-                vaba + t,family=binomial(),data=pnpb)
+                vaba + pib.per.capta,family=binomial(),data=pnpb)
   summary(m_ps)
   
   stargazer(m_ps,type='text',omit.stat=c('LL','ser','f'),
@@ -286,7 +346,7 @@
 # Iniciando matching----
   
   matching <- matchit(polos ~ total.contratos + valores.totais + d.bio +
-                        vaba + t,data=pnpb,link='probit',method='nearest',
+                        vaba + pib.per.capta,data=pnpb,method='nearest',
                       ratio=1)
   
   summary(matching)
@@ -323,7 +383,7 @@
     t.test(psm[,v] ~ psm$polos)
   })
 
-  rm(m_ps,matching,pnpb,prs_df,labs,pnpb_cov)
+  rm(m_ps,matching,prs_df,labs,pnpb_cov)
     
 # Salvando nova base----
   
