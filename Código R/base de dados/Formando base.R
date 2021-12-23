@@ -6,11 +6,11 @@ if(!require(dplyr))
 if(!require(stringr))
   install.packages("stringr")
 
-#Limpando diretório----
+#Limpando diretÃ³rio----
 
 rm(list=ls())
 
-#Diretório local de trabalho----
+#DiretÃ³rio local de trabalho----
 
 setwd('E:/igorf/Documents/GitHub/dissertacao/dataset/base')
 
@@ -71,7 +71,7 @@ rm(ano1,ano2,ano3,ano4,ano5,ano6,ano7,ano8,ano9,ano10,ano11,
    ano12,ano13,ano14,ano15,b2003,b2004,b2005,b2006,b2007,b2008,
    b2009,b2010,b2011,b2012,b2013,b2014,b2015,b2016,b2017)
 
-#Criando variáveis dependentes----
+#Criando variÃ¡veis dependentes----
 
 base <- base %>% 
   mutate("prod_dende"=(base$q.dende/base$h.dende)) %>% 
@@ -114,7 +114,7 @@ base$est_pop <- as.numeric(base$est_pop)
 base <- base %>% 
   filter(est_pop!="NA")
 
-#Limpando variáveis----
+#Limpando variÃ¡veis----
 
 base <- base %>% 
   select(-"cod_uf",-"vabi",-"vabs",-"vabadm",-"vabt",-"amc")
