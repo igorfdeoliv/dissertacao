@@ -6,13 +6,13 @@
   if(!require(stringr))
     install.packages("stringr")
 
-#Limpando bases da memÛria----
+#Limpando bases da mem√≥ria----
 
   rm(list=ls())
 
 #Organizando tabelas----
 
-#¡rea plantada por cultura em hectares
+#√Årea plantada por cultura em hectares
 
   ano1 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2003%20tabela5457.csv"
   ano2 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2004%20tabela5457.csv"
@@ -29,6 +29,8 @@
   ano13 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2015%20tabela5457.csv"
   ano14 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2016%20tabela5457.csv"
   ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2017%20tabela5457.csv"
+  ano16 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2018%20tabela5457.csv"
+  ano17 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2019%20tabela5457.csv"
 
 #Tabela 2003----
 
@@ -40,8 +42,8 @@
   h2003<-h2003[-1,]
 
   h2003<-h2003 %>% 
-    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
-    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
+    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
+    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
     mutate("ano"=2003)
 
 #Reorganizando as colunas:
@@ -50,7 +52,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2003")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2003")
 
   write.table(h2003,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -66,8 +68,8 @@
   h2004<-h2004[-1,]
 
   h2004<-h2004 %>% 
-    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
-    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
+    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
+    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
     mutate("ano"=2004)
 
 #Reorganizando as colunas:
@@ -76,7 +78,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2004")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2004")
 
   write.table(h2004,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -92,8 +94,8 @@
   h2005<-h2005[-1,]
 
   h2005<-h2005 %>% 
-    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
-    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
+    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
+    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
     mutate("ano"=2005)
 
 #Reorganizando as colunas:
@@ -102,7 +104,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2005")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2005")
 
   write.table(h2005,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -118,8 +120,8 @@
   h2006<-h2006[-1,]
 
   h2006<-h2006 %>% 
-    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
-    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
+    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
+    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
     mutate("ano"=2006)
 
 #Reorganizando as colunas:
@@ -128,7 +130,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2006")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2006")
 
   write.table(h2006,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -144,8 +146,8 @@
   h2007<-h2007[-1,]
 
   h2007<-h2007 %>% 
-    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
-    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
+    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
+    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
     mutate("ano"=2007)
 
 #Reorganizando as colunas:
@@ -154,7 +156,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2007")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2007")
 
   write.table(h2007,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -170,8 +172,8 @@
   h2008<-h2008[-1,]
 
   h2008<-h2008 %>% 
-    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
-    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
+    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
+    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
     mutate("ano"=2008)
 
 #Reorganizando as colunas:
@@ -180,7 +182,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2008")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2008")
 
   write.table(h2008,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -196,8 +198,8 @@
   h2009<-h2009[-1,]
 
   h2009<-h2009 %>% 
-    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
-    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
+    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
+    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
     mutate("ano"=2009)
 
 #Reorganizando as colunas:
@@ -206,7 +208,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2009")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2009")
 
   write.table(h2009,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -222,8 +224,8 @@
   h2010<-h2010[-1,]
 
   h2010<-h2010 %>% 
-    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
-    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
+    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
+    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
     mutate("ano"=2010)
 
 #Reorganizando as colunas:
@@ -232,7 +234,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2010")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2010")
 
   write.table(h2010,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -248,8 +250,8 @@
   h2011<-h2011[-1,]
 
   h2011<-h2011 %>% 
-    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
-    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
+    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
+    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
     mutate("ano"=2011)
 
 #Reorganizando as colunas:
@@ -258,7 +260,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2011")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2011")
 
   write.table(h2011,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -274,8 +276,8 @@
   h2012<-h2012[-1,]
 
   h2012<-h2012 %>% 
-    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
-    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
+    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
+    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
     mutate("ano"=2012)
 
 #Reorganizando as colunas:
@@ -284,7 +286,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2012")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2012")
 
   write.table(h2012,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -300,8 +302,8 @@
   h2013<-h2013[-1,]
 
   h2013<-h2013 %>% 
-    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
-    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
+    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
+    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
     mutate("ano"=2013)
 
 #Reorganizando as colunas:
@@ -310,7 +312,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2013")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2013")
 
   write.table(h2013,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -326,8 +328,8 @@
   h2014<-h2014[-1,]
 
   h2014<-h2014 %>% 
-    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
-    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
+    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
+    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
     mutate("ano"=2014)
 
 #Reorganizando as colunas:
@@ -336,7 +338,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2014")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2014")
 
   write.table(h2014,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -352,8 +354,8 @@
   h2015<-h2015[-1,]
 
   h2015<-h2015 %>% 
-    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
-    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
+    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
+    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
     mutate("ano"=2015)
 
 #Reorganizando as colunas:
@@ -362,7 +364,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2015")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2015")
 
   write.table(h2015,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -378,8 +380,8 @@
   h2016<-h2016[-1,]
   
   h2016<-h2016 %>% 
-    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
-    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
+    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
+    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
     mutate("ano"=2016)
 
 #Reorganizando as colunas:
@@ -388,7 +390,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2016")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2016")
 
   write.table(h2016,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -404,8 +406,8 @@
   h2017<-h2017[-1,]
 
   h2017<-h2017 %>% 
-    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
-    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
+    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
+    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
     mutate("ano"=2017)
 
 #Reorganizando as colunas
@@ -414,8 +416,60 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2017")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2017")
 
   write.table(h2017,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
   rm(ano15,h2017)
+
+#Tabela 2018----
+
+#Importando tabela
+
+  h2018<-read.csv(ano16, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  h2018<-h2018[-1,]
+
+  h2017<-h2017 %>% 
+    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
+    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
+    mutate("ano"=2018)
+
+#Reorganizando as colunas
+
+  h2018 <- h2018[,c(7,1,2,3,4,5,6)]
+
+#Exportando tabela
+
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2018")
+
+  write.table(h2018,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+
+  rm(ano16,h2018)
+
+#Tabela 2019----
+
+#Importando tabela
+
+  h2019<-read.csv(ano17, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+                na.strings = c("-","..."), encoding = "UTF-8")
+
+  h2019 <- h2019[-1,]
+
+  h2019 <- h2019 %>% 
+    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
+    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
+    mutate("ano"=2019)
+
+#Reorganizando as colunas
+
+  h2019 <- h2019[,c(7,1,2,3,4,5,6)]
+
+#Exportando tabela
+
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2019")
+
+  write.table(h2019,file='area_plantada.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+
+  rm(ano17,h2019)
