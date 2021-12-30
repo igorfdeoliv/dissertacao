@@ -70,7 +70,7 @@
 
   h2004 <- h2004[-1,]
 
-  h2004<-h2004 %>% 
+  h2004 <- h2004 %>% 
     mutate(Município=toupper(Município)) %>%  
     mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
     mutate("ano"=2004)
@@ -429,7 +429,7 @@
 
 #Importando tabela
 
-  h2018 <- read.csv(ano16, header=T, sep=";",dec = ",", skip = 4,nrows = 5564,
+  h2018 <- read.csv(ano16, header=T, sep=";",dec = ",", skip = 4,nrows = 5563,
                 na.strings = c("-","..."), encoding = "UTF-8")
 
   h2018 <- h2018 %>% 
@@ -453,7 +453,7 @@
 
 #Importando tabela
 
-  h2019 <- read.csv(ano17, header=T, sep=";",dec = ",", skip = 4,nrows = 5564,
+  h2019 <- read.csv(ano17, header=T, sep=";",dec = ",", skip = 4,nrows = 5563,
                 na.strings = c("-","..."), encoding = "UTF-8")
 
   h2019 <- h2019 %>% 
