@@ -424,3 +424,51 @@
   write.table(q2017,file='quantidade_produzida.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
   rm(ano15,q2017)
+
+#Tabela 2018----
+  
+#Importando tabela
+  
+  q2018 <- read.csv(ano16, header=T, sep=";",dec = ",", skip = 4,nrows = 5563,
+                    na.strings = c("-","..."), encoding = "UTF-8")
+  
+  q2018 <- q2018 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2018)
+  
+#Reorganizando as colunas
+  
+  q2018 <- q2018[,c(7,1,2,3,4,5,6)]
+  
+#Esportando tabela
+  
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2018")
+  
+  write.table(q2018,file='quantidade_produzida.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+  
+  rm(ano16,q2018)
+  
+#Tabela 2019----
+  
+#Importando tabela
+  
+  q2019 <- read.csv(ano17, header=T, sep=";",dec = ",", skip = 4,nrows = 5563,
+                    na.strings = c("-","..."), encoding = "UTF-8")
+  
+  q2019 <- q2019 %>% 
+    mutate(Município=toupper(Município)) %>% 
+    mutate(Município=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Município)) %>%
+    mutate("ano"=2019)
+  
+#Reorganizando as colunas
+  
+  q2019 <- q2019[,c(7,1,2,3,4,5,6)]
+  
+#Esportando tabela
+  
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2019")
+  
+  write.table(q2019,file='quantidade_produzida.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+  
+  rm(ano17,q2019)
