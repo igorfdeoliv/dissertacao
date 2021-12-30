@@ -6,13 +6,16 @@
   if(!require(stringr))
     install.packages("stringr")
 
-#Limpando bases da mem√≥ria----
+  if(!require(tidyverse))
+    install.packages("tidyverse")
+
+#Limpando bases da memÛria----
 
   rm(list=ls())
 
 #Organizando tabelas----
 
-#√Årea plantada por cultura em hectares
+#¡rea plantada por cultura em hectares
 
   ano1 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2003%20tabela5457.csv"
   ano2 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/ibge/area%20plantada/2004%20tabela5457.csv"
@@ -36,14 +39,14 @@
 
 #Importando tabela
 
-  h2003<-read.csv(ano1, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+  h2003 <- read.csv(ano1, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
 
-  h2003<-h2003[-1,]
+  h2003 <- h2003[-1,]
 
-  h2003<-h2003 %>% 
-    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
-    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
+  h2003 <- h2003 %>% 
+    mutate(MunicÌpio=toupper(MunicÌpio)) %>%  
+    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
     mutate("ano"=2003)
 
 #Reorganizando as colunas:
@@ -62,14 +65,14 @@
 
 #Importando tabela
 
-  h2004<-read.csv(ano2, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+  h2004 <- read.csv(ano2, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
 
-  h2004<-h2004[-1,]
+  h2004 <- h2004[-1,]
 
   h2004<-h2004 %>% 
-    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
-    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
+    mutate(MunicÌpio=toupper(MunicÌpio)) %>%  
+    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
     mutate("ano"=2004)
 
 #Reorganizando as colunas:
@@ -88,14 +91,14 @@
 
 #Importando tabela
 
-  h2005<-read.csv(ano3, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+  h2005 <- read.csv(ano3, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
 
-  h2005<-h2005[-1,]
+  h2005 <- h2005[-1,]
 
   h2005<-h2005 %>% 
-    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
-    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
+    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
+    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
     mutate("ano"=2005)
 
 #Reorganizando as colunas:
@@ -114,14 +117,14 @@
 
 #Importando tabela
 
-  h2006<-read.csv(ano4, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+  h2006 <- read.csv(ano4, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
 
-  h2006<-h2006[-1,]
+  h2006 <- h2006[-1,]
 
-  h2006<-h2006 %>% 
-    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
-    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
+  h2006 <- h2006 %>% 
+    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
+    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
     mutate("ano"=2006)
 
 #Reorganizando as colunas:
@@ -140,14 +143,14 @@
 
 #Importando tabela
 
-  h2007<-read.csv(ano5, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+  h2007 <- read.csv(ano5, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
 
-  h2007<-h2007[-1,]
+  h2007 <- h2007[-1,]
 
-  h2007<-h2007 %>% 
-    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
-    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
+  h2007 <- h2007 %>% 
+    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
+    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
     mutate("ano"=2007)
 
 #Reorganizando as colunas:
@@ -166,14 +169,14 @@
 
 #Importando tabela
 
-  h2008<-read.csv(ano6, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+  h2008 <- read.csv(ano6, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
 
-  h2008<-h2008[-1,]
+  h2008 <- h2008[-1,]
 
   h2008<-h2008 %>% 
-    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
-    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
+    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
+    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
     mutate("ano"=2008)
 
 #Reorganizando as colunas:
@@ -192,14 +195,14 @@
 
 #Importando tabela
 
-  h2009<-read.csv(ano7, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+  h2009 <- read.csv(ano7, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
 
-  h2009<-h2009[-1,]
+  h2009 <- h2009[-1,]
 
-  h2009<-h2009 %>% 
-    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
-    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
+  h2009 <- h2009 %>% 
+    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
+    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
     mutate("ano"=2009)
 
 #Reorganizando as colunas:
@@ -218,14 +221,14 @@
 
 #Importando tabela
 
-  h2010<-read.csv(ano8, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+  h2010 <- read.csv(ano8, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
 
-  h2010<-h2010[-1,]
+  h2010 <- h2010[-1,]
 
-  h2010<-h2010 %>% 
-    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
-    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
+  h2010 <- h2010 %>% 
+    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
+    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
     mutate("ano"=2010)
 
 #Reorganizando as colunas:
@@ -244,14 +247,14 @@
 
 #Importando tabela
 
-  h2011<-read.csv(ano9, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+  h2011 <- read.csv(ano9, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
 
-  h2011<-h2011[-1,]
+  h2011 <- h2011[-1,]
 
-  h2011<-h2011 %>% 
-    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
-    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
+  h2011 <- h2011 %>% 
+    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
+    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
     mutate("ano"=2011)
 
 #Reorganizando as colunas:
@@ -270,14 +273,14 @@
 
 #Importando tabela
 
-  h2012<-read.csv(ano10, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+  h2012 <- read.csv(ano10, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
 
-  h2012<-h2012[-1,]
+  h2012 <- h2012[-1,]
 
-  h2012<-h2012 %>% 
-    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
-    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
+  h2012 <- h2012 %>% 
+    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
+    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
     mutate("ano"=2012)
 
 #Reorganizando as colunas:
@@ -296,14 +299,14 @@
 
 #Importando tabela
 
-  h2013<-read.csv(ano11, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+  h2013 <- read.csv(ano11, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
 
-  h2013<-h2013[-1,]
+  h2013 <- h2013[-1,]
 
-  h2013<-h2013 %>% 
-    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
-    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
+  h2013 <- h2013 %>% 
+    mutate(MunicÌpio=toupper(MunicÌpio)) %>%  
+    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
     mutate("ano"=2013)
 
 #Reorganizando as colunas:
@@ -322,14 +325,14 @@
 
 #Importando tabela
 
-  h2014<-read.csv(ano12, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+  h2014 <- read.csv(ano12, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
 
-  h2014<-h2014[-1,]
+  h2014 <- h2014[-1,]
 
-  h2014<-h2014 %>% 
-    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
-    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
+  h2014 <- h2014 %>% 
+    mutate(MunicÌpio=toupper(MunicÌpio)) %>%  
+    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
     mutate("ano"=2014)
 
 #Reorganizando as colunas:
@@ -348,14 +351,14 @@
 
 #Importando tabela
 
-  h2015<-read.csv(ano13, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+  h2015 <- read.csv(ano13, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
 
-  h2015<-h2015[-1,]
+  h2015 <- h2015[-1,]
 
-  h2015<-h2015 %>% 
-    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
-    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
+  h2015 <- h2015 %>% 
+    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
+    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
     mutate("ano"=2015)
 
 #Reorganizando as colunas:
@@ -374,14 +377,14 @@
 
 #Importando tabela
 
-  h2016<-read.csv(ano14, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+  h2016 <- read.csv(ano14, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
 
-  h2016<-h2016[-1,]
-  
-  h2016<-h2016 %>% 
-    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
-    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
+  h2016 <- h2016[-1,]
+
+  h2016 <- h2016 %>% 
+    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
+    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
     mutate("ano"=2016)
 
 #Reorganizando as colunas:
@@ -400,14 +403,14 @@
 
 #Importando tabela
 
-  h2017<-read.csv(ano15, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+  h2017 <- read.csv(ano15, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
 
-  h2017<-h2017[-1,]
+  h2017 <- h2017[-1,]
 
-  h2017<-h2017 %>% 
-    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
-    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
+  h2017 <- h2017 %>% 
+    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
+    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
     mutate("ano"=2017)
 
 #Reorganizando as colunas
@@ -426,14 +429,12 @@
 
 #Importando tabela
 
-  h2018<-read.csv(ano16, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+  h2018 <- read.csv(ano16, header=T, sep=";",dec = ",", skip = 4,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
 
-  h2018<-h2018[-1,]
-
-  h2017<-h2017 %>% 
-    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
-    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
+  h2018 <- h2018 %>% 
+    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
+    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
     mutate("ano"=2018)
 
 #Reorganizando as colunas
@@ -452,14 +453,12 @@
 
 #Importando tabela
 
-  h2019<-read.csv(ano17, header=T, sep=";",dec = ",", skip = 3,nrows = 5564,
+  h2019 <- read.csv(ano17, header=T, sep=";",dec = ",", skip = 4,nrows = 5564,
                 na.strings = c("-","..."), encoding = "UTF-8")
 
-  h2019 <- h2019[-1,]
-
   h2019 <- h2019 %>% 
-    mutate(Munic√≠pio=toupper(Munic√≠pio)) %>% 
-    mutate(Munic√≠pio=chartr("√Å√â√ç√ì√ö√É√ï√Ç√ä√î√á'-", "AEIOUAOAEOC  ", Munic√≠pio)) %>%
+    mutate(MunicÌpio=toupper(MunicÌpio)) %>% 
+    mutate(MunicÌpio=chartr("¡…Õ”⁄√’¬ ‘«'-", "AEIOUAOAEOC  ", MunicÌpio)) %>%
     mutate("ano"=2019)
 
 #Reorganizando as colunas
