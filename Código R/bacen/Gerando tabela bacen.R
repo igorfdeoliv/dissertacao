@@ -20,16 +20,14 @@
   ano13 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/bacen/2015%20RelatorioQuantidade%20e%20Valor%20dos%20Contratos%20por%20Munic%C3%ADpio%2007-01-2021.csv"
   ano14 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/bacen/2016%20RelatorioQuantidade%20e%20Valor%20dos%20Contratos%20por%20Munic%C3%ADpio%2007-01-2021.csv"
   ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/bacen/2017%20RelatorioQuantidade%20e%20Valor%20dos%20Contratos%20por%20Munic%C3%ADpio%2008-01-2021.csv"
+  ano16 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/bacen/2018%20RelatorioQuantidade%20e%20Valor%20dos%20Contratos%20por%20Munic%C3%ADpio%2030-12-2021.csv"
+  ano17 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/bacen/2019%20RelatorioQuantidade%20e%20Valor%20dos%20Contratos%20por%20Munic%C3%ADpio%2030-12-2021.csv"
 
 #Tabela 2003----
 
-#Diretório local de trabalho----
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/bacen")
-
 #Importando tabela
 
-  c2003 <- read_excel("~/GitHub/dissertacao/Dataset/bacen/2003 rel517.xlsx", 
+  c2003 <- read_excel("E:/igorf/Documents/GitHub/dissertacao/dataset/bacen/2003 rel517.xlsx", 
                     sheet = "rel517", skip = 8) %>% 
     filter(ATIVIDADE!="NA") %>% 
     filter(ATIVIDADE!="Total") %>%
@@ -61,7 +59,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2003")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2003")
 
   write.table(c2003,file='bacen.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -69,13 +67,9 @@
 
 #Tabela 2004----
 
-#Diretório local de trabalho----
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/bacen")
-
 #Importando tabela
 
-  c2004 <- read_excel("~/GitHub/dissertacao/Dataset/bacen/2004 rel517.xlsx", 
+  c2004 <- read_excel("E:/igorf/Documents/GitHub/dissertacao/dataset/bacen/2004 rel517.xlsx", 
                     skip = 5) %>% 
     filter(ATIVIDADE!="NA") %>% 
     filter(ATIVIDADE!="Total") %>%
@@ -107,7 +101,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2004")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2004")
 
   write.table(c2004,file='bacen.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -115,13 +109,9 @@
 
 #Tabela 2005----
 
-#Diretório local de trabalho----
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/bacen")
-
 #Importando tabela
 
-  c2005 <- read_excel("~/GitHub/dissertacao/Dataset/bacen/2005 rel517.xlsx", 
+  c2005 <- read_excel("E:/igorf/Documents/GitHub/dissertacao/dataset/bacen/2005 rel517.xlsx", 
                     skip = 6) %>% 
     filter(ATIVIDADE!="NA") %>% 
     filter(ATIVIDADE!="Total") %>% 
@@ -185,7 +175,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2005")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2005")
 
   write.table(c2005,file='bacen.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -193,13 +183,9 @@
 
 #Tabela 2006----
 
-#Diretório local de trabalho----
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/bacen")
-
 #Importando tabela
 
-  c2006 <- read_excel("~/GitHub/dissertacao/Dataset/bacen/2006 rel517.xlsx", 
+  c2006 <- read_excel("E:/igorf/Documents/GitHub/dissertacao/dataset/bacen/2006 rel517.xlsx", 
                     sheet = "rel517", skip = 7) %>% 
     filter(ATIVIADE!="NA") %>% 
     filter(ATIVIADE!="Total") %>% 
@@ -261,7 +247,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2006")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2006")
 
   write.table(c2006,file='bacen.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -269,13 +255,9 @@
 
 #Tabela 2007----
 
-#Diretório local de trabalho----
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/bacen")
-
 #Importando tabela
 
-  c2007 <- read_excel("~/GitHub/dissertacao/Dataset/bacen/2007 rel517.xlsx", 
+  c2007 <- read_excel("E:/igorf/Documents/GitHub/dissertacao/dataset/bacen/2007 rel517.xlsx", 
                     sheet = "rel517", skip = 5) %>% 
     filter(ATIVIDADE!="NA") %>% 
     filter(ATIVIDADE!="Total") %>% 
@@ -337,7 +319,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2007")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2007")
 
   write.table(c2007,file='bacen.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -345,11 +327,9 @@
 
 #Tabela 2008----
 
-#Diretório local de trabalho----
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/bacen")
-
 #Importando tabela
+  
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/bacen")
 
   df<- read_xlsx("2008 rel517.xlsx", skip = 7,n_max = 22071,
                col_names = c("mun","custeio_cont", "custeio_val", "inv_cont", "inv_val",
@@ -427,7 +407,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2008")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2008")
 
   write.table(c2008,file='bacen.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -435,12 +415,10 @@
 
 #Tabela 2009----
 
-#Diretório local de trabalho----
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/bacen")
-
 #Importando tabela
 
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/bacen")
+  
   df<- read_xlsx("2009 rel517.xlsx", skip = 6,n_max = 22083,  
                col_names = c("mun","custeio_cont", "custeio_val", "inv_cont", "inv_val",
                              "com_cont", "com_val","tot_cont", "tot_val"))
@@ -518,7 +496,7 @@
   
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2009")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2009")
 
   write.table(c2009,file='bacen.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -526,11 +504,9 @@
 
 #Tabela 2010----
 
-#Diretório local de trabalho----
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/bacen")
-
 #Importando tabela
+  
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/bacen")
 
   c2010 <- read_excel("2010 rel517.xlsx", 
                     sheet = "rel517", skip = 5) %>% 
@@ -594,7 +570,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2010")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2010")
 
   write.table(c2010,file='bacen.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -602,12 +578,10 @@
 
 #Tabela 2011----
 
-#Diretório local de trabalho----
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/bacen")
-
 #Importando tabela
 
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/bacen")
+  
   c2011 <- read_excel("2011 rel517.xlsx", 
                     sheet = "rel517", skip = 6) %>% 
     filter(ATIVIDADE!="NA") %>% 
@@ -640,7 +614,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2011")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2011")
 
   write.table(c2011,file='bacen.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -648,12 +622,10 @@
 
 #Tabela 2012----
 
-#Diretório local de trabalho----
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/bacen")
-
 #Importando tabela
 
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/bacen")
+  
   c2012 <- read_excel("2012 rel517.xlsx", 
                     sheet = "rel5111", skip = 4) %>% 
     filter(...2!="NA") %>% 
@@ -686,17 +658,13 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2012")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2012")
 
   write.table(c2012,file='bacen.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
   rm(x,y,c2012)
 
 #Tabela 2013----
-
-#Diretório local de trabalho----
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/bacen")
 
 #Importando tabela
 
@@ -739,17 +707,13 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2013")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2013")
 
   write.table(c2013,file='bacen.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
   rm(x,y,ano11,c2013)
 
 #Tabela 2014----
-
-#Diretório local de trabalho----
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/bacen")
 
 #Importando tabela
 
@@ -792,17 +756,13 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2014")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2014")
 
   write.table(c2014,file='bacen.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
   rm(x,y,ano12,c2014)
 
 #Tabela 2015----
-
-#Diretório local de trabalho----
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/bacen")
 
 #Importando tabela
 
@@ -845,17 +805,13 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2015")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2015")
 
   write.table(c2015,file='bacen.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
   rm(x,y,ano13,c2015)
 
 #Tabela 2016----
-
-#Diretório local de trabalho----
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/bacen")
 
 #Importando tabela
 
@@ -898,17 +854,13 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2016")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2016")
 
   write.table(c2016,file='bacen.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
   rm(x,y,ano14,c2016)
 
 #Tabela 2017----
-
-#Diretório local de trabalho----
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/bacen")
 
 #Importando tabela
 
@@ -951,8 +903,106 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2017")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2017")
 
   write.table(c2017,file='bacen.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
   rm(x,y,ano15,c2017)
+  
+#Tabela 2018----
+  
+#Importando tabela
+  
+  c2018 <- read.csv(ano16,encoding="UTF-8")
+  
+  names(c2018) <- c("estado","municipio","cod_mun","atv","drop1",
+                    "c.custeio","v.custeio","drop2","c.investimento",
+                    "v.investimento","c.comercializacao","v.comercializacao",
+                    "drop3","drop4","drop5","c.total","v.total")
+  
+  c2018 <- c2018 %>% 
+    select("estado","municipio","cod_mun","atv","c.custeio","v.custeio",
+           "c.investimento","v.investimento","c.comercializacao",
+           "v.comercializacao","c.total","v.total") %>% 
+    filter(atv!="NA") %>% 
+    filter(atv!="Total") %>% 
+    filter(atv!="Total Geral") %>% 
+    mutate(municipio=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", municipio)) %>%
+    mutate(v.total=str_replace_all(v.total,"[.]","")) %>%
+    mutate(v.total=str_replace_all(v.total,"[,]",".")) %>%
+    mutate("chave"=str_c(estado," ",municipio))
+  
+  x <- c2018 %>% 
+    group_by(chave) %>% 
+    summarise(total.contratos=sum(c.total,na.rm=T))
+  
+  y <- c2018 %>% 
+    group_by(chave) %>% 
+    summarise(valores.totais=sum(as.numeric(v.total),na.rm=T))
+  
+  c2018 <- full_join(x,y) %>% 
+    mutate("ano"=2018)
+  
+  c2018 <- c2018 %>% 
+    mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
+    mutate("municipio"=str_sub(chave,start=4)) %>% 
+    mutate("chave"=str_c(municipio," (", estado,")"))
+  
+  c2018 <- c2018[,c(4,1,5,6,2,3)]
+  
+#Exportando tabela
+  
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2018")
+  
+  write.table(c2018,file='bacen.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+  
+  rm(x,y,ano16,c2018)
+  
+#Tabela 2019----
+  
+#Importando tabela
+  
+  c2019 <- read.csv(ano17,encoding="UTF-8")
+  
+  names(c2019) <- c("estado","municipio","cod_mun","atv","drop1",
+                    "c.custeio","v.custeio","drop2","c.investimento",
+                    "v.investimento","c.comercializacao","v.comercializacao",
+                    "drop3","drop4","drop5","c.total","v.total")
+  
+  c2019 <- c2019 %>% 
+    select("estado","municipio","cod_mun","atv","c.custeio","v.custeio",
+           "c.investimento","v.investimento","c.comercializacao",
+           "v.comercializacao","c.total","v.total") %>% 
+    filter(atv!="NA") %>% 
+    filter(atv!="Total") %>% 
+    filter(atv!="Total Geral") %>% 
+    mutate(municipio=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", municipio)) %>%
+    mutate(v.total=str_replace_all(v.total,"[.]","")) %>%
+    mutate(v.total=str_replace_all(v.total,"[,]",".")) %>%
+    mutate("chave"=str_c(estado," ",municipio))
+  
+  x <- c2019 %>% 
+    group_by(chave) %>% 
+    summarise(total.contratos=sum(c.total,na.rm=T))
+  
+  y <- c2019 %>% 
+    group_by(chave) %>% 
+    summarise(valores.totais=sum(as.numeric(v.total),na.rm=T))
+  
+  c2019 <- full_join(x,y) %>% 
+    mutate("ano"=2019)
+  
+  c2019 <- c2019 %>% 
+    mutate("estado"=str_sub(chave,start=1,end=2)) %>% 
+    mutate("municipio"=str_sub(chave,start=4)) %>% 
+    mutate("chave"=str_c(municipio," (", estado,")"))
+  
+  c2019 <- c2019[,c(4,1,5,6,2,3)]
+  
+#Exportando tabela
+  
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2019")
+  
+  write.table(c2019,file='bacen.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+  
+  rm(x,y,ano17,c2019)
