@@ -9,38 +9,38 @@
   if(!require(readxl))
     install.packages("readxl")
 
-#Limpando bases da memÃ³ria----
+#Limpando bases da memória----
 
   rm(list=ls())
 
-#DiretÃ³rio local de trabalho----
+#Diretório local de trabalho----
 
   setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/ibge/pib municipal")
 
 #Carregando e organizando tabelas----
 
   df1 <- read_excel("E:/igorf/Documents/GitHub/dissertacao/dataset/ibge/pib municipal/pib 2002 2009.xls")
-  df2 <- read_excel("E:/igorf/Documents/GitHub/dissertacao/dataset/ibge/pib municipal/pib 2010 2017.xls")
+  df2 <- read_excel("E:/igorf/Documents/GitHub/dissertacao/dataset/ibge/pib municipal/pib 2010 2019.xls")
 
   df1 <- df1 %>% 
-    select("Ano","Nome da Grande RegiÃ£o","CÃ³digo da Unidade da FederaÃ§Ã£o","Sigla da Unidade da FederaÃ§Ã£o",
-         "Nome da Unidade da FederaÃ§Ã£o","CÃ³digo do MunicÃ­pio","Nome do MunicÃ­pio",
-         "SemiÃ¡rido","Valor adicionado bruto da AgropecuÃ¡ria, \na preÃ§os correntes\n(R$ 1.000)",
-         "Valor adicionado bruto da IndÃºstria,\na preÃ§os correntes\n(R$ 1.000)",
-         "Valor adicionado bruto dos ServiÃ§os,\na preÃ§os correntes \n- exceto AdministraÃ§Ã£o, defesa, educaÃ§Ã£o e saÃºde pÃºblicas e seguridade social\n(R$ 1.000)",
-         "Valor adicionado bruto da AdministraÃ§Ã£o, defesa, educaÃ§Ã£o e saÃºde pÃºblicas e seguridade social, \na preÃ§os correntes\n(R$ 1.000)",
-         "Valor adicionado bruto total, \na preÃ§os correntes\n(R$ 1.000)","Impostos, lÃ­quidos de subsÃ­dios, sobre produtos, \na preÃ§os correntes\n(R$ 1.000)",
-         "Produto Interno Bruto, \na preÃ§os correntes\n(R$ 1.000)","Produto Interno Bruto per capita, \na preÃ§os correntes\n(R$ 1,00)")
+    select("Ano","Nome da Grande Região","Código da Unidade da Federação","Sigla da Unidade da Federação",
+         "Nome da Unidade da Federação","Código do Município","Nome do Município",
+         "Semiárido","Valor adicionado bruto da Agropecuária, \na preços correntes\n(R$ 1.000)",
+         "Valor adicionado bruto da Indústria,\na preços correntes\n(R$ 1.000)",
+         "Valor adicionado bruto dos Serviços,\na preços correntes \n- exceto Administração, defesa, educação e saúde públicas e seguridade social\n(R$ 1.000)",
+         "Valor adicionado bruto da Administração, defesa, educação e saúde públicas e seguridade social, \na preços correntes\n(R$ 1.000)",
+         "Valor adicionado bruto total, \na preços correntes\n(R$ 1.000)","Impostos, líquidos de subsídios, sobre produtos, \na preços correntes\n(R$ 1.000)",
+         "Produto Interno Bruto, \na preços correntes\n(R$ 1.000)","Produto Interno Bruto per capita, \na preços correntes\n(R$ 1,00)")
 
   df2 <- df2 %>% 
-    select("Ano","Nome da Grande RegiÃ£o","CÃ³digo da Unidade da FederaÃ§Ã£o","Sigla da Unidade da FederaÃ§Ã£o", 
-         "Nome da Unidade da FederaÃ§Ã£o","CÃ³digo do MunicÃ­pio","Nome do MunicÃ­pio", 
-         "SemiÃ¡rido","Valor adicionado bruto da AgropecuÃ¡ria, \na preÃ§os correntes\n(R$ 1.000)", 
-         "Valor adicionado bruto da IndÃºstria,\na preÃ§os correntes\n(R$ 1.000)", 
-         "Valor adicionado bruto dos ServiÃ§os,\na preÃ§os correntes \n- exceto AdministraÃ§Ã£o, defesa, educaÃ§Ã£o e saÃºde pÃºblicas e seguridade social\n(R$ 1.000)", 
-         "Valor adicionado bruto da AdministraÃ§Ã£o, defesa, educaÃ§Ã£o e saÃºde pÃºblicas e seguridade social, \na preÃ§os correntes\n(R$ 1.000)", 
-         "Valor adicionado bruto total, \na preÃ§os correntes\n(R$ 1.000)","Impostos, lÃ­quidos de subsÃ­dios, sobre produtos, \na preÃ§os correntes\n(R$ 1.000)", 
-         "Produto Interno Bruto, \na preÃ§os correntes\n(R$ 1.000)","Produto Interno Bruto per capita, \na preÃ§os correntes\n(R$ 1,00)")
+    select("Ano","Nome da Grande Região","Código da Unidade da Federação","Sigla da Unidade da Federação", 
+         "Nome da Unidade da Federação","Código do Município","Nome do Município", 
+         "Semiárido","Valor adicionado bruto da Agropecuária, \na preços correntes\n(R$ 1.000)", 
+         "Valor adicionado bruto da Indústria,\na preços correntes\n(R$ 1.000)", 
+         "Valor adicionado bruto dos Serviços,\na preços correntes \n- exceto Administração, defesa, educação e saúde públicas e seguridade social\n(R$ 1.000)", 
+         "Valor adicionado bruto da Administração, defesa, educação e saúde públicas e seguridade social, \na preços correntes\n(R$ 1.000)", 
+         "Valor adicionado bruto total, \na preços correntes\n(R$ 1.000)","Impostos, líquidos de subsídios, sobre produtos, \na preços correntes\n(R$ 1.000)", 
+         "Produto Interno Bruto, \na preços correntes\n(R$ 1.000)","Produto Interno Bruto per capita, \na preços correntes\n(R$ 1,00)")
 
   pibmun <- rbind(df1,df2)
 
@@ -53,7 +53,7 @@
   pibmun <- pibmun %>% 
     mutate("estado"=toupper(estado)) %>%
     mutate("municipio"=toupper(municipio)) %>% 
-    mutate("municipio"=chartr("ÃÃ‰ÃÃ“ÃšÃƒÃ•Ã‚ÃŠÃ”Ã‡'-", "AEIOUAOAEOC  ",municipio)) %>% 
+    mutate("municipio"=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",municipio)) %>% 
     mutate("chave"=str_c(municipio," ","(", uf, ")")) %>% 
     filter(ano!=2002)
 
@@ -66,3 +66,5 @@
 #Exportando tabela----
 
   write.table(pibmun,file='pibmun.csv',sep=';',dec=".",na="",quote=TRUE, row.names=FALSE)
+  
+  rm(pibmun)
