@@ -15,11 +15,9 @@
 
 #Tabela 2003----
 
-#Diretório local de trabalho
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
-
 #Importando tabela
+
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/denatran")
 
   d2003 <- read_excel("Frota_Mun_Dez_03t.xls")
 
@@ -44,7 +42,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2003")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2003")
 
   write.table(d2003,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -52,12 +50,10 @@
 
 #Tabela 2004----
 
-#Diretório local de trabalho
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
-
 #Importando tabela
 
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/denatran")  
+  
   d2004 <- read_excel("Frota Munic 122004 Internet.xls",skip=2)
 
   d2004 <- d2004 %>% 
@@ -81,7 +77,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2004")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2004")
 
   write.table(d2004,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -89,12 +85,10 @@
 
 #Tabela 2005----
 
-#Diretório local de trabalho
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
-
 #Importando tabela
 
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/denatran")
+  
   d2005 <- read_excel("Frota Munic 122005 Internet.xls",skip=2)
 
   d2005 <- d2005 %>% 
@@ -118,7 +112,7 @@
 
 #Exportando tabela
   
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2005")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2005")
 
   write.table(d2005,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -126,12 +120,10 @@
 
 #Tabela 2006----
 
-#Diretório local de trabalho
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
-
 #Importando tabela
 
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/denatran")
+  
   d2006 <- read_excel("Frota Munic DEZ2006 Internet.xls", 
                     sheet = "DEZ_2006", skip = 2)
 
@@ -156,7 +148,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2006")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2006")
 
   write.table(d2006,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -164,12 +156,10 @@
 
 #Tabela 2007----
 
-#Diretório local de trabalho
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
-
 #Importando tabela
 
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/denatran")
+  
   d2007 <- read_excel("Frota Munic Dez2007 Internet.xls", 
                     sheet = "DEZ_2007", skip = 2)
 
@@ -194,7 +184,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2007")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2007")
 
   write.table(d2007,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -202,12 +192,10 @@
 
 #Tabela 2008----
 
-#Diretório local de trabalho
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
-
 #Importando tabela
 
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/denatran")
+  
   d2008 <- read_excel("Frota Munic Dez2008.xls", 
                     sheet = "DEZ_2008", skip = 2)
 
@@ -232,7 +220,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2008")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2008")
 
   write.table(d2008,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -240,12 +228,10 @@
 
 #Tabela 2009----
 
-#Diretório local de trabalho
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
-
 #Importando tabela
 
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/denatran")
+  
   d2009 <- read_excel("Frota Munic Dez2009.xls", 
                     sheet = "DEZ_2009", skip = 2)
 
@@ -270,7 +256,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2009")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2009")
 
   write.table(d2009,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -278,12 +264,10 @@
 
 #Tabela 2010----
 
-#Diretório local de trabalho
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
-
 #Importando tabela
 
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/denatran")
+  
   d2010 <- read_excel("Frota Munic DEZ2010.xls", 
                     sheet = "DEZ_2010", skip = 2)
 
@@ -308,7 +292,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2010")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2010")
 
   write.table(d2010,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -316,12 +300,10 @@
 
 #Tabela 2011----
 
-#Diretório local de trabalho
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
-
 #Importando tabela
 
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/denatran")
+  
   d2011 <- read_excel("Frota Munic. DEZ.2011.xls", 
                     sheet = "DEZ_2011", skip = 3)
 
@@ -346,7 +328,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2011")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2011")
 
   write.table(d2011,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -354,12 +336,10 @@
 
 #Tabela 2012----
 
-#Diretório local de trabalho
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
-
 #Importando tabela
 
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/denatran")
+  
   d2012 <- read_excel("Frota Munic.DEZ.2012.xls", 
                     sheet = "DEZ_2012", skip = 3)
 
@@ -384,7 +364,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2012")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2012")
 
   write.table(d2012,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -392,12 +372,10 @@
 
 #Tabela 2013----
 
-#Diretório local de trabalho
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
-
 #Importando tabela
 
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/denatran")
+  
   d2013 <- read_excel("Frota Munic.DEZ.2013.xls", 
                     sheet = "DEZ_2013", skip = 3)
   
@@ -422,7 +400,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2013")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2013")
 
   write.table(d2013,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -430,12 +408,10 @@
 
 #Tabela 2014---
 
-#Diretório local de trabalho
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
-
 #Importando tabela
 
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/denatran")
+  
   d2014 <- read_excel("frota_por_municipio_e_tipo_dez_2014.xlsx", 
                     sheet = "DEZ_2014", skip = 3)
 
@@ -460,7 +436,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2014")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2014")
 
   write.table(d2014,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -468,12 +444,10 @@
 
 #Tabela 2015----
 
-#Diretório local de trabalho
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
-
 #Importando tabela
 
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/denatran")
+  
   d2015 <- read_excel("Frota_por_Municipio_e_Tipo-DEZ_15.xls", 
                     sheet = "JUL_2015", skip = 3)
 
@@ -498,7 +472,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2015")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2015")
 
   write.table(d2015,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -506,12 +480,10 @@
 
 #Tabela 2016----
 
-#Diretório local de trabalho
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
-
 #Importando tabela
 
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/denatran")
+  
   d2016 <- read_excel("frota_por_municipio_e_tipo-dez_16.xlsx", 
                     sheet = "DEZ_2016", skip = 3)
 
@@ -536,7 +508,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2016")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2016")
 
   write.table(d2016,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -544,12 +516,10 @@
 
 #Tabela 2017----
 
-#Diretório local de trabalho
-
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/denatran")
-
 #Importando tabela
 
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/denatran")
+  
   d2017 <- read_excel("frota_munic_dezembro_2017.xls", 
                     sheet = "DEZ_2017", skip = 2)
 
@@ -574,7 +544,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2017")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2017")
 
   write.table(d2017,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
