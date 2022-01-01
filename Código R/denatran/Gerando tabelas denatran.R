@@ -549,3 +549,75 @@
   write.table(d2017,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
   rm(d2017)
+  
+#Tabela 2018----
+  
+#Importando tabela
+  
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/denatran")
+  
+  d2018 <- read_excel("frota_munic_dezembro_2018.xls", 
+                      sheet = "DEZ 2018", skip = 3)
+  
+  d2018 <- d2018 %>% 
+    mutate(MUNICIPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
+    mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
+    mutate("ano"=2018)
+  
+  d2018 <- d2018[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
+                    16,17,18,19,20,21,22,23,24,3)]
+  
+  names(d2018) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
+                    "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                    "CICLOMOTOR","MICRO_ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                    "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                    "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                    "TOTAL")
+  
+  d2018 <- d2018 %>% 
+    select("ano","chave","UF","MUNICIPIO","CAMINHAO","MICRO_ONIBUS","ONIBUS") %>% 
+    mutate("total"=(d2018$CAMINHAO+d2018$MICRO_ONIBUS+d2018$ONIBUS))
+  
+#Exportando tabela
+  
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2018")
+  
+  write.table(d2018,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+  
+  rm(d2018)
+
+#Tabela 2019----
+  
+#Importando tabela
+  
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/denatran")
+  
+  d2019 <- read_excel("E:/igorf/Documents/GitHub/dissertacao/dataset/denatran/frota_munic_modelo_dezembro_2019.xls", 
+                      sheet = "Dezembro 2019", skip = 3)
+  
+  d2019 <- d2019 %>% 
+    mutate(MUNICIPIO=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",MUNICIPIO)) %>%
+    mutate("chave"=str_c(MUNICIPIO," ","(", UF,")")) %>% 
+    mutate("ano"=2019)
+  
+  d2019 <- d2019[,c(26,25,1,2,4,5,6,7,8,9,10,11,12,13,14,15,
+                    16,17,18,19,20,21,22,23,24,3)]
+  
+  names(d2019) <- c("ano","chave","UF","MUNICIPIO","AUTOMOVEL","BONDE","CAMINHAO",
+                    "CAMINHAO TRATOR","CAMINHONETE","CAMIONETA","CHASSI PLATAFORMA",
+                    "CICLOMOTOR","MICRO_ONIBUS","MOTOCICLETA","MOTONETA","ONIBUS",
+                    "QUADRICICLO","REBOQUE","SEMI-REBOQUE","SIDE-CAR","OUTROS",
+                    "TRATOR ESTEIRA", "TRATOR RODAS","TRICICLO","UTILITARIOS",
+                    "TOTAL")
+  
+  d2019 <- d2019 %>% 
+    select("ano","chave","UF","MUNICIPIO","CAMINHAO","MICRO_ONIBUS","ONIBUS") %>% 
+    mutate("total"=(d2019$CAMINHAO+d2019$MICRO_ONIBUS+d2019$ONIBUS))
+  
+#Exportando tabela
+  
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2019")
+  
+  write.table(d2019,file='demanda.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+  
+  rm(d2019)
