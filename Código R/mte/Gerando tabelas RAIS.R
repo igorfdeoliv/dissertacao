@@ -29,6 +29,8 @@
   ano13 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2015%20consulta58737713.csv"
   ano14 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2016%20consulta34072961.csv"
   ano15 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2017%20consulta90972656.csv"
+  ano16 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2018%20consulta20599522.csv"
+  ano17 <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/rais/2019%20consulta63699825.csv"
 
 #Tabela 2003----
 
@@ -60,7 +62,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2003")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2003")
 
   write.table(w2003,file='rais.csv',sep=";",dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -96,7 +98,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2004")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2004")
 
   write.table(w2004,file='rais.csv',sep=";",dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -132,7 +134,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2005")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2005")
 
   write.table(w2005,file='rais.csv',sep=";",dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -169,7 +171,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2006")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2006")
 
   write.table(w2006,file='rais.csv',sep=";",dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -205,7 +207,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2007")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2007")
 
   write.table(w2007,file='rais.csv',sep=";",dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -242,7 +244,7 @@
 #Exportando tabela
 
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2008")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2008")
 
   write.table(w2008,file='rais.csv',sep=";",dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -278,7 +280,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2009")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2009")
 
   write.table(w2009,file='rais.csv',sep=";",dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -314,7 +316,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2010")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2010")
 
   write.table(w2010,file='rais.csv',sep=";",dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -350,7 +352,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2011")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2011")
 
   write.table(w2011,file='rais.csv',sep=";",dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -386,7 +388,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2012")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2012")
 
   write.table(w2012,file='rais.csv',sep=";",dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -422,7 +424,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2013")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2013")
 
   write.table(w2013,file='rais.csv',sep=";",dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -458,7 +460,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2014")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2014")
 
   write.table(w2014,file='rais.csv',sep=";",dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -494,7 +496,7 @@
 
 #Exportando tabela
   
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2015")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2015")
 
   write.table(w2015,file='rais.csv',sep=";",dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -530,7 +532,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2016")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2016")
 
   write.table(w2016,file='rais.csv',sep=";",dec=".",na="0",quote=TRUE, row.names=FALSE)
 
@@ -566,7 +568,7 @@
 
 #Exportando tabela
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2017")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2017")
 
   write.table(w2017,file='rais.csv',sep=";",dec=".",na="0",quote=TRUE, row.names=FALSE)
 
