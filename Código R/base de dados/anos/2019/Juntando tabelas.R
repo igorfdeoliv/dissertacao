@@ -2,10 +2,10 @@
 
   if(!require(dplyr))
     install.packages("dplyr")
-
+  
   if(!require(stringr))
     install.packages("stringr")
-
+  
   if(!require(readxl))
     install.packages("readxl")
 
@@ -18,16 +18,16 @@
 
 #Diretório local de trabalho----
 
-  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2003")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2019")
 
 #Importando tabelas----
 
-  qprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2003/quantidade_produzida.csv"
-  hprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2003/area_plantada.csv"
-  vprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2003/valor_producao.csv"
-  demanda <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2003/demanda.csv"
-  contratos <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2003/bacen.csv"
-  salarios <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2003/rais.csv"
+  qprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2019/quantidade_produzida.csv"
+  hprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2019/area_plantada.csv"
+  vprod <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2019/valor_producao.csv"
+  demanda <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2019/demanda.csv"
+  contratos <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2019/bacen.csv"
+  salarios <- "https://raw.githubusercontent.com/igorfdeoliv/dissertacao/main/dataset/base/anos/2019/rais.csv"
 
 #Gerando e juntando tabelas de quantidade e area
 
@@ -124,7 +124,7 @@
   df <- right_join(x,y,by="estado")
 
   df<- df %>% 
-    mutate("ano"=2003) %>% 
+    mutate("ano"=2019) %>% 
     mutate("chave"='BRASILIA (DF)') %>% 
     mutate("municipio"='BRASILIA')
 
@@ -132,7 +132,7 @@
 
   names(df) <- c("ano","chave","estado","municipio","total.contratos",
                "valores.totais")
-
+  
   rm(x,y)
 
   pronaf <- pronaf %>% 
@@ -148,7 +148,7 @@
                 "s.girassol","s.mamona","s.soja","d.bio","ano.y",
                 "estado","municipio","total.contratos","valores.totais")
 
-  b2003 <- df5 %>% 
+  b2019 <- df5 %>% 
     filter(cod_mun!="NA") %>% 
     select(-"ano.y",-"estado",-"municipio")
 
@@ -161,15 +161,15 @@
   pibmun <- read.csv('pibmun.csv',sep=";",dec=",")
 
   pibmun <- pibmun %>% 
-    filter(ano==2003)
+    filter(ano==2019)
 
-  b2003 <- right_join(b2003,pibmun,by="cod_mun")
+  b2019 <- right_join(b2019,pibmun,by="cod_mun")
 
-  b2003 <- b2003 %>% 
+  b2019 <- b2019 %>% 
     filter(chave.x!="NA") %>% 
     select(-"ano.y",-"chave.y",-"estado",-"municipio")
 
-  names(b2003) <- c("ano","cod_mun","chave","q.dende","q.girassol",
+  names(b2019) <- c("ano","cod_mun","chave","q.dende","q.girassol",
                   "q.mamona","q.soja","h.dende","h.girassol","h.mamona",
                   "h.soja","v.dende","v.girassol","v.mamona","v.soja",
                   "s.dende","s.girassol","s.mamona","s.soja","d.bio",
@@ -177,9 +177,9 @@
                   "semiarido","vaba","vabi","vabs","vabadm","vabt",
                   "t","pib","pib.per.capta")
 
-  b2003 <- b2003[,c(1,2,23,24,25,26,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,
+  b2019 <- b2019[,c(1,2,23,24,25,26,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,
                   19,20,21,22,27,28,29,30,31,32,33,34)]
-  
+
   rm(pibmun)
 
 #Inlcuindo amc----
@@ -187,12 +187,12 @@
   amc <- read_excel("E:/igorf/Documents/GitHub/dissertacao/dataset/ibge/amc/AMC_1980_2010.xlsx",
                   col_name =c("municipio","cod_mun","amc"))
 
-  b2003 <- b2003 %>% 
+  b2019 <- b2019 %>% 
     mutate(cod_mun=as.character(cod_mun))
+  
+  b2019 <- right_join(b2019,amc,by="cod_mun")
 
-  b2003 <- right_join(b2003,amc,by="cod_mun")
-
-  b2003 <- b2003 %>% 
+  b2019 <- b2019 %>% 
     filter(ano!="NA") %>% 
     select(-"municipio")
 
@@ -202,9 +202,9 @@
 
   deflator <- read_excel("E:/igorf/Documents/GitHub/dissertacao/dataset/ipea/ipeadata[18-01-2021-09-33].xls")
 
-  x <- filter(deflator,ano==2003)
+  x <- filter(deflator,ano==2019)
 
-  b2003 <- b2003 %>% 
+  b2019 <- b2019 %>% 
     mutate(v.dende=(v.dende*(x$deflator))) %>% 
     mutate(v.girassol=(v.girassol*(x$deflator))) %>% 
     mutate(v.mamona=(v.mamona*(x$deflator))) %>% 
@@ -227,45 +227,47 @@
 
 #Categorizando a variavel semiarido
 
-  b2003 <- b2003 %>% 
+  b2019 <- b2019 %>% 
     mutate(semiarido=if_else(semiarido=="Sim",1,0))
 
-  b2003 <- b2003[,c(1,2,35,4,5,3,6,7,8,9,10,11,12,13,14,15,
+  b2019 <- b2019[,c(1,2,35,4,5,3,6,7,8,9,10,11,12,13,14,15,
                   16,17,18,19,20,21,22,23,24,25,26,27,28,
                   29,30,31,32,33,34)]
 
 #Incluindo estimativa populacional----
 
-  est_pop <- read_excel("E:/igorf/Documents/GitHub/dissertacao/dataset/ibge/est_pop/POP2003_TCU.xls", 
-                        skip = 5,col_name=c("uf","cod_uf","cod_mun","municipio","est_pop"))
-  
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/ibge/est_pop")
+
+  est_pop <- read_excel('POP2019_20210331.xls',sheet="Municípios",
+                      skip = 2,col_name=c("uf","cod_uf","cod_mun","municipio","est_pop"))
+
   est_pop <- est_pop %>% 
     mutate(municipio=toupper(municipio)) %>% 
     mutate(municipio=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ",municipio)) %>% 
     mutate("chave"=str_c(municipio," ","(",uf,")") ) %>% 
     select("chave","est_pop")
-  
-  b2003 <- right_join(b2003,est_pop,by="chave")
-  
-  b2003 <- b2003 %>% 
+
+  b2019 <- right_join(b2019,est_pop,by="chave")
+
+  b2019 <- b2019 %>% 
     filter(ano!="NA")
-  
+
   rm(est_pop)
-  
+
 #Criando dummy polos----
 
   polos <- read_csv2('E:/igorf/Documents/GitHub/dissertacao/dataset/projeto_polos/polos.csv')
 
   polos$cod_mun <- as.character(polos$cod_mun)
 
-  b2003 <- full_join(b2003, polos, by = 'cod_mun')
+  b2019 <- full_join(b2019, polos, by = 'cod_mun')
 
-  b2003 <- b2003 %>% 
+  b2019 <- b2019 %>% 
     mutate(dummy1 = ifelse(is.na(polo), 0, 1)) %>% 
     filter(ano!="NA") %>% 
     select(-"amc.y",-"chave.y",-"estado",-"municipio",-"polo")
 
-  names(b2003) <- c("ano","cod_mun","amc","cod_uf","uf","regiao","semiarido","chave",
+  names(b2019) <- c("ano","cod_mun","amc","cod_uf","uf","regiao","semiarido","chave",
                   "q.dende","q.girassol","q.mamona","q.soja","h.dende",
                   "h.girassol","h.mamona","h.soja","v.dende","v.girassol",
                   "v.mamona","v.soja","s.dende","s.girassol","s.mamona",
@@ -273,7 +275,7 @@
                   "vaba","vabi","vabs","vabadm","vabt","t","pib",
                   "pib.per.capta","est_pop","polos")
 
-  b2003 <- b2003[,c(1,2,3,6,37,4,5,7,8,9,10,11,12,13,14,15,16,
+  b2019 <- b2019[,c(1,2,3,6,37,4,5,7,8,9,10,11,12,13,14,15,16,
                   17,18,19,20,21,22,23,24,25,26,27,28,29,30,
                   31,32,33,34,35,36)]
 
@@ -281,8 +283,8 @@
 
 #Exportando base----
 
-  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2003")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2019")
 
-  write.table(b2003,file='b2003.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
-  
-  rm(b2003)
+  write.table(b2019,file='b2019.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+
+  rm(b2019)

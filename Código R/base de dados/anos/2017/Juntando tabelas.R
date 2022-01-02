@@ -286,3 +286,5 @@ rm(polos)
 setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2017")
 
 write.table(b2017,file='b2017.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
+
+rm(b2017)
