@@ -12,11 +12,11 @@
 
 #Diretório local de trabalho----
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/projeto_polos")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/projeto_polos")
 
 #Gerando tabela de atributos Projeto Polos de Biodiesel----
 
-  polos <- read_excel("~/GitHub/dissertacao/dataset/projeto_polos/tabela_de_atributos_projeto_polos.xlsx")
+  polos <- read_excel("E:/igorf/Documents/GitHub/dissertacao/dataset/projeto_polos/tabela_de_atributos_projeto_polos.xlsx")
 
   polos <- polos %>% 
     mutate(NomMunic=toupper(NomMunic)) %>% 
@@ -58,7 +58,7 @@
 
 #Importando tabela de areas minimas comparaveis para criar id----
 
-  amc <- read_excel("~/GitHub/dissertacao/dataset/ibge/amc/AMC_1980_2010.xlsx")
+  amc <- read_excel("E:/igorf/Documents/GitHub/dissertacao/dataset/ibge/amc/AMC_1980_2010.xlsx")
 
   names(amc) <- c("municpio","CodMunic","amc")
 
@@ -74,8 +74,8 @@
 
 #Exportando tabela----  
 
-  setwd("C:/Users/igorf/Documents/GitHub/dissertacao/dataset/projeto_polos")
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/projeto_polos")
 
   write.table(polos,file='polos.csv',sep=';',dec=".",na="0",quote=TRUE, row.names=FALSE)
 
-  rm(amc,df)
+  rm(amc,df,polos)
