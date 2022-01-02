@@ -573,3 +573,75 @@
   write.table(w2017,file='rais.csv',sep=";",dec=".",na="0",quote=TRUE, row.names=FALSE)
 
   rm(ano15,w2017)
+  
+#tabela 2018----
+  
+#Importando tabela
+  
+  w2018 <- read.table(ano16, header=T, sep=";", dec = ".", nrows = 5658, skip = 1)
+  
+  w2018 <- w2018 %>%
+    mutate("Estado"=str_sub(Município, end = 2)) %>%
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate(Mun=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Mun)) %>%
+    mutate("chave"=str_c(Mun," ","(", Estado, ")")) %>%
+    filter(Mun!="IGNORADO") %>%
+    mutate("ano"=2018)
+  
+#Reorganizando colunas
+  
+  w2018$PRODUTOR.DA.CULTURA.DE.DENDE <- as.numeric(w2018$PRODUTOR.DA.CULTURA.DE.DENDE)
+  w2018$TRABALHADOR.NA.CULTURA.DE.DENDE <- as.numeric(w2018$TRABALHADOR.NA.CULTURA.DE.DENDE)
+  w2018$PRODUTOR.DA.CULTURA.DE.GIRASSOL <- as.numeric(w2018$PRODUTOR.DA.CULTURA.DE.GIRASSOL)
+  w2018$TRABALHADOR.NA.CULTURA.DO.GIRASSOL <- as.numeric(w2018$TRABALHADOR.NA.CULTURA.DO.GIRASSOL)
+  w2018$PRODUTOR.DA.CULTURA.DE.MAMONA <- as.numeric(w2018$PRODUTOR.DA.CULTURA.DE.MAMONA)
+  w2018$TRABALHADOR.NA.CULTURA.DE.MAMONA <- as.numeric(w2018$TRABALHADOR.NA.CULTURA.DE.MAMONA)
+  w2018$PRODUTOR.DA.CULTURA.DE.SOJA <- as.numeric(w2018$PRODUTOR.DA.CULTURA.DE.SOJA)
+  w2018$TRABALHADOR.NA.CULTURA.DE.SOJA <- as.numeric(w2018$TRABALHADOR.NA.CULTURA.DE.SOJA)
+  w2018$Total <- as.numeric(w2018$Total)
+  
+  w2018 <- w2018[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
+  
+#Exportando tabela
+  
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2018")
+  
+  write.table(w2018,file='rais.csv',sep=";",dec=".",na="0",quote=TRUE, row.names=FALSE)
+  
+  rm(ano16,w2018)
+  
+#tabela 2019----
+  
+#Importando tabela
+  
+  w2019 <- read.table(ano17, header=T, sep=";", dec = ".", nrows = 5658, skip = 1)
+  
+  w2019 <- w2019 %>%
+    mutate("Estado"=str_sub(Município, end = 2)) %>%
+    mutate("Mun"=str_sub(Município, start = 4)) %>%
+    mutate(Mun=chartr("ÁÉÍÓÚÃÕÂÊÔÇ'-", "AEIOUAOAEOC  ", Mun)) %>%
+    mutate("chave"=str_c(Mun," ","(", Estado, ")")) %>%
+    filter(Mun!="IGNORADO") %>%
+    mutate("ano"=2019)
+  
+#Reorganizando colunas
+  
+  w2019$PRODUTOR.DA.CULTURA.DE.DENDE <- as.numeric(w2019$PRODUTOR.DA.CULTURA.DE.DENDE)
+  w2019$TRABALHADOR.NA.CULTURA.DE.DENDE <- as.numeric(w2019$TRABALHADOR.NA.CULTURA.DE.DENDE)
+  w2019$PRODUTOR.DA.CULTURA.DE.GIRASSOL <- as.numeric(w2019$PRODUTOR.DA.CULTURA.DE.GIRASSOL)
+  w2019$TRABALHADOR.NA.CULTURA.DO.GIRASSOL <- as.numeric(w2019$TRABALHADOR.NA.CULTURA.DO.GIRASSOL)
+  w2019$PRODUTOR.DA.CULTURA.DE.MAMONA <- as.numeric(w2019$PRODUTOR.DA.CULTURA.DE.MAMONA)
+  w2019$TRABALHADOR.NA.CULTURA.DE.MAMONA <- as.numeric(w2019$TRABALHADOR.NA.CULTURA.DE.MAMONA)
+  w2019$PRODUTOR.DA.CULTURA.DE.SOJA <- as.numeric(w2019$PRODUTOR.DA.CULTURA.DE.SOJA)
+  w2019$TRABALHADOR.NA.CULTURA.DE.SOJA <- as.numeric(w2019$TRABALHADOR.NA.CULTURA.DE.SOJA)
+  w2019$Total <- as.numeric(w2019$Total)
+  
+  w2019 <- w2019[,c(14,13,11,12,1,2,6,3,9,4,7,5,8,10)]
+  
+#Exportando tabela
+  
+  setwd("E:/igorf/Documents/GitHub/dissertacao/dataset/base/anos/2019")
+  
+  write.table(w2019,file='rais.csv',sep=";",dec=".",na="0",quote=TRUE, row.names=FALSE)
+  
+  rm(ano17,w2019)
