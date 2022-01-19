@@ -322,6 +322,8 @@
                 vaba + pib.per.capta,family=binomial(),data=pnpb)
   summary(m_ps)
   
+  setwd('E:/igorf/Documents/GitHub/dissertacao/Equações')
+  
   stargazer(m_ps,type='text',omit.stat=c('LL','ser','f'),
             dep.var.labels=c('Tratamento'),out='modbin.html')
   
