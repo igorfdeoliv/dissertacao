@@ -392,3 +392,5 @@
   setwd('E:/igorf/Documents/GitHub/dissertacao/dataset/base')
   
   write.table(psm,file='psm.csv',sep=';',dec='.',na='',quote=TRUE, row.names=FALSE)
+  
+  rm(list=ls())
