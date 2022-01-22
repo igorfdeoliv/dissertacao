@@ -174,6 +174,10 @@
                 sul + norte + semiarido + total.contratos + d.bio + vaba + pib.per.capta,
                data=painel,model='within')
   
+  dea_p <- plm(prod_dende ~ estimador_dd + data_treat + polos + sudeste + coeste +
+                 sul + norte + semiarido + total.contratos + d.bio + vaba + pib.per.capta,
+               data=painel,model='random')
+  
 # Teste LM para EA x MQO
 
   # H0: modelo pooled ; H1: modelo EA
@@ -201,6 +205,10 @@
   def_r <- plm(rm_dende ~ estimador_dd + data_treat + polos + ano + sudeste + coeste + 
                  sul + norte + semiarido + total.contratos + d.bio + vaba + pib.per.capta,
                data=painel,model='within')
+  
+  dea_r <- plm(rm_dende ~ estimador_dd + data_treat + polos + sudeste + coeste + 
+                 sul + norte + semiarido + total.contratos + d.bio + vaba + pib.per.capta,
+               data=painel,model='random')
 
 # Teste LM para EA x MQO
   
@@ -229,6 +237,10 @@
   gef_p <- plm(prod_girassol ~ estimador_dd + data_treat + polos + ano + sudeste + coeste +
                  sul + norte + semiarido + total.contratos + d.bio + vaba + pib.per.capta,
                data=painel,model='within')
+
+  gea_p <- plm(prod_girassol ~ estimador_dd + data_treat + polos + sudeste + coeste +
+                 sul + norte + semiarido + total.contratos + d.bio + vaba + pib.per.capta,
+               data=painel,model='random')
   
 # Teste LM para EA x MQO
   
@@ -257,6 +269,10 @@
   gef_r <- plm(rm_girassol ~ estimador_dd + data_treat + polos + ano + sudeste + coeste +
                  sul + norte + semiarido + total.contratos + d.bio + vaba + pib.per.capta,
                data=painel,model='within')
+  
+  gea_r <- plm(rm_girassol ~ estimador_dd + data_treat + polos + sudeste + coeste +
+                 sul + norte + semiarido + total.contratos + d.bio + vaba + pib.per.capta,
+               data=painel,model='random')
 
 # Teste LM para EA x MQO
   
@@ -285,6 +301,10 @@
   mef_p <- plm(prod_mamona ~ estimador_dd + data_treat + polos + ano + sudeste + coeste +
                  sul + norte + semiarido + total.contratos + d.bio + vaba + pib.per.capta,
                data=painel,model='within')
+  
+  mea_p <- plm(prod_mamona ~ estimador_dd + data_treat + polos + sudeste + coeste +
+                 sul + norte + semiarido + total.contratos + d.bio + vaba + pib.per.capta,
+               data=painel,model='random')
 
 # Teste LM para EA x MQO
   
@@ -313,7 +333,11 @@
   mef_r <- plm(rm_mamona ~ estimador_dd + data_treat + polos + ano + sudeste + coeste +
                  sul + norte + semiarido + total.contratos + d.bio + vaba + pib.per.capta,
                data=painel,model='within')
-
+  
+  mea_r <- plm(rm_mamona ~ estimador_dd + data_treat + polos + sudeste + coeste +
+                 sul + norte + semiarido + total.contratos + d.bio + vaba + pib.per.capta,
+               data=painel,model='random')
+  
 # Teste LM para EA x MQO
   
   # H0: modelo pooled ; H1: modelo EA
@@ -341,6 +365,10 @@
   sef_p <- plm(prod_soja ~ estimador_dd + data_treat + polos + ano + sudeste + coeste+
                  sul + norte + semiarido + total.contratos + d.bio + vaba + pib.per.capta,
                data=painel,model='within')
+  
+  sea_p <- plm(prod_soja ~ estimador_dd + data_treat + polos + sudeste + coeste+
+                 sul + norte + semiarido + total.contratos + d.bio + vaba + pib.per.capta,
+               data=painel,model='random')
 
 # Teste LM para EA x MQO
   
@@ -369,6 +397,10 @@
   sef_r <- plm(rm_soja ~ estimador_dd + data_treat + polos + ano + sudeste + coeste +
                  sul + norte + semiarido + total.contratos + d.bio + vaba + pib.per.capta,
                data=painel,model='within')
+  
+  sea_r <- plm(rm_soja ~ estimador_dd + data_treat + polos + sudeste + coeste +
+                 sul + norte + semiarido + total.contratos + d.bio + vaba + pib.per.capta,
+               data=painel,model='random')
 
 # Teste LM para EA x MQO
   
@@ -419,9 +451,5 @@
             dep.var.labels=c('Produtividade','Renda Média'),out='soja.html')
 
 # Limpando equações da memória
-  
-  rm(dp_p,dp_r,dp_s,dea_p,dea_r,dea_s,def_p,def_r,def_s,gp_p,gp_r,gp_s,
-     gea_p,gea_r,gea_s,gef_p,gef_r,gef_s,mp_p,mp_r,mp_s,mea_p,mea_r,mea_s,
-     mef_p,mef_r,mef_s,sp_p,sp_r,sp_s,sea_p,sea_r,sea_s,sef_p,sef_r,sef_s)
   
   rm(list=ls())
