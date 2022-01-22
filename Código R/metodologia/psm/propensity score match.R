@@ -201,7 +201,7 @@
      quant.dende,quant.girassol,quant.mamona,quant.soja,
      valor.dende,valor.girassol,valor.mamona,valor.soja)
   
-# Análise descritiva variáveis dependentes----
+# Análise descritiva variáveis explicativas----
 
   frota <- pnpb %>% group_by(polos) %>% 
     summarise(média = mean(d.bio),
@@ -385,7 +385,40 @@
     t.test(psm[,v] ~ psm$polos)
   })
 
-  rm(m_ps,matching,prs_df,labs,pnpb_cov)
+  frota <- psm %>% group_by(polos) %>% 
+    summarise(média = mean(d.bio),
+              desvio_padrao = sd(d.bio),
+              mediana = median(d.bio))
+  
+  contratos <- psm %>% group_by(polos) %>% 
+    summarise(média = mean(total.contratos),
+              desvio_padrao = sd(total.contratos),
+              mediana = median(total.contratos))
+  
+  valor.contratos <- psm %>% group_by(polos) %>% 
+    summarise(média = mean(valores.totais),
+              desvio_padrao = sd(valores.totais),
+              mediana = median(valores.totais))
+  
+  pibpcapta <- psm %>% group_by(polos) %>% 
+    summarise(média = mean(pib.per.capta),
+              desvio_padrao = sd(pib.per.capta),
+              mediana = median(pib.per.capta))
+  
+  valoradc <- psm %>% group_by(polos) %>% 
+    summarise(média = mean(vaba),
+              desvio_padrao = sd(vaba),
+              mediana = median(vaba))
+  
+  populacao <- psm %>% group_by(polos) %>% 
+    summarise(média = mean(est_pop),
+              desvio_padrao = sd(est_pop),
+              mediana = median(est_pop))
+  
+  rm(pibpcapta,contratos,frota,populacao,valor.contratos,
+     valoradc)
+  
+  rm(m_ps,matching,prs_df,labs,pnpb,pnpb_cov)
     
 # Salvando nova base----
   
